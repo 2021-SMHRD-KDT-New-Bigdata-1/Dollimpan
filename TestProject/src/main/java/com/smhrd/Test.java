@@ -8,7 +8,7 @@ public class Test {
 		
 		System.out.println("내려내려 두번째 한글판!");
 		System.out.println("강휘가 올립니다 세번째!");
-		System.out.println("정미올림");
+
 	}
 
 }
