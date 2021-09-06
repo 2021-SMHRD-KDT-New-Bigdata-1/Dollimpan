@@ -6,7 +6,7 @@ public class Test {
 
 		System.out.println("돌려돌려 한글판!");
 		
-		System.out.println("내려내려 한글판!");
+		System.out.println("내려내려 두번째 한글판!");
 	}
 
 }
