@@ -1,57 +1,48 @@
-body{
-			margin:0; padding:0;
-			background-color: #FFF;
-			font-size:14px;
-		}
-		
-		button.accordion {
-			background-color:#FFF;
-			cursor: pointer;
-			width: 100%;
-			border: none;
-			font-size: 16px;
-			transition: 0.5s;
-			text-align: left;
-			padding:10px;
-			
-		}
-		
-		button.accordion>p{
-			float:left;
-			margin-left:10px;
-			width: 76%;
-		}
+@charset "EUC-KR";
 
-		button.accordion.active{
-			font-weight:bold;
-			color : #000;
-		}
+*{
+  box-sizing: border-box; 
+}
+  
+.que:first-child{
+    border-top: 1px solid black;
+  }
+  
+.que{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;
+  
+}
+  
+.que::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #006633;
+  margin-right: 5px;
+}
 
-		button.accordion:after{
-          
-			background-image: url("images/arrow_closed.png");
-			background-size: 18px 18px;
-			display: inline-block;
-			width: 18px; 
-			height: 18px;
-			content:"";
-			float: right;
-			position:relative;
-			top:18px;
-		}
-
-		button.accordion.active:after {
-			background-image: url("images/arrow_opened.png");
-			content:"";
-		}
-
-		div.panel {
-			padding: 0 18px;
-			background-color: #f7f7f7;
-			max-height: 0;
-			overflow: hidden;
-			transition: max-height 0.2s ease-out;
-			border-top:1px solid #F0F0F0;
-			color:#666666;
-		}
-
+.que.on>span{
+  font-weight: bold;
+  color: #006633; 
+}
+  
+.anw {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #f4f4f2;
+  padding: 27px 0;
+}
+  
+.anw::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-right: 5px;
+}
