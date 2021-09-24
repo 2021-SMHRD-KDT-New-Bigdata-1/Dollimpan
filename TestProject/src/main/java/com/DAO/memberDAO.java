@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import com.VO.memberVO;
 import com.smhrd.UserVO;
 	
 	public class memberDAO {
@@ -90,11 +88,15 @@ import com.smhrd.UserVO;
 				
 				if(rs.next()) {
 
-					String tel = rs.getString(3);
-					String address = rs.getString(4);
-				
-					//성공시 세션은 서블릿에서 처리함
-					vo = new memberVO(email,tel,address);
+					String user_name = rs.getString(3);
+					String email = rs.getString(4);
+					String birth_date = rs.getString(5);
+					String addr = rs.getString(6);
+					String phone = rs.getString(7);
+					String adm = rs.getString(8);
+					String gender = rs.getString(9);
+					
+					vo = new UserVO();
 					//새로운 데이터 타입 : VO
 				}
 				
