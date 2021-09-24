@@ -1,7 +1,5 @@
 package com.smhrd;
 
-import java.util.Date;
-
 public class UserVO {
 
 	
@@ -13,7 +11,7 @@ public class UserVO {
 	private String addr;
 	private String phone;
 	private String adm;
-	
+	private String gender;
 	
 	public String getUser_id() {
 		return user_id;
@@ -63,7 +61,12 @@ public class UserVO {
 	public void setAdm(String adm) {
 		this.adm = adm;
 	}
-	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	
 	
 }
