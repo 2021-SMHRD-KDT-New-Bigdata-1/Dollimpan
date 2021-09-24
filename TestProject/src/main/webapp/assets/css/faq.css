@@ -1,5 +1,10 @@
 @charset "EUC-KR";
 
+.accordion 
+{
+	text-align: center;
+}
+
 input[id*="answer"]
 {
 	display:none;
