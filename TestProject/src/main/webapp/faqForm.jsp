@@ -21,7 +21,7 @@
 <body>
 
 
-	<div class ="back-to-top"></div>
+	<div class="back-to-top"></div>
 
 	<header>  
 		<div class="topbar">
@@ -66,20 +66,24 @@
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="index.html">약콕이란</a>
+	              <a class="nav-link" href="about.html">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="about.html">백신예약/조회</a>
+	              <a class="nav-link" href="VaccineRl.html">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="doctors.html">백신정보</a>
+	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
 	            </li>
-	          	<li class="nav-item active">
-	              <a class="nav-link" href="Addform.jsp">Goods/FAQ</a>
+	            <li class="nav-item active">
+	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="btn btn-primary ml-lg-3" href="#">로그인/회원가입</a>
 	            </li>
+	          	
 	          </ul>
 	        </div> <!-- .navbar-collapse -->
 	      </div> <!-- .container -->
@@ -101,15 +105,6 @@
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   <div class="page-section">
     <div class="container">
