@@ -106,15 +106,6 @@
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <div class="page-section">
     <div class="container">
       <div class="row">
