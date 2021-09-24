@@ -1,0 +1,11 @@
+package com.smhrd;
+
+public class Test2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Test2 실행! 정미!!!!");
+		System.out.println("print");
+	}
+
+}
