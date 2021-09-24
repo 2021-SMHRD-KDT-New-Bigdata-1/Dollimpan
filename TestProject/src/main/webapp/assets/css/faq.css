@@ -1,43 +1,49 @@
-.panel-group {
-    margin-bottom: 0;
+@charset "EUC-KR";
+
+input[id*="answer"]
+{
+	display:none;
 }
-.panel-group .panel {
-    border-radius: 0;
-    box-shadow: none;
+input[id*="answer"]+label
+{
+	display:block;
+	padding:20px;
+	border:1px solid #232188;
+	border-bottom:5;
+	color:efff;
+	font-weight:30;
+	background: #00D9A5;
+	cursor:pointer;
+	position:relative;
+	fontcolor: #F5F9F6;
 }
-.panel-group .panel .panel-heading {
-    padding: 0;
+
+input[id*="answer"]+label em
+{
+	position:absolute;
+	top:50%;
+	right:100px;
+	width:30px;
+	height:30px;
+	margin-top:-15px;
+	display:inline-block;
+	background:url("../assets/img/arrow02.png") 0 0 no-repeat;
 }
-.panel-group .panel .panel-heading h4 a {
-    background: #f6f9fc;
-    display: block;
-    font-size: 15px;
-    line-height: 20px;
-    padding: 15px;
-    text-decoration: none;
-    transition: 0.15s all ease-in-out;
+input[id*="answer"]:checked + label + div
+{
+	max-height:0;
+	transtion: all 0.7s;
+	overflow:hidden;
+	font-size:15px;
 }
-.panel-group .panel .panel-heading h4 a:hover, .panel-group .panel .panel-heading h4 a:not(.collapsed) {
-    /*background: #fff;*/
-    transition: 0.15s all ease-in-out;
+
+input[id*="answer"]:checked+label+div p 
+{
+	display:inline+block;
+	padding:20px;
+	max-height:100px;
 }
-.panel-group .panel .panel-heading h4 a:not(.collapsed) i:before {
-    content: "-";
-    font-size: 30px;
-    line-height: 10px;
-}
-.panel-group .panel .panel-heading h4 a i {
-    color: #999;
-    font-size: 12px;
-}
-.panel-group .panel .panel-body {
-    padding-top: 0;
-}
-.panel-group .panel .panel-heading + .panel-collapse > .list-group,
-.panel-group .panel .panel-heading + .panel-collapse > .panel-body {
-    border-top: none;
-}
-.panel-group .panel + .panel {
-    border-top: none;
-    margin-top: 0;
+input[id*="answer"]:checked+label em
+{
+	background-position:0 -30px;
 }
