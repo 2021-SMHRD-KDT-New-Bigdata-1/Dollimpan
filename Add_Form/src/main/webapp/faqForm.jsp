@@ -21,7 +21,7 @@
 <body>
 
 
-	<div class="back-to-top"></div>
+	<div class ="back-to-top"></div>
 
 	<header>  
 		<div class="topbar">
@@ -74,11 +74,11 @@
 	            <li class="nav-item">
 	              <a class="nav-link" href="doctors.html">백신정보</a>
 	            </li>
-	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="#">로그인/회원가입</a>
-	            </li>
 	          	<li class="nav-item active">
 	              <a class="nav-link" href="Addform.jsp">Goods/FAQ</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="btn btn-primary ml-lg-3" href="#">로그인/회원가입</a>
 	            </li>
 	          </ul>
 	        </div> <!-- .navbar-collapse -->

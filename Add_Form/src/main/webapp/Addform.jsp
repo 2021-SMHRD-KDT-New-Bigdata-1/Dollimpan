@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
+
 <link rel="stylesheet" href="./assets/css/theme.css">
 
 
@@ -45,7 +46,7 @@
 	      </div> <!-- .container -->
 	    </div> 
     <!-- .topbar -->
-	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" >
 	      <div class="container">
 	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-KKock</a>
 	
@@ -73,11 +74,12 @@
 	            <li class="nav-item">
 	              <a class="nav-link" href="doctors.html">백신정보</a>
 	            </li>
+	          	<li class="nav-item active">
+	          	
+	              <a class="nav-link" href="blog.html">Goods/FAQ</a>
+	            </li>
 	            <li class="nav-item">
 	              <a class="btn btn-primary ml-lg-3" href="#">로그인/회원가입</a>
-	            </li>
-	          	<li class="nav-item active">
-	              <a class="nav-link" href="blog.html">Goods/FAQ</a>
 	            </li>
 	          </ul>
 	        </div> <!-- .navbar-collapse -->
@@ -332,7 +334,7 @@
               <h3 class="sidebar-title">Search</h3>
               <form action="#" class="search-form">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                  <input type="text" class="form-control" placeholder="write keyword">
                   <button type="submit" class="btn"><span class="icon mai-search">검색</span></button>
                   <!-- 자신이 원하는 상품 키워드 검색하게 만들고 싶은데...이건 보류 -->
                 </div>
