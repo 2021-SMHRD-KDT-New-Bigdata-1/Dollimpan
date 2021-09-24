@@ -19,9 +19,16 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+	
   <!-- Back to top button -->
   <div class="back-to-top"></div>
 
@@ -65,25 +72,25 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupport">
+       <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
+              <a class="nav-link" href="about.html">약콕이란?</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="doctors.html">Doctors</a>
+              <a class="nav-link" href="VaccineRL.html">백신예약/조회</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">News</a>
+              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="AD_FAQ.html">광고/FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">Login / Register</a>
+              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="#">로그인 / 회원가입</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
@@ -100,12 +107,81 @@
             <li class="breadcrumb-item active" aria-current="page">Doctors</li>
           </ol>
         </nav>
-        <h1 class="font-weight-normal">Our Doctors</h1>
+        <h1 class="font-weight-normal">백신정보</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
-
+  
+   <div class="page-section bg-light">
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">00님이 예약하신 백신 정보입니다.</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>No</th>
+						      <th>백신명</th>
+						      <th>백신코드</th>
+						      <th>병원명</th>
+						      <th>접종 주의사항</th>
+						     
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr class="alert" role="alert">
+						      <th scope="row">001</th>
+						      <td>독감</td>
+						      <td>Flu</td>
+						      <td>광주병원</td>
+						      <td>
+						      	<input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
+				        	</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						      <th scope="row">002</th>
+						      <td>수두</td>
+						      <td>Var</td>
+						      <td>밝은내과</td>
+						      <td>
+						      	<input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
+				        	</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						      <th scope="row">003</th>
+						      <td>대상포진</td>
+						      <td>Hzv</td>
+						      <td>해바라기의원</td>
+						      <td>
+						      	<input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
+				        	</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						      <th scope="row">004</th>
+						      <td>폐렴구균</td>
+						      <td>PPSV</td>
+						      <td>풍암병원</td>
+						      <td>
+						      <input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
+				        	</td>
+						    </tr>
+						    
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
   <div class="page-section bg-light">
+  <h3 class="font-weight-normal" align="center">현재 예약 가능한 백신의 정보입니다.</h3>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -115,15 +191,16 @@
             <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
               <div class="card-doctor">
                 <div class="header">
-                  <img src="../assets/img/doctors/doctor_1.jpg" alt="">
+                  <img src="../assets/img/doctors/flu.jpeg" alt="">
                   <div class="meta">
                     <a href="#"><span class="mai-call"></span></a>
                     <a href="#"><span class="mai-logo-whatsapp"></span></a>
                   </div>
                 </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Stein Albert</p>
-                  <span class="text-sm text-grey">Cardiology</span>
+           
+                <div class="body" id = "Flu">
+                  <p class="text-xl mb-0">독감</p>
+                  <span class="text-sm text-grey">Flu</span>
                 </div>
               </div>
             </div>
@@ -131,15 +208,15 @@
             <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
               <div class="card-doctor">
                 <div class="header">
-                  <img src="../assets/img/doctors/doctor_2.jpg" alt="">
+                  <img src="../assets/img/doctors/var.jpg" alt="">
                   <div class="meta">
                     <a href="#"><span class="mai-call"></span></a>
                     <a href="#"><span class="mai-logo-whatsapp"></span></a>
                   </div>
                 </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Alexa Melvin</p>
-                  <span class="text-sm text-grey">Dental</span>
+                <div class="body" id = "Var">
+                  <p class="text-xl mb-0">수두</p>
+                  <span class="text-sm text-grey">Var</span>
                 </div>
               </div>
             </div>
@@ -147,63 +224,127 @@
             <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
               <div class="card-doctor">
                 <div class="header">
-                  <img src="../assets/img/doctors/doctor_3.jpg" alt="">
+                  <img src="../assets/img/doctors/Hzv.jpeg" alt="">
                   <div class="meta">
                     <a href="#"><span class="mai-call"></span></a>
                     <a href="#"><span class="mai-logo-whatsapp"></span></a>
                   </div>
                 </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                  <span class="text-sm text-grey">General Health</span>
+                <div class="body" id = "Hzv">
+                  <p class="text-xl mb-0">대상포진</p>
+                  <span class="text-sm text-grey">Hzv</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
+              <div class="card-doctor">
+                <div class="header">
+                  <img src="../assets/img/doctors/Ppsv.jpg" alt="">
+                  <div class="meta">
+                    <a href="#"><span class="mai-call"></span></a>
+                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                  </div>
+                </div>
+                <div class="body" id = "ppsv">
+                  <p class="text-xl mb-0">폐렴구균</p>
+                  <span class="text-sm text-grey">PPSV</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
+              <div class="card-doctor">
+                <div class="header">
+                  <img src="../assets/img/doctors/td.jpeg" alt="">
+                  <div class="meta">
+                    <a href="#"><span class="mai-call"></span></a>
+                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                  </div>
+                </div>
+                <div class="body" id = "Td">
+                  <p class="text-xl mb-0">파상풍/디프테리아</p>
+                  <span class="text-sm text-grey">Td</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
+              <div class="card-doctor">
+                <div class="header">
+                  <img src="../assets/img/doctors/hepA.jpg" alt="">
+                  <div class="meta">
+                    <a href="#"><span class="mai-call"></span></a>
+                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                  </div>
+                </div>
+                <div class="body" id = "hepA">
+                  <p class="text-xl mb-0">A형간염</p>
+                  <span class="text-sm text-grey">hepA</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
+              <div class="card-doctor">
+                <div class="header">
+                  <img src="../assets/img/doctors/hepB.jpg" alt="">
+                  <div class="meta">
+                    <a href="#"><span class="mai-call"></span></a>
+                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                  </div>
+                </div>
+                <div class="body" id = "hepB">
+                  <p class="text-xl mb-0">B형간염</p>
+                  <span class="text-sm text-grey">hepB</span>
+                </div>
+              </div>
+            </div>
+            
+             <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
+              <div class="card-doctor">
+                <div class="header">
+                  <img src="../assets/img/doctors/mcv4.jpg" alt="">
+                  <div class="meta">
+                    <a href="#"><span class="mai-call"></span></a>
+                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                  </div>
+                </div>
+                <div class="body" id = "mcv4">
+                  <p class="text-xl mb-0">수막구균</p>
+                  <span class="text-sm text-grey">mcv4</span>
                 </div>
               </div>
             </div>
     
-            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
+     		<div class="col-md-6 col-lg-4 py-3 wow zoomIn">
               <div class="card-doctor">
                 <div class="header">
-                  <img src="../assets/img/doctors/doctor_1.jpg" alt="">
+                  <img src="../assets/img/doctors/hib.png" alt="">
                   <div class="meta">
                     <a href="#"><span class="mai-call"></span></a>
                     <a href="#"><span class="mai-logo-whatsapp"></span></a>
                   </div>
                 </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Stein Albert</p>
-                  <span class="text-sm text-grey">Cardiology</span>
+                <div class="body" id = "hib">
+                  <p class="text-xl mb-0">B형 헤모필루스 인플루엔자</p>
+                  <span class="text-sm text-grey">hib</span>
                 </div>
               </div>
             </div>
-    
+            
             <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
               <div class="card-doctor">
                 <div class="header">
-                  <img src="../assets/img/doctors/doctor_2.jpg" alt="">
+                  <img src="../assets/img/doctors/ipv.jpg" alt="">
                   <div class="meta">
                     <a href="#"><span class="mai-call"></span></a>
                     <a href="#"><span class="mai-logo-whatsapp"></span></a>
                   </div>
                 </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Alexa Melvin</p>
-                  <span class="text-sm text-grey">Dental</span>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-              <div class="card-doctor">
-                <div class="header">
-                  <img src="../assets/img/doctors/doctor_3.jpg" alt="">
-                  <div class="meta">
-                    <a href="#"><span class="mai-call"></span></a>
-                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                  </div>
-                </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                  <span class="text-sm text-grey">General Health</span>
+                <div class="body" id = "ipv">
+                  <p class="text-xl mb-0">폴리오</p>
+                  <span class="text-sm text-grey">ipv</span>
                 </div>
               </div>
             </div>
