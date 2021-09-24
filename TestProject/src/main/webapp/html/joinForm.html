@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/login.css">
+  
 </head>
 <body>
   <!-- Back to top button -->
@@ -70,16 +72,16 @@
               <a class="nav-link" href="about.html">약콕이란?</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">백신예약/조회</a>
+              <a class="nav-link" href="VaccineRL.html">백신예약/조회</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="doctors.html">백신정보</a>
+              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">광고/FAQ</a>
+              <a class="nav-link" href="AD_FAQ.html">광고/FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">약국/병원찾기</a>
+              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="#">로그인 / 회원가입</a>
@@ -87,115 +89,111 @@
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
-      </div> <!-- .container -->
     </nav>
   </header>
 
-  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
-    <div class="banner-section">
-      <div class="container text-center wow fadeInUp">
-        <nav aria-label="Breadcrumb">
-          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="index.html">메인</a></li>
-            <li class="breadcrumb-item active" aria-current="page">병원/약국찾기</li>
-          </ol>
-        </nav>
-        <h1 class="font-weight-normal">병원/약국찾기</h1>
-      </div> <!-- .container -->
-    </div> <!-- .banner-section -->
-  </div> <!-- .page-banner -->
+<div class="container">
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Create Account</h4>
+	<p class="text-center">Get started with your free account</p>
+	
+		<p class="divider-text">
+        <span class="bg-light">OR</span>
+    </p>
+	<form>
+	
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="" class="form-control" placeholder="아이디" type="email">
+    </div> <!-- form-group// -->
+    
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="비밀번호" type="password">
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="" class="form-control" placeholder="이메일" type="email">
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="" class="form-control" placeholder="이름" type="text">
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text">생년월일<i class="fa fa-phone"></i> </span>
+		</div>
+		
+		<select class="custom-select" name="year" style="max-width: 120px;">
+		   <script>
+		   for(var i=1940; i<2007; i++){
+			   document.write("<option selected=''>"+i+"</option>")
+		   }
+		   document.write()
+		   </script>
+		</select>
+		<select class="custom-select" name="month" style="max-width: 120px;">
+		   <script>
+		   for(var i=1; i<13; i++){
+			   document.write("<option selected=''>"+i+"</option>")
+		   }
+		   document.write()
+		   </script>
+		</select>
+		
+    	<input name="day" class="form-control" placeholder="DAY" type="text">
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text">성별<i class="fa fa-lock"></i> </span>
+		</div>
+		<span>남<input type = "radio" name ="gender" value="man"></span><br>
+		<span>여<input type = "radio" name ="gender" value="woman"></span>
+    </div> <!-- form-group// -->
+    
+    
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="주소" type="password">
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="핸드폰번호" type="password">
+    </div> <!-- form-group// -->   
+                                       
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+    </div> <!-- form-group// -->  
+        
+    <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+</form>
+</article>
+</div> <!-- card.// -->
 
-  <div class="page-section">
-    <div class="container">
-      <h1 class="text-center wow fadeInUp">병원 찾기</h1>
-
-      <form class="contact-form mt-5">
-        <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3 wow fadeInUp">
-			<table class="table">
-						  <thead class="thead-dark">
-						    <tr>
-						      <th>ID no.</th>
-						      <th>First Name</th>
-						      <th>Last Name</th>
-						      <th>Email</th>
-						      <th>&nbsp;</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr class="alert" role="alert">
-						      <th scope="row">001</th>
-						      <td>Mark</td>
-						      <td>Otto</td>
-						      <td>markotto@email.com</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">002</th>
-						      <td>Jacob</td>
-						      <td>Thornton</td>
-						      <td>jacobthornton@email.com</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">003</th>
-						      <td>Larry</td>
-						      <td>the Bird</td>
-						      <td>larrybird@email.com</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">004</th>
-						      <td>John</td>
-						      <td>Doe</td>
-						      <td>johndoe@email.com</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">005</th>
-						      <td>Gary</td>
-						      <td>Bird</td>
-						      <td>garybird@email.com</td>
-						    </tr>
-						  </tbody>
-						</table>    
-            <p class="text-grey mb-4">병원찾기</p>
-            <table>
-            <tr>
-            <td></td>
-            <td></td>
-            </tr>
-            </table>
-          </div>
-          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-            <div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdcd02ee018f3bbcd8d524e523cd8480"></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new kakao.maps.Map(container, options);
-	</script>
-          </div>
-        </div>
-      </div>
-      </form>
-    </div>
-  </div>
+</div> 
+<!--container end.//-->
+  
 
 
-  <div class="page-section banner-home bg-image">
-      <div class="row align-items-center">
-          <div class="img-banner d-none d-lg-block">
-            <img src="../assets/img/mobile_app.png" alt="">
-          </div>
-        <div class="col-lg-8 wow fadeInRight">
-          <h1 class="font-weight-normal mb-3">약콕 다운로드</h1>
-          <a href="#"><img src="../assets/img/google_play.svg" alt=""></a>
-          <a href="#" class="ml-2"><img src="../assets/img/app_store.svg" alt=""></a>
-        </div>
-      </div>
-  </div> <!-- .banner-home -->
 
   <footer class="page-footer">
     <div class="container">
