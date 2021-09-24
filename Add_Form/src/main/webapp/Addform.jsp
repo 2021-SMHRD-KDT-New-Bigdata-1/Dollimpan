@@ -46,7 +46,7 @@
 	      </div> <!-- .container -->
 	    </div> 
     <!-- .topbar -->
-	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" >
 	      <div class="container">
 	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-KKock</a>
 	
