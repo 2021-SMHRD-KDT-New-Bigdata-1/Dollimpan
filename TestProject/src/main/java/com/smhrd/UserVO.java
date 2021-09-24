@@ -9,7 +9,7 @@ public class UserVO {
 	private String user_pw;
 	private String user_name;
 	private String email;
-	private Date birth_date;
+	private String birth_date;
 	private String addr;
 	private String phone;
 	private String adm;
@@ -39,10 +39,10 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getBirth_date() {
+	public String getBirth_date() {
 		return birth_date;
 	}
-	public void setBirth_date(Date birth_date) {
+	public void setBirth_date(String birth_date) {
 		this.birth_date = birth_date;
 	}
 	public String getAddr() {
