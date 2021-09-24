@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.DAO.memberDAO;
 
 
+
+
 @WebServlet("/JoinService")
 public class JoinService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,9 +36,8 @@ public class JoinService extends HttpServlet {
 		int cnt = dao.join(user_id, user_pw, user_name, email, birth_date, addr, phone, adm, gender);
 		
 		if(cnt>0) {
-			response.sendRedirect("index.html");
+		response.sendRedirect("html/VaccineRL.html");
 		}
-		
 		
 	}
 
