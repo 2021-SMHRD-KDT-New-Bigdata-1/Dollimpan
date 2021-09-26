@@ -1,16 +1,62 @@
 @charset "EUC-KR";
 
-element.style
+/* 두번째 각주 */
+body
 {
-	visibility: visible;
-	animation: zoomIn;
+	background: grey;
 }
 
-.zoomIn 
+.box
 {
-	-webkit-animation-name: zoomIn;
-	animation-name: zoomIn;	
+	width:320px;
+	margin: 100px auto;
+	background: #fff;
+	border-radius: 7px;
+	box-shadow: 1px 2px 4px rgba(0,0,0,.7);
 }
+
+.box .heading
+{
+	background: #00D9A5;
+	border-radius: 7px 7px 0px 0px;
+	padding: 10px;
+	color: #fff;
+	text-align: center;
+	font-family: "Rubik"
+}
+
+.faqs
+{
+	padding: 10px 20px
+}
+
+::-webkit-details-marker
+{
+	float:right;
+	margin-top: 3px;
+	background: blue;
+	paddding: 10px;
+}
+
+details
+{
+	background: #f6f6f6;
+	padding: 10px 20px;
+	border-radius: 7px;
+	margin-top: 20px;
+	font-family: "Rubik";
+	font-size: 14px;
+	letter-space: 1px;
+}
+
+details summary
+{
+	outline: none;
+	
+}
+
+/* 아래부터는 기존 css각주 */
+
 .accordion 
 {
 	text-align: center;
