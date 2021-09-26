@@ -1,33 +1,33 @@
 @charset "EUC-KR";
 
-/* 두번째 각주 */
+/* 현재 html 각주 */
 body
 {
 	background: grey;
 }
 
-.box
+.box /*class="box"*/
 {
-	width:320px;
-	margin: 100px auto;
+	width:1000px; /* FAQ 전체 창 너비 조절 가능 */
+	margin: 75px auto; 
 	background: #fff;
 	border-radius: 7px;
 	box-shadow: 1px 2px 4px rgba(0,0,0,.7);
 }
 
-.box .heading
+.box .heading /* box안에 heading, 자주묻는 질문 */
 {
 	background: #00D9A5;
-	border-radius: 7px 7px 0px 0px;
+	border-radius: 7px 7px 0px 0px; /* 민트색 밑에 radius는 0 */
 	padding: 10px;
 	color: #fff;
 	text-align: center;
-	font-family: "Rubik"
+	font-family: "Rubik";
 }
 
-.faqs
+.faqs /* div의 class="faqs", 물어볼 사항들*/
 {
-	padding: 10px 20px
+	padding: 10px 20px;
 }
 
 ::-webkit-details-marker
@@ -35,25 +35,43 @@ body
 	float:right;
 	margin-top: 3px;
 	background: blue;
-	paddding: 10px;
+	padding: 10px;
 }
 
+/* 답변 텍스트도 질문 텍스트와 같은 양식으로 통일하고 싶을 때
 details
 {
-	background: #f6f6f6;
-	padding: 10px 20px;
+	background: #f6f6f6; 
+	padding: 5px 10px;
 	border-radius: 7px;
-	margin-top: 20px;
+	margin-top: 0px;
 	font-family: "Rubik";
-	font-size: 14px;
-	letter-space: 1px;
+	font-size: 16px;
+	letter-spacing: 1px;
+	text-align: center;
+	outline: none;
 }
-
+*/
 details summary
 {
+	background: #f6f6f6; 
+	padding: 10px 20px;
+	border-radius: 7px;
+	margin-top: 0px;
+	font-family: "Rubik";
+	font-size: 16px;
+	letter-spacing: 1px;
+	text-align: center;
 	outline: none;
-	
 }
+
+details summary:hover
+{
+	color : #FE2E64;
+}
+
+/*text 속성 바꿔보기*/
+
 
 /* 아래부터는 기존 css각주 */
 
@@ -77,7 +95,7 @@ input[id*="answer"]+label
 	background: #00D9A5;
 	cursor:pointer;
 	position:relative;
-	fontcolor: #F5F9F6;
+	font-color: #F5F9F6;
 }
 
 input[id*="answer"]+label em
