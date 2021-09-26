@@ -1,5 +1,16 @@
 @charset "EUC-KR";
 
+element.style
+{
+	visibility: visible;
+	animation: zoomIn;
+}
+
+.zoomIn 
+{
+	-webkit-animation-name: zoomIn;
+	animation-name: zoomIn;	
+}
 .accordion 
 {
 	text-align: center;
