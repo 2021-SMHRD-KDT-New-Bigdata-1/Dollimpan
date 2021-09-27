@@ -27,16 +27,15 @@ public class LoginService extends HttpServlet {
 		
 		UserVO vo = dao.login(user_id,user_pw);
 		
-		System.out.println(vo);
-//		if(vo != null) {
-//			HttpSession session = request.getSession();
-//			session.setAttribute("vo", vo);
-//			
-//			response.sendRedirect("VaccineRL.html");
-//		}else {
-//			System.out.println("로그인실패!");
-//			response.sendRedirect("VaccineRL.html");
-//		}
+		if(vo != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("vo", vo);
+			
+			response.sendRedirect("VaccineRL.html");
+		}else {
+			System.out.println("로그인실패!");
+			response.sendRedirect("VaccineRL.html");
+		}
 	}
 
 }
