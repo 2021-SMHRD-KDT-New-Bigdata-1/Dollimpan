@@ -110,4 +110,26 @@ import com.smhrd.UserVO;
 			return vo;
 		}
 		
+public int delete(String user_id) {
+			int cnt = 0;
+			try {
+						conn();
+				
+						String sql = "delete from users where user_id = ?"; 
+						psmt = conn.prepareStatement(sql); 
+							
+						psmt.setString(1, user_id); 
+					
+						cnt = psmt.executeUpdate();
+						
+					}catch(Exception e) { 
+						e.printStackTrace();
+					
+					}finally {
+						close();
+					}
+					return cnt;
+					
+				}
+		
 }
