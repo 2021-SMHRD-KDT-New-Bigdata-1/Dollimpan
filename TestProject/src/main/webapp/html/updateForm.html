@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8">
+  <meta charset="EUC-KR">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
-  <title>One Health - Medical Center HTML5 Template</title>
+  <title>¾àÄÛ</title>
 
   <link rel="stylesheet" href="../assets/css/maicons.css">
 
@@ -20,25 +19,8 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/login.css">
   
-  
-  <script>
-  var clusterer = new kakao.maps.MarkerClusterer({
-	    map: map,
-	    markers: markers,
-	    gridSize: 35,
-	    averageCenter: true,
-	    minLevel: 6,
-	    disableClickZoom: true,
-	    styles: [{
-	        width : '53px', height : '52px',
-	        background: 'url(cluster.png) no-repeat',
-	        color: '#fff',
-	        textAlign: 'center',
-	        lineHeight: '54px'
-	    }]
-	});
-  </script>
 </head>
 <body>
   <!-- Back to top button -->
@@ -69,7 +51,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
+        <a class="navbar-brand" href="VaccineRL.html"><span class="text-primary">YAK</span>-KoK</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -87,106 +69,96 @@
                <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">ì•½ì½•ì´ë€?</a>
+              <a class="nav-link" href="about.html">¾àÄÛÀÌ¶õ?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineRL.html">ë°±ì‹ ì˜ˆì•½/ì¡°íšŒ</a>
+              <a class="nav-link" href="VaccineRL.html">¹é½Å¿¹¾à/Á¶È¸</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineInfo.html">ë°±ì‹ ì •ë³´</a>
+              <a class="nav-link" href="VaccineInfo.html">¹é½ÅÁ¤º¸</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="AD_FAQ.html">ê´‘ê³ /FAQ</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="FindPH.html">ì•½êµ­/ë³‘ì›ì°¾ê¸°</a>
+              <a class="nav-link" href="AD_FAQ.html">±¤°í/FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">ë¡œê·¸ì¸ / íšŒì›ê°€ì…</a>
+              <a class="nav-link" href="FindPH.html">¾à±¹/º´¿øÃ£±â</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="#">·Î±×ÀÎ / È¸¿ø°¡ÀÔ</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
-      </div> <!-- .container -->
     </nav>
   </header>
 
-  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
-    <div class="banner-section">
-      <div class="container text-center wow fadeInUp">
-        <nav aria-label="Breadcrumb">
-          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="index.html">ë©”ì¸</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ë³‘ì›/ì•½êµ­ì°¾ê¸°</li>
-          </ol>
-        </nav>
-        <h1 class="font-weight-normal">ë³‘ì›/ì•½êµ­ì°¾ê¸°</h1>
-      </div> <!-- .container -->
-    </div> <!-- .banner-section -->
-  </div> <!-- .page-banner -->
+<div class="container">
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">È¸¿øÁ¤º¸¼öÁ¤</h4>
+	
+		<p class="divider-text">
+        <span class="bg-light">OR</span>
+    </p>
+	<form action = "../UpdateService" method = "post">
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="user_id" class="form-control" placeholder="ÇöÀçºñ¹Ğ¹øÈ£" type="text">
+    </div> <!-- form-group// -->
+    
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="user_pw" class="form-control" placeholder="º¯°æÇÒ ºñ¹Ğ¹øÈ£" type="password" >
+    </div> <!-- form-group// -->
+    
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="user_pw" class="form-control" placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ" type="password" >
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="email" class="form-control" placeholder="ÀÌ¸ŞÀÏ" type="email" >
+    </div> <!-- form-group// -->
+    
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span name = "addr" class="input-group-text"><i class="fa fa-phone"></i> </span>
+		</div>
+		
+    	<input name="birthdate" class="form-control" placeholder="ÁÖ¼Ò" type="text">
+    </div> <!-- form-group// -->
+    
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="ÇÚµåÆù¹øÈ£" type="text">
+    </div> <!-- form-group// -->   
+                                       
+                                       
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Á¤º¸ ¼öÁ¤  </button>
+    </div> <!-- form-group// -->  
+                                                               
+</form>
+</article>
+</div> <!-- card.// -->
 
-  <div class="page-section">
-    <div class="container">
-      <h1 class="text-center wow fadeInUp">ë³‘ì› ì°¾ê¸°</h1>
+</div> 
+<!--container end.//-->
+  
 
-      <form class="contact-form mt-5">
-        <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3 wow fadeInUp">
-			
-			<input type="text" placeholder="ë³‘ì›/ì•½êµ­ ê²€ìƒ‰">
-			
-			<li weight="300px;"><table class="table"></li>
-						  <thead class="thead-dark">
-						    <tr>
-						      <th>ìˆœë²ˆ</th>
-						      <th>ë³‘ì›ì´ë¦„</th>
-						      <th>ë°±ì‹ ëª…</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr class="alert" role="alert">
-						      <th scope="row">001</th>
-						      <td>ë³‘ì›ëª…<p>ì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œ</p></td>
-						      <td>ë°±ì‹ ëª…</td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">001</th>
-						      <td>Mark<p>ì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œ</p></td>
-						      <td>ë°±ì‹ </td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">001</th>
-						      <td>Mark<p>ì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œ</p></td>
-						      <td>ë°±ì‹ </td>
-						    </tr>
-						    <tr class="alert" role="alert">
-						      <th scope="row">001</th>
-						      <td>Mark<p>ì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œ</p></td>
-						      <td>ë°±ì‹ </td>
-						    </tr>
-						  </tbody>
-						</table>    
-            <p class="text-grey mb-4">ë³‘ì›ì°¾ê¸°</p>
-          </div>
-          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-            <div id="map" style="width:500px;height:400px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdcd02ee018f3bbcd8d524e523cd8480"></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new kakao.maps.Map(container, options);
-	</script>
-          </div>
-        </div>
-      </div>
-      </form>
-    </div>
-  </div>
 
 
   <footer class="page-footer">
