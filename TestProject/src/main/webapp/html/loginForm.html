@@ -101,8 +101,9 @@
 		<p class="divider-text">
         <span class="bg-light">OR</span>
     </p>
-	<form action = "LoginService" method = "post">
+	<form action = "../LoginService" method = "post">
     <div class="form-group input-group">
+    
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
@@ -116,8 +117,7 @@
         <input class="form-control" placeholder="비밀번호" type="password">
     </div> <!-- form-group// -->
 
-	<div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"  onclick="location.href='LoginService'"> 로그인  </button>
+	<a href="html/LoginService"> <button type="submit" class="btn btn-primary btn-block"> 로그인  </button> </a>
     </div> <!-- form-group// -->  
 
     <p class="text-center"><a href="#">아이디/비밀번호찾기</a><br> 계정이 없나요? <a href="joinForm.html">회원가입</a> </p>  
