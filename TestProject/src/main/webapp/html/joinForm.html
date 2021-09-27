@@ -135,24 +135,7 @@
 		    <span class="input-group-text">생년월일<i class="fa fa-phone"></i> </span>
 		</div>
 		
-		<select class="custom-select" name="year" style="max-width: 120px;">
-		   <script>
-		   for(var i=1940; i<2007; i++){
-			   document.write("<option selected=''>"+i+"</option>")
-		   }
-		   document.write()
-		   </script>
-		</select>
-		<select class="custom-select" name="month" style="max-width: 120px;">
-		   <script>
-		   for(var i=1; i<13; i++){
-			   document.write("<option selected=''>"+i+"</option>")
-		   }
-		   document.write()
-		   </script>
-		</select>
-		
-    	<input name="day" class="form-control" placeholder="DAY" type="text">
+    	<input name="birthdate" class="form-control" placeholder="YYYYMMDD" type="text">
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
@@ -169,14 +152,14 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="주소" type="password">
+        <input class="form-control" placeholder="주소" type="text">
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="핸드폰번호" type="password">
+        <input class="form-control" placeholder="핸드폰번호" type="text">
     </div> <!-- form-group// -->   
                                        
     <div class="form-group">
