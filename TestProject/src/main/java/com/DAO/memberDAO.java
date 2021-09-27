@@ -15,8 +15,7 @@ import com.smhrd.UserVO;
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				
-				
-				String url = "jdbc:oracle:thin:project-db-stu.ddns.net:1524:xe";
+				String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 				String dbid = "cgi_6_3";
 				String dbpw = "smhrd3"; 
 				conn = DriverManager.getConnection(url,dbid,dbpw);
@@ -42,7 +41,7 @@ import com.smhrd.UserVO;
 			}
 		}
 		
-		public int join(String user_id, String user_pw, String name, String email, String birth_date, String addr, String phone, String adm, String gender) { 
+		public int join(String user_id, String user_pw, String user_name, String email, String birth_date, String addr, String phone, String adm, String gender) { 
 			int cnt = 0;
 			try {
 			
@@ -52,13 +51,14 @@ import com.smhrd.UserVO;
 				psmt = conn.prepareStatement(sql); 
 				psmt.setString(1, user_id); 
 				psmt.setString(2, user_pw); 
-				psmt.setString(3, name); 
+				psmt.setString(3, user_name); 
 				psmt.setString(4, email);
 				psmt.setString(5, birth_date);
 				psmt.setString(6, addr);
 				psmt.setString(7, phone);
 				psmt.setString(8, adm);
 				psmt.setString(9, gender);
+				
 				cnt = psmt.executeUpdate();
 			
 			}catch(Exception e) { 
@@ -109,5 +109,27 @@ import com.smhrd.UserVO;
 			}
 			return vo;
 		}
+		
+public int delete(String user_id) {
+			int cnt = 0;
+			try {
+						conn();
+				
+						String sql = "delete from users where user_id = ?"; 
+						psmt = conn.prepareStatement(sql); 
+							
+						psmt.setString(1, user_id); 
+					
+						cnt = psmt.executeUpdate();
+						
+					}catch(Exception e) { 
+						e.printStackTrace();
+					
+					}finally {
+						close();
+					}
+					return cnt;
+					
+				}
 		
 }
