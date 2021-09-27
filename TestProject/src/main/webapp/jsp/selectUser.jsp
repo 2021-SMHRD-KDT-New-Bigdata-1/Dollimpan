@@ -1,34 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%@page import="com.DAO.memberDAO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>  
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../assets/css/maicons.css" />
+		<link rel="stylesheet" href="../assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css" />
+		<link rel="stylesheet" href="../assets/vendor/animate/animate.css" />
+		<link rel="stylesheet" href="../assets/css/theme.css" />
+		
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
-
-  <title>One Health - Medical Center HTML5 Template</title>
-
-  <link rel="stylesheet" href="../assets/css/maicons.css">
-
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
-
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
-
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
-
-  <link rel="stylesheet" href="../assets/css/theme.css">
-
-  
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
+		<link rel="stylesheet" href="css/style.css">
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	
+	
 	
   <!-- Back to top button -->
   <div class="back-to-top"></div>
@@ -76,22 +71,22 @@
        <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">ì•½ì½•ì´ëž€?</a>
+              <a class="nav-link" href="about.html">¾àÄÛÀÌ¶õ?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="VaccineRL.html">ë°±ì‹ ì˜ˆì•½/ì¡°íšŒ</a>
+              <a class="nav-link active" href="VaccineRL.html">¹é½Å¿¹¾à/Á¶È¸</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineInfo.html">ë°±ì‹ ì •ë³´</a>
+              <a class="nav-link" href="VaccineInfo.html">¹é½ÅÁ¤º¸</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="AD_FAQ.html">ê´‘ê³ /FAQ</a>
+              <a class="nav-link" href="AD_FAQ.html">±¤°í/FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="FindPH.html">ì•½êµ­/ë³‘ì›ì°¾ê¸°</a>
+              <a class="nav-link" href="FindPH.html">¾à±¹/º´¿øÃ£±â</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">ë¡œê·¸ì¸ / íšŒì›ê°€ìž…</a>
+              <a class="btn btn-primary ml-lg-3" href="#">·Î±×ÀÎ / È¸¿ø°¡ÀÔ</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
@@ -108,7 +103,7 @@
             <li class="breadcrumb-item active" aria-current="page">Doctors</li>
           </ol>
         </nav>
-        <h1 class="font-weight-normal">ë°±ì‹ ì •ë³´</h1>
+        <h1 class="font-weight-normal">¹é½ÅÁ¤º¸</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
@@ -118,7 +113,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">00ë‹˜ì´ ì˜ˆì•½í•˜ì‹  ë°±ì‹  ì •ë³´ìž…ë‹ˆë‹¤.</h2>
+					<h2 class="heading-section">00´ÔÀÌ ¿¹¾àÇÏ½Å ¹é½Å Á¤º¸ÀÔ´Ï´Ù.</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -128,46 +123,46 @@
 						  <thead class="thead-dark">
 						    <tr>
 						      <th>No</th>
-						      <th>ë°±ì‹ ëª…</th>
-						      <th>ë°±ì‹ ì½”ë“œ</th>
-						      <th>ë³‘ì›ëª…</th>
-						      <th>ì ‘ì¢… ì£¼ì˜ì‚¬í•­</th>
+						      <th>¹é½Å¸í</th>
+						      <th>¹é½ÅÄÚµå</th>
+						      <th>º´¿ø¸í</th>
+						      <th>Á¢Á¾ ÁÖÀÇ»çÇ×</th>
 						     
 						    </tr>
 						  </thead>
 						  <tbody>
 						    <tr class="alert" role="alert">
 						      <th scope="row">001</th>
-						      <td>ë…ê°</td>
+						      <td>µ¶°¨</td>
 						      <td>Flu</td>
-						      <td>ê´‘ì£¼ë³‘ì›</td>
+						      <td>±¤ÁÖº´¿ø</td>
 						      <td>
 						      	<input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
 				        	</td>
 						    </tr>
 						    <tr class="alert" role="alert">
 						      <th scope="row">002</th>
-						      <td>ìˆ˜ë‘</td>
+						      <td>¼öµÎ</td>
 						      <td>Var</td>
-						      <td>ë°ì€ë‚´ê³¼</td>
+						      <td>¹àÀº³»°ú</td>
 						      <td>
 						      	<input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
 				        	</td>
 						    </tr>
 						    <tr class="alert" role="alert">
 						      <th scope="row">003</th>
-						      <td>ëŒ€ìƒí¬ì§„</td>
+						      <td>´ë»óÆ÷Áø</td>
 						      <td>Hzv</td>
-						      <td>í•´ë°”ë¼ê¸°ì˜ì›</td>
+						      <td>ÇØ¹Ù¶ó±âÀÇ¿ø</td>
 						      <td>
 						      	<input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
 				        	</td>
 						    </tr>
 						    <tr class="alert" role="alert">
 						      <th scope="row">004</th>
-						      <td>íë ´êµ¬ê· </td>
+						      <td>Æó·Å±¸±Õ</td>
 						      <td>PPSV</td>
-						      <td>í’ì•”ë³‘ì›</td>
+						      <td>Ç³¾Ïº´¿ø</td>
 						      <td>
 						      <input type="button" id="check" class="btn btn-outline-primary" value="check"  style="float:center">
 				        	</td>
@@ -181,6 +176,4 @@
 		</div>
 	</section>
 </div>
-
-</body>
-</html>
+	
