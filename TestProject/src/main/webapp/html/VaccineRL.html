@@ -76,26 +76,12 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupport">
 					<ul class="navbar-nav ml-auto">
-					
-						<li class="nav-item"><a class="nav-link"
-							href="about.html">약콕이란?</a></li>
-							
+						<li class="nav-item"><a class="nav-link" href="about.html">약콕이란?</a>
+						</li>
 						<li class="nav-item active"><a class="nav-link"
 							href="VaccineRL.html">백신예약/조회</a></li>
-							
 						<li class="nav-item"><a class="nav-link"
 							href="VaccineInfo.html">백신정보</a></li>
-<<<<<<< HEAD
-							
-						<li class="nav-item"><a class="nav-link"
-							href="AD_FAQ.html">광고/FAQ</a></li>
-						
-						<li class="nav-item "><a class="nav-link"
-							href="FindPH.html">약국/병원찾기</a></li>
-							
-						<li class="nav-item "><a class="btn btn-primary ml-lg-3"
-							href="joinForm.html">로그인 / 회원가입</a></li>
-=======
 						<li class="nav-item"><a class="nav-link" href="AD_FAQ.html">광고/FAQ</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="FindPH.html">약국/병원찾기</a>
@@ -107,14 +93,17 @@
 									//관리자 계정으로 로그인 했을 경우 모든 회원정보 볼 수 있도록
 						
 									//로그인한 회원의 이메일이 일반 회원인 경우에는 회원정보 수정이 보이게
-		
-									document.write("<a href='LogoutService'>로그아웃</a>");
+									if(vo.getEmail().equals("admin")){
+										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectMember.jsp'>회원전체목록</a>");
+									}else{
+										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='update.jsp'>회원정보수정</a>");
+									}
+									document.write("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>로그아웃</a>");
 								}
 							
 								</script>
 						
 						
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
 					</ul>
 				</div>
 				<!-- .navbar-collapse -->
@@ -187,43 +176,42 @@
 
 								<section>
 									<header>
-										<h2>접종 가능 리스트!!</h2>
-										<br>
+										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
-										<li><span class="date"><h4>
-													<strong>인플루엔자</strong>
-												</h4></span> <span> / 20~40세</span> <span> / 서구보건소</span> <span>
-												/ 무료</span>
+										<li><span class="date"><h4><strong>인플루엔자</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
 											<h3>
 												<a href="#">예약하기</a>
 											</h3>
 											<p>접종 현황: 1회</p></li>
-
-										<li><span class="date"><h4>
-													<strong>수두</strong>
-												</h4></span> <span> / 20~40세</span> <span> / 보라안과</span> <span> /
-												15000원</span>
+											
+										<li><span class="date"><h4><strong>수두</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 보라안과</span>
+										<span> / 15000원</span>
 											<h3>
 												<a href="#">예약하기</a>
 											</h3>
 											<p>접종 현황: 0회</p></li>
-
-										<li><span class="date"><h4>
-													<strong>파상풍</strong>
-												</h4></span> <span> / 20세</span> <span> / 새우리병원</span> <span> /
-												3000원</span>
+											
+										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
+										<span> / 20세</span>
+										<span> / 새우리병원</span>
+										<span> / 3000원</span>
 											<h3>
 												<a href="#">예약하기</a>
 											</h3>
 											<p>접종 현황: 0회</p></li>
-
+										
 									</ul>
 								</section>
-
-								<!--  -->
-
-
+								
+								<!--  --> 
+								
+								
 							</div>
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
