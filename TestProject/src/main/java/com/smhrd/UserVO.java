@@ -3,6 +3,7 @@ package com.smhrd;
 public class UserVO {
 
 	
+
 	private String user_id;
 	private String user_pw;
 	private String user_name;
@@ -12,6 +13,38 @@ public class UserVO {
 	private String phone;
 	private String adm;
 	private String gender;
+	
+	public UserVO(String user_id, String user_pw, String user_name, String email, String birth_date, String addr,
+			String phone, String adm, String gender) {
+		super();
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.email = email;
+		this.birth_date = birth_date;
+		this.addr = addr;
+		this.phone = phone;
+		this.adm = adm;
+		this.gender = gender;
+	}
+	
+	public UserVO( String user_pw, String email, String addr, String phone) 
+	{
+		super();
+	
+		this.user_pw = user_pw;
+		this.email = email;
+		this.addr = addr;
+		this.phone = phone;
+
+	}
+	
+	public UserVO() 
+	{
+
+	}
+	
+	
 	
 	public String getUser_id() {
 		return user_id;

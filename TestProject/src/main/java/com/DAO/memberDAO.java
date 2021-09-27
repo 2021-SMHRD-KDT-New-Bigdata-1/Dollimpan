@@ -131,5 +131,34 @@ public int delete(String user_id) {
 					return cnt;
 					
 				}
+
+public int update(String user_pw, String phone, String addr, String email, String user_id) {
+	int cnt = 0;
+try {
+		
+		conn();
+
+		String sql = "update users set user_pw = ?, phone = ? , addr = ? email = ? where user_id = ?"; 
+		psmt = conn.prepareStatement(sql); 
+			
+		psmt.setString(1, user_pw ); 
+		psmt.setString(2, phone);
+		psmt.setString(3, addr);
+		psmt.setString(4, email);
+		psmt.setString(5, user_id);
+	
+		cnt = psmt.executeUpdate();
+		
+		
+	}catch(Exception e) { 
+		e.printStackTrace();
+	
+	}finally {
+		close();
+	}
+	return cnt;
+	
+}
+
 		
 }
