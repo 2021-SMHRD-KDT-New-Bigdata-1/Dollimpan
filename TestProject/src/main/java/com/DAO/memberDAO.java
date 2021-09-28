@@ -313,21 +313,22 @@ public ArrayList<UserVO> select_admin()
 	}
 	return al;
 }
-public int update_0(String user_pw, String email, String addr, String phone)
+public int update_0(String user_pw, String email, String addr, String phone, String user_id)
 {
 	int cnt =0 ;
 	// 2. JDBC 코드를 활용하여 update SQL문 명령
 	try 
 	{
 		conn();
-		String sql ="update users set user_pw =?, email=?, addr=?, phone=? where user_pw=?"; 
 		
+		String sql ="update users set user_pw =?, email=?, addr=?, phone=? where user_id=?"; 
 		psmt = conn.prepareStatement(sql);
+		
 		psmt.setString(1, user_pw);
 		psmt.setString(2, email);
 		psmt.setString(3, addr);
 		psmt.setString(4, phone);
-		
+		psmt.setString(5, user_id);
 		cnt = psmt.executeUpdate(); // 명령문에는 크게 update와 Query가 있다.
 		
 	}
