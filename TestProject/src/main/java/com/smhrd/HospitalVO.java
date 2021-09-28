@@ -14,6 +14,21 @@ public class HospitalVO {
 	private String hos_pic3;
 	
 	
+	public HospitalVO(int hos_seq, String hos_name, String hos_addr, String hos_phone, double latitude,
+			double longitude, String hos_info, String hos_pic1, String hos_pic2, String hos_pic3) {
+		super();
+		this.hos_seq = hos_seq;
+		this.hos_name = hos_name;
+		this.hos_addr = hos_addr;
+		this.hos_phone = hos_phone;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.hos_info = hos_info;
+		this.hos_pic1 = hos_pic1;
+		this.hos_pic2 = hos_pic2;
+		this.hos_pic3 = hos_pic3;
+	}
+	
 	public int getHos_seq() {
 		return hos_seq;
 	}
