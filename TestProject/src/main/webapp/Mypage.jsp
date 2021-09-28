@@ -103,7 +103,7 @@
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="Addform.jsp" name="Goods">회원정보수정</a></li>
+            <li class="breadcrumb-item"><a href="Addform.jsp" name="Goods">회원정보수정 (클릭)</a></li>
 
           </ol>
        
@@ -147,10 +147,6 @@
 		<div class="profileInfo">Description 4</div>
 	</div>
 </div>
-
-
-
-
 <!-- 여기까지 -->
 
 <!-- mypage 템플릿 -->
@@ -255,15 +251,15 @@
     </div> <!-- .container -->
   </footer> <!-- .page-footer -->
 
-<script src="./assets/js/jquery-3.5.1.min.js"></script>
+<script src="assets/js/jquery-3.5.1.min.js"></script>
 
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="./assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+<script src="assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
-<script src="./assets/vendor/wow/wow.min.js"></script>
+<script src="assets/vendor/wow/wow.min.js"></script>
 
-<script src="./assets/js/theme.js"></script>
+<script src="assets/js/theme.js"></script>
   
 </body>
 </html>
