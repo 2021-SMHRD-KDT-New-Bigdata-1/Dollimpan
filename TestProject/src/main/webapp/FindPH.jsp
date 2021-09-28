@@ -80,24 +80,23 @@
 
                <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">약콕이란?</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="VaccineRL.html">백신예약/조회</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="AD_FAQ.html">광고/FAQ</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="html/loginForm.html">로그인 / 회원가입</a>
-            </li>
+             <li class="nav-item"><a class="nav-link"
+							href="html/about.html">약콕이란?</a></li>
+						
+						<li class="nav-item active"><a class="nav-link"
+							href="VaccineRL2.jsp">백신예약/조회</a></li>
+							
+						<li class="nav-item"><a class="nav-link"
+							href="html/VaccineInfo.html">백신정보</a></li>
+						
+						<li class="nav-item"><a class="nav-link"
+							href="html/AD_FAQ.html">광고/FAQ</a></li>
+						
+						<li class="nav-item "><a class="nav-link"
+							href="FindPH.jsp">약국/병원찾기</a></li>
+	            <li class="nav-item">
+	              <a class="btn btn-primary ml-lg-3" href="html/loginForm.html">로그인/회원가입</a>
+	            </li>
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
@@ -166,7 +165,6 @@
             <div id="map" style="width:500px;height:400px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdcd02ee018f3bbcd8d524e523cd8480"></script>
 	<script>
-	<%=%>
 		var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(35.150537, 126.877636),

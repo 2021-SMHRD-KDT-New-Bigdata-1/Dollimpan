@@ -77,23 +77,22 @@
 	
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
+	            <li class="nav-item"><a class="nav-link"
+							href="html/about.html">약콕이란?</a></li>
+						
+						<li class="nav-item active"><a class="nav-link"
+							href="VaccineRL2.jsp">백신예약/조회</a></li>
+							
+						<li class="nav-item"><a class="nav-link"
+							href="html/VaccineInfo.html">백신정보</a></li>
+						
+						<li class="nav-item"><a class="nav-link"
+							href="html/AD_FAQ.html">광고/FAQ</a></li>
+						
+						<li class="nav-item "><a class="nav-link"
+							href="FindPH.jsp">약국/병원찾기</a></li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="about.html">약콕이란</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineRl.html">백신예약/조회</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
-	            </li>
-	            <li class="nav-item active">
-	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="loginForm.html">로그인/회원가입</a>
+	              <a class="btn btn-primary ml-lg-3" href="html/loginForm.html">로그인/회원가입</a>
 	            </li>
 	          	
 	          </ul>

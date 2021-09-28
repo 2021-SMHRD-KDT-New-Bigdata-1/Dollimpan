@@ -86,19 +86,19 @@
 					<ul class="navbar-nav ml-auto">
 					
 						<li class="nav-item"><a class="nav-link"
-							href="about.html">약콕이란?</a></li>
+							href="html/about.html">약콕이란?</a></li>
 						
 						<li class="nav-item active"><a class="nav-link"
-							href="VaccineRL.html">백신예약/조회</a></li>
+							href="VaccineRL2.jsp">백신예약/조회</a></li>
 							
 						<li class="nav-item"><a class="nav-link"
-							href="VaccineInfo.html">백신정보</a></li>
+							href="html/VaccineInfo.html">백신정보</a></li>
 						
 						<li class="nav-item"><a class="nav-link"
-							href="AD_FAQ.html">광고/FAQ</a></li>
+							href="html/AD_FAQ.html">광고/FAQ</a></li>
 						
 						<li class="nav-item "><a class="nav-link"
-							href="FindPH.html">약국/병원찾기</a></li>
+							href="FindPH.jsp">약국/병원찾기</a></li>
 							
 						<%
 								if(vo == null){ //로그인 전
