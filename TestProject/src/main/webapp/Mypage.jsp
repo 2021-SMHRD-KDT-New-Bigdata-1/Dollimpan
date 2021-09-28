@@ -119,12 +119,34 @@
 
 <!-- mypage -->
 <div id="profilebox">
-	<div id="box01" class="ProfileItem">
-		<a class="profileTitle" href="" title="">MY PROFILE</a>
-		<div class="profileInfo">이름 : </div>
-		<div class="profileInfo">생년월일 : </div>
-		<div class="profileInfo">아이디 : </div>
-	</div>
+	
+          <div class="sh_group">
+            <div class="sh_header">
+              <h2>네이버 프로필</h2>
+              <a href="javascript:toggle('profile');" onclick="clickcr(this,'imn.prfhelp','','',event);" class="link_help"><i id="i_profile" class="spico ico_arr3_dn">도움말</i></a>
+              <!-- [D] 감추기 보이기 dislay:none/block -->
+              <p id="p_profile" class="contxt" style="display:none">
+                       네이버에서의 <em>'나'를 표현하는 프로필</em> 정보입니다.
+                   <br>
+              수정 화면에서 프로필 사진과 별명을 변경하세요.</p>
+            </div>
+            <div class="sh_content">
+              <dl class="sh_lst">
+              <dt class="blind">프로필 사진</dt>
+              <dd class="pic_desc">
+                <a href="#" onclick="changeImage();clickcr(this,'imn.prfmodify','','',event);">
+                  <img src="https://static.nid.naver.com/images/web/user/default.png" width="80" height="80" alt="">
+                  <span class="spimg img_frame"></span>
+                </a>
+              </dd>
+              <dt class="blind">&nbsp;</dt>
+              <dd class="intro_desc">&nbsp;</dd>
+              <dt class="nic_tit">별명</dt>
+              <dd class="nic_desc">뭉가</dd>
+              </dl>
+            </div>
+            <p class="btn_area_btm"><a href="#" onclick="changeImage();clickcr(this,'imn.prfmodify','','',event);" class="btn_model"><b class="btn2">수정</b></a></p>
+          </div>
 	
 	<div id="box02" class="ProfileItem">
 		<a class="profileTitle" href="" title="">연락처 및 알림</a>
