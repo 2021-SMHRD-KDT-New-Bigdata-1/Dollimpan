@@ -28,10 +28,6 @@ public class H_searchService extends HttpServlet {
 		int cnt = dao.h_search(user_pw, phone);
 		
 		if(cnt>0) {
-			//수정하기 전의 데이터를 보여주기 때문에 세션 새롭게 생성
-			UserVO vo2 = new UserVO(user_pw,phone);
-			session.setAttribute("vo", vo2);
-			
 			response.sendRedirect("VaccineRL.html");
 		}else {
 			System.out.println("수정실패!");
