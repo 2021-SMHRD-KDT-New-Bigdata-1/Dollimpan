@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.UserVO"%>
+<%@page import="com.DAO.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -22,7 +24,12 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-
+	
+	<%
+		UserVO vo = (UserVO)session.getAttribute("vo");
+	
+	%>
+	
 	<!-- Back to top button -->
 	<div class="back-to-top"></div>.
 	
@@ -93,27 +100,24 @@
 						<li class="nav-item "><a class="nav-link"
 							href="FindPH.html">약국/병원찾기</a></li>
 							
-						<li class="nav-item "><a class="btn btn-primary ml-lg-3"
-							href="loginForm.html">로그인 / 회원가입</a></li>
-
-						
-						
-						<script>
-								if(vo == null){
-									document.write("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='joinForm.html'>로그인/로그아웃</a></li>")
+						<%
+								if(vo == null){ //로그인 전
+									out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='html/loginForm.html'>로그인/회원가입</a></li>");
 								}else{
 									//관리자 계정으로 로그인 했을 경우 모든 회원정보 볼 수 있도록
-						
+									//로그인한 회원의 이메일이 admin인 경우에는 회원전체목록이 보이게 
 									//로그인한 회원의 이메일이 일반 회원인 경우에는 회원정보 수정이 보이게
-									if(vo.getUser_id().equals("user_id")){
+									if(vo.getUser_id().equals("admin")){
 										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectMember.jsp'>회원전체목록</a>");
 									}else{
 										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='update.jsp'>회원정보수정</a>");
 									}
-									document.write("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>로그아웃</a>");
+									out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>로그아웃</a>");
 								}
-							
-						</script>
+						
+
+						%>
+						
 						
 					</ul>
 				</div>
@@ -130,6 +134,14 @@
 				<span class="subhead">Let's make your life happier</span>
 				<h1 class="display-4">
 					Welcome to <span class="text-primary">Yak</span>-Kok
+					<%
+								if(vo == null){
+									out.print("<h1>로그인 한 세션아이디를 출력해주세요</h1>");
+								}else{
+									out.print("<h1>"+vo.getUser_id()+"님 환영합니다.</h1>");
+								}
+							
+							%>
 				</h1>
 				<a href="#" class="btn btn-primary">Let's Consult</a>
 			</div>
