@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+<meta charset="EUC-KR">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,20 +13,38 @@
 
   <title>One Health - Medical Center HTML5 Template</title>
 
-  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="./assets/css/maicons.css">
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.css">
 
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.css">
 
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <link rel="stylesheet" href="../assets/css/login.css">
-  
+  <link rel="stylesheet" href="./assets/css/theme.css">
+<title>Insert title here</title>
 </head>
 <body>
-  <!-- Back to top button -->
+
+<script>
+  var clusterer = new kakao.maps.MarkerClusterer({
+	    map: map,
+	    markers: markers,
+	    gridSize: 35,
+	    averageCenter: true,
+	    minLevel: 6,
+	    disableClickZoom: true,
+	    styles: [{
+	        width : '53px', height : '52px',
+	        background: 'url(cluster.png) no-repeat',
+	        color: '#fff',
+	        textAlign: 'center',
+	        lineHeight: '54px'
+	    }]
+	});
+  </script>
+
+ <!-- Back to top button -->
   <div class="back-to-top"></div>
 
   <header>
@@ -51,7 +72,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">YAK</span>-KoK</a>
+        <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -69,66 +90,107 @@
                <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">Л∙╫Л╫∙Л²╢К·─?</a>
+              <a class="nav-link" href="about.html">╬Юдшюл╤У?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineRL.html">К╟╠Л▀═Л≤┬Л∙╫/Л║╟М ▄</a>
+              <a class="nav-link" href="VaccineRL.html">╧И╫е©╧╬Ю/а╤х╦</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineInfo.html">К╟╠Л▀═Л═∙КЁ╢</a>
+              <a class="nav-link" href="VaccineInfo.html">╧И╫еа╓╨╦</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="AD_FAQ.html">Й╢▒ЙЁ═/FAQ</a>
+              <a class="nav-link" href="AD_FAQ.html">╠╓╟М/FAQ</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="FindPH.html">╬Ю╠╧/╨╢©Ьцё╠Б</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="FindPH.html">Л∙╫Й╣╜/КЁ▒Л⌡░Л╟╬Й╦╟</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">К║°Й╥╦Л²╦ / М ▄Л⌡░Й╟─Л·┘</a>
+              <a class="btn btn-primary ml-lg-3" href="#">╥н╠вюн / х╦©Ь╟║ют</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
+      </div> <!-- .container -->
     </nav>
   </header>
 
-<div class="container">
-<div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
-	<p class="text-center">Get started with your free account</p>
-	
-		<p class="divider-text">
-        <span class="bg-light">OR</span>
-    </p>
-	<form action = "../LoginService" method = "post">
-    <div class="form-group input-group">
-    
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="user_id" class="form-control" placeholder="Л∙└Л²╢К■■" type="text">
-    </div> <!-- form-group// -->
-    
-     <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input class="form-control" name="user_pw" placeholder="К╧└К╟─К╡┬М≤╦" type="password">
-    </div> <!-- form-group// -->
+  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="index.html">╦чюн</a></li>
+            <li class="breadcrumb-item active" aria-current="page">╨╢©Ь/╬Ю╠╧цё╠Б</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">╨╢©Ь/╬Ю╠╧цё╠Б</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
 
-	<button type="submit" class="btn btn-primary btn-block"> К║°Й╥╦Л²╦  </button>
-    </div> <!-- form-group// -->  
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">╨╢©Ь цё╠Б</h1>
 
-    <p class="text-center"><a href="#">Л∙└Л²╢К■■/К╧└К╟─К╡┬М≤╦Л╟╬Й╦╟</a><br> ЙЁ└Л═∙Л²╢ Л≈├К┌≤Л ■? <a href="joinForm.html">М ▄Л⌡░Й╟─Л·┘</a> </p>  
-</form>
-</article>
-</div> <!-- card.// -->
+      <form class="contact-form mt-5">
+        <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 py-3 wow fadeInUp">
+			<form action="H_searchService">
+			<input type="text" placeholder="╨╢©Ь/╬Ю╠╧ ╟к╩Ж">
+			<input type="submit" value="╟к╩Ж">
+			</form>
+			<li weight="300px;"><table class="table"></li>
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>╪Ь╧Ь</th>
+						      <th>╨╢©Ьюл╦╖</th>
+						      <th>╧И╫е╦М</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr class="alert" role="alert">
+						      <th scope="row">001</th>
+						      <td>╨╢©Ь╦М<p>аж╪раж╪раж╪раж╪раж╪р</p></td>
+						      <td>╧И╫е╦М</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						      <th scope="row">001</th>
+						      <td>Mark<p>аж╪раж╪раж╪раж╪раж╪р</p></td>
+						      <td>╧И╫е</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						      <th scope="row">001</th>
+						      <td>Mark<p>аж╪раж╪раж╪раж╪раж╪р</p></td>
+						      <td>╧И╫е</td>
+						    </tr>
+						    <tr class="alert" role="alert">
+						      <th scope="row">001</th>
+						      <td>Mark<p>аж╪раж╪раж╪раж╪раж╪р</p></td>
+						      <td>╧И╫е</td>
+						    </tr>
+						  </tbody>
+						</table>    
+            <p class="text-grey mb-4">╨╢©Ьцё╠Б</p>
+          </div>
+          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+            <div id="map" style="width:500px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdcd02ee018f3bbcd8d524e523cd8480"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
 
-</div> 
-<!--container end.//-->
-  
-
+		var map = new kakao.maps.Map(container, options);
+	</script>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
 
 
   <footer class="page-footer">
@@ -194,7 +256,6 @@
 <script src="../assets/js/google-maps.js"></script>
 
 <script src="../assets/js/theme.js"></script>
-
 
 </body>
 </html>

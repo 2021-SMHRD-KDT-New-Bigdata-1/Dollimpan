@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 	
 	public class memberDAO {
@@ -96,7 +98,7 @@ import com.smhrd.UserVO;
 					String adm = rs.getString(8);
 					String gender = rs.getString(9);
 					
-					vo = new UserVO();
+					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
 					//새로운 데이터 타입 : VO
 				}
 				
@@ -160,19 +162,35 @@ try {
 	
 }
 
-public int h_search(String hos_name, String hos_addr) {
-	int cnt = 0;
+public HospitalVO h_search(String hos_name, String hos_addr) {
+	HospitalVO vo = null;
 try {
 		
 		conn();
-
-		String sql = "select * from hospital where hos_name = ?, hos_addr = ?"; 
-		psmt = conn.prepareStatement(sql); 
-			
-		psmt.setString(1, hos_name ); 
-		psmt.setString(2, hos_addr);
 	
-		cnt = psmt.executeUpdate();
+		String sql = "select * from users where hos_name = ? and hos_addr = ?"; 
+		psmt = conn.prepareStatement(sql); 
+		psmt.setString(1, hos_name);
+		psmt.setString(2, hos_addr);
+		
+		rs = psmt.executeQuery(); //커서 이용
+		
+		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+		
+		if(rs.next()) {
+
+			int hos_seq = rs.getInt(1);
+			String hos_phone = rs.getString(4);
+			double latitude = rs.getDouble(5);
+			double longitude = rs.getDouble(6);
+			String hos_info = rs.getString(7);
+			String hos_pic1 = rs.getString(8);
+			String hos_pic2 = rs.getString(9);
+			String hos_pic3 = rs.getString(10);
+			vo = new HospitalVO(hos_seq,hos_name,hos_addr,hos_phone,latitude,longitude,hos_info,hos_pic1,hos_pic2,hos_pic3);
+			//새로운 데이터 타입 : VO
+		}
 		
 		
 	}catch(Exception e) { 
@@ -181,8 +199,6 @@ try {
 	}finally {
 		close();
 	}
-	return cnt;
-
-		
+	return vo;
 }
 	}

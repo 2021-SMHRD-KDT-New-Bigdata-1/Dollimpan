@@ -19,7 +19,7 @@ public class LogoutService extends HttpServlet {
 				
 				session.removeAttribute("vo");
 				
-				response.sendRedirect("VaccineRL.html");
+				response.sendRedirect("VaccineRL2.jsp");
 
 	}
 

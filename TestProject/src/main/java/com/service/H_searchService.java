@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.DAO.memberDAO;
+import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 
 @WebServlet("/H_searchService")
@@ -17,24 +18,26 @@ public class H_searchService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String user_pw = request.getParameter("hos_name");
-		String phone = request.getParameter("hos_addr");
-		
-		HttpSession session = request.getSession(); 
-		UserVO vo = (UserVO) session.getAttribute("vo"); 
-		String user_id = vo.getUser_id();
+		request.setCharacterEncoding("euc-kr");
+		//사용자가 입력한 이메일, pw받아오기
+		String hos_name = request.getParameter("hos_name");
+		String hos_addr = request.getParameter("hos_addr");
 		
 		memberDAO dao = new memberDAO();
-		int cnt = dao.h_search(user_pw, phone);
 		
-		if(cnt>0) {
-			response.sendRedirect("VaccineRL.html");
+		UserVO vo = dao.login(hos_name,hos_addr);
+
+
+
+		if(vo != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("vo", vo);
+			response.sendRedirect("VaccineRL2.jsp");
 		}else {
-			System.out.println("수정실패!");
-			response.sendRedirect("VaccineRL.html");
+			response.sendRedirect("VaccineRL2.jsp");
 		}
-}
+
+	}
 	
 	}
 
-}

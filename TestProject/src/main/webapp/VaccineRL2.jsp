@@ -108,7 +108,7 @@
 									//로그인한 회원의 이메일이 admin인 경우에는 회원전체목록이 보이게 
 									//로그인한 회원의 이메일이 일반 회원인 경우에는 회원정보 수정이 보이게
 									if(vo.getUser_id().equals("admin")){
-										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectMember.jsp'>회원전체목록</a>");
+										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>회원전체목록</a>");
 									}else{
 										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='update.jsp'>회원정보수정</a>");
 									}

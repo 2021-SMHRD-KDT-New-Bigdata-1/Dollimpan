@@ -33,11 +33,10 @@ public class LoginService extends HttpServlet {
 		if(vo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("vo", vo);
-			
-			response.sendRedirect("html/VaccineRL2.jsp");
+			response.sendRedirect("VaccineRL2.jsp");
 		}else {
 			System.out.println("로그인실패!");
-			response.sendRedirect("html/VaccineRL2.jsp");
+			response.sendRedirect("VaccineRL2.jsp");
 		}
 
 	}
