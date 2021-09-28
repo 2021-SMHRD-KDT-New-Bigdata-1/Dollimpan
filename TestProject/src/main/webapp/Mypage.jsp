@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -21,6 +22,10 @@
 
 </head>
 <body>
+
+	<%
+			UserVO vo = (UserVO)session.getAttribute("vo");
+	%>
 
 	<div class="back-to-top"></div>
 
@@ -122,7 +127,18 @@
         <div class="yui-g">
           <div class="yui-g first">
             <div class="yui-u first">
-              <div class="content">성함</div>
+              <div class="content">성함
+              <br> 
+              <br> 
+              <br> 
+              <br> 
+              <br> 
+              <br> 
+              <li> <%=vo.getUser_name() %></li>
+              
+              
+              </div>
+            
             </div>
             <div class="yui-u">
               <div class="content">전화번호</div>
