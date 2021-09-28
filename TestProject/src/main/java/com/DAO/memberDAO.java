@@ -251,7 +251,7 @@ public ArrayList<UserVO> select_admin()
 	try 
 	{
 		conn();
-		String sql ="select user_id from users where user_id is not null"; //  사용자가 입력한 아이디를 넣어야하므로 ?
+		String sql ="select user_id, user_name, email, birth_date, addr, phone, gender  from users where user_id is not null"; //  사용자가 입력한 아이디를 넣어야하므로 ?
 		psmt = conn.prepareStatement(sql);
 					
 		rs = psmt.executeQuery(); // 로그인 정보를 rs에 담아 데이터베이스에 적재한다.
@@ -270,7 +270,7 @@ public ArrayList<UserVO> select_admin()
 			al.add(vo); // resultset에서 값 가져온뒤 rs.next에서 while문안에서 반복한 뒤 vo에 담아준다.
 		}
 	}
-	catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
+	catch (Exception e) 
 	{
 		e.printStackTrace();
 	}
