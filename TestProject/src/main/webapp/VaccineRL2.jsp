@@ -128,7 +128,7 @@
 	</header>
 
 	<div class="page-hero bg-image overlay-dark"
-		style="background-image: url(../assets/img/bg_image_1.jpg);">
+		style="background-image: url(./assets/img/bg_image_1.jpg);">
 		<div class="hero-section">
 			<div class="container text-center wow zoomIn">
 				<span class="subhead">Let's make your life happier</span>
@@ -198,8 +198,22 @@
 
 								<section>
 									<header>
-										<h2>접종 가능 리스트!!</h2><br>
+										<h2	>접종 가능 리스트!!</h2><br>
 									</header>
+									
+										<!-- 
+										사용자 my page에서 맞아야 할 백신 가져오기
+										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->
+										
+										
+										<!-- 백신 리스트 -->
+										
+										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
+											<!-- 병원 리스트 => '<a href="#">' =>'#'누르면 위도,경도값 가져와서 지도에 출력 -->
+												<!-- '<a href="#">' 지도에 출력된 예약하기 버튼 클릭시 전화번호 출력?? -->
+										
+										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
+										
 									<ul class="dates">
 										<li><span class="date"><h4><strong>인플루엔자</strong></h4></span>
 										<span> / 20~40세</span>
@@ -443,18 +457,18 @@
 	<!-- .page-section -->
 
 	<div class="page-section banner-home bg-image"
-		style="background-image: url(../assets/img/banner-pattern.svg);">
+		style="background-image: url(./assets/img/banner-pattern.svg);">
 		<div class="container py-5 py-lg-0">
 			<div class="row align-items-center">
 				<div class="col-lg-4 wow zoomIn">
 					<div class="img-banner d-none d-lg-block">
-						<img src="../assets/img/mobile_app.png" alt="">
+						<img src="./assets/img/mobile_app.png" alt="">
 					</div>
 				</div>
 				<div class="col-lg-8 wow fadeInRight">
 					<h1 class="font-weight-normal mb-3">모바일 약콕을 다운받으세요!</h1>
-					<a href="#"><img src="../assets/img/google_play.svg" alt=""></a>
-					<a href="#" class="ml-2"><img src="../assets/img/app_store.svg"
+					<a href="#"><img src="./assets/img/google_play.svg" alt=""></a>
+					<a href="#" class="ml-2"><img src="./assets/img/app_store.svg"
 						alt=""></a>
 				</div>
 			</div>
