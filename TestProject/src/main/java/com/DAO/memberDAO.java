@@ -244,16 +244,6 @@ try {
 	return al;
 }
 
-private String user_id;
-private String user_pw;
-private String user_name;
-private String email;
-private String birth_date;
-private String addr;
-private String phone;
-private String adm;
-private String gender;
-
 public ArrayList<UserVO> select_admin() 
 {
 	ArrayList<UserVO> al = new ArrayList<UserVO>();
@@ -290,8 +280,5 @@ public ArrayList<UserVO> select_admin()
 	}
 	return al;
 }
-
-
-
 
 	}
