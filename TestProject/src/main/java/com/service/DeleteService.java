@@ -24,7 +24,7 @@ public class DeleteService extends HttpServlet {
 		int cnt = dao.delete(user_id);
 		
 		if(cnt>0) {
-			response.sendRedirect("VaccineRL.html");
+			response.sendRedirect("VaccineRL2.jsp");
 		}
 	
 	}
