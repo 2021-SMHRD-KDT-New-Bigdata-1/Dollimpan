@@ -118,18 +118,19 @@
     <div class="container">
 
 <!-- mypage -->
+ 
 <div id="profilebox">
 	<div id="box01" class="ProfileItem">
 		<a class="profileTitle" href="" title="">MY PROFILE</a>
-		<div class="profileInfo">이름 : <%=vo.getUser_name() %></div>
-		<div class="profileInfo">생년월일 : <%vo.getBirth_date(); %> </div>
-		<div class="profileInfo">아이디 : <%vo.getUser_id(); %></div>
+		<div class="profileInfo">이름: <%=vo.getUser_id() %> </div>
+		<div class="profileInfo">생년월일 :</div>
+		<div class="profileInfo">아이디 : </div>
 	</div>
 	
 	<div id="box02" class="ProfileItem">
 		<a class="profileTitle" href="" title="">연락처 및 알림</a>
-		<div class="profileInfo">연락처 이메일 : <%vo.getEmail(); %></div>
-		<div class="profileInfo">알림 휴대전화 : <%vo.getPhone(); %></div>
+		<div class="profileInfo">연락처 이메일 : </div>
+		<div class="profileInfo">알림 휴대전화 : </div>
 	</div>
 	
 	<div id="box03" class="ProfileItem">

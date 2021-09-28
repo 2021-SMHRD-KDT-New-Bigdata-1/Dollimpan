@@ -27,7 +27,6 @@
 	
 	<%
 		UserVO vo = (UserVO)session.getAttribute("vo");
-	
 	%>
 	
 	<!-- Back to top button -->
