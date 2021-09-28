@@ -56,7 +56,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="VaccineRL.html"><span class="text-primary">YAK</span>-KoK</a>
+        <a class="navbar-brand" href="VaccineRL2.jsp"><span class="text-primary">YAK</span>-KoK</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -106,11 +106,14 @@
         <span class="bg-light">OR</span>
     </p>
 	<form action = "UpdateService" method = "post">
+	
+
+	
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="user_id" class="form-control" placeholder="현재비밀번호" type="text">
+        <input name="user_pw" class="form-control" placeholder="\현재비밀번호" type="password">
     </div> <!-- form-group// -->
     
      <div class="form-group input-group">
@@ -120,13 +123,13 @@
         <input name="user_pw" class="form-control" placeholder="변경할 비밀번호" type="password" >
     </div> <!-- form-group// -->
     
-     <div class="form-group input-group">
+<!--       <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
         <input name="user_pw" class="form-control" placeholder="비밀번호 확인" type="password" >
-    </div> <!-- form-group// -->
-    
+    </div> 
+   --> 
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
@@ -135,22 +138,23 @@
     </div> <!-- form-group// -->
     
     
+    
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span name = "addr" class="input-group-text"><i class="fa fa-phone"></i> </span>
 		</div>
 		
-    	<input name="birthdate" class="form-control" placeholder="주소" type="text">
+    	<input name="addr" class="form-control" placeholder="주소" type="text">
     </div> <!-- form-group// -->
-    
-    
+
     <div class="form-group input-group">
     	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		    <span name = "phone" class="input-group-text"><i class="fa fa-phone"></i> </span>
 		</div>
-        <input class="form-control" placeholder="핸드폰번호" type="text">
-    </div> <!-- form-group// -->   
-                                       
+		
+    	<input name="phone" class="form-control" placeholder="핸드폰 번호" type="text">
+    </div> <!-- form-group// -->
+                                         
                                        
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> 정보 수정  </button>

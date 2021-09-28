@@ -38,6 +38,16 @@ public class UserVO {
 		this.phone = phone;
 
 	}
+	public UserVO( String user_pw, String email, String addr, String phone, String user_id) 
+	{
+		super();
+	
+		this.user_pw = user_pw;
+		this.email = email;
+		this.addr = addr;
+		this.phone = phone;
+		this.user_id = user_id;
+	}
 	
 	public UserVO(String user_id, String user_name, String email, String birth_date, String addr,
 			String phone, String gender) {
