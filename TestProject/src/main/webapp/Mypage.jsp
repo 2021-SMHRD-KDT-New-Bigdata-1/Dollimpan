@@ -4,30 +4,23 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Goods</title>
 
-<link rel="stylesheet" href="../assets/css/maicons.css">
 <link rel="stylesheet" href="./assets/css/maicons.css">
 
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
 <link rel="stylesheet" href="./assets/css/bootstrap.css">
 
-<link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
 <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.css">
 
-
-<link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 <link rel="stylesheet" href="./assets/vendor/animate/animate.css">
 
-<link rel="stylesheet" href="../assets/css/theme.css">
 <link rel="stylesheet" href="./assets/css/theme.css">
-
 
 
 </head>
 <body>
 
-<div class="back-to-top"></div>
+	<div class="back-to-top"></div>
 
 	<header>  
 		<div class="topbar">
@@ -54,7 +47,7 @@
     <!-- .topbar -->
 	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 	      <div class="container">
-	        <a class="navbar-brand" href="about.html"><span class="text-primary">Yak</span>-KKock</a>
+	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-KKock</a>
 	
 	        <form action="#">
 	          <div class="input-group input-navbar">
@@ -96,7 +89,7 @@
 	  </header>
 	  <!-- 헤더 bar -->
 	 
-	<div class="page-banner overlay-dark bg-image" style="background-image: url(../img/bg_image_1.jpg);">
+	<div class="page-banner overlay-dark bg-image" style="background-image: url(./img/bg_image_1.jpg);">
     <div class="banner-section">
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
@@ -124,7 +117,7 @@
                     <a href="#">의료기기</a>
                   </div>
                   <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_1.jpg" alt="">
+                    <img src="./assets/img/blog/blog_1.jpg" alt="">
                   </a>
                 </div>
                 <div class="body">
@@ -132,7 +125,7 @@
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
-                        <img src="../assets/img/person/person_1.jpg" alt="">
+                        <img src="./assets/img/person/person_1.jpg" alt="">
                         
                       </div>
                       <span>오스템</span>
@@ -150,7 +143,7 @@
                     <a href="#">medicine</a>
                   </div>
                   <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_3.jpg" alt="">
+                    <img src="./assets/img/blog/blog_3.jpg" alt="">
                   </a>
                 </div>
                 <div class="body">
@@ -158,7 +151,7 @@
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
-                        <img src="../assets/img/person/person_4.jpg" alt="">
+                        <img src="./assets/img/person/person_4.jpg" alt="">
                       </div>
                       <span>기업이름</span>
                     </div>
@@ -169,151 +162,10 @@
             </div>
 
 
-<div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">Covid19</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_3.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">Shifting goalposts: Research in the time of the coronavirus</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="../assets/img/person/person_3.jpg" alt="">
-                      </div>
-                      <span>Adams Collier</span>
-                    </div>
-                    <span class="mai-time"></span> 4 weeks ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">Neurology</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_4.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">What are the nonmedical factors most closely linked to death risk?</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="../assets/img/person/person_1.jpg" alt="">
-                      </div>
-                      <span>Roger Adams</span>
-                    </div>
-                    <span class="mai-time"></span> 4 weeks ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">Cardiology</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_5.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">Do gut bacteria contribute to ethnic health disparities</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="../assets/img/person/person_1.jpg" alt="">
-                      </div>
-                      <span>Roger Adams</span>
-                    </div>
-                    <span class="mai-time"></span> 4 weeks ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">Patient Services</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_1.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">The Recovery Room: News beyond the pandemic</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="../assets/img/person/person_1.jpg" alt="">
-                      </div>
-                      <span>Roger Adams</span>
-                    </div>
-                    <span class="mai-time"></span> 1 month ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">General Health</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_2.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">Racism in mental healthcare: An invisible barrier</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="../assets/img/person/person_1.jpg" alt="">
-                      </div>
-                      <span>Roger Adams</span>
-                    </div>
-                    <span class="mai-time"></span> 2 months ago
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
             
-            <div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">Covid19</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="../assets/img/blog/blog_2.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">COVID-19 live updates: Total number of cases passes 11.6 million</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="../assets/img/person/person_2.jpg" alt="">
-                      </div>
-                      <span>Diego Simmons</span>
-                    </div>
-                    <span class="mai-time"></span> 4 weeks ago
-                  </div>
-                </div>
-              </div>
-            </div>
+
 
             <div class="col-12 my-5">
               <nav aria-label="Page Navigation">
@@ -358,7 +210,7 @@
     </div> <!-- .container -->
   </div> <!-- .page-section -->
 
-  <div class="page-section banner-home bg-image" style="background-image: url(../assets/img/banner-pattern.svg);">
+  <div class="page-section banner-home bg-image" style="background-image: url(./assets/img/banner-pattern.svg);">
   </div> <!-- .banner-home -->
 
   <footer class="page-footer">
@@ -414,24 +266,15 @@
   </footer> <!-- .page-footer -->
 
 <script src="./assets/js/jquery-3.5.1.min.js"></script>
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
-
 
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
 
 <script src="./assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
-<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
 <script src="./assets/vendor/wow/wow.min.js"></script>
-<script src="../assets/vendor/wow/wow.min.js"></script>
 
 <script src="./assets/js/theme.js"></script>
-<script src="../assets/js/theme.js"></script>
-
-
-
-
-
+  
 </body>
 </html>
+       
