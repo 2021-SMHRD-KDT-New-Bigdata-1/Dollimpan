@@ -128,7 +128,7 @@
 	</header>
 
 	<div class="page-hero bg-image overlay-dark"
-		style="background-image: url(../assets/img/bg_image_1.jpg);">
+		style="background-image: url(./assets/img/bg_image_1.jpg);">
 		<div class="hero-section">
 			<div class="container text-center wow zoomIn">
 				<span class="subhead">Let's make your life happier</span>
@@ -138,7 +138,7 @@
 								if(vo == null){
 									out.print("<h1>로그인 한 세션아이디를 출력해주세요</h1>");
 								}else{
-									out.print("<h1>"+vo.getUser_id()+"님 환영합니다.</h1>");
+									out.print("<h1>"+vo.getUser_name()+"님 환영합니다.</h1>");
 								}
 							
 							%>
@@ -197,6 +197,9 @@
 							<div class="col-lg-6 py-3 wow fadeInUp">
 
 								<section>
+								
+								
+								
 									<header>
 										<h2>접종 가능 리스트!!</h2><br>
 									</header>
@@ -443,18 +446,18 @@
 	<!-- .page-section -->
 
 	<div class="page-section banner-home bg-image"
-		style="background-image: url(../assets/img/banner-pattern.svg);">
+		style="background-image: url(./assets/img/banner-pattern.svg);">
 		<div class="container py-5 py-lg-0">
 			<div class="row align-items-center">
 				<div class="col-lg-4 wow zoomIn">
 					<div class="img-banner d-none d-lg-block">
-						<img src="../assets/img/mobile_app.png" alt="">
+						<img src="./assets/img/mobile_app.png" alt="">
 					</div>
 				</div>
 				<div class="col-lg-8 wow fadeInRight">
 					<h1 class="font-weight-normal mb-3">모바일 약콕을 다운받으세요!</h1>
-					<a href="#"><img src="../assets/img/google_play.svg" alt=""></a>
-					<a href="#" class="ml-2"><img src="../assets/img/app_store.svg"
+					<a href="#"><img src="./assets/img/google_play.svg" alt=""></a>
+					<a href="#" class="ml-2"><img src="./assets/img/app_store.svg"
 						alt=""></a>
 				</div>
 			</div>
