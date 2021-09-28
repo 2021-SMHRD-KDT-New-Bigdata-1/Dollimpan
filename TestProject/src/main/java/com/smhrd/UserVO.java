@@ -39,6 +39,18 @@ public class UserVO {
 
 	}
 	
+	public UserVO(String user_id, String user_name, String email, String birth_date, String addr,
+			String phone, String gender) {
+		super();
+		this.user_id = user_id;
+		this.user_name = user_name;
+		this.email = email;
+		this.birth_date = birth_date;
+		this.addr = addr;
+		this.phone = phone;
+		this.gender = gender;
+	}
+	
 	public UserVO() 
 	{
 
