@@ -160,5 +160,29 @@ try {
 	
 }
 
+public int h_search(String hos_name, String hos_addr) {
+	int cnt = 0;
+try {
+		
+		conn();
+
+		String sql = "select * from hospital where hos_name = ?, hos_addr = ?"; 
+		psmt = conn.prepareStatement(sql); 
+			
+		psmt.setString(1, hos_name ); 
+		psmt.setString(2, hos_addr);
+	
+		cnt = psmt.executeUpdate();
+		
+		
+	}catch(Exception e) { 
+		e.printStackTrace();
+	
+	}finally {
+		close();
+	}
+	return cnt;
+
 		
 }
+	}
