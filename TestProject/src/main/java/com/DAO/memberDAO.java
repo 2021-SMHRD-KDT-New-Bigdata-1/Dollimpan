@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 	
@@ -279,6 +282,34 @@ public ArrayList<UserVO> select_admin()
 		close();
 	}
 	return al;
+}
+public int update_0(String user_pw, String email, String addr, String phone)
+{
+	int cnt =0 ;
+	// 2. JDBC 코드를 활용하여 update SQL문 명령
+	try 
+	{
+		conn();
+		String sql ="update users set user_pw =?, email=?, addr=?, phone=? where user_pw=?"; 
+		
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, user_pw);
+		psmt.setString(2, email);
+		psmt.setString(3, addr);
+		psmt.setString(4, phone);
+		
+		cnt = psmt.executeUpdate(); // 명령문에는 크게 update와 Query가 있다.
+		
+	}
+	catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		close();
+	}
+	return cnt;
 }
 
 	}
