@@ -161,7 +161,7 @@
 						    </tr>
 						    <tr class="alert" role="alert">
 						      <th scope="row">001</th>
-						      <td>Mark<p>주소주소주소주소주소</p></td>
+						      <td>Mark<p>주소주소주소주소주소</p></td>	
 						      <td>백신</td>
 						    </tr>
 						    <tr class="alert" role="alert">
@@ -171,7 +171,7 @@
 						    </tr>
 						  </tbody>
 						</table>    
-            <p class="text-grey mb-4">병원찾기</p>
+            <p class="text-grey mb-4">병원찾기/</p>
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
             <div id="map" style="width:500px;height:400px;"></div>
@@ -179,11 +179,68 @@
 	<script>
 		var container = document.getElementById('map');
 		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			center: new kakao.maps.LatLng(35.150537, 126.877636),
 			level: 3
 		};
 
 		var map = new kakao.maps.Map(container, options);
+		
+		var markerPosition  = new kakao.maps.LatLng(35.150537, 126.877636); 
+
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+		
+		marker.setMap(map);
+		
+		var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,35.150537, 126.877636" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    position : iwPosition, 
+	    content : iwContent 
+	});
+	    
+	infowindow.open(map, marker); 
+		
+		/* var ps = new kakao.maps.services.Places(); 
+		
+		ps.keywordSearch('평택', placesSearchCB);
+		
+		function placesSearchCB (data, status, pagination) {
+		    if (status === kakao.maps.services.Status.OK) {
+
+		        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+		        // LatLngBounds 객체에 좌표를 추가합니다
+		        var bounds = new kakao.maps.LatLngBounds();
+
+		        for (var i=0; i<data.length; i++) {
+		            displayMarker(data[i]);    
+		            bounds.extend(new kakao.maps.	LatLng(data[i].y, data[i].x));
+		        }       
+
+		        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+		        map.setBounds(bounds);
+		    } 
+		}
+		
+		function displayMarker(place) {
+		    
+		    // 마커를 생성하고 지도에 표시합니다
+		    var marker = new kakao.maps.Marker({
+		        map: map,
+		        position: new kakao.maps.LatLng(place.y, place.x) 
+		    });
+
+		    // 마커에 클릭이벤트를 등록합니다
+		    kakao.maps.event.addListener(marker, 'click', function() {
+		        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+		        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+		        infowindow.open(map, marker);
+		    });
+		} */
 	</script>
           </div>
         </div>
