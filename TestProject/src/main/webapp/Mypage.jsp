@@ -6,15 +6,17 @@
 <meta charset="EUC-KR">
 <title>Goods</title>
 
-<link rel="stylesheet" href="./assets/css/maicons.css">
+<link rel="stylesheet" href="assets/css/maicons.css">
 
-<link rel="stylesheet" href="./assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/bootstrap.css">
 
-<link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.css">
+<link rel="stylesheet" href="assets/vendor/owl-carousel/css/owl.carousel.css">
 
-<link rel="stylesheet" href="./assets/vendor/animate/animate.css">
+<link rel="stylesheet" href="assets/vendor/animate/animate.css">
 
-<link rel="stylesheet" href="./assets/css/theme.css">
+<link rel="stylesheet" href="assets/css/theme.css">
+
+<link rel="stylesheet" href="assets/css/styles_mp.css">
 
 
 </head>
@@ -24,7 +26,7 @@
 
 	<header>  
 		<div class="topbar">
-	      <div class="container">
+	      <div class="container" align="center">
 	        <div class="row">
 	          <div class="col-sm-8 text-sm">
 	            <div class="site-info">
@@ -47,7 +49,7 @@
     <!-- .topbar -->
 	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 	      <div class="container">
-	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-KKock</a>
+	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-Kock</a>
 	
 	        <form action="#">
 	          <div class="input-group input-navbar">
@@ -80,7 +82,7 @@
 	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="#">로그인/회원가입</a>
+	              <a class="btn btn-primary ml-lg-3" href="#">로그아웃</a>
 	            </li>
 	          </ul>
 	        </div> <!-- .navbar-collapse -->
@@ -89,18 +91,18 @@
 	  </header>
 	  <!-- 헤더 bar -->
 	 
-	<div class="page-banner overlay-dark bg-image" style="background-image: url(./img/bg_image_1.jpg);">
+	<div class="page-banner overlay-dark bg-image" style="background-image: url(assets/img/bg_image_1.jpg);">
     <div class="banner-section">
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="Addform.jsp" name="Goods">Goods</a></li>
+            <li class="breadcrumb-item"><a href="Addform.jsp" name="Goods">회원정보수정</a></li>
             
-            <li class="breadcrumb-item"><a href="faqForm.jsp" name="FAQ"> FAQ </a></li>
+            <li class="breadcrumb-item"><a href="faqForm.jsp" name="FAQ"> 회원탈퇴 </a></li>
           </ol>
        
         </nav>
-        <h1 class="font-weight-normal">Goods</h1>
+        <h1 class="font-weight-normal">My Page</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
@@ -110,97 +112,54 @@
       <div class="row">
         <div class="col-lg-8">
           <div class="row">
-            <div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">의료기기</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="./assets/img/blog/blog_1.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">치아건강</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="./assets/img/person/person_1.jpg" alt="">
-                        
-                      </div>
-                      <span>오스템</span>
-                    </div>
-                    <span class="mai-time"></span> 1 week ago
-                  </div>
-                </div>
-              </div>
-            </div>
-	
-			<div class="col-sm-6 py-3">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-category">
-                    <a href="#">medicine</a>
-                  </div>
-                  <a href="blog-details" class="post-thumb">
-                    <img src="./assets/img/blog/blog_3.jpg" alt="">
-                  </a>
-                </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="blog-details.html">종합 비타민</a></h5>
-                  <div class="site-info">
-                    <div class="avatar mr-2">
-                      <div class="avatar-img">
-                        <img src="./assets/img/person/person_4.jpg" alt="">
-                      </div>
-                      <span>기업이름</span>
-                    </div>
-                    <span class="mai-time"></span> 2 weeks ago
-                  </div>
-                </div>
-              </div>
-            </div>
 
-
+<!-- mypage 템플릿 -->
+<div id="doc" class="yui-t7" align="center">
+  <div id="hd">
+    <div id="header"><h1><a href="http://www.free-css.com/free-css-layouts.php">예방접종 내역 및 예약조회</a></h1></div>
+  </div>
+  <div id="bd">
+    <div id="yui-main">
+    
+      <div class="yui-b">
+        <div class="yui-g">
+          <div class="yui-g first">
+            <div class="yui-u first">
+              <div class="content">성함</div>
+            </div>
+            <div class="yui-u">
+              <div class="content">전화번호</div>
+            </div>
+          </div>
+          <div class="yui-g">
+            <div class="yui-u first">
+              <div class="content">입력하신 기저질환</div>
+            </div>
+            <div class="yui-u">
+              <div class="content">이메일</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="yui-b">
+      <div id="secondary">Secondary Column</div>
+    </div>
+  </div>
+  <div id="ft">
+    <div id="footer">Footer</div>
+  </div>
+</div>
 
 
             
 
-
-            <div class="col-12 my-5">
-              <nav aria-label="Page Navigation">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                  </li>
-                  <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+<!-- 여기까지 -->
+            
           </div> <!-- .row -->
         </div>
         <div class="col-lg-4">
-          <div class="sidebar">
-            <div class="sidebar-block">
-              <h3 class="sidebar-title">Search</h3>
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                  <button type="submit" class="btn"><span class="icon mai-search">검색</span></button>
-                  <!-- 자신이 원하는 상품 키워드 검색하게 만들고 싶은데...이건 보류 -->
-                </div>
-              </form>
-            </div>
-		</div>
+         
 
 
 
