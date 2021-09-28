@@ -37,4 +37,3 @@ public class H_searchService extends HttpServlet {
 	
 	}
 
-}
