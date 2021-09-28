@@ -19,12 +19,14 @@
 
 <link rel="stylesheet" href="assets/css/styles_mp.css">
 
+<link rel="stylesheet" href="assets/css/mypage.css">
+
 
 </head>
 <body>
 
 	<%
-			UserVO vo = (UserVO)session.getAttribute("vo");
+		UserVO vo = (UserVO)session.getAttribute("vo");
 	%>
 
 	<div class="back-to-top"></div>
@@ -80,7 +82,7 @@
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
 	            </li>
-	            <li class="nav-item active">
+	            <li class="nav-item">
 	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
 	            </li>
 	            <li class="nav-item">
@@ -102,8 +104,7 @@
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
             <li class="breadcrumb-item"><a href="Addform.jsp" name="Goods">회원정보수정</a></li>
-            
-            <li class="breadcrumb-item"><a href="faqForm.jsp" name="FAQ"> 회원탈퇴 </a></li>
+
           </ol>
        
         </nav>
@@ -115,17 +116,52 @@
   <div class="page-section">
     <div class="container">
 
+<!-- mypage -->
+<div id="profilebox">
+	<div id="box01" class="ProfileItem">
+		<a class="profileTitle" href="" title="">MY PROFILE</a>
+		<div class="profileInfo">이름 : </div>
+		<div class="profileInfo">생년월일 : </div>
+		<div class="profileInfo">아이디 : </div>
+	</div>
+	
+	<div id="box02" class="ProfileItem">
+		<a class="profileTitle" href="" title="">연락처 및 알림</a>
+		<div class="profileInfo">연락처 이메일 : </div>
+		<div class="profileInfo">알림 휴대전화 : </div>
+	</div>
+	
+	<div id="box03" class="ProfileItem">
+		<a class="profileTitle" href="" title="">가족관리</a>
+		<div class="profileInfo">최한글</div>
+		<div class="profileInfo">김정미</div>
+		<div class="profileInfo">김동휘</div>
+		<div class="profileInfo">김강휘</div>
+	</div>
+	
+	<div id="box04" class="ProfileItem">
+		<a class="profileTitle" href="" title="">지역설정</a>
+		<div class="profileInfo">Description 1</div>
+		<div class="profileInfo">Description 2</div>
+		<div class="profileInfo">Description 3</div>
+		<div class="profileInfo">Description 4</div>
+	</div>
+</div>
+
+
+
+
+<!-- 여기까지 -->
+
 <!-- mypage 템플릿 -->
+<!-- 
 <div id="doc" class="yui-t7">
-  <div id="hd">
-    <div id="header"><h1><a href="http://www.free-css.com/free-css-layouts.php">예방접종 내역 및 예약조회</a></h1></div>
-  </div>
+ 
   <div id="bd">
     <div id="yui-main">
-    
       <div class="yui-b">
         <div class="yui-g">
-          <div class="yui-g first">
+            
             <div class="yui-u first">
               <div class="content">성함
               <br> 
@@ -134,15 +170,12 @@
               <br> 
               <br> 
               <br> 
-              <li> <%=vo.getUser_name() %></li>
-              
-              
+              <li> 이름 입력 </li>
               </div>
-            
             </div>
             <div class="yui-u">
               <div class="content">전화번호</div>
-            </div>
+            </div> <br>
           </div>
           <div class="yui-g">
             <div class="yui-u first">
@@ -155,19 +188,13 @@
         </div>
       </div>
     </div>
-    <div class="yui-b">
-      <div id="secondary">Secondary Column</div>
-    </div>
+    
   </div>
-  <div id="ft">
-    <div id="footer">Footer</div>
-  </div>
+
 </div>
-
-
-            
-
+-->
 <!-- 여기까지 -->
+
 
       </div> <!-- .row -->
     </div> <!-- .container -->
