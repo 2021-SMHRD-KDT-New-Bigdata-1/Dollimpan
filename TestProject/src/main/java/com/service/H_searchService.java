@@ -25,7 +25,6 @@ public class H_searchService extends HttpServlet {
 		
 		HospitalVO vo = dao.h_search(search);
 
-		System.out.println(vo);
 
 		if(vo != null) {
 			HttpSession session = request.getSession();
