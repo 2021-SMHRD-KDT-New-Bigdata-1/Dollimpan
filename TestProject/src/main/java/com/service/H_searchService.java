@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.DAO.memberDAO;
 import com.smhrd.HospitalVO;
-import com.smhrd.UserVO;
 
 @WebServlet("/H_searchService")
 public class H_searchService extends HttpServlet {
@@ -25,7 +24,7 @@ public class H_searchService extends HttpServlet {
 		
 		memberDAO dao = new memberDAO();
 		
-		UserVO vo = dao.login(hos_name,hos_addr);
+		HospitalVO vo = dao.h_search(hos_name,hos_addr);
 
 
 
