@@ -109,12 +109,9 @@
   
   <div class="page-section">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="row">
 
 <!-- mypage 템플릿 -->
-<div id="doc" class="yui-t7" align="center">
+<div id="doc" class="yui-t7">
   <div id="hd">
     <div id="header"><h1><a href="http://www.free-css.com/free-css-layouts.php">예방접종 내역 및 예약조회</a></h1></div>
   </div>
@@ -155,21 +152,12 @@
             
 
 <!-- 여기까지 -->
-            
-          </div> <!-- .row -->
-        </div>
-        <div class="col-lg-4">
-         
 
-
-
-          </div>
-        </div> 
       </div> <!-- .row -->
     </div> <!-- .container -->
   </div> <!-- .page-section -->
 
-  <div class="page-section banner-home bg-image" style="background-image: url(./assets/img/banner-pattern.svg);">
+  <div class="page-section banner-home bg-image" style="background-image: url(assets/img/banner-pattern.svg);">
   </div> <!-- .banner-home -->
 
   <footer class="page-footer">
