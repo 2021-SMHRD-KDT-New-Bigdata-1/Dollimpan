@@ -244,4 +244,54 @@ try {
 	return al;
 }
 
+private String user_id;
+private String user_pw;
+private String user_name;
+private String email;
+private String birth_date;
+private String addr;
+private String phone;
+private String adm;
+private String gender;
+
+public ArrayList<UserVO> select_admin() 
+{
+	ArrayList<UserVO> al = new ArrayList<UserVO>();
+	
+	try 
+	{
+		conn();
+		String sql ="select user_id from users where user_id is not null"; //  사용자가 입력한 아이디를 넣어야하므로 ?
+		psmt = conn.prepareStatement(sql);
+					
+		rs = psmt.executeQuery(); // 로그인 정보를 rs에 담아 데이터베이스에 적재한다.
+
+		while(rs.next())
+		{
+			String user_id = rs.getString(1);
+			String user_name = rs.getString(2);
+			String email =rs.getString(3);
+			String birth_date=rs.getString(4);
+			String addr=rs.getString(5);
+			String phone=rs.getString(6);
+			String gender=rs.getString(7);
+			
+			UserVO vo = new UserVO(user_id, user_name, email, birth_date, addr, phone, gender); // vo라는 이름의 변수에 세션 email, tel, address 묶어준 것
+			al.add(vo); // resultset에서 값 가져온뒤 rs.next에서 while문안에서 반복한 뒤 vo에 담아준다.
+		}
+	}
+	catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		close();
+	}
+	return al;
+}
+
+
+
+
 	}
