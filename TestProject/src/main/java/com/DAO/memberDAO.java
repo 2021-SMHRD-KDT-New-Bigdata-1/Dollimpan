@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
@@ -201,4 +202,45 @@ try {
 	}
 	return vo;
 }
+
+public ArrayList<UserVO> select() {
+	ArrayList<UserVO> al = new ArrayList<UserVO>();
+try {
+		
+		conn();
+		
+		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
+		String sql = "select user_id from users"; 
+		psmt = conn.prepareStatement(sql);
+		
+		rs = psmt.executeQuery(); //커서 이용
+		
+		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+		
+		while(rs.next()) { //커서 이동
+			String user_id = rs.getString(1);
+			String user_name = rs.getString(3);
+			String email = rs.getString(4);
+			String birth_date = rs.getString(5);
+			String addr = rs.getString(6);
+			String phone = rs.getString(7);
+			String gender = rs.getString(9);
+			
+		
+			//값 묶어주기
+			UserVO vo = new UserVO(user_id,user_name,email,birth_date,addr,phone,gender);
+			//값 추가해주기
+			al.add(vo);
+		}
+		
+	}catch(Exception e) { 
+		e.printStackTrace();
+	
+	}finally {
+		close();
+	}
+	return al;
+}
+
 	}
