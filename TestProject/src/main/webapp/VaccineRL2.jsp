@@ -281,6 +281,7 @@
 										// 마커를 표시할 지도 객체
 										});
 
+										
 										// 인포윈도우를 생성합니다
 										var infowindow = new kakao.maps.InfoWindow(
 												{
