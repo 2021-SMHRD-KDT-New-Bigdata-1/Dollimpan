@@ -29,7 +29,6 @@ public class H_searchService extends HttpServlet {
 
 
 
-
 		if(vo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("vo", vo);
