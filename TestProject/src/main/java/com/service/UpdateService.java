@@ -43,10 +43,10 @@ public class UpdateService extends HttpServlet {
 			UserVO vo2 = new UserVO(user_pw,phone,addr,email);
 			session.setAttribute("vo", vo2);
 			
-			response.sendRedirect("VaccineRL.html");
+			response.sendRedirect("VaccineRL2.html");
 		}else {
 			System.out.println("수정실패!");
-			response.sendRedirect("VaccineRL.html");
+			response.sendRedirect("VaccineRL2.html");
 		}
 	}
 
