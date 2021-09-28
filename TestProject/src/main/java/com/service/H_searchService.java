@@ -19,14 +19,13 @@ public class H_searchService extends HttpServlet {
 
 		request.setCharacterEncoding("euc-kr");
 		//사용자가 입력한 이메일, pw받아오기
-		String hos_name = request.getParameter("hos_name");
-		String hos_addr = request.getParameter("hos_addr");
+		String search = request.getParameter("search");
 		
 		memberDAO dao = new memberDAO();
 		
-		HospitalVO vo = dao.h_search(hos_name,hos_addr);
+		HospitalVO vo = dao.h_search(search);
 
-
+		System.out.println(vo);
 
 		if(vo != null) {
 			HttpSession session = request.getSession();

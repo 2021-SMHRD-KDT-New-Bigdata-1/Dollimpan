@@ -163,7 +163,7 @@ try {
 	
 }
 
-public HospitalVO h_search(String hos_name, String hos_addr) {
+public HospitalVO h_search(String search) {
 	HospitalVO vo = null;
 try {
 		
@@ -171,8 +171,7 @@ try {
 	
 		String sql = "select * from users where hos_name = ? and hos_addr = ?"; 
 		psmt = conn.prepareStatement(sql); 
-		psmt.setString(1, hos_name);
-		psmt.setString(2, hos_addr);
+		psmt.setString(1, search);
 		
 		rs = psmt.executeQuery(); //커서 이용
 		
@@ -182,6 +181,8 @@ try {
 		if(rs.next()) {
 
 			int hos_seq = rs.getInt(1);
+			String hos_name = rs.getString(2);
+			String hos_addr = rs.getString(3);
 			String hos_phone = rs.getString(4);
 			double latitude = rs.getDouble(5);
 			double longitude = rs.getDouble(6);
