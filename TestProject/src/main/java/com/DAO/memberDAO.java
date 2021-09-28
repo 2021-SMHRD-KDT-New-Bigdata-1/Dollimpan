@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 	
@@ -163,7 +166,7 @@ try {
 	
 }
 
-public HospitalVO h_search(String hos_name, String hos_addr) {
+public HospitalVO h_search(String search) {
 	HospitalVO vo = null;
 try {
 		
@@ -171,8 +174,7 @@ try {
 	
 		String sql = "select * from users where hos_name = ? and hos_addr = ?"; 
 		psmt = conn.prepareStatement(sql); 
-		psmt.setString(1, hos_name);
-		psmt.setString(2, hos_addr);
+		psmt.setString(1, search);
 		
 		rs = psmt.executeQuery(); //커서 이용
 		
@@ -182,6 +184,8 @@ try {
 		if(rs.next()) {
 
 			int hos_seq = rs.getInt(1);
+			String hos_name = rs.getString(2);
+			String hos_addr = rs.getString(3);
 			String hos_phone = rs.getString(4);
 			double latitude = rs.getDouble(5);
 			double longitude = rs.getDouble(6);
@@ -241,6 +245,71 @@ try {
 		close();
 	}
 	return al;
+}
+
+public ArrayList<UserVO> select_admin() 
+{
+	ArrayList<UserVO> al = new ArrayList<UserVO>();
+	
+	try 
+	{
+		conn();
+		String sql ="select user_id, user_name, email, birth_date, addr, phone, gender  from users where user_id is not null"; //  사용자가 입력한 아이디를 넣어야하므로 ?
+		psmt = conn.prepareStatement(sql);
+					
+		rs = psmt.executeQuery(); // 로그인 정보를 rs에 담아 데이터베이스에 적재한다.
+
+		while(rs.next())
+		{
+			String user_id = rs.getString(1);
+			String user_name = rs.getString(2);
+			String email =rs.getString(3);
+			String birth_date=rs.getString(4);
+			String addr=rs.getString(5);
+			String phone=rs.getString(6);
+			String gender=rs.getString(7);
+			
+			UserVO vo = new UserVO(user_id, user_name, email, birth_date, addr, phone, gender); // vo라는 이름의 변수에 세션 email, tel, address 묶어준 것
+			al.add(vo); // resultset에서 값 가져온뒤 rs.next에서 while문안에서 반복한 뒤 vo에 담아준다.
+		}
+	}
+	catch (Exception e) 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		close();
+	}
+	return al;
+}
+public int update_0(String user_pw, String email, String addr, String phone)
+{
+	int cnt =0 ;
+	// 2. JDBC 코드를 활용하여 update SQL문 명령
+	try 
+	{
+		conn();
+		String sql ="update users set user_pw =?, email=?, addr=?, phone=? where user_pw=?"; 
+		
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, user_pw);
+		psmt.setString(2, email);
+		psmt.setString(3, addr);
+		psmt.setString(4, phone);
+		
+		cnt = psmt.executeUpdate(); // 명령문에는 크게 update와 Query가 있다.
+		
+	}
+	catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
+	{
+		e.printStackTrace();
+	}
+	finally
+	{
+		close();
+	}
+	return cnt;
 }
 
 	}
