@@ -137,7 +137,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
 			<form action="H_searchService">
-			<input type="text" placeholder="병원/약국 검색">
+			<input type="text" placeholder="병원/약국 검색" name="search">
 			<input type="submit" value="검색">
 			</form>
 			<li weight="300px;"><table class="table"></li>
