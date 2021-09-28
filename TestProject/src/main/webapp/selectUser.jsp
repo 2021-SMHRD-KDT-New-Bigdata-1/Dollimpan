@@ -39,7 +39,7 @@
 	<%
 			memberDAO dao = new memberDAO();
 			//select기능 호출
-			ArrayList<UserVO> al = dao.select();
+			ArrayList<UserVO> al = dao.select_admin();
 			System.out.print(al.size());
 		%>
 
@@ -88,7 +88,7 @@
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="about.html">약콕이란</a>
+	              <a class="nav-link" href="html/about.html">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineRl.html">백신예약/조회</a>
@@ -103,7 +103,7 @@
 	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="loginForm.html">로그인/회원가입</a>
+	              <a class="btn btn-primary ml-lg-3" href="html/about.html">관리자 Logout</a>
 	            </li>
 	          	
 	          </ul>
@@ -152,7 +152,7 @@
 								//회원정보 출력(한명의 회원정보는 하나의 tr태그에 -(한줄))
 								//회원의 수만큼 tr태그 추가
 								//각 정보(이메일,전화번호,주소)는 각 td태그에
-								for (int i = 0; i<al.size(); i++){//회원의 수만큼 반복
+								for (int i = 1; i<al.size(); i++){//회원의 수만큼 반복
 									
 									out.print("<tr>");
 									out.print("<td>"+i+"</td>");
