@@ -138,7 +138,7 @@
 								if(vo == null){
 									out.print("<h1>로그인 한 세션아이디를 출력해주세요</h1>");
 								}else{
-									out.print("<h1>"+vo.getUser_id()+"님 환영합니다.</h1>");
+									out.print("<h1>"+vo.getUser_name()+"님 환영합니다.</h1>");
 								}
 							
 							%>
