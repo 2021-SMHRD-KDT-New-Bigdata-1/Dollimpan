@@ -27,7 +27,6 @@
 	
 	<%
 		UserVO vo = (UserVO)session.getAttribute("vo");
-	
 	%>
 	
 	<!-- Back to top button -->
@@ -47,6 +46,7 @@
 					</div>
 					<div class="col-sm-4 text-right text-sm">
 						<div class="social-mini-button">
+						<a href='Mypage.jsp'> 마이페이지 </a>
 							<a href="#"><span class="mai-logo-facebook-f"></span></a> <a
 								href="#"><span class="mai-logo-twitter"></span></a> <a href="#"><span
 								class="mai-logo-dribbble"></span></a> <a href="#"><span
