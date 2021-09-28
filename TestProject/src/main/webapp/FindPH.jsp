@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.HospitalVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DAO.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -26,23 +29,11 @@
 </head>
 <body>
 
-<script>
-  var clusterer = new kakao.maps.MarkerClusterer({
-	    map: map,
-	    markers: markers,
-	    gridSize: 35,
-	    averageCenter: true,
-	    minLevel: 6,
-	    disableClickZoom: true,
-	    styles: [{
-	        width : '53px', height : '52px',
-	        background: 'url(cluster.png) no-repeat',
-	        color: '#fff',
-	        textAlign: 'center',
-	        lineHeight: '54px'
-	    }]
-	});
-  </script>
+<%
+	memberDAO dao = new memberDAO();
+	ArrayList<HospitalVO> sr = dao.search();
+	System.out.print(sr.size());
+%>
 
  <!-- Back to top button -->
   <div class="back-to-top"></div>
@@ -105,11 +96,10 @@
               <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">로그인 / 회원가입</a>
+              <a class="btn btn-primary ml-lg-3" href="html/loginForm.html">로그인 / 회원가입</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
-      </div> <!-- .container -->
       </div> <!-- .container -->
     </nav>
   </header>
@@ -132,14 +122,13 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">병원 찾기</h1>
 
-      <form class="contact-form mt-5">
+      <form class="contact-form mt-5" action="H_searchService" id="frm">
         <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
-			<form action="H_searchService">
 			<input type="text" placeholder="병원/약국 검색" name="search">
-			<input type="submit" value="검색">
-			</form>
+			<input type="button" onclick="document.getElementById('frm').submit();"value="검색" >
+			
 			<li weight="300px;"><table class="table"></li>
 						  <thead class="thead-dark">
 						    <tr>
@@ -177,6 +166,7 @@
             <div id="map" style="width:500px;height:400px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdcd02ee018f3bbcd8d524e523cd8480"></script>
 	<script>
+	<%=%>
 		var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(35.150537, 126.877636),

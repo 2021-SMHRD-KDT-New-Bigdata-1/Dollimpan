@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 	
@@ -163,13 +166,48 @@ try {
 	
 }
 
+public ArrayList<HospitalVO> search() {
+	ArrayList<HospitalVO> sr = new ArrayList<HospitalVO>();
+try {
+		conn();
+		HospitalVO vo = null;
+		
+		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
+		String sql = "select hos_name from hospitals"; 
+		psmt = conn.prepareStatement(sql);
+		
+		rs = psmt.executeQuery(); //커서 이용
+		
+		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+		
+		while(rs.next()) { //커서 이동
+			String hos_name = rs.getString(2);
+			String hos_addr = rs.getString(3);
+			double latitude = rs.getDouble(5);
+			double longitude = rs.getDouble(6);
+			
+			vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
+			//값 추가해주기
+			sr.add(vo);
+		}
+		
+	}catch(Exception e) { 
+		e.printStackTrace();
+	
+	}finally {
+		close();
+	}
+	return sr;
+}
+
 public HospitalVO h_search(String search) {
 	HospitalVO vo = null;
 try {
 		
 		conn();
 	
-		String sql = "select * from users where hos_name = ? and hos_addr = ?"; 
+		String sql = "select * from hospitals where hos_name = ?"; 
 		psmt = conn.prepareStatement(sql); 
 		psmt.setString(1, search);
 		
@@ -177,20 +215,13 @@ try {
 		
 		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
 		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
-		
 		if(rs.next()) {
 
-			int hos_seq = rs.getInt(1);
 			String hos_name = rs.getString(2);
 			String hos_addr = rs.getString(3);
-			String hos_phone = rs.getString(4);
 			double latitude = rs.getDouble(5);
 			double longitude = rs.getDouble(6);
-			String hos_info = rs.getString(7);
-			String hos_pic1 = rs.getString(8);
-			String hos_pic2 = rs.getString(9);
-			String hos_pic3 = rs.getString(10);
-			vo = new HospitalVO(hos_seq,hos_name,hos_addr,hos_phone,latitude,longitude,hos_info,hos_pic1,hos_pic2,hos_pic3);
+			vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
 			//새로운 데이터 타입 : VO
 		}
 		
@@ -203,6 +234,8 @@ try {
 	}
 	return vo;
 }
+
+
 
 public ArrayList<UserVO> select() {
 	ArrayList<UserVO> al = new ArrayList<UserVO>();
