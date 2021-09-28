@@ -1,28 +1,29 @@
+<%@page import="com.smhrd.UserVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="EUC-KR">
+<title>Update</title>
 
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/maicons.css">
 
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-  <title>One Health - Medical Center HTML5 Template</title>
+  <link rel="stylesheet" href="assets/vendor/owl-carousel/css/owl.carousel.css">
 
-  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="assets/vendor/animate/animate.css">
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/login.css">
 
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
 
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
-
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <link rel="stylesheet" href="../assets/css/login.css">
-  
 </head>
 <body>
+	<%
+	UserVO vo = (UserVO)session.getAttribute("vo");
+	%>
   <!-- Back to top button -->
   <div class="back-to-top"></div>
 
@@ -34,12 +35,15 @@
             <div class="site-info">
               <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
               <span class="divider">|</span>
+              
               <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
             </div>
           </div>
           <div class="col-sm-4 text-right text-sm">
             <div class="social-mini-button">
-              <a href="Mypage.jsp"> ë§ˆì´íŽ˜ì´ì§€ </a>
+             
+              <!--  <a href="Mypage.jsp"> 
+              -->
               <a href="#"><span class="mai-logo-facebook-f"></span></a>
               <a href="#"><span class="mai-logo-twitter"></span></a>
               <a href="#"><span class="mai-logo-dribbble"></span></a>
@@ -52,7 +56,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">YAK</span>-KoK</a>
+        <a class="navbar-brand" href="VaccineRL.html"><span class="text-primary">YAK</span>-KoK</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -70,22 +74,22 @@
                <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">ì•½ì½•ì´ëž€?</a>
+              <a class="nav-link" href="html/about.html">¾àÄÛÀÌ¶õ?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineRL.html">ë°±ì‹ ì˜ˆì•½/ì¡°íšŒ</a>
+              <a class="nav-link" href="VaccineRL2.jsp">¹é½Å¿¹¾à/Á¶È¸</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineInfo.html">ë°±ì‹ ì •ë³´</a>
+              <a class="nav-link" href="html/VaccineInfo.html">¹é½ÅÁ¤º¸</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Addform.jsp">ê´‘ê³ /FAQ</a>
+              <a class="nav-link" href="Addform.jsp">±¤°í/FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="FindPH.html">ì•½êµ­/ë³‘ì›ì°¾ê¸°</a>
+              <a class="nav-link" href="FindPH.jsp">¾à±¹/º´¿øÃ£±â</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">ë¡œê·¸ì¸ / íšŒì›ê°€ìž…</a>
+              <a class="btn btn-primary ml-lg-3" href="html/about.html">·Î±×¾Æ¿ô</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
@@ -96,32 +100,62 @@
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
-	<p class="text-center">Get started with your free account</p>
+	<h4 class="card-title mt-3 text-center">È¸¿øÁ¤º¸¼öÁ¤</h4>
 	
 		<p class="divider-text">
         <span class="bg-light">OR</span>
     </p>
-	<form action = "../LoginService" method = "post">
+	<form action = "UpdateService" method = "post">
     <div class="form-group input-group">
-    
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="user_id" class="form-control" placeholder="ì•„ì´ë””" type="text">
+        <input name="user_id" class="form-control" placeholder="ÇöÀçºñ¹Ð¹øÈ£" type="text">
     </div> <!-- form-group// -->
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" name="user_pw" placeholder="ë¹„ë°€ë²ˆí˜¸" type="password">
+        <input name="user_pw" class="form-control" placeholder="º¯°æÇÒ ºñ¹Ð¹øÈ£" type="password" >
     </div> <!-- form-group// -->
-
-	<button type="submit" class="btn btn-primary btn-block"> ë¡œê·¸ì¸  </button>
+    
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="user_pw" class="form-control" placeholder="ºñ¹Ð¹øÈ£ È®ÀÎ" type="password" >
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="email" class="form-control" placeholder="ÀÌ¸ÞÀÏ" type="email" >
+    </div> <!-- form-group// -->
+    
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span name = "addr" class="input-group-text"><i class="fa fa-phone"></i> </span>
+		</div>
+		
+    	<input name="birthdate" class="form-control" placeholder="ÁÖ¼Ò" type="text">
+    </div> <!-- form-group// -->
+    
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="ÇÚµåÆù¹øÈ£" type="text">
+    </div> <!-- form-group// -->   
+                                       
+                                       
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Á¤º¸ ¼öÁ¤  </button>
     </div> <!-- form-group// -->  
-
-    <p class="text-center"><a href="#">ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°</a><br> ê³„ì •ì´ ì—†ë‚˜ìš”? <a href="joinForm.html">íšŒì›ê°€ìž…</a> </p>  
+                                                               
 </form>
 </article>
 </div> <!-- card.// -->
@@ -184,17 +218,17 @@
     </div>
   </footer>
 
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
+<script src="assets/js/jquery-3.5.1.min.js"></script>
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+<script src="assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
-<script src="../assets/vendor/wow/wow.min.js"></script>
+<script src="assets/vendor/wow/wow.min.js"></script>
 
-<script src="../assets/js/google-maps.js"></script>
+<script src="assets/js/google-maps.js"></script>
 
-<script src="../assets/js/theme.js"></script>
+<script src="assets/js/theme.js"></script>
 
 
 </body>

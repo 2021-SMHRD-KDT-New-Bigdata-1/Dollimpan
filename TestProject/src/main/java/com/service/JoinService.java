@@ -36,7 +36,7 @@ public class JoinService extends HttpServlet {
 		int cnt = dao.join(user_id, user_pw, user_name, email, birth_date, addr, phone, adm, gender);
 		
 		if(cnt>0) {
-		response.sendRedirect("html/VaccineRL.html");
+		response.sendRedirect("html/VaccineRL2.html");
 		}
 		
 	}

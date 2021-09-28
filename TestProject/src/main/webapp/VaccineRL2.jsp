@@ -110,7 +110,7 @@
 									if(vo.getUser_id().equals("admin")){
 										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>회원전체목록</a>");
 									}else{
-										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='update.jsp'>회원정보수정</a>");
+										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='Update_0.jsp'>회원정보수정</a>");
 									}
 									out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>로그아웃</a>");
 								}
