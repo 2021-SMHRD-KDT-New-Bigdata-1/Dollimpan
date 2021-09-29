@@ -127,7 +127,7 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_pw" id="password2" class="form-control" placeholder="변경할 비밀번호" type="password">
+        <input name="user_pw" id="password2" class="form-control" placeholder="변경할 비밀번호 확인" type="password">
     </div> <!-- form-group// -->
     
     <script type="text/javascript">
@@ -139,6 +139,7 @@
     	if(p1 != p2)
    		{
    			alert("비밀번호가 일치하지 않습니다.");
+   			return false;
    		}
     	else
     	{
