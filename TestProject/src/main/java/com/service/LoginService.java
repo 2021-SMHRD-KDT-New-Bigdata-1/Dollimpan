@@ -27,7 +27,7 @@ public class LoginService extends HttpServlet {
 		
 		UserVO vo = dao.login(user_id,user_pw);
 
-
+	System.out.println(vo.getBirth_date());
 
 
 		if(vo != null) {
