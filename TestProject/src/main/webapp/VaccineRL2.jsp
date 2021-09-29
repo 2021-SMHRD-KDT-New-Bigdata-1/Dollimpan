@@ -30,26 +30,13 @@
 	%>
 	
 	<!-- Back to top button -->
-	<div class="back-to-top"></div>.
+	<div class="back-to-top"></div>
 	
 
 	<header>
-		<div class="topbar">
-			<div class="container">
-				<div class="row">
+				
 					<div class="col-sm-8 text-sm">    <!-- 이게 있으면 마이페이지가 오른쪽으로 밀림 -->
-					</div>
-					<div class="col-sm-4 text-right text-sm">
-						<div class="social-mini-button">
-						
-												
-							<a href="#"><span class="mai-logo-facebook-f"></span></a> <a
-								href="#"><span class="mai-logo-twitter"></span></a> <a href="#"><span
-								class="mai-logo-dribbble"></span></a> <a href="#"><span
-								class="mai-logo-instagram"></span></a>
-						</div>
-					</div>
-				</div>
+					
 				<!-- .row -->
 			</div>
 			<!-- .container -->
