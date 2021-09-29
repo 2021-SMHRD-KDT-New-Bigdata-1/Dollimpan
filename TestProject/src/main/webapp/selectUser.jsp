@@ -1,6 +1,7 @@
+<%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.DAO.memberDAO1"%>
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
 <body>
 
 	<%
-	memberDAO1 dao = new memberDAO1();
+	memberDAO dao = new memberDAO();
 		//select기능 호출
 		ArrayList<UserVO> al = dao.select_admin();
 		System.out.print(al.size());
