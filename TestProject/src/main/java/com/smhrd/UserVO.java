@@ -14,6 +14,7 @@ public class UserVO {
 	private String adm;
 	private String gender;
 	
+	
 	public UserVO(String user_id, String user_pw, String user_name, String email, String birth_date, String addr,
 			String phone, String adm, String gender) {
 		super();
