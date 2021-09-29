@@ -135,12 +135,14 @@ if(vo != null){
 	out.print("<div class='profileInfo'>이름 :"+vo.getUser_name()+"</div>");
 	out.print("<div class='profileInfo'>생년월일 :"+vo.getBirth_date()+"</div>");
 	out.print("<div class='profileInfo'>아이디 :"+vo.getUser_id()+"</div>");
+}
 %>
 
 	</div>
 	
 	<div id="box02" class="ProfileItem">
 		<a class="profileTitle" href="" title="">연락처 및 알림</a>
+		<%if(vo != null){ %> 
 		<%out.print("<div class='profileInfo'>이메일 :"+vo.getEmail()+"</div>"); %>
 		<%out.print("<div class='profileInfo'>휴대전화 :"+vo.getPhone()+"</div>");
 		} %>
