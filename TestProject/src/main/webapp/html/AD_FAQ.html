@@ -111,7 +111,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">영양제</a>
+                    <a href="#" class= "category">영양제</a>
                   </div>
                   <a href="https://naturalize.co.kr/product/detail.html?product_no=655&cate_no=91&display_group=1" class="post-thumb">
                     <img src="../assets/img/blog/1.jpg" alt="">
@@ -137,7 +137,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">영양제</a>
+                    <a href="#" class= "category">영양제</a>
                   </div>
                   <a href="https://naturalize.co.kr/product/detail.html?product_no=648&cate_no=91&display_group=1" class="post-thumb">
                     <img src="../assets/img/blog/2.jpg" alt="">
@@ -163,7 +163,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">영양제</a>
+                    <a href="#" class= "category">영양제</a>
                   </div>
                   <a href="https://naturalize.co.kr/product/detail.html?product_no=647&cate_no=91&display_group=1" class="post-thumb">
                     <img src="../assets/img/blog/3.jpg" alt="">
@@ -187,7 +187,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">의료기기</a>
+                    <a href="#" class= "category">의료기기</a>
                   </div>
                   <a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EB%A7%88%EC%82%AC%EC%A7%80%EA%B1%B4-%EB%A8%B8%EC%8A%AC-%EC%95%88%EB%A7%88%EA%B8%B0/25/category/24/display/1/" class="post-thumb">
                     <img src="../assets/img/blog/muscle.jpg" alt="">
@@ -211,7 +211,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">의료기기</a>
+                    <a href="#" class= "category">의료기기</a>
                   </div>
                   <a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EC%98%A8%EC%97%B4-%EC%86%90%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0-%EB%AC%B4%EC%84%A0-%ED%95%B8%EB%93%9C-%EC%95%88%EB%A7%88%EA%B8%B0/29/category/24/display/1/" class="post-thumb">
                     <img src="../assets/img/blog/hand.jpg" alt="">
@@ -235,7 +235,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">의료기기</a>
+                    <a href="#" class= "category">의료기기</a>
                   </div>
                   <a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EB%88%88%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0-%EC%95%88%EB%A7%88%EA%B8%B0/26/category/24/display/1/" class="post-thumb">
                     <img src="../assets/img/blog/eyes.jpg" alt="">
@@ -259,7 +259,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">건강보험</a>
+                    <a href="#" class= "category">건강보험</a>
                   </div>
                   <a href="https://www.samsungfire.com/product/P_P02_12_03_000.html" class="post-thumb">
                     <img src="../assets/img/blog/samsung.png" alt="">
@@ -284,7 +284,7 @@
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
-                    <a href="#">건강보험</a>
+                    <a href="#" class= "category">건강보험</a>
                   </div>
                   <a href="https://online.heungkuklife.co.kr/pcw/main/main.do" class="post-thumb">
                     <img src="../assets/img/blog/heungguk.png" alt="">
@@ -332,14 +332,47 @@
               <h3 class="sidebar-title">Search</h3>
               <form action="#" class="search-form">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="찾고싶은 상품 검색">
+                  <input type="text" onkeyup="filter()" id = "value" class="form-control" placeholder="찾고싶은 상품 검색">
                   <button type="submit" class="btn"><span class="icon mai-search">검색</span></button>
                   <!-- 자신이 원하는 상품 키워드 검색하게 만들고 싶은데...이건 보류 -->
                 </div>
+                <div class="container">
+
+			        <div class="item">
+			          <span class="name">영양제</span>
+			        </div>
+			        
+
+			        <div class="item">
+			          <span class="name">의료기기</span>
+			        </div>
+			        
+			        
+			        <div class="item">
+			          <span class="name">건강보험</span>
+			        </div>
+			        </div>
               </form>
             </div>
 		</div>
+<script type="text/javascript">
+      function filter(){
 
+        var value, name, item, i;
+
+        value = document.getElementById("value").value.toUpperCase();
+        item = document.getElementsByClassName("item");
+
+        for(i=0;i<item.length;i++){
+          name = item[i].getElementsByClassName("name");
+          if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+            item[i].style.display = "flex";
+          }else{
+            item[i].style.display = "none";
+          }
+        }
+      }
+</script>
 
 
           </div>
