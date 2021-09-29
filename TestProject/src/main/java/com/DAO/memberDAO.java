@@ -74,8 +74,8 @@ import com.smhrd.UserVO;
 				close();
 			}
 			return cnt;
-			
 		}
+		
 		public UserVO login(String user_id, String user_pw) {
 			UserVO vo = null;
 	try {
