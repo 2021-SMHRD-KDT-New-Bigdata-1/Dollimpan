@@ -29,21 +29,19 @@
 <body>
 	
 	<%
-	String birth ="";
+	//String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
-	%>
-	<% if(vo != null){
-		birth = vo.getBirth_date();
-		System.out.print(birth);
-	}; %>
-	<%
-		memberDAO dao = new memberDAO();
-		ArrayList<HospitalVO> sr = dao.search();
 	%>
 	
 	<%
-		ArrayList<UserVO> al = dao.select();
+	//	memberDAO dao = new memberDAO();
+	//	ArrayList<HospitalVO> sr = dao.search();
+	//	System.out.println(sr.size());
 	%>
+
+	
+	
+
 	
 	<!-- Back to top button -->
 	<div class="back-to-top"></div>

@@ -97,13 +97,13 @@ import com.smhrd.UserVO;
 
 					String user_name = rs.getString(3);
 					String email = rs.getString(4);
-					String birth_date = rs.getString(5);
+					int birth_date = rs.getInt(5);
 					String addr = rs.getString(6);
 					String phone = rs.getString(7);
 					String adm = rs.getString(8);
 					String gender = rs.getString(9);
 					
-					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
+					//vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
 					//새로운 데이터 타입 : VO
 				}
 				
@@ -202,7 +202,7 @@ try {
 	return sr;
 }
 
-public HospitalVO h_search(String search) {//병원검색
+public HospitalVO h_search(String search) {
 	HospitalVO vo = null;
 try {
 		
@@ -255,7 +255,7 @@ try {
 			String user_id = rs.getString(1);
 			String user_name = rs.getString(2);
 			String email = rs.getString(3);
-			String birth_date = rs.getString(4);
+			int birth_date = rs.getInt(4);
 			String addr = rs.getString(5);
 			String phone = rs.getString(6);
 			String gender = rs.getString(7);
@@ -293,7 +293,7 @@ public ArrayList<UserVO> select_admin()
 			String user_id = rs.getString(1);
 			String user_name = rs.getString(2);
 			String email =rs.getString(3);
-			String birth_date=rs.getString(4);
+			int birth_date=rs.getInt(4);
 			String addr=rs.getString(5);
 			String phone=rs.getString(6);
 			String gender=rs.getString(7);

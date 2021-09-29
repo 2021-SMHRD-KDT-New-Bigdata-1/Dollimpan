@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -25,10 +27,15 @@
 </head>
 <body>
 
+
 	<%
 		UserVO vo = (UserVO)session.getAttribute("vo");
 	%>
-
+	<%
+		memberDAO dao = new memberDAO();
+		//select기능 호출
+		ArrayList<UserVO> al = dao.select_admin();
+	%>
 	<div class="back-to-top"></div>
 
 	<header>  
