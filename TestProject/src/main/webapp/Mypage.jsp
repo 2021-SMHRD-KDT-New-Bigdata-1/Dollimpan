@@ -128,16 +128,15 @@ if(vo != null){
 	out.print("<div class='profileInfo'>이름 :"+vo.getUser_name()+"</div>");
 	out.print("<div class='profileInfo'>생년월일 :"+vo.getBirth_date()+"</div>");
 	out.print("<div class='profileInfo'>아이디 :"+vo.getUser_id()+"</div>");
-}
-
 %>
-	
+
 	</div>
 	
 	<div id="box02" class="ProfileItem">
 		<a class="profileTitle" href="" title="">연락처 및 알림</a>
 		<%out.print("<div class='profileInfo'>이메일 :"+vo.getEmail()+"</div>"); %>
-		<%out.print("<div class='profileInfo'>휴대전화 :"+vo.getPhone()+"</div>"); %>
+		<%out.print("<div class='profileInfo'>휴대전화 :"+vo.getPhone()+"</div>");
+		} %>
 	
 	</div>
 	
@@ -148,31 +147,20 @@ if(vo != null){
 		<div class="profileInfo">김동휘</div>
 		<div class="profileInfo">김강휘</div>
 	</div>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
 	<div id="box04" class="ProfileItem">
-		<a class="profileTitle" href="" title="">지역설정</a>
-		<div class="profileInfo">Description 1</div>
-		<div class="profileInfo">Description 2</div>
-		<div class="profileInfo">Description 3</div>
-		<div class="profileInfo">Description 4</div>
+		<a class="profileTitle" href="" title="">지역설정</a><br>
+			<input type="text" id="sample4_postcode" placeholder="우편번호">
+			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+			<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+			<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+			<span id="guide" style="color:#999;display:none"></span>
+			<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+			<input type="text" id="sample4_extraAddress" placeholder="참고항목">
 	</div>
 </div>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-        }
-    }).open();
-</script>
-<input type="text" id="sample4_postcode" placeholder="우편번호">
-<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-<span id="guide" style="color:#999;display:none"></span>
-<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
