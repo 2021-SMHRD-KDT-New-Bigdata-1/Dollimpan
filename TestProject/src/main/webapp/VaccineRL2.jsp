@@ -191,9 +191,6 @@
 										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
-									<%if(vo != null){
-										out.print("<li>"+birth.substring(0,5)+"</li>");
-									}%>
 									
 									
 									<!-- 
