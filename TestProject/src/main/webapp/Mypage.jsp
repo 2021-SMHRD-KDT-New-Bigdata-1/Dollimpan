@@ -34,7 +34,8 @@
 	<%
 		memberDAO dao = new memberDAO();
 		//select기능 호출
-		ArrayList<UserVO> al = dao.select_admin();
+		ArrayList<UserVO> al = dao.select();
+		System.out.print(al.size());
 	%>
 	<div class="back-to-top"></div>
 

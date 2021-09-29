@@ -31,13 +31,16 @@
 	<%
 	//String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
+		
 	%>
 	
 	<%
-	//	memberDAO dao = new memberDAO();
-	//	ArrayList<HospitalVO> sr = dao.search();
-	//	System.out.println(sr.size());
+		memberDAO dao = new memberDAO();
+		ArrayList<HospitalVO> sr = dao.search();
+		System.out.println(sr.size());
 	%>
+
+	
 	
 
 	
@@ -187,7 +190,6 @@
 										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
-									
 									
 									
 									<!-- 
