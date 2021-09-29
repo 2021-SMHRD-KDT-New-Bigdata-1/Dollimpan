@@ -31,7 +31,7 @@
 	<%
 		UserVO vo = (UserVO)session.getAttribute("vo");
 	%>
-	
+	<% String birth = vo.getBirth_date(); %>
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
@@ -184,6 +184,11 @@
 										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
+									<%if(vo != null){
+										out.print("<li>"+birth.substring(0,5)+"</li>");
+									}%>
+									
+									
 									<!-- 
 										사용자 my page에서 맞아야 할 백신 가져오기
 										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->
