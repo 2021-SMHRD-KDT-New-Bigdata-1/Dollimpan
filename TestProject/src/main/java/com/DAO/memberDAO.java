@@ -47,7 +47,7 @@ import com.smhrd.UserVO;
 			}
 		}
 		
-		public int join(String user_id, String user_pw, String user_name, String email, String birth_date, String addr, String phone, String adm, String gender) { 
+		public int join(String user_id, String user_pw, String user_name, String email, int birth_date, String addr, String phone, String adm, String gender) { 
 			int cnt = 0;
 			try {
 			
@@ -59,7 +59,7 @@ import com.smhrd.UserVO;
 				psmt.setString(2, user_pw); 
 				psmt.setString(3, user_name); 
 				psmt.setString(4, email);
-				psmt.setString(5, birth_date);
+				psmt.setInt(5, birth_date);
 				psmt.setString(6, addr);
 				psmt.setString(7, phone);
 				psmt.setString(8, adm);
@@ -79,22 +79,17 @@ import com.smhrd.UserVO;
 		public UserVO login(String user_id, String user_pw) {
 			UserVO vo = null;
 	try {
-				
 				conn();
-			
 				String sql = "select * from users where user_id = ? and user_pw = ?"; 
 				psmt = conn.prepareStatement(sql); 
 				psmt.setString(1, user_id);
 				psmt.setString(2, user_pw);
 				
 				rs = psmt.executeQuery(); //커서 이용
-				
-				
 				//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
 				//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
 				
 				if(rs.next()) {
-
 					String user_name = rs.getString(3);
 					String email = rs.getString(4);
 					int birth_date = rs.getInt(5);
@@ -103,8 +98,8 @@ import com.smhrd.UserVO;
 					String adm = rs.getString(8);
 					String gender = rs.getString(9);
 					
-					//vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
-					//새로운 데이터 타입 : VO
+					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
+					/* 새로운 데이터 타입 : VOe */
 				}
 				
 				

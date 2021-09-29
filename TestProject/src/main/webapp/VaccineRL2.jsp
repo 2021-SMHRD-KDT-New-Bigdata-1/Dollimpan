@@ -31,12 +31,13 @@
 	<%
 	//String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
+		
 	%>
 	
 	<%
-	//	memberDAO dao = new memberDAO();
-	//	ArrayList<HospitalVO> sr = dao.search();
-	//	System.out.println(sr.size());
+		memberDAO dao = new memberDAO();
+		ArrayList<HospitalVO> sr = dao.search();
+		System.out.println(sr.size());
 	%>
 
 	
