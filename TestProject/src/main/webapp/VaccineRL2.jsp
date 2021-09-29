@@ -37,6 +37,11 @@
 		System.out.print(sr.size());
 	%>
 	
+	<%
+		ArrayList<UserVO> al = dao.select();
+		System.out.print(al.size());
+	%>
+	
 	<!-- Back to top button -->
 	<div class="back-to-top"></div>
 	
