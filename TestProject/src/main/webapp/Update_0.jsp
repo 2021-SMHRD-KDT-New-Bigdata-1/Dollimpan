@@ -113,16 +113,40 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="user_pw" class="form-control" placeholder="\현재비밀번호" type="password">
+        <input name="user_pw" class="form-control" placeholder="현재비밀번호" type="password">
     </div> <!-- form-group// -->
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_pw" class="form-control" placeholder="변경할 비밀번호" type="password" >
+        <input name="user_pw" id="password1" class="form-control" placeholder="변경할 비밀번호" type="password">
     </div> <!-- form-group// -->
     
+         <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="user_pw" id="password2" class="form-control" placeholder="변경할 비밀번호" type="password">
+    </div> <!-- form-group// -->
+    
+    <script type="text/javascript">
+   
+   	function test()
+    {
+    	var p1 = document.getElementByld('password1').value;
+    	var p2 = document.getElementByld('password2').value;
+    	if(p1 != p2)
+   		{
+   			alert("비밀번호가 일치하지 않습니다.");
+   		}
+    	else
+    	{
+    		alert("비밀번호가 일치합니다.");
+    		return ture;
+    	}
+    }
+    </script>
 <!--       <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -137,8 +161,6 @@
         <input name="email" class="form-control" placeholder="이메일" type="email" >
     </div> <!-- form-group// -->
     
-    
-    
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span name = "addr" class="input-group-text"><i class="fa fa-phone"></i> </span>
@@ -151,11 +173,9 @@
     	<div class="input-group-prepend">
 		    <span name = "phone" class="input-group-text"><i class="fa fa-phone"></i> </span>
 		</div>
-		
     	<input name="phone" class="form-control" placeholder="핸드폰 번호" type="text">
     </div> <!-- form-group// -->
-                                         
-                                       
+                                                                  
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> 정보 수정  </button>
     </div> <!-- form-group// -->  
@@ -166,9 +186,6 @@
 
 </div> 
 <!--container end.//-->
-  
-
-
 
   <footer class="page-footer">
     <div class="container">
