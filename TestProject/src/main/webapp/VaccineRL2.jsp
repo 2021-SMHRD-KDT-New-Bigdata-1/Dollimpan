@@ -30,7 +30,9 @@
 	<%
 		UserVO vo = (UserVO)session.getAttribute("vo");
 	%>
-	<% String birth = vo.getBirth_date(); %>
+	<% if(vo != null){
+		String birth = vo.getBirth_date();
+	}; %>
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
