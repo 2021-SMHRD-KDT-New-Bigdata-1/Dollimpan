@@ -1,6 +1,7 @@
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>

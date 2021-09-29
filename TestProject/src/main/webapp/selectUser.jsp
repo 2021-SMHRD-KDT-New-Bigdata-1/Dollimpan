@@ -1,6 +1,7 @@
+<%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.DAO.memberDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
