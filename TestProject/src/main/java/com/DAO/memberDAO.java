@@ -89,6 +89,7 @@ import com.smhrd.UserVO;
 				
 				rs = psmt.executeQuery(); //커서 이용
 				
+				
 				//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
 				//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
 				
@@ -172,7 +173,7 @@ try {
 		conn();
 		
 		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
-		String sql = "select hos_name from hospitals"; 
+		String sql = "select hos_name, hos_addr, latitude, longitude from hospitals"; 
 		psmt = conn.prepareStatement(sql);
 		
 		rs = psmt.executeQuery(); //커서 이용
@@ -181,10 +182,10 @@ try {
 		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
 		
 		while(rs.next()) { //커서 이동
-			String hos_name = rs.getString(2);
-			String hos_addr = rs.getString(3);
-			double latitude = rs.getDouble(5);
-			double longitude = rs.getDouble(6);
+			String hos_name = rs.getString(1);
+			String hos_addr = rs.getString(2);
+			double latitude = rs.getDouble(3);
+			double longitude = rs.getDouble(4);
 			
 			
 			HospitalVO vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
