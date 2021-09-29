@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/login.css">
 
 
+
 </head>
 <body>
 	<%
@@ -106,47 +107,15 @@
         <span class="bg-light">OR</span>
     </p>
 	<form action = "UpdateService" method = "post">
-	
-
-	
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="user_pw" class="form-control" placeholder="현재비밀번호" type="password">
-    </div> <!-- form-group// -->
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_pw" id="password1" class="form-control" placeholder="변경할 비밀번호" type="password">
-    </div> <!-- form-group// -->
-    
-         <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input name="user_pw" id="password2" class="form-control" placeholder="변경할 비밀번호 확인" type="password">
+        <input name="user_pw" class="form-control" placeholder="변경할 비밀번호" type="password">
     </div> <!-- form-group// -->
     
     <script type="text/javascript">
-   
-   	function test()
-    {
-    	var p1 = document.getElementByld('password1').value;
-    	var p2 = document.getElementByld('password2').value;
-    	if(p1 != p2)
-   		{
-   			alert("비밀번호가 일치하지 않습니다.");
-   			return false;
-   		}
-    	else
-    	{
-    		alert("비밀번호가 일치합니다.");
-    		return ture;
-    	}
-    }
     </script>
 <!--       <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -166,7 +135,6 @@
     	<div class="input-group-prepend">
 		    <span name = "addr" class="input-group-text"><i class="fa fa-phone"></i> </span>
 		</div>
-		
     	<input name="addr" class="form-control" placeholder="주소" type="text">
     </div> <!-- form-group// -->
 
