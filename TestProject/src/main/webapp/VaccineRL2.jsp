@@ -34,16 +34,15 @@
 	%>
 	<% if(vo != null){
 		birth = vo.getBirth_date();
+		System.out.print(birth);
 	}; %>
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.println(sr.size());
 	%>
 	
 	<%
 		ArrayList<UserVO> al = dao.select();
-		System.out.println(al.size());
 	%>
 	
 	<!-- Back to top button -->

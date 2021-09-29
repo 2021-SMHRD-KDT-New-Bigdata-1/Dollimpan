@@ -202,7 +202,7 @@ try {
 	return sr;
 }
 
-public HospitalVO h_search(String search) {
+public HospitalVO h_search(String search) {//병원검색
 	HospitalVO vo = null;
 try {
 		
@@ -214,8 +214,6 @@ try {
 		
 		rs = psmt.executeQuery(); //커서 이용
 		
-		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
-		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
 		if(rs.next()) {
 
 			String hos_name = rs.getString(2);
@@ -238,7 +236,7 @@ try {
 
 
 
-public ArrayList<UserVO> select() {
+public ArrayList<UserVO> select() {//환자정보
 	ArrayList<UserVO> al = new ArrayList<UserVO>();
 try {
 		
