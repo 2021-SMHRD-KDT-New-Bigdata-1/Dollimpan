@@ -8,14 +8,14 @@ public class UserVO {
 	private String user_pw;
 	private String user_name;
 	private String email;
-	private String birth_date;
+	private int birth_date;
 	private String addr;
 	private String phone;
 	private String adm;
 	private String gender;
 	
 	
-	public UserVO(String user_id, String user_pw, String user_name, String email, String birth_date, String addr,
+	public UserVO(String user_id, String user_pw, String user_name, String email, int birth_date, String addr,
 			String phone, String adm, String gender) {
 		super();
 		this.user_id = user_id;
@@ -50,7 +50,7 @@ public class UserVO {
 		this.user_id = user_id;
 	}
 	
-	public UserVO(String user_id, String user_name, String email, String birth_date, String addr,
+	public UserVO(String user_id, String user_name, String email, int birth_date, String addr,
 			String phone, String gender) {
 		super();
 		this.user_id = user_id;
@@ -93,10 +93,10 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getBirth_date() {
+	public int getBirth_date() {
 		return birth_date;
 	}
-	public void setBirth_date(String birth_date) {
+	public void setBirth_date(int birth_date) {
 		this.birth_date = birth_date;
 	}
 	public String getAddr() {

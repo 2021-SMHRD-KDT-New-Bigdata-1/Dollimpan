@@ -29,22 +29,17 @@
 <body>
 	
 	<%
-	String birth ="";
+	//String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
-	%>
-	<% if(vo != null){
-		birth = vo.getBirth_date();
-	}; %>
-	<%
-		memberDAO dao = new memberDAO();
-		ArrayList<HospitalVO> sr = dao.search();
-		System.out.println(sr.size());
 	%>
 	
 	<%
-		ArrayList<UserVO> al = dao.select();
-		System.out.println(al.size());
+	//	memberDAO dao = new memberDAO();
+	//	ArrayList<HospitalVO> sr = dao.search();
+	//	System.out.println(sr.size());
 	%>
+	
+
 	
 	<!-- Back to top button -->
 	<div class="back-to-top"></div>
@@ -192,9 +187,7 @@
 										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
-									<%if(vo != null){
-										out.print("<li>"+birth.substring(0,5)+"</li>");
-									}%>
+									
 									
 									
 									<!-- 

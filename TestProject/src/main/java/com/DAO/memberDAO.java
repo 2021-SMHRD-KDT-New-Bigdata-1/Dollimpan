@@ -97,13 +97,13 @@ import com.smhrd.UserVO;
 
 					String user_name = rs.getString(3);
 					String email = rs.getString(4);
-					String birth_date = rs.getString(5);
+					int birth_date = rs.getInt(5);
 					String addr = rs.getString(6);
 					String phone = rs.getString(7);
 					String adm = rs.getString(8);
 					String gender = rs.getString(9);
 					
-					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
+					//vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
 					//새로운 데이터 타입 : VO
 				}
 				
@@ -214,7 +214,7 @@ try {
 		
 		rs = psmt.executeQuery(); //커서 이용
 		
-		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+		//페이지 p이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
 		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
 		if(rs.next()) {
 
@@ -238,7 +238,7 @@ try {
 
 
 
-public ArrayList<UserVO> select() {
+public ArrayList<UserVO> select() { //회원정보
 	ArrayList<UserVO> al = new ArrayList<UserVO>();
 try {
 		
@@ -257,7 +257,7 @@ try {
 			String user_id = rs.getString(1);
 			String user_name = rs.getString(2);
 			String email = rs.getString(3);
-			String birth_date = rs.getString(4);
+			int birth_date = rs.getInt(4);
 			String addr = rs.getString(5);
 			String phone = rs.getString(6);
 			String gender = rs.getString(7);
@@ -295,7 +295,7 @@ public ArrayList<UserVO> select_admin()
 			String user_id = rs.getString(1);
 			String user_name = rs.getString(2);
 			String email =rs.getString(3);
-			String birth_date=rs.getString(4);
+			int birth_date=rs.getInt(4);
 			String addr=rs.getString(5);
 			String phone=rs.getString(6);
 			String gender=rs.getString(7);
