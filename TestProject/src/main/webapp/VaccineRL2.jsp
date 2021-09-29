@@ -28,20 +28,21 @@
 <body>
 	
 	<%
+	String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
 	%>
 	<% if(vo != null){
-		String birth = vo.getBirth_date();
+		birth = vo.getBirth_date();
 	}; %>
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.print(sr.size());
+		System.out.println(sr.size());
 	%>
 	
 	<%
 		ArrayList<UserVO> al = dao.select();
-		System.out.print(al.size());
+		System.out.println(al.size());
 	%>
 	
 	<!-- Back to top button -->

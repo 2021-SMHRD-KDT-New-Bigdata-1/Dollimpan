@@ -245,7 +245,7 @@ try {
 		conn();
 		
 		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
-		String sql = "select user_id from users"; 
+		String sql = "select user_id, user_name, email, birth_date, addr, phone, gender from users"; 
 		psmt = conn.prepareStatement(sql);
 		
 		rs = psmt.executeQuery(); //커서 이용
@@ -255,12 +255,12 @@ try {
 		
 		while(rs.next()) { //커서 이동
 			String user_id = rs.getString(1);
-			String user_name = rs.getString(3);
-			String email = rs.getString(4);
-			String birth_date = rs.getString(5);
-			String addr = rs.getString(6);
-			String phone = rs.getString(7);
-			String gender = rs.getString(9);
+			String user_name = rs.getString(2);
+			String email = rs.getString(3);
+			String birth_date = rs.getString(4);
+			String addr = rs.getString(5);
+			String phone = rs.getString(6);
+			String gender = rs.getString(7);
 			
 		
 			//값 묶어주기
