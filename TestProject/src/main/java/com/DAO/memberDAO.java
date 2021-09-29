@@ -170,7 +170,6 @@ public ArrayList<HospitalVO> search() {
 	ArrayList<HospitalVO> sr = new ArrayList<HospitalVO>();
 try {
 		conn();
-		HospitalVO vo = null;
 		
 		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
 		String sql = "select hos_name from hospitals"; 
@@ -187,7 +186,8 @@ try {
 			double latitude = rs.getDouble(5);
 			double longitude = rs.getDouble(6);
 			
-			vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
+			
+			HospitalVO vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
 			//값 추가해주기
 			sr.add(vo);
 		}

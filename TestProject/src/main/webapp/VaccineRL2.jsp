@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.HospitalVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.UserVO"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -27,6 +29,12 @@
 	
 	<%
 		UserVO vo = (UserVO)session.getAttribute("vo");
+	%>
+	
+	<%
+		memberDAO dao = new memberDAO();
+		ArrayList<HospitalVO> sr = dao.search();
+		System.out.print(sr.size());
 	%>
 	
 	<!-- Back to top button -->
@@ -175,7 +183,6 @@
 										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
-									
 									<!-- 
 										사용자 my page에서 맞아야 할 백신 가져오기
 										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->

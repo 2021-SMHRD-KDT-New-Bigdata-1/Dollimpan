@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/login.css">
 
 
+
 </head>
 <body>
 	<%
@@ -106,23 +107,16 @@
         <span class="bg-light">OR</span>
     </p>
 	<form action = "UpdateService" method = "post">
-	
-
-	
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="user_pw" class="form-control" placeholder="\현재비밀번호" type="password">
-    </div> <!-- form-group// -->
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_pw" class="form-control" placeholder="변경할 비밀번호" type="password" >
+        <input name="user_pw" class="form-control" placeholder="변경할 비밀번호" type="password">
     </div> <!-- form-group// -->
     
+    <script type="text/javascript">
+    </script>
 <!--       <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -137,13 +131,10 @@
         <input name="email" class="form-control" placeholder="이메일" type="email" >
     </div> <!-- form-group// -->
     
-    
-    
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span name = "addr" class="input-group-text"><i class="fa fa-phone"></i> </span>
 		</div>
-		
     	<input name="addr" class="form-control" placeholder="주소" type="text">
     </div> <!-- form-group// -->
 
@@ -151,11 +142,9 @@
     	<div class="input-group-prepend">
 		    <span name = "phone" class="input-group-text"><i class="fa fa-phone"></i> </span>
 		</div>
-		
     	<input name="phone" class="form-control" placeholder="핸드폰 번호" type="text">
     </div> <!-- form-group// -->
-                                         
-                                       
+                                                                  
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> 정보 수정  </button>
     </div> <!-- form-group// -->  
@@ -166,9 +155,6 @@
 
 </div> 
 <!--container end.//-->
-  
-
-
 
   <footer class="page-footer">
     <div class="container">
