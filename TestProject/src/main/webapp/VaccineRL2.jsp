@@ -38,9 +38,10 @@
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.print(sr.size());
-		System.out.print(sr.get(1).getHos_addr());
+		//  System.out.print(sr.size());  병원 개수
+		System.out.print(sr.get(1).getLatitude());
 	%>
+	
 
 	
 	<!-- Back to top button -->
@@ -321,10 +322,8 @@
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
 
-
-
-
-
+				<!-- 카카오api -->
+				
 								<script
 									src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
 								<script>
@@ -332,7 +331,7 @@
 								.getElementById('map'), // 지도를 표시할 div 
 						mapOption = {
 							center : new kakao.maps.LatLng(
-									35.152493, 126.889869), // 지도의 중심좌표
+									35.151980098317935, 126.88980055854985), // 지도의 중심좌표
 							level : 4, // 지도의 확대 레벨
 							mapTypeId : kakao.maps.MapTypeId.ROADMAP
 						// 지도종류
@@ -341,22 +340,27 @@
 						// 지도를 생성한다 
 						var map = new kakao.maps.Map(mapContainer,
 								mapOption);
+						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
 											
-						
-						
-							for(var i=10; i<<%sr.size()%>; i++){
-								var 데이터 []=
-										<%sr.get(i).getlongtitude(),
-													sr.get(i).getlatitude()%>,
-													'<div style="padding:5px;">'+<%sr.get(i).gethos_name()%>+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>+'" style="color:blue" target="_blank">길찾기</a></div>'}
-											 /* [
-													35.15383683286908,
-													126.8813606855869,
-													'<div style="padding:5px;">새우리병원 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">길찾기</a></div>' ],
-											[
-													35.15246398491651,
-													126.8844556644417,
-													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] */
+						// var positions[] = new var[sr.size()];
+
+						/* 1. ??를 검색해서 나오는 값을 어레이리스트로 생성 
+						   2. 그 생성한 값을 토대로 좌표값을 출력
+						   3. 
+						*/
+						<%-- 
+							var 데이터 [] = null;
+							double a = 0;
+							double b = 0;
+							
+							<%for(int i=0; i<sr.size(); i++){%>
+							list.add(데이터)(sr.get(i).getlongtitude(),
+									sr.get(i).getlatitude()};
+									 
+							}
+													+<div style="padding:5px;">+<%sr.get(i).gethos_name()%>+<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>" + style="color:blue" target="_blank">길찾기</a></div><%}%>
+
+								
 
 									for (var i = 0; i < 데이터.length; i++) {
 										// 지도에 마커를 생성하고 표시한다
