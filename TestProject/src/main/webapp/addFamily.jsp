@@ -126,7 +126,7 @@
    <div class="searchbox">
       <div class="header">
         <h1>Search</h1>
-        <input onkeyup="filter()" type="text" id="value" placeholder="Type to Search">
+        <input onkeyup="filter()" type="text" id="value" placeholder="id">
       </div>
 
       <div class="container">
