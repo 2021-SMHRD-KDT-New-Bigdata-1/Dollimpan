@@ -23,7 +23,9 @@ public class JoinService extends HttpServlet {
 		//1. 사용자가 입력한 값 가져오기
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
+
 		String user_name = request.getParameter("user_name");
+
 		String email = request.getParameter("email");
 		int birth_date =Integer.parseInt(request.getParameter("birth_date"));
 		String addr = request.getParameter("addr");
@@ -34,9 +36,11 @@ public class JoinService extends HttpServlet {
 		
 		memberDAO dao = new memberDAO();
 		int cnt = dao.join(user_id, user_pw, user_name, email, addr, phone, adm, gender, birth_date);
-		
+				
 		if(cnt>0) {
 		response.sendRedirect("VaccineRL2.jsp");
+		}else {
+			System.out.println("실패했다 다시하라!");
 		}
 		
 	}
