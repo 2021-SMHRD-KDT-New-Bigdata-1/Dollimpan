@@ -37,7 +37,7 @@
 		memberDAO dao = new memberDAO();
 		//select기능 호출
 		ArrayList<UserVO> al = dao.select();
-		System.out.print(al.size());
+//		System.out.print(al.size());
 	%>	
 	
 
@@ -64,7 +64,7 @@
     <!-- .topbar -->
 	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 	      <div class="container">
-	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-Kok</a>
+	        <a class="navbar-brand" href="Addform.jsp"><span class="text-primary">Yak</span>-Kok</a>
 	
 	        <form action="#">
 	          <div class="input-group input-navbar">
@@ -97,7 +97,7 @@
 	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="LogoutService">로그아웃</a>
+	              <a class="btn btn-primary ml-lg-3" href="html/loginForm.html">로그아웃</a>
 	            </li>
 	          </ul>
 	        </div> <!-- .navbar-collapse -->
@@ -131,8 +131,8 @@
         <h1>Search</h1>
         
         <form action = "FamilyService"  method = "post">
-        <input onkeyup="filter()" type="text" id="value" placeholder="가족 id">
-        <input type="submit" name="fam" value="등록된 아이디 검색" >
+        <input onkeyup="filter()" type="text" id="value" name="fam" placeholder="가족 id">
+        <input type="submit" value="등록된 아이디 검색" >
         <% 
   //      ArrayList<FamilyVO> fo = dao.search_f(String fam);  %>
         
@@ -264,45 +264,6 @@
 <script src="assets/vendor/wow/wow.min.js"></script>
 
 <script src="assets/js/theme.js"></script>
-
-<script> 
-
-function famCheck0() // 이건 필요없는 거 같다. 
-{
-	var input = document.getElementById("input_fam");
-	$.ajax({
-		type : "post",   //데이터 전송 방식
-		data : {fam : input.value}, //서버에 보낼 데이터(JSON(키-값))
-		url : "famCheckCon",  //데이터를 보낼 서버페이지
-		dataType : "text",  //응답받을 데이터 타입
-		success : function(data)
-		{
-			var sp = document.getElementById("sp"); // 중복확인이 되면 <sqan id="span"></span>안에 if문 안의 텍스트가 입력
-			if(data=="true")
-			{
-				sp.innerHTML = "해당 id로 가입된 사람은 없습니다.";
-				id0=false;
-			}
-			else
-			{
-				sp.innerHTML = "검색";
-				id0=true;
-			}
-		},
-		error : function()
-		{
-			alert("통신실패!");
-		}
-	})
-}
-
-function famCheck()
-{
-	if(fam=)	
-}
-
-
-</script>
 
 
 </body>

@@ -22,11 +22,25 @@ public class FamilyService extends HttpServlet {
 //		String fam2 = request.getParameter("fam2");
 //		String fam3 = request.getParameter("fam3");
 //		String user_id = request.getParameter("user_id");
+		String fam = request.getParameter("fam");
 		
 		HttpSession session = request.getSession(); 
 		UserVO vo = (UserVO)session.getAttribute("vo"); 
 		
 		String user_id = vo.getUser_id();
+		
+		if(vo != null)
+		{
+//			HttpSession session = request.getSession();
+			session.setAttribute("vo", vo);
+			response.sendRedirect("famView.jsp");
+		}
+		else
+		{
+			System.out.println("검색한 아이디가 없습니다.");
+			response.sendRedirect("VaccineRL2.jsp");
+			
+		}
 		
 	}
 

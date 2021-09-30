@@ -374,39 +374,28 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}
 		return check;
 	}
-	
-<<<<<<< HEAD
-	
-	
-	public String search_f(String fam)
+
+	public ArrayList<UserVO> search_f(String fam) // addFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
 	{
-		ArrayList<FamilyVO> fo = new ArrayList<FamilyVO>();
+		ArrayList<UserVO> vo = new ArrayList<UserVO>(); // userVO 타입 변수 선언
 		try {
 				conn();
 				
-				//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
-				String sql = "select fam1, fam2, fam3, fam4, user_id from family where=?"; 
+				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id행을 가져온다.
+				String sql = "select user_id from users where=?"; 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, fam);
 				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
 				
-				rs = psmt.executeQuery(); //커서 이용
-				
-				//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
-				//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+				rs = psmt.executeQuery(); 
 				
 				while(rs.next()) 
-				{ // sql 문의 fam1 ~ fam4, user_id를 받아온다.
-					String fam1 = rs.getString(1);
-					String fam2 = rs.getString(2);
-					String fam3 = rs.getString(3);
-					String fam4 = rs.getString(4);
-					String user_id = rs.getString(5);
+				{
+					String user_id = rs.getString(1);
 					
-					
-					FamilyVO vo = new FamilyVO(fam1, fam2, fam3, fam4, user_id);
+					UserVO fo = new UserVO(user_id);
 					//값 추가해주기
-					fo.add(vo); // 배열 fo에 저장해준다.
+					vo.add(fo); // 배열 fo에 저장해준다.
 				}
 				
 			}catch(Exception e) { 
@@ -416,12 +405,40 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 				close();
 			}
 		
-		return fam;
+		return vo;
 		
 	}
 	
+	public int addfam(String fam1, String fam2, String fam3, String fam4, String user_id) // famView에서 추가를 누르면 family 테이블에 해당 id를 추가시켜주는 함수
+	{
+		int cnt=0;
+		try
+		{
+			conn();
+			String sql="insert into family values(?, ?, ?, ?, ?)"; //  입력되지 않는 칸은  null로 출력?
+			
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, fam1); 
+			psmt.setString(2, fam2); 
+			psmt.setString(3, fam3); 
+			psmt.setString(4, fam4); 
+			psmt.setString(5, user_id); 
+			
+			cnt=psmt.executeUpdate();
+			
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			close();
+		}
+		return cnt;
+	}
 
-=======
+
 	public ArrayList<VaccineVO> VaccineList() {
 		ArrayList<VaccineVO> vc = new ArrayList<VaccineVO>();
 	try {
@@ -458,6 +475,5 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}
 		return vc;
 	}
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
 
 }
