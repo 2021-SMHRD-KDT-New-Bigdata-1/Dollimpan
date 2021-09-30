@@ -337,4 +337,40 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	return cnt;
 }
 
+// id 중복확인
+	public boolean idCheck(String user_id) {
+		
+		boolean check = false;
+		
+		conn();
+		
+		String sql="select user_id from users where user_id=?";
+		
+		try 
+		{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,user_id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) 
+			{  //사용자가 입력한 이메일이 테이블에 존재하는 경우
+				check = true;
+			}
+			else 
+			{  //사용자가 입력한 이메일이 테이블에 존재하지 않는 경우
+				check = false;
+			}
+			
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			close();
+		}
+		return check;
 	}
+
+}

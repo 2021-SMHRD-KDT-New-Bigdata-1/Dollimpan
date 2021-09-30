@@ -39,7 +39,8 @@ public class JoinService extends HttpServlet {
 				
 		if(cnt>0) {
 		response.sendRedirect("VaccineRL2.jsp");
-		}else {
+		}
+		else {
 			System.out.println("실패했다 다시하라!");
 		}
 		
