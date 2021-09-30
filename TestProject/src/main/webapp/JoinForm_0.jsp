@@ -111,6 +111,7 @@
     
     </script>
 	<form action = "JoinService" method = "post" id="join_form">
+	<!-- form 태그안에 id="join_form"을 붙여주고, 아래 <script></script>안에서 함수로 만들어서 중복확인 되면 안 넘어가게 만든다. -->
 	
     <div class="form-group input-group">
     	<div class="input-group-prepend" name="id">
@@ -119,6 +120,7 @@
         <input name="user_id" class="form-control" type="text" id="input_id">
         
         <input type="button" value="ID중복체크" onclick="idCheck()">
+        <!-- input type="submit"을 써주면 이벤트(중복확인)에 따르는 조건을 부여해도 소용없기 때문에  -->
         <span id="sp"></span>
     </div> <!-- id-group// -->
     
@@ -298,6 +300,8 @@
   
   
 <!-- Scripts -->
+<!-- script와 스크립트릿의 다른점...
+스크립트릿안의 함수는 jsp의 html이 만들어지기 전 연산되는 것이기 때문에 idcheck와 같은,,,html이 만들어진 뒤의 이벤트는 함수로 쓸 수가 없다. -->
 	<script>
 		function idCheck()
 		{
@@ -328,7 +332,7 @@
 			})
 		}
 		
-		function onclick0()
+		function onclick0() // 중복 확인할 시 회원가입이 불가능하게 만드는 이벤트,,form태그안에 join_form을 먼저 쓰고 onclick0() 버튼을 부여해줬다.
 		{
 			if(id0==true)
 			{
