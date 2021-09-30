@@ -47,7 +47,7 @@ import com.smhrd.UserVO;
 			}
 		}
 		
-		public int join(String user_id, String user_pw, String user_name, String email, int birth_date, String addr, String phone, String adm, String gender) { 
+		public int join(String user_id, String user_pw, String user_name, String email, String addr, String phone, String adm, String gender, int birth_date) { 
 			int cnt = 0;
 			try {
 			
@@ -59,11 +59,11 @@ import com.smhrd.UserVO;
 				psmt.setString(2, user_pw); 
 				psmt.setString(3, user_name); 
 				psmt.setString(4, email);
-				psmt.setInt(5, birth_date);
-				psmt.setString(6, addr);
-				psmt.setString(7, phone);
-				psmt.setString(8, adm);
-				psmt.setString(9, gender);
+				psmt.setString(5, addr);
+				psmt.setString(6, phone);
+				psmt.setString(7, adm);
+				psmt.setString(8, gender);
+				psmt.setInt(9, birth_date);
 				
 				cnt = psmt.executeUpdate();
 			

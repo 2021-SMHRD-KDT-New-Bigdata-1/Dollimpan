@@ -25,7 +25,11 @@ public class JoinService extends HttpServlet {
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");
 		String email = request.getParameter("email");
+<<<<<<< HEAD
+		int birth_date = Integer.parseInt(request.getParameter("birth_date"));
+=======
 		int birth_date =Integer.parseInt(request.getParameter("birth_date"));
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/Dollimpan.git
 		String addr = request.getParameter("addr");
 		String phone = request.getParameter("phone");
 		String adm = request.getParameter("adm");
@@ -33,7 +37,7 @@ public class JoinService extends HttpServlet {
 		
 		
 		memberDAO dao = new memberDAO();
-		int cnt = dao.join(user_id, user_pw, user_name, email, birth_date, addr, phone, adm, gender);
+		int cnt = dao.join(user_id, user_pw, user_name, email, addr, phone, adm, gender, birth_date);
 		
 		if(cnt>0) {
 		response.sendRedirect("VaccineRL2.jsp");
