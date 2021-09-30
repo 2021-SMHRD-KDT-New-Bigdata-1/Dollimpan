@@ -38,10 +38,9 @@
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
+		System.out.print(sr.size());
+		System.out.print(sr.get(1).getHos_addr());
 	%>
-
-	
-	
 
 	
 	<!-- Back to top button -->
@@ -322,12 +321,7 @@
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
 
-<%for(int i=10; i<sr.size(); i++){
-	
-	a[i] = sr.get(i).getLongitude(),
-	sr.get(i).getlatitude(),%>
-	'<div style="padding:5px;">'+<%sr.get(i).gethos_name() %>+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+sr.get(i).getlongtitude(), sr.get(i).getlatitude()+'" style="color:blue" target="_blank">길찾기</a></div>' ]},
- %>
+
 
 
 
@@ -348,20 +342,21 @@
 						var map = new kakao.maps.Map(mapContainer,
 								mapOption);
 											
-						var 데이터 = [
-							for(var i=10; i<sr.size(); i++){
-							[
-										sr.get(i).getlongtitude(),
-													sr.get(i).getlatitude(),
-													'<div style="padding:5px;">'+sr.get(i).gethos_name()+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+sr.get(i).getlongtitude(), sr.get(i).getlatitude()+'" style="color:blue" target="_blank">길찾기</a></div>' ]},
-											[
+						
+						
+							for(var i=10; i<<%sr.size()%>; i++){
+								var 데이터 []=
+										<%sr.get(i).getlongtitude(),
+													sr.get(i).getlatitude()%>,
+													'<div style="padding:5px;">'+<%sr.get(i).gethos_name()%>+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>+'" style="color:blue" target="_blank">길찾기</a></div>'}
+											 /* [
 													35.15383683286908,
 													126.8813606855869,
 													'<div style="padding:5px;">새우리병원 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">길찾기</a></div>' ],
 											[
 													35.15246398491651,
 													126.8844556644417,
-													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] ]
+													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] */
 
 									for (var i = 0; i < 데이터.length; i++) {
 										// 지도에 마커를 생성하고 표시한다
