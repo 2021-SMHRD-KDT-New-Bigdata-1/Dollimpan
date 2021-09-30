@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Goods</title>
+<title>addFamily</title>
 
 <link rel="stylesheet" href="assets/css/maicons.css">
 
