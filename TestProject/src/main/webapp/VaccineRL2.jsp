@@ -29,18 +29,18 @@
 <body>
 	
 	<%
-	//String birth ="";
+	int date = 0;
 		UserVO vo = (UserVO)session.getAttribute("vo");
-		
-	%>
+		if(vo != null){
+		date = vo.getBirth_date();
+	}%>
 	
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.println(sr.size());
+		//  System.out.print(sr.size());  병원 개수
+		System.out.print(sr.get(1).getLatitude());
 	%>
-
-	
 	
 
 	
@@ -55,8 +55,8 @@
 				<!-- .row -->
 			</div>
 			<!-- .container -->
-		</div>
-		<!-- .topbar -->
+		
+		<!-- .topbar 자리 -->
 
 		<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 			<div class="container">
@@ -173,49 +173,33 @@
 
 		<!-- 두번째 섹션 -->
 
-		<div class="page-section">
+		<div class="page-section" ">
 			<div class="container">
 				<h1 class="text-center wow fadeInUp"></h1>
 
 				<form class="contact-form mt-5">
 					<div class="container">
 						<div class="row align-items-center">
-							<div class="col-lg-6 py-3 wow fadeInUp">
-
+							
+								
+								<%if(vo == null){ %>
+								<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
 								<section>
-								
-								
-								
 									<header>
-										<h2>접종 가능 리스트!!</h2><br>
+										<h2>병원 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
-									
-									
-									<!-- 
-										사용자 my page에서 맞아야 할 백신 가져오기
-										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->
 										
-										
-										<!-- 백신 리스트 -->
-										
-										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
-											<!-- 병원 리스트 => '<a href="#">' =>'#'누르면 위도,경도값 가져와서 지도에 출력 -->
-												<!-- '<a href="#">' 지도에 출력된 예약하기 버튼 클릭시 전화번호 출력?? -->
-										
-										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
-							
-									
-										<li><span class="date"><h4><strong>인플루엔자</strong></h4></span>
+										<li><span class="date"><h4><strong>결핵</strong></h4></span>
 										<span> / 20~40세</span>
 										<span> / 서구보건소</span>
 										<span> / 무료</span>
 											<h3>
-												<a href="#">예약하기</a>
+												<button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
 											</h3>
 											<p>접종 현황: 1회</p></li>
 											
-										<li><span class="date"><h4><strong>수두</strong></h4></span>
+										<li><span class="date"><h4><strong>A형간염</strong></h4></span>
 										<span> / 20~40세</span>
 										<span> / 보라안과</span>
 										<span> / 15000원</span>
@@ -224,7 +208,7 @@
 											</h3>
 											<p>접종 현황: 0회</p></li>
 											
-										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
+										<li><span class="date"><h4><strong>B형간염</strong></h4></span>
 										<span> / 20세</span>
 										<span> / 새우리병원</span>
 										<span> / 3000원</span>
@@ -233,72 +217,185 @@
 											</h3>
 											<p>접종 현황: 0회</p></li>
 										
+										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>	
 									</ul>
 								</section>
-								
-								<!--  --> 
-								
+							</div>
+							<%}else{ %>
+									<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+									<section>
+										<header>
+									
+										<h2>백신 리스트!!</h2><br>
+									</header>
+									<ul class="dates">
+									
+									
+										<li><span class="date"><h4><strong>결핵</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+											</h3>
+											<p>접종 현황: 1회</p></li>
+											
+										<li><span class="date"><h4><strong>A형간염</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 보라안과</span>
+										<span> / 15000원</span>
+											<h3>
+												<a href="#">예약하기</a>
+											</h3>
+											<p>접종 현황: 0회</p></li>
+											
+										<li><span class="date"><h4><strong>B형간염</strong></h4></span>
+										<span> / 20세</span>
+										<span> / 새우리병원</span>
+										<span> / 3000원</span>
+											<h3>
+												<a href="#">예약하기</a>
+											</h3>
+											<p>접종 현황: 0회</p></li>
+										
+										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>	
+										
+										
+									</ul>
+									
+																		
+								</section>
+								</div>
+								<%} %>
+							
+							
+							<div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
+
+								<section>
+								<div>
+									<header>
+										<h2>병원 목록!</h2><br>
+									</header>
+									<ul class="links">
+										<li><span class="date"><h4><strong>서구보건소</strong></h4></span>
+										<span> / 주소~             ~</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											
+										<li><span class="date"><h4><strong>강휘병원</strong></h4></span>
+										<span> / 주소주소주소주소주소주소</span>
+										<span> / 보라안과</span>
+										<span> / 15000원</span>
+											<h3>
+												<a href="#">예약하기</a>
+											</h3>
+											<p>접종 현황: 0회</p></li>
+											
+										<li><span class="date"><h4><strong>B형간염</strong></h4></span>
+										<span> / 20세</span>
+										<span> / 새우리병원</span>
+										<span> / 3000원</span>
+											<h3>
+												<a href="#">예약하기</a>
+											</h3>
+											<p>접종 현황: 0회</p></li>
+										</ul>
+										</div>								
+								</section>
 								
 							</div>
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
 
+				<!-- 카카오api -->
+				
 								<script
 									src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
 								<script>
-									var mapContainer = document
-											.getElementById('map'), // 지도를 표시할 div 
-									mapOption = {
-										center : new kakao.maps.LatLng(
-												35.152493, 126.889869), // 지도의 중심좌표
-										level : 4, // 지도의 확대 레벨
-										mapTypeId : kakao.maps.MapTypeId.ROADMAP
-									// 지도종류
-									};
+								var mapContainer = document
+								.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center : new kakao.maps.LatLng(
+									35.151980098317935, 126.88980055854985), // 지도의 중심좌표
+							level : 4, // 지도의 확대 레벨
+							mapTypeId : kakao.maps.MapTypeId.ROADMAP
+						// 지도종류
+						};
 
-									// 지도를 생성한다 
-									var map = new kakao.maps.Map(mapContainer,
-											mapOption);
+						// 지도를 생성한다 
+						var map = new kakao.maps.Map(mapContainer,
+								mapOption);
+						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
+											
+						// var positions[] = new var[sr.size()];
+						
+						    var positions = new Array();
+						    
+						    for(int i=0;i<sr.size();i++){
+						    	positions[i] = {"title: " + sr.get(i).getHos_name() , "latlng: "+new kakao.maps.LatLng(sr.get(i).getLatitude(),sr.get(i).getLongtitude)}; 
+						     
+						    }
+						   
+						// 마커 이미지의 이미지 주소입니다
+						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+						    
+						for (var i = 0; i < positions.length; i ++) {
+						    
+						    // 마커 이미지의 이미지 크기 입니다
+						    var imageSize = new kakao.maps.Size(24, 35); 
+						    
+						    // 마커 이미지를 생성합니다    
+						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+						    
+						    // 마커를 생성합니다
+						    var marker = new kakao.maps.Marker({
+						        map: map, // 마커를 표시할 지도
+						        position: positions[i].latlng, // 마커를 표시할 위치
+						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						        image : markerImage // 마커 이미지 
+						    
+						        
+						   
+						        
+						    });
+						    
+						    marker.setMap(map);
 
-									var 데이터 = [
-											[
-													35.152493,
-													126.889869,
-													'<div style="padding:5px;">서구보건소 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.152493, 126.889869" style="color:blue" target="_blank">길찾기</a></div>' ],
-											[
-													35.15383683286908,
-													126.8813606855869,
-													'<div style="padding:5px;">새우리병원 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">길찾기</a></div>' ],
-											[
-													35.15246398491651,
-													126.8844556644417,
-													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] ]
+						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
-									for (var i = 0; i < 데이터.length; i++) {
-										// 지도에 마커를 생성하고 표시한다
-										var marker = new kakao.maps.Marker({
-											position : new kakao.maps.LatLng(
-													데이터[i][0], 데이터[i][1]), // 마커의 좌표
-											map : map
-										// 마커를 표시할 지도 객체
-										});
-
-										
-										// 인포윈도우를 생성합니다
-										var infowindow = new kakao.maps.InfoWindow(
-												{
-													content : 데이터[i][2]
-												});
-
-										// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-										infowindow.open(map, marker);
-									}
+						    // 인포윈도우를 생성합니다
+						    var infowindow = new kakao.maps.InfoWindow({
+						        position : iwPosition, 
+						        content : iwContent 
+						    });
+						      
+						    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+						    infowindow.open(map, marker); 
+						}
+						
 								</script>
-
+</div>
 							</div>
 						</div>
+					</form>
 					</div>
-				</form>
+				
 			</div>
 		</div>
 
@@ -335,12 +432,6 @@
 				<!-- .banner-home -->
 			</div>
 		</div>
-	</div>
-	</div>
-	</div>
-	<!-- .bg-light -->
-	</div>
-	<!-- .bg-light -->
 
 
 
@@ -534,6 +625,16 @@
 
 	<script src="assets/js/theme.js"></script>
 
+	<script>
+    function test() {
+        if ($('#menu').css('display') == 'block') {
+        	$('#menu').css('display' , 'none')
+            $('#menu1').css('display', 'block');
+        } else {
+            $('#(아이디명)').css('display', 'block');
+        }
+    }
+</script>
 
 </body>
 </html>

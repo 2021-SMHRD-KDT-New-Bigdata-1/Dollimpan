@@ -1,5 +1,11 @@
+<%@page import="com.DAO.memberDAO"%>
+<%@page import="com.smhrd.HospitalVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.smhrd.UserVO"%>
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,39 +20,39 @@
 
 <link rel="stylesheet" href="../assets/css/bootstrap.css">
 
-<link rel="stylesheet"
-	href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+<link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
 
 <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
 <link rel="stylesheet" href="../assets/css/theme.css">
 </head>
 <body>
+	
+	<%
+	//String birth ="";
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		if(vo != null){
+		int date =  vo.getBirth_date();
+	}%>
+	
+	<%
+		memberDAO dao = new memberDAO();
+		ArrayList<HospitalVO> sr = dao.search();
+		System.out.println(sr.size());
+	%>
 
+	
+	
+
+	
 	<!-- Back to top button -->
-	<div class="back-to-top"></div>.
+	<div class="back-to-top"></div>
 	
 
 	<header>
-		<div class="topbar">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8 text-sm">
-						<div class="site-info">
-							<a href="#"><span class="mai-call text-primary"></span> +00
-								123 4455 6666</a> <span class="divider">|</span> <a href="#"><span
-								class="mai-mail text-primary"></span> mail@example.com</a>
-						</div>
-					</div>
-					<div class="col-sm-4 text-right text-sm">
-						<div class="social-mini-button">
-							<a href="#"><span class="mai-logo-facebook-f"></span></a> <a
-								href="#"><span class="mai-logo-twitter"></span></a> <a href="#"><span
-								class="mai-logo-dribbble"></span></a> <a href="#"><span
-								class="mai-logo-instagram"></span></a>
-						</div>
-					</div>
-				</div>
+				
+					<div class="col-sm-8 text-sm">    <!-- ÀÌ°Ô ÀÖÀ¸¸é ¸¶ÀÌÆäÀÌÁö°¡ ¿À¸¥ÂÊÀ¸·Î ¹Ð¸² -->
+					
 				<!-- .row -->
 			</div>
 			<!-- .container -->
@@ -55,19 +61,7 @@
 
 		<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 			<div class="container">
-				<a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-Kok</a>
-
-				<form action="#">
-					<div class="input-group input-navbar">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="icon-addon1"><span
-								class="mai-search"></span></span>
-						</div>
-						<input type="text" class="form-control"
-							placeholder="Enter keyword.." aria-label="Username"
-							aria-describedby="icon-addon1">
-					</div>
-				</form>
+				<a class="navbar-brand" href="VaccineRL2.jsp"><span class="text-primary">Yak</span>-Kok</a>
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupport" aria-controls="navbarSupport"
@@ -79,41 +73,38 @@
 					<ul class="navbar-nav ml-auto">
 					
 						<li class="nav-item"><a class="nav-link"
-							href="about.html">ì•½ì½•ì´ëž€?</a></li>
+							href="html/about.html">¾àÄÛÀÌ¶õ?</a></li>
 						
 						<li class="nav-item active"><a class="nav-link"
-							href="VaccineRL.html">ë°±ì‹ ì˜ˆì•½/ì¡°íšŒ</a></li>
+							href="VaccineRL2.jsp">¹é½Å¿¹¾à/Á¶È¸</a></li>
 							
 						<li class="nav-item"><a class="nav-link"
-							href="VaccineInfo.html">ë°±ì‹ ì •ë³´</a></li>
+							href="html/VaccineInfo.html">¹é½ÅÁ¤º¸</a></li>
 						
 						<li class="nav-item"><a class="nav-link"
-							href="AD_FAQ.html">ê´‘ê³ /FAQ</a></li>
+							href="html/AD_FAQ.html">±¤°í/FAQ</a></li>
 						
 						<li class="nav-item "><a class="nav-link"
-							href="FindPH.html">ì•½êµ­/ë³‘ì›ì°¾ê¸°</a></li>
+							href="FindPH.jsp">¾à±¹/º´¿øÃ£±â</a></li>
 							
-						<li class="nav-item "><a class="btn btn-primary ml-lg-3"
-							href="loginForm.html">ë¡œê·¸ì¸ / íšŒì›ê°€ìž…</a></li>
+						<%
+						if(vo == null){ //·Î±×ÀÎ Àü
+							out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='html/loginForm.html'>·Î±×ÀÎ/È¸¿ø°¡ÀÔ</a></li>");
+						}else{
+							//°ü¸®ÀÚ °èÁ¤À¸·Î ·Î±×ÀÎ ÇßÀ» °æ¿ì ¸ðµç È¸¿øÁ¤º¸ º¼ ¼ö ÀÖµµ·Ï
+							//·Î±×ÀÎÇÑ È¸¿øÀÇ ÀÌ¸ÞÀÏÀÌ adminÀÎ °æ¿ì¿¡´Â È¸¿øÀüÃ¼¸ñ·ÏÀÌ º¸ÀÌ°Ô 
+							//·Î±×ÀÎÇÑ È¸¿øÀÇ ÀÌ¸ÞÀÏÀÌ ÀÏ¹Ý È¸¿øÀÎ °æ¿ì¿¡´Â È¸¿øÁ¤º¸ ¼öÁ¤ÀÌ º¸ÀÌ°Ô
+							if(vo.getUser_id().equals("admin")){
+								out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>È¸¿øÀüÃ¼¸ñ·Ï</a>");
+							}else{
+								out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='Mypage.jsp'>¸¶ÀÌÆäÀÌÁö</a>");
+							}
+							out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>·Î±×¾Æ¿ô</a>");
+						}
+						
 
+						%>
 						
-						
-						<script>
-								if(vo == null){
-									document.write("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='loginForm.html'>ë¡œê·¸ì¸/ë¡œê·¸ì•„ì›ƒ</a></li>")
-								}else{
-									//ê´€ë¦¬ìž ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸ í–ˆì„ ê²½ìš° ëª¨ë“  íšŒì›ì •ë³´ ë³¼ ìˆ˜ ìžˆë„ë¡
-						
-									//ë¡œê·¸ì¸í•œ íšŒì›ì˜ ì´ë©”ì¼ì´ ì¼ë°˜ íšŒì›ì¸ ê²½ìš°ì—ëŠ” íšŒì›ì •ë³´ ìˆ˜ì •ì´ ë³´ì´ê²Œ
-									if(vo.getUser_id().equals("user_id")){
-										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectMember.jsp'>íšŒì›ì „ì²´ëª©ë¡</a>");
-									}else{
-										out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='update.jsp'>íšŒì›ì •ë³´ìˆ˜ì •</a>");
-									}
-									document.write("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>ë¡œê·¸ì•„ì›ƒ</a>");
-								}
-							
-						</script>
 						
 					</ul>
 				</div>
@@ -124,12 +115,20 @@
 	</header>
 
 	<div class="page-hero bg-image overlay-dark"
-		style="background-image: url(../assets/img/bg_image_1.jpg);">
+		style="background-image: url(./assets/img/bg_image_1.jpg);">
 		<div class="hero-section">
 			<div class="container text-center wow zoomIn">
 				<span class="subhead">Let's make your life happier</span>
 				<h1 class="display-4">
 					Welcome to <span class="text-primary">Yak</span>-Kok
+					<%
+								if(vo == null){
+									out.print("<h1>·Î±×ÀÎ ÇÑ ¼¼¼Ç¾ÆÀÌµð¸¦ Ãâ·ÂÇØÁÖ¼¼¿ä</h1>");
+								}else{
+									out.print("<h1>"+vo.getUser_name()+"´Ô È¯¿µÇÕ´Ï´Ù.</h1>");
+								}
+							
+							%>
 				</h1>
 				<a href="#" class="btn btn-primary">Let's Consult</a>
 			</div>
@@ -146,7 +145,7 @@
 							<div class="circle-shape bg-primary text-white">
 								<span class="mai-shield-checkmark"></span>
 							</div><a class="nav-link"
-							href="VaccineRL.html"><p>ë°±ì‹  ì˜ˆì•½</p></a>
+							href="VaccineRL.html"><p>¹é½Å ¿¹¾à</p></a>
 							
 						</div>
 					</div>
@@ -156,7 +155,7 @@
 								<span class="mai-basket"></span>
 							</div>
 							<a class="nav-link"
-							href="FindPH.html"><p>ì•½êµ­,ë³‘ì›ì°¾ê¸°</p></a>
+							href="FindPH.html"><p>¾à±¹,º´¿øÃ£±â</p></a>
 						</div>
 					</div>
 					<div class="col-md-4 py-3 py-md-0" >
@@ -173,53 +172,128 @@
 		</div>
 		<!-- .page-section -->
 
-		<!-- ë‘ë²ˆì§¸ ì„¹ì…˜ -->
+		<!-- µÎ¹øÂ° ¼½¼Ç -->
 
-		<div class="page-section">
+		<div class="page-section" ">
 			<div class="container">
 				<h1 class="text-center wow fadeInUp"></h1>
 
 				<form class="contact-form mt-5">
 					<div class="container">
 						<div class="row align-items-center">
-							<div class="col-lg-6 py-3 wow fadeInUp">
+							<div class="col-lg-6 py-3 wow fadeInUp"  style="height: 500px; overflow: auto">
 
 								<section>
+								
+								
+								
 									<header>
-										<h2>ì ‘ì¢… ê°€ëŠ¥ ë¦¬ìŠ¤íŠ¸!!</h2><br>
+										<h2>Á¢Á¾ °¡´É ¸®½ºÆ®!!</h2><br>
 									</header>
 									<ul class="dates">
-										<li><span class="date"><h4><strong>ì¸í”Œë£¨ì—”ìž</strong></h4></span>
-										<span> / 20~40ì„¸</span>
-										<span> / ì„œêµ¬ë³´ê±´ì†Œ</span>
-										<span> / ë¬´ë£Œ</span>
-											<h3>
-												<a href="#">ì˜ˆì•½í•˜ê¸°</a>
-											</h3>
-											<p>ì ‘ì¢… í˜„í™©: 1íšŒ</p></li>
-											
-										<li><span class="date"><h4><strong>ìˆ˜ë‘</strong></h4></span>
-										<span> / 20~40ì„¸</span>
-										<span> / ë³´ë¼ì•ˆê³¼</span>
-										<span> / 15000ì›</span>
-											<h3>
-												<a href="#">ì˜ˆì•½í•˜ê¸°</a>
-											</h3>
-											<p>ì ‘ì¢… í˜„í™©: 0íšŒ</p></li>
-											
-										<li><span class="date"><h4><strong>íŒŒìƒí’</strong></h4></span>
-										<span> / 20ì„¸</span>
-										<span> / ìƒˆìš°ë¦¬ë³‘ì›</span>
-										<span> / 3000ì›</span>
-											<h3>
-												<a href="#">ì˜ˆì•½í•˜ê¸°</a>
-											</h3>
-											<p>ì ‘ì¢… í˜„í™©: 0íšŒ</p></li>
+									
+									<%//if(vo != null && date<19){%>
+									
 										
+									<%//} %>
+									
+									
+									<!-- 
+										»ç¿ëÀÚ my page¿¡¼­ ¸Â¾Æ¾ß ÇÒ ¹é½Å °¡Á®¿À±â
+										¹é½Å ¸®½ºÆ®(¹é½Å º°·Î '<a href="#º´¿øid">'ÀÔ·Â) -->
+										
+										
+										<!-- ¹é½Å ¸®½ºÆ® -->
+										
+										<!-- ¸®½ºÆ® Å¬¸¯ ÈÄ º´¿ø ¸ñ·Ï id="ÀÔ·Â"(¹é½Å ¸®½ºÆ®¿Í ¿¬µ¿)-->
+											<!-- º´¿ø ¸®½ºÆ® => '<a href="#">' =>'#'´©¸£¸é À§µµ,°æµµ°ª °¡Á®¿Í¼­ Áöµµ¿¡ Ãâ·Â -->
+												<!-- '<a href="#">' Áöµµ¿¡ Ãâ·ÂµÈ ¿¹¾àÇÏ±â ¹öÆ° Å¬¸¯½Ã ÀüÈ­¹øÈ£ Ãâ·Â?? -->
+										
+										<!-- ¸®½ºÆ® Å¬¸¯ ÈÄ º´¿ø ¸ñ·Ï id="ÀÔ·Â"(¹é½Å ¸®½ºÆ®¿Í ¿¬µ¿)-->
+							
+									
+										<li><span class="date"><h4><strong>°áÇÙ</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / ¼­±¸º¸°Ç¼Ò</span>
+										<span> / ¹«·á</span>
+											<h3>
+												<a href="#menu1">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 1È¸</p></li>
+										
+											
+										<li><span class="date"><h4><strong>AÇü°£¿°</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / º¸¶ó¾È°ú</span>
+										<span> / 15000¿ø</span>
+											<h3>
+												<a href="#">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 0È¸</p></li>
+											
+										<li><span class="date"><h4><strong>BÇü°£¿°</strong></h4></span>
+										<span> / 20¼¼</span>
+										<span> / »õ¿ì¸®º´¿ø</span>
+										<span> / 3000¿ø</span>
+											<h3>
+												<a href="#">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 0È¸</p></li>
+										
+										<li><span class="date"><h4><strong>ÆÄ»óÇ³</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / ¼­±¸º¸°Ç¼Ò</span>
+										<span> / ¹«·á</span>
+											<h3>
+												<a href="#menu1">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 1È¸</p></li>	
+										
+										<li><span class="date"><h4><strong>Æú¸®¿À</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / ¼­±¸º¸°Ç¼Ò</span>
+										<span> / ¹«·á</span>
+											<h3>
+												<a href="#menu1">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 1È¸</p></li>
+										
+										<li><span class="date"><h4><strong>BÇüÇì¸ðÇÊ·ç½ºÀÎÇÃ·ç¿£ÀÚ</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / ¼­±¸º¸°Ç¼Ò</span>
+										<span> / ¹«·á</span>
+											<h3>
+												<a href="#menu1">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 1È¸</p></li>
+											
+										<li><span class="date"><h4><strong>Æó·Å±¸±Õ</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / ¼­±¸º¸°Ç¼Ò</span>
+										<span> / ¹«·á</span>
+											<h3>
+												<a href="#menu1">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 1È¸</p></li>
+											
+										<li><span class="date"><h4><strong>È«¿ª</strong></h4></span>
+										<span> / 20~40¼¼</span>
+										<span> / ¼­±¸º¸°Ç¼Ò</span>
+										<span> / ¹«·á</span>
+											<h3>
+												<a href="#menu1">¿¹¾àÇÏ±â</a>
+											</h3>
+											<p>Á¢Á¾ ÇöÈ²: 1È¸</p></li>
 									</ul>
+									
+																		
 								</section>
 								
-								<!--  --> 
+								
+								
+							</div>
+							
+							
 								
 								
 							</div>
@@ -230,49 +304,50 @@
 									src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
 								<script>
 									var mapContainer = document
-											.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
+											.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
 									mapOption = {
 										center : new kakao.maps.LatLng(
-												35.152493, 126.889869), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-										level : 4, // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+												35.152493, 126.889869), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+										level : 4, // ÁöµµÀÇ È®´ë ·¹º§
 										mapTypeId : kakao.maps.MapTypeId.ROADMAP
-									// ì§€ë„ì¢…ë¥˜
+									// ÁöµµÁ¾·ù
 									};
 
-									// ì§€ë„ë¥¼ ìƒì„±í•œë‹¤ 
+									// Áöµµ¸¦ »ý¼ºÇÑ´Ù 
 									var map = new kakao.maps.Map(mapContainer,
 											mapOption);
 
-									var ë°ì´í„° = [
+									var µ¥ÀÌÅÍ = [
 											[
 													35.152493,
 													126.889869,
-													'<div style="padding:5px;">ì„œêµ¬ë³´ê±´ì†Œ <br><a href="#" style="color:blue" target="_blank">ì˜ˆì•½í•˜ê¸°</a><br> <a href="35.152493, 126.889869" style="color:blue" target="_blank">ê¸¸ì°¾ê¸°</a></div>' ],
+													'<div style="padding:5px;">¼­±¸º¸°Ç¼Ò <br><a href="#" style="color:blue" target="_blank">¿¹¾àÇÏ±â</a><br> <a href="35.152493, 126.889869" style="color:blue" target="_blank">±æÃ£±â</a></div>' ],
 											[
 													35.15383683286908,
 													126.8813606855869,
-													'<div style="padding:5px;">ìƒˆìš°ë¦¬ë³‘ì› <br><a href="#" style="color:blue" target="_blank">ì˜ˆì•½í•˜ê¸°</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">ê¸¸ì°¾ê¸°</a></div>' ],
+													'<div style="padding:5px;">»õ¿ì¸®º´¿ø <br><a href="#" style="color:blue" target="_blank">¿¹¾àÇÏ±â</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">±æÃ£±â</a></div>' ],
 											[
 													35.15246398491651,
 													126.8844556644417,
-													'<div style="padding:5px;">ë³´ë¼ì•ˆê³¼ <br><a href="#" style="color:blue" target="_blank">ì˜ˆì•½í•˜ê¸°</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">ê¸¸ì°¾ê¸°</a></div>' ] ]
+													'<div style="padding:5px;">º¸¶ó¾È°ú <br><a href="#" style="color:blue" target="_blank">¿¹¾àÇÏ±â</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">±æÃ£±â</a></div>' ] ]
 
-									for (var i = 0; i < ë°ì´í„°.length; i++) {
-										// ì§€ë„ì— ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  í‘œì‹œí•œë‹¤
+									for (var i = 0; i < µ¥ÀÌÅÍ.length; i++) {
+										// Áöµµ¿¡ ¸¶Ä¿¸¦ »ý¼ºÇÏ°í Ç¥½ÃÇÑ´Ù
 										var marker = new kakao.maps.Marker({
 											position : new kakao.maps.LatLng(
-													ë°ì´í„°[i][0], ë°ì´í„°[i][1]), // ë§ˆì»¤ì˜ ì¢Œí‘œ
+													µ¥ÀÌÅÍ[i][0], µ¥ÀÌÅÍ[i][1]), // ¸¶Ä¿ÀÇ ÁÂÇ¥
 											map : map
-										// ë§ˆì»¤ë¥¼ í‘œì‹œí•  ì§€ë„ ê°ì²´
+										// ¸¶Ä¿¸¦ Ç¥½ÃÇÒ Áöµµ °´Ã¼
 										});
 
-										// ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+										
+										// ÀÎÆ÷À©µµ¿ì¸¦ »ý¼ºÇÕ´Ï´Ù
 										var infowindow = new kakao.maps.InfoWindow(
 												{
-													content : ë°ì´í„°[i][2]
+													content : µ¥ÀÌÅÍ[i][2]
 												});
 
-										// ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤. ë‘ë²ˆì§¸ íŒŒë¼ë¯¸í„°ì¸ markerë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì§€ë„ ìœ„ì— í‘œì‹œë©ë‹ˆë‹¤
+										// ¸¶Ä¿ À§¿¡ ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÕ´Ï´Ù. µÎ¹øÂ° ÆÄ¶ó¹ÌÅÍÀÎ marker¸¦ ³Ö¾îÁÖÁö ¾ÊÀ¸¸é Áöµµ À§¿¡ Ç¥½ÃµË´Ï´Ù
 										infowindow.open(map, marker);
 									}
 								</script>
@@ -326,7 +401,7 @@
 
 
 
-	<!-- ì˜ˆì•½ ìžë¦¬ ë„£ì„ê³³. -->
+	<!-- ¿¹¾à ÀÚ¸® ³ÖÀ»°÷. -->
 
 
 
@@ -339,7 +414,7 @@
 					<div class="card-blog">
 						<div class="header">
 							<div class="post-category">
-								<a href="#">ì˜ì–‘ì œ</a>
+								<a href="#">¿µ¾çÁ¦</a>
 							</div>
 							<a href="blog-details.html" class="post-thumb"> <img
 								src="../assets/img/blog/blog_1.jpg" alt="">
@@ -366,7 +441,7 @@
 					<div class="card-blog">
 						<div class="header">
 							<div class="post-category">
-								<a href="#">í—¬ìŠ¤ë³´ì¡°ê¸°ê¸°</a>
+								<a href="#">Çï½ºº¸Á¶±â±â</a>
 							</div>
 							<a href="blog-details.html" class="post-thumb"> <img
 								src="../assets/img/blog/blog_2.jpg" alt="">
@@ -393,7 +468,7 @@
 					<div class="card-blog">
 						<div class="header">
 							<div class="post-category">
-								<a href="#">ê±´ê°•ë³´í—˜</a>
+								<a href="#">°Ç°­º¸Çè</a>
 							</div>
 							<a href="blog-details.html" class="post-thumb"> <img
 								src="../assets/img/blog/blog_3.jpg" alt="">
@@ -430,18 +505,18 @@
 	<!-- .page-section -->
 
 	<div class="page-section banner-home bg-image"
-		style="background-image: url(../assets/img/banner-pattern.svg);">
+		style="background-image: url(./assets/img/banner-pattern.svg);">
 		<div class="container py-5 py-lg-0">
 			<div class="row align-items-center">
 				<div class="col-lg-4 wow zoomIn">
 					<div class="img-banner d-none d-lg-block">
-						<img src="../assets/img/mobile_app.png" alt="">
+						<img src="./assets/img/mobile_app.png" alt="">
 					</div>
 				</div>
 				<div class="col-lg-8 wow fadeInRight">
-					<h1 class="font-weight-normal mb-3">ëª¨ë°”ì¼ ì•½ì½•ì„ ë‹¤ìš´ë°›ìœ¼ì„¸ìš”!</h1>
-					<a href="#"><img src="../assets/img/google_play.svg" alt=""></a>
-					<a href="#" class="ml-2"><img src="../assets/img/app_store.svg"
+					<h1 class="font-weight-normal mb-3">¸ð¹ÙÀÏ ¾àÄÛÀ» ´Ù¿î¹ÞÀ¸¼¼¿ä!</h1>
+					<a href="#"><img src="./assets/img/google_play.svg" alt=""></a>
+					<a href="#" class="ml-2"><img src="./assets/img/app_store.svg"
 						alt=""></a>
 				</div>
 			</div>
@@ -506,15 +581,16 @@
 		</div>
 	</footer>
 
-	<script src="../assets/js/jquery-3.5.1.min.js"></script>
+	<script src="assets/js/jquery-3.5.1.min.js"></script>
 
-	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
 
-	<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+	<script src="assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
-	<script src="../assets/vendor/wow/wow.min.js"></script>
+	<script src="assets/vendor/wow/wow.min.js"></script>
 
-	<script src="../assets/js/theme.js"></script>
+	<script src="assets/js/theme.js"></script>
+
 
 </body>
 </html>

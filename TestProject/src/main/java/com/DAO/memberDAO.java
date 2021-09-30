@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
+import com.smhrd.VaccineVO;
 	
 	public class memberDAO {
 		Connection conn = null;
@@ -47,7 +49,7 @@ import com.smhrd.UserVO;
 			}
 		}
 		
-		public int join(String user_id, String user_pw, String user_name, String email, int birth_date, String addr, String phone, String adm, String gender) { 
+		public int join(String user_id, String user_pw, String user_name, String email, String addr, String phone, String adm, String gender, int birth_date) { 
 			int cnt = 0;
 			try {
 			
@@ -59,11 +61,11 @@ import com.smhrd.UserVO;
 				psmt.setString(2, user_pw); 
 				psmt.setString(3, user_name); 
 				psmt.setString(4, email);
-				psmt.setInt(5, birth_date);
-				psmt.setString(6, addr);
-				psmt.setString(7, phone);
-				psmt.setString(8, adm);
-				psmt.setString(9, gender);
+				psmt.setString(5, addr);
+				psmt.setString(6, phone);
+				psmt.setString(7, adm);
+				psmt.setString(8, gender);
+				psmt.setInt(9, birth_date);
 				
 				cnt = psmt.executeUpdate();
 			
@@ -75,8 +77,8 @@ import com.smhrd.UserVO;
 			}
 			return cnt;
 		}
-		
-		public UserVO login(String user_id, String user_pw) {
+
+public UserVO login(String user_id, String user_pw) {
 			UserVO vo = null;
 	try {
 				conn();
@@ -92,13 +94,13 @@ import com.smhrd.UserVO;
 				if(rs.next()) {
 					String user_name = rs.getString(3);
 					String email = rs.getString(4);
-					int birth_date = rs.getInt(5);
-					String addr = rs.getString(6);
-					String phone = rs.getString(7);
-					String adm = rs.getString(8);
-					String gender = rs.getString(9);
+					String addr = rs.getString(5);
+					String phone = rs.getString(6);
+					String adm = rs.getString(7);
+					String gender = rs.getString(8);
+					int birth_date = rs.getInt(9);
 					
-					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
+					vo = new UserVO(user_id,user_pw,user_name,email,addr,phone,adm,gender,birth_date);
 					//새로운 데이터 타입 : VO
 				}
 				
@@ -203,7 +205,7 @@ try {
 		
 		conn();
 	
-		String sql = "select * from hospitals where hos_name = ?"; 
+		String sql = "select * from hospitals where instr(hos_name, '?')"; 
 		psmt = conn.prepareStatement(sql); 
 		psmt.setString(1, search);
 		
@@ -337,4 +339,141 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	return cnt;
 }
 
+// id 중복확인에 필요한 함수
+	public boolean idCheck(String user_id) {
+		
+		boolean check = false; // 기본값 지정
+		
+		conn();
+		
+		String sql="select user_id from users where user_id=?";
+		
+		try 
+		{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,user_id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) 
+			{  //사용자가 입력한 id가 데이터베이스의 user 테이블에 존재하는 경우
+				check = true;
+			}
+			else 
+			{  //사용자가 입력한 id가 데이터베이스의 user 테이블에 존재하지 않을 경우
+				check = false;
+			}
+			
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			close();
+		}
+		return check;
 	}
+
+	public ArrayList<UserVO> search_f(String fam) // addFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
+	{
+		ArrayList<UserVO> vo = new ArrayList<UserVO>(); // userVO 타입 변수 선언
+		try {
+				conn();
+				
+				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id행을 가져온다.
+				String sql = "select user_id from users where=?"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, fam);
+				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
+				
+				rs = psmt.executeQuery(); 
+				
+				while(rs.next()) 
+				{
+					String user_id = rs.getString(1);
+					
+					UserVO fo = new UserVO(user_id);
+					//값 추가해주기
+					vo.add(fo); // 배열 fo에 저장해준다.
+				}
+				
+			}catch(Exception e) { 
+				e.printStackTrace();
+			
+			}finally {
+				close();
+			}
+		
+		return vo;
+		
+	}
+	
+	public int addfam(String fam1, String fam2, String fam3, String fam4, String user_id) // famView에서 추가를 누르면 family 테이블에 해당 id를 추가시켜주는 함수
+	{
+		int cnt=0;
+		try
+		{
+			conn();
+			String sql="insert into family values(?, ?, ?, ?, ?)"; //  입력되지 않는 칸은  null로 출력?
+			
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, fam1); 
+			psmt.setString(2, fam2); 
+			psmt.setString(3, fam3); 
+			psmt.setString(4, fam4); 
+			psmt.setString(5, user_id); 
+			
+			cnt=psmt.executeUpdate();
+			
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			close();
+		}
+		return cnt;
+	}
+
+
+	public ArrayList<VaccineVO> VaccineList() {
+		ArrayList<VaccineVO> vc = new ArrayList<VaccineVO>();
+	try {
+			
+			conn();
+			
+			//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
+			String sql = "select vac_seq, vac_name, vac_disease, vac_code from vaccines"; 
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery(); //커서 이용
+			
+			//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+			//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+			
+			while(rs.next()) { //커서 이동
+				String vac_seq = rs.getString(1);
+				String vac_name = rs.getString(2);
+				String vac_disease = rs.getString(3);
+				String vac_code = rs.getString(4);
+				
+			
+				//값 묶어주기
+				VaccineVO vo = new VaccineVO(vac_seq,vac_name,vac_disease,vac_code);
+				//값 추가해주기
+				vc.add(vo);
+			}
+			
+		}catch(Exception e) { 
+			e.printStackTrace();
+		
+		}finally {
+			close();
+		}
+		return vc;
+	}
+
+}
