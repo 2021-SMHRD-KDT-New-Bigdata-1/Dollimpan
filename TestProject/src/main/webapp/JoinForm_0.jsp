@@ -106,10 +106,7 @@
 		<p class="divider-text">
         <span class="bg-light">OR</span>
     </p>
-    <script>
-    var id0 = false;
-    
-    </script>
+
 	<form action = "JoinService" method = "post" id="join_form">
 	<!-- form 태그안에 id="join_form"을 붙여주고, 아래 <script></script>안에서 함수로 만들어서 중복확인 되면 안 넘어가게 만든다. -->
 	
@@ -228,6 +225,9 @@
                                        
     <div class="form-group">
         <button type="button" class="btn btn-primary btn-block" onclick="onclick0()"> 회원가입  </button>
+        <!-- submit 타입은 이벤트를 붙여줘도 이벤트 기능을 무시하고 form태그에서 보내달라는 곳(여기선 JoinService)으로 보내버린다. 
+        -> button type="submit"으로 지정하면, 중복확인이 되어도 onclick0()이벤트가 발생하지 않으므로 button 타입을 사용한다.
+        -->
     </div> <!-- form-group// -->  
         
     <p class="text-center">계정을 가지고 있나요? <a href="loginForm.html">로그인</a> </p>  
@@ -302,6 +302,10 @@
 <!-- Scripts -->
 <!-- script와 스크립트릿의 다른점...
 스크립트릿안의 함수는 jsp의 html이 만들어지기 전 연산되는 것이기 때문에 idcheck와 같은,,,html이 만들어진 뒤의 이벤트는 함수로 쓸 수가 없다. -->
+    <script>
+    var id0 = false; // 변수 id0를 false를 기본값으로 하여 선언
+    
+    </script>
 	<script>
 		function idCheck()
 		{
@@ -313,7 +317,7 @@
 				dataType : "text",  //응답받을 데이터 타입
 				success : function(data)
 				{
-					var sp = document.getElementById("sp");
+					var sp = document.getElementById("sp"); // 중복확인이 되면 <sqan id="span"></span>안에 if문 안의 텍스트가 입력
 					if(data=="true")
 					{
 						sp.innerHTML = "사용할수 없는 ID입니다";
