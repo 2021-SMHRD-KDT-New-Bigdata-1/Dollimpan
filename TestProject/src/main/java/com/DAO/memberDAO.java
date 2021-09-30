@@ -374,14 +374,14 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return check;
 	}
 	
-	public ArrayList<VaccineVO> VaccineList() {//환자정보
+	public ArrayList<VaccineVO> VaccineList() {
 		ArrayList<VaccineVO> vc = new ArrayList<VaccineVO>();
 	try {
 			
 			conn();
 			
 			//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
-			String sql = "select user_id, user_name, email, birth_date, addr, phone, gender from users"; 
+			String sql = "select vac_seq, vac_name, vac_disease, vac_code from vaccines"; 
 			psmt = conn.prepareStatement(sql);
 			
 			rs = psmt.executeQuery(); //커서 이용
@@ -390,19 +390,16 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
 			
 			while(rs.next()) { //커서 이동
-				String user_id = rs.getString(1);
-				String user_name = rs.getString(2);
-				String email = rs.getString(3);
-				int birth_date = rs.getInt(4);
-				String addr = rs.getString(5);
-				String phone = rs.getString(6);
-				String gender = rs.getString(7);
+				String vac_seq = rs.getString(1);
+				String vac_name = rs.getString(2);
+				String vac_disease = rs.getString(3);
+				String vac_code = rs.getString(4);
 				
 			
 				//값 묶어주기
-				UserVO vo = new UserVO(user_id,user_name,email,birth_date,addr,phone,gender);
+				VaccineVO vo = new VaccineVO(vac_seq,vac_name,vac_disease,vac_code);
 				//값 추가해주기
-				al.add(vo);
+				vc.add(vo);
 			}
 			
 		}catch(Exception e) { 
@@ -411,7 +408,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}finally {
 			close();
 		}
-		return al;
+		return vc;
 	}
 
 }
