@@ -76,7 +76,7 @@ import com.smhrd.UserVO;
 			return cnt;
 			
 		}
-		public UserVO login(String user_id, String user_pw) {
+public UserVO login(String user_id, String user_pw) {
 			UserVO vo = null;
 	try {
 				conn();
@@ -92,13 +92,13 @@ import com.smhrd.UserVO;
 				if(rs.next()) {
 					String user_name = rs.getString(3);
 					String email = rs.getString(4);
-					int birth_date = rs.getInt(5);
-					String addr = rs.getString(6);
-					String phone = rs.getString(7);
-					String adm = rs.getString(8);
-					String gender = rs.getString(9);
+					String addr = rs.getString(5);
+					String phone = rs.getString(6);
+					String adm = rs.getString(7);
+					String gender = rs.getString(8);
+					int birth_date = rs.getInt(9);
 					
-					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
+					vo = new UserVO(user_id,user_pw,user_name,email,addr,phone,adm,gender,birth_date);
 					//새로운 데이터 타입 : VO
 				}
 				

@@ -81,7 +81,7 @@
 	              <a class="nav-link" href="about.html">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineRl.html">백신예약/조회</a>
+	              <a class="nav-link" href="VaccineRl2.jsp">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
