@@ -343,44 +343,52 @@
 						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
 											
 						// var positions[] = new var[sr.size()];
+						
+						    var positions = new Array();
+						    
+						    for(int i=0;i<sr.size();i++){
+						    	positions[i] = {"title: " + sr.get(i).getHos_name() , "latlng: "+new kakao.maps.LatLng(sr.get(i).getLatitude(),sr.get(i).getLongtitude)}; 
+						     
+						    }
+						   
+						// 마커 이미지의 이미지 주소입니다
+						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+						    
+						for (var i = 0; i < positions.length; i ++) {
+						    
+						    // 마커 이미지의 이미지 크기 입니다
+						    var imageSize = new kakao.maps.Size(24, 35); 
+						    
+						    // 마커 이미지를 생성합니다    
+						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+						    
+						    // 마커를 생성합니다
+						    var marker = new kakao.maps.Marker({
+						        map: map, // 마커를 표시할 지도
+						        position: positions[i].latlng, // 마커를 표시할 위치
+						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						        image : markerImage // 마커 이미지 
+						    
+						        
+						   
+						        
+						    });
+						    
+						    marker.setMap(map);
 
-						/* 1. ??를 검색해서 나오는 값을 어레이리스트로 생성 
-						   2. 그 생성한 값을 토대로 좌표값을 출력
-						   3. 
-						*/
-						<%-- 
-							var 데이터 [] = null;
-							double a = 0;
-							double b = 0;
-							
-							<%for(int i=0; i<sr.size(); i++){%>
-							list.add(데이터)(sr.get(i).getlongtitude(),
-									sr.get(i).getlatitude()};
-									 
-							}
-													+<div style="padding:5px;">+<%sr.get(i).gethos_name()%>+<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>" + style="color:blue" target="_blank">길찾기</a></div><%}%>
+						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
-								
-
-									for (var i = 0; i < 데이터.length; i++) {
-										// 지도에 마커를 생성하고 표시한다
-										var marker = new kakao.maps.Marker({
-											position : new kakao.maps.LatLng(
-													데이터[i][0], 데이터[i][1]), // 마커의 좌표
-											map : map
-										// 마커를 표시할 지도 객체
-										});
-
-										
-										// 인포윈도우를 생성합니다
-										var infowindow = new kakao.maps.InfoWindow(
-												{
-													content : 데이터[i][2]
-												});
-
-										// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-										infowindow.open(map, marker);
-									}
+						    // 인포윈도우를 생성합니다
+						    var infowindow = new kakao.maps.InfoWindow({
+						        position : iwPosition, 
+						        content : iwContent 
+						    });
+						      
+						    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+						    infowindow.open(map, marker); 
+						}
+						
 								</script>
 </div>
 							</div>

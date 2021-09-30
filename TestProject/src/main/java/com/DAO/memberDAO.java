@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 import com.smhrd.VaccineVO;
@@ -373,7 +374,71 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}
 		return check;
 	}
+
+	public ArrayList<UserVO> search_f(String fam) // addFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
+	{
+		ArrayList<UserVO> vo = new ArrayList<UserVO>(); // userVO 타입 변수 선언
+		try {
+				conn();
+				
+				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id행을 가져온다.
+				String sql = "select user_id from users where=?"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, fam);
+				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
+				
+				rs = psmt.executeQuery(); 
+				
+				while(rs.next()) 
+				{
+					String user_id = rs.getString(1);
+					
+					UserVO fo = new UserVO(user_id);
+					//값 추가해주기
+					vo.add(fo); // 배열 fo에 저장해준다.
+				}
+				
+			}catch(Exception e) { 
+				e.printStackTrace();
+			
+			}finally {
+				close();
+			}
+		
+		return vo;
+		
+	}
 	
+	public int addfam(String fam1, String fam2, String fam3, String fam4, String user_id) // famView에서 추가를 누르면 family 테이블에 해당 id를 추가시켜주는 함수
+	{
+		int cnt=0;
+		try
+		{
+			conn();
+			String sql="insert into family values(?, ?, ?, ?, ?)"; //  입력되지 않는 칸은  null로 출력?
+			
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, fam1); 
+			psmt.setString(2, fam2); 
+			psmt.setString(3, fam3); 
+			psmt.setString(4, fam4); 
+			psmt.setString(5, user_id); 
+			
+			cnt=psmt.executeUpdate();
+			
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			close();
+		}
+		return cnt;
+	}
+
+
 	public ArrayList<VaccineVO> VaccineList() {
 		ArrayList<VaccineVO> vc = new ArrayList<VaccineVO>();
 	try {

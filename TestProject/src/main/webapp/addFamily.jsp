@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.FamilyVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
@@ -36,8 +37,10 @@
 		memberDAO dao = new memberDAO();
 		//select기능 호출
 		ArrayList<UserVO> al = dao.select();
-		System.out.print(al.size());
-	%>
+//		System.out.print(al.size());
+	%>	
+	
+
 	<div class="back-to-top"></div>
 
 	<header>  
@@ -61,7 +64,7 @@
     <!-- .topbar -->
 	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 	      <div class="container">
-	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-Kok</a>
+	        <a class="navbar-brand" href="Addform.jsp"><span class="text-primary">Yak</span>-Kok</a>
 	
 	        <form action="#">
 	          <div class="input-group input-navbar">
@@ -94,7 +97,7 @@
 	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="LogoutService">로그아웃</a>
+	              <a class="btn btn-primary ml-lg-3" href="html/loginForm.html">로그아웃</a>
 	            </li>
 	          </ul>
 	        </div> <!-- .navbar-collapse -->
@@ -126,12 +129,17 @@
    <div class="searchbox">
       <div class="header">
         <h1>Search</h1>
-        <input onkeyup="filter()" type="text" id="value" placeholder="id">
-      </div>
-
-      <div class="container">
-
         
+        <form action = "FamilyService"  method = "post">
+        <input onkeyup="filter()" type="text" id="value" name="fam" placeholder="가족 id">
+        <input type="submit" value="등록된 아이디 검색" >
+        <% 
+  //      ArrayList<FamilyVO> fo = dao.search_f(String fam);  %>
+        
+        </form>
+        
+      </div>
+      <div class="container">
       </div>
     </div>
 
@@ -242,7 +250,8 @@
 
       <hr>
 
-      <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
+      <p id="copyright">Copyright &copy; 2020 <a href="https://macode
+.com/" target="_blank">MACode ID</a>. All right reserved</p>
     </div> <!-- .container -->
   </footer> <!-- .page-footer -->
 
@@ -255,7 +264,8 @@
 <script src="assets/vendor/wow/wow.min.js"></script>
 
 <script src="assets/js/theme.js"></script>
-  
+
+
 </body>
 </html>
        
