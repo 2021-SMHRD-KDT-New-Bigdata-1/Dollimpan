@@ -41,6 +41,7 @@
 	String fam=request.getParameter("fam");
 //	ArrayList<UserVO> al=dao.search_f(fam);
 	ArrayList<UserVO> vo=dao.search_f(fam);
+	System.out.print(vo.size());
 %>
 
 
@@ -156,13 +157,15 @@
 							  String user_pw = vo.get(i).getUser_pw();
 							  
 					//	  	out.print("<td>"+ vo.get(0).getUser_id()+ "</td>"); 
-							out.print("<td>"+ user_id+ "</td>");
-							out.print("<td>"+ user_pw+ "</td>");
+							out.print("<th>"+ user_id+ "</th>");
+							out.print("<th>"+ user_pw+ "</th>");
 					//	  	out.print("<td>"+ vo.get(0).getUser_name()+ "</td>");
-						  	out.print("<td><a href='AddFamilyService?user_id="+user_id+"'> 가족추가 </a></td>");					  
+						  	out.print("<th><a href='AddFamilyService?user_id="+user_id+"'> 가족추가 </a></th>");					  
 						  }
 						  %>
+						  <th> vo.get(0).getUser_id() </th>
 						  </tr>
+						  
 						   <% 
 									//a태그 생성될때마다 
 									//쿼리스트링방식 : 사용자가 접근할 때 경우에 따라서 다른 결과를 보여줌(각 줄마다 email주소 다르게 보여줌)

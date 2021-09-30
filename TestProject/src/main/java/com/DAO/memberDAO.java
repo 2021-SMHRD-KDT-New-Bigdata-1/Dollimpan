@@ -391,9 +391,9 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 				
 				while(rs.next()) 
 				{
-					String user_id = rs.getString("user_id");
+					String user_id = rs.getString(1);
 //					String user_id = rs.getString(1);
-					String user_name = rs.getString("user_name");
+					String user_name = rs.getString(2);
 					
 					UserVO fo = new UserVO(user_id, user_name);
 					//값 추가해주기
