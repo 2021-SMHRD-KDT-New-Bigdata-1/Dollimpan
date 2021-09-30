@@ -337,10 +337,10 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	return cnt;
 }
 
-// id 중복확인
+// id 중복확인에 필요한 함수
 	public boolean idCheck(String user_id) {
 		
-		boolean check = false;
+		boolean check = false; // 기본값 지정
 		
 		conn();
 		
@@ -353,11 +353,11 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) 
-			{  //사용자가 입력한 이메일이 테이블에 존재하는 경우
+			{  //사용자가 입력한 id가 데이터베이스의 user 테이블에 존재하는 경우
 				check = true;
 			}
 			else 
-			{  //사용자가 입력한 이메일이 테이블에 존재하지 않는 경우
+			{  //사용자가 입력한 id가 데이터베이스의 user 테이블에 존재하지 않을 경우
 				check = false;
 			}
 			
