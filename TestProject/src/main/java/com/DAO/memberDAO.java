@@ -391,8 +391,9 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 				
 				while(rs.next()) 
 				{
-					String user_id = rs.getString(1);
-					String user_name = rs.getString(2);
+					String user_id = rs.getString("user_id");
+//					String user_id = rs.getString(1);
+					String user_name = rs.getString("user_name");
 					
 					UserVO fo = new UserVO(user_id, user_name);
 					//값 추가해주기
@@ -408,7 +409,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return vo;
 	}
 	
-	public UserVO search_fl(String fam) // 이 함수는 작동하지 않음
+	public UserVO search_fl(String fam) 
 	{
 		UserVO vo=null; // userVO 타입 변수 선언
 		try {

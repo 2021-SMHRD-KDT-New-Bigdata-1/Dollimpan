@@ -24,13 +24,13 @@ public class FamilyService extends HttpServlet {
 		String fam = request.getParameter("fam");
 		
 		memberDAO dao = new memberDAO();	
-		UserVO vo = dao.search_fl(fam);
+		ArrayList<UserVO> vo = dao.search_f(fam);
 		
 		if(vo != null)
 		{
 			HttpSession session = request.getSession();
 			session.setAttribute("vo", vo); // 세션에 vo 저장
-			response.sendRedirect("famView0.jsp");
+			response.sendRedirect("famView.jsp");
 		}
 		else
 		{

@@ -34,11 +34,13 @@
 
 <script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
 
-<% UserVO vo = (UserVO)session.getAttribute("vo");%>
-
+<% // UserVO vo = (UserVO)session.getAttribute("vo");%>
+<%// session.getAttribute("vo"); %>
 <% // famView에는 스크립트릿으로 입력한 fam값을 가져온다.
 	memberDAO dao = new memberDAO();
 	String fam=request.getParameter("fam");
+//	ArrayList<UserVO> al=dao.search_f(fam);
+	ArrayList<UserVO> vo=dao.search_f(fam);
 %>
 
 
@@ -147,10 +149,18 @@
 						  
 						  <tr>	
 						  <% 
-						  	out.print("<td>"+ vo.getUser_id()+ "</td>"); 
-						  	out.print("<td>"+ vo.getUser_name()+ "</td>");
-						  	out.print("<td><a href='AddFamilyService?user_id="+vo.getUser_id()+"'> 가족추가 </a></td>");					  
 						  
+						  for(int i=0; i<vo.size(); i++){
+							  
+							  String user_id = vo.get(i).getUser_id();
+							  String user_pw = vo.get(i).getUser_pw();
+							  
+					//	  	out.print("<td>"+ vo.get(0).getUser_id()+ "</td>"); 
+							out.print("<td>"+ user_id+ "</td>");
+							out.print("<td>"+ user_pw+ "</td>");
+					//	  	out.print("<td>"+ vo.get(0).getUser_name()+ "</td>");
+						  	out.print("<td><a href='AddFamilyService?user_id="+user_id+"'> 가족추가 </a></td>");					  
+						  }
 						  %>
 						  </tr>
 						   <% 
