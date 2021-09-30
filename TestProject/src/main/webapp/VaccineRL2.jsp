@@ -38,9 +38,10 @@
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.print(sr.size());
-		System.out.print(sr.get(1).getHos_addr());
+		//  System.out.print(sr.size());  병원 개수
+		System.out.print(sr.get(1).getLatitude());
 	%>
+	
 
 	
 	<!-- Back to top button -->
@@ -321,10 +322,8 @@
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
 
-
-
-
-
+				<!-- 카카오api -->
+				
 								<script
 									src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
 								<script>
@@ -332,7 +331,7 @@
 								.getElementById('map'), // 지도를 표시할 div 
 						mapOption = {
 							center : new kakao.maps.LatLng(
-									35.152493, 126.889869), // 지도의 중심좌표
+									35.151980098317935, 126.88980055854985), // 지도의 중심좌표
 							level : 4, // 지도의 확대 레벨
 							mapTypeId : kakao.maps.MapTypeId.ROADMAP
 						// 지도종류
@@ -341,22 +340,72 @@
 						// 지도를 생성한다 
 						var map = new kakao.maps.Map(mapContainer,
 								mapOption);
+						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
 											
+						// var positions[] = new var[sr.size()];
 						
+						    var positions = new Array();
+						    
+						    for(int i=0;i<sr.size();i++){
+						    	positions[i] = {"title: " + sr.get(i).getHos_name() , "latlng: "+new kakao.maps.LatLng(sr.get(i).getLatitude(),sr.get(i).getLongtitude)}; 
+						     
+						    }
+						   
+						// 마커 이미지의 이미지 주소입니다
+						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+						    
+						for (var i = 0; i < positions.length; i ++) {
+						    
+						    // 마커 이미지의 이미지 크기 입니다
+						    var imageSize = new kakao.maps.Size(24, 35); 
+						    
+						    // 마커 이미지를 생성합니다    
+						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+						    
+						    // 마커를 생성합니다
+						    var marker = new kakao.maps.Marker({
+						        map: map, // 마커를 표시할 지도
+						        position: positions[i].latlng, // 마커를 표시할 위치
+						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						        image : markerImage // 마커 이미지 
+						    
+						        
+						   
+						        
+						    });
+						    
+						    marker.setMap(map);
+
+						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+						    // 인포윈도우를 생성합니다
+						    var infowindow = new kakao.maps.InfoWindow({
+						        position : iwPosition, 
+						        content : iwContent 
+						    });
+						      
+						    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+						    infowindow.open(map, marker); 
+						}
 						
-							for(var i=10; i<<%sr.size()%>; i++){
-								var 데이터 []=
-										<%sr.get(i).getlongtitude(),
-													sr.get(i).getlatitude()%>,
-													'<div style="padding:5px;">'+<%sr.get(i).gethos_name()%>+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>+'" style="color:blue" target="_blank">길찾기</a></div>'}
-											 /* [
-													35.15383683286908,
-													126.8813606855869,
-													'<div style="padding:5px;">새우리병원 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">길찾기</a></div>' ],
-											[
-													35.15246398491651,
-													126.8844556644417,
-													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] */
+						/* 1. ??를 검색해서 나오는 값을 어레이리스트로 생성 
+						   2. 그 생성한 값을 토대로 좌표값을 출력
+						   3. 
+						*/
+						<%-- 
+							var 데이터 [] = null;
+							double a = 0;
+							double b = 0;
+							
+							<%for(int i=0; i<sr.size(); i++){%>
+							list.add(데이터)(sr.get(i).getlongtitude(),
+									sr.get(i).getlatitude()};
+									 
+							}
+													+<div style="padding:5px;">+<%sr.get(i).gethos_name()%>+<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>" + style="color:blue" target="_blank">길찾기</a></div><%}%>
+
+								
 
 									for (var i = 0; i < 데이터.length; i++) {
 										// 지도에 마커를 생성하고 표시한다
@@ -376,7 +425,7 @@
 
 										// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 										infowindow.open(map, marker);
-									}
+									} --%>
 								</script>
 </div>
 							</div>
