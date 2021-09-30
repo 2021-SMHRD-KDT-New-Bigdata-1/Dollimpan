@@ -17,6 +17,15 @@ public class FamilyVO {
 		this.user_id = user_id;
 	}
 	
+	public FamilyVO(String fam1) {
+		super();
+		this.fam1 = fam1;
+		this.fam2 = fam2;
+		this.fam3 = fam3;
+		this.fam4 = fam4;
+		this.user_id = user_id;
+	}
+	
 	public FamilyVO() {
 		super();
 		this.fam1 = fam1;

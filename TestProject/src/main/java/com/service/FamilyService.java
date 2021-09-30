@@ -1,6 +1,8 @@
 package com.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.DAO.memberDAO;
 import com.smhrd.UserVO;
-
+// searchFamily.jsp에서 입력한 값을 UserVO 타입 변수 vo에 담고, 세션에 저장
 @WebServlet("/FamilyService")
 public class FamilyService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,22 +21,16 @@ public class FamilyService extends HttpServlet {
 	{
 		request.setCharacterEncoding("euc-kr");
 		
-//		String fam1 = request.getParameter("fam1");
-//		String fam2 = request.getParameter("fam2");
-//		String fam3 = request.getParameter("fam3");
-//		String user_id = request.getParameter("user_id");
 		String fam = request.getParameter("fam");
 		
-		HttpSession session = request.getSession(); 
-		UserVO vo = (UserVO)session.getAttribute("vo"); 
-		
-		String user_id = vo.getUser_id();
+		memberDAO dao = new memberDAO();	
+		UserVO vo = dao.search_fl(fam);
 		
 		if(vo != null)
 		{
-//			HttpSession session = request.getSession();
-			session.setAttribute("vo", vo);
-			response.sendRedirect("famView.jsp");
+			HttpSession session = request.getSession();
+			session.setAttribute("vo", vo); // 세션에 vo 저장
+			response.sendRedirect("famView0.jsp");
 		}
 		else
 		{

@@ -49,7 +49,7 @@ public class UserVO {
 		this.phone = phone;
 		this.user_id = user_id;
 	}
-	public UserVO(String user_id) 
+	public UserVO(String user_id, String user_pw) 
 	{
 		super();
 		this.user_id = user_id;

@@ -133,8 +133,6 @@
         <form action = "FamilyService"  method = "post">
         <input onkeyup="filter()" type="text" id="value" name="fam" placeholder="가족 id">
         <input type="submit" value="등록된 아이디 검색" >
-        <% 
-  //      ArrayList<FamilyVO> fo = dao.search_f(String fam);  %>
         
         </form>
         
@@ -148,52 +146,6 @@
 <div id="profilebox">
 	<div id="box01" class="ProfileItem">
 		<a class="profileTitle" href="" title="">MY PROFILE</a>
-		
-		
-<!-- 여기까지 -->
-
-<!-- mypage 템플릿 -->
-<!-- 
-<div id="doc" class="yui-t7">
- 
-  <div id="bd">
-    <div id="yui-main">
-      <div class="yui-b">
-        <div class="yui-g">
-            
-            <div class="yui-u first">
-              <div class="content">성함
-              <br> 
-              <br> 
-              <br> 
-              <br> 
-              <br> 
-              <br> 
-              <li> 이름 입력 </li>
-              </div>
-            </div>
-            <div class="yui-u">
-              <div class="content">전화번호</div>
-            </div> <br>
-          </div>
-          <div class="yui-g">
-            <div class="yui-u first">
-              <div class="content">입력하신 기저질환</div>
-            </div>
-            <div class="yui-u">
-              <div class="content">이메일</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-
-</div>
--->
-<!-- 여기까지 -->
-
 
       </div> <!-- .row -->
     </div> <!-- .container -->

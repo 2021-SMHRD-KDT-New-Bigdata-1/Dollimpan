@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.UserVO"%>
 <%@page import="com.smhrd.FamilyVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DAO.memberDAO"%>
@@ -33,12 +34,11 @@
 
 <script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
 
-<%
+<% UserVO vo = (UserVO)session.getAttribute("vo");%>
+
+<% // famView에는 스크립트릿으로 입력한 fam값을 가져온다.
 	memberDAO dao = new memberDAO();
-	//select기능 호출
 	String fam=request.getParameter("fam");
-	ArrayList<FamilyVO> fo = dao.search_f(fam);
-	System.out.print(fo.size());
 %>
 
 
@@ -105,7 +105,7 @@
 	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="btn btn-primary ml-lg-3" href="html/about.html">관리자 Logout</a>
+	              <a class="btn btn-primary ml-lg-3" href="html/about.html">로그아웃</a>
 	            </li>
 	          	
 	          </ul>
@@ -138,34 +138,26 @@
 						<table class="table">
 						  <thead class="thead-dark">
 						    <tr>
-						      <th>No</th>
-						      <th>가족 1</th>
-						      <th>가족 2</th>
-						      <th>가족 3</th>
-						      <th>가족 4</th>
-						      <th> 본인 </th>
+						      <th> 가입된 ID</th>
+						      <th> 이름 </th>
+						      <th> 추가여부 </th>
 						    </tr>
 						  </thead>
 						  <tbody>
 						  
+						  <tr>	
+						  <% 
+						  	out.print("<td>"+ vo.getUser_id()+ "</td>"); 
+						  	out.print("<td>"+ vo.getUser_name()+ "</td>");
+						  	out.print("<td><a href='AddFamilyService?user_id="+vo.getUser_id()+"'> 가족추가 </a></td>");					  
+						  
+						  %>
+						  </tr>
 						   <% 
-								//회원정보 출력(한명의 회원정보는 하나의 tr태그에 -(한줄))
-								//회원의 수만큼 tr태그 추가
-								//각 정보(이메일,전화번호,주소)는 각 td태그에
-								for (int i = 1; i<fo.size(); i++){//회원의 수만큼 반복
-									
-									out.print("<tr>");
-									out.print("<td>"+i+"</td>");
-									out.print("<td>"+fo.get(i).getFam1()+"</td>");
-									out.print("<td>"+fo.get(i).getFam2()+"</td>");
-									out.print("<td>"+fo.get(i).getFam3()+"</td>");
-									out.print("<td>"+fo.get(i).getFam4()+"</td>");
-									out.print("<td>"+fo.get(i).getUser_id()+"</td>");
 									//a태그 생성될때마다 
 									//쿼리스트링방식 : 사용자가 접근할 때 경우에 따라서 다른 결과를 보여줌(각 줄마다 email주소 다르게 보여줌)
-									out.print("<td><a href = 'AddFamilyService?user_id="+fo.get(i).getUser_id()+"'>가족추가</a></td>");//각 줄마다 삭제버튼 생성
-									out.print("</tr>");
-									}
+								//	out.print("<td><a href = 'AddFamilyService?user_id="+fo.get(i).getUser_id()+"'>가족추가</a></td>");//각 줄마다 삭제버튼 생성
+								
 							%>
 						  
 						    

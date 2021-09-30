@@ -381,8 +381,72 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		try {
 				conn();
 				
+				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id값을 가져온다.
+				String sql = "select user_id, user_name from users where user_id=?"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, fam);
+				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
+				
+				rs = psmt.executeQuery(); 
+				
+				while(rs.next()) 
+				{
+					String user_id = rs.getString(1);
+					String user_name = rs.getString(2);
+					
+					UserVO fo = new UserVO(user_id, user_name);
+					//값 추가해주기
+					vo.add(fo); // 배열 fo에 저장해준다.
+					
+				}
+			}catch(Exception e) { 
+				e.printStackTrace();
+			
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	public UserVO search_fl(String fam) // 이 함수는 작동하지 않음
+	{
+		UserVO vo=null; // userVO 타입 변수 선언
+		try {
+				conn();
+				
+				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id값을 가져온다.
+				String sql = "select user_id, user_name from users where user_id=?"; 
+				psmt = conn.prepareStatement(sql); 
+				psmt.setString(1, fam);
+				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
+				
+				rs = psmt.executeQuery();
+				if(rs.next()) 
+				{
+					String user_id = rs.getString(1);
+					String user_name = rs.getString(2);
+					
+					vo = new UserVO(user_id, user_name);
+					
+				}
+			}catch(Exception e) { 
+				e.printStackTrace();
+			
+			}finally {
+				close();
+			}
+		System.out.println(vo);
+		return vo;
+	}
+	
+	public ArrayList<FamilyVO> search_ff(String fam) // addFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
+	{
+		ArrayList<FamilyVO> vo = new ArrayList<FamilyVO>(); // FamilyVO 배열 타입 변수 선언
+		try {
+				conn();
+				
 				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id행을 가져온다.
-				String sql = "select user_id from users where=?"; 
+				String sql = "select user_id from users where user_id=?"; 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, fam);
 				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
@@ -393,22 +457,19 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 				{
 					String user_id = rs.getString(1);
 					
-					UserVO fo = new UserVO(user_id);
+					FamilyVO fo = new FamilyVO(user_id);
 					//값 추가해주기
-					vo.add(fo); // 배열 fo에 저장해준다.
+					vo.add(fo); // 위에서 선언한 vo에 fo를 저장해준다.
 				}
-				
 			}catch(Exception e) { 
 				e.printStackTrace();
 			
 			}finally {
 				close();
 			}
-		
 		return vo;
-		
 	}
-	
+
 	public int addfam(String fam1, String fam2, String fam3, String fam4, String user_id) // famView에서 추가를 누르면 family 테이블에 해당 id를 추가시켜주는 함수
 	{
 		int cnt=0;
