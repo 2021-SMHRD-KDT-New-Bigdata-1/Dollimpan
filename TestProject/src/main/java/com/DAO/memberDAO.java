@@ -76,7 +76,7 @@ import com.smhrd.UserVO;
 			return cnt;
 			
 		}
-		public UserVO login(String user_id, String user_pw) {
+public UserVO login(String user_id, String user_pw) {
 			UserVO vo = null;
 	try {
 				conn();
@@ -92,13 +92,13 @@ import com.smhrd.UserVO;
 				if(rs.next()) {
 					String user_name = rs.getString(3);
 					String email = rs.getString(4);
-					int birth_date = rs.getInt(5);
-					String addr = rs.getString(6);
-					String phone = rs.getString(7);
-					String adm = rs.getString(8);
-					String gender = rs.getString(9);
+					String addr = rs.getString(5);
+					String phone = rs.getString(6);
+					String adm = rs.getString(7);
+					String gender = rs.getString(8);
+					int birth_date = rs.getInt(9);
 					
-					vo = new UserVO(user_id,user_pw,user_name,email,birth_date,addr,phone,adm,gender);
+					vo = new UserVO(user_id,user_pw,user_name,email,addr,phone,adm,gender,birth_date);
 					//새로운 데이터 타입 : VO
 				}
 				
@@ -337,4 +337,40 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	return cnt;
 }
 
+// id 중복확인에 필요한 함수
+	public boolean idCheck(String user_id) {
+		
+		boolean check = false; // 기본값 지정
+		
+		conn();
+		
+		String sql="select user_id from users where user_id=?";
+		
+		try 
+		{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,user_id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) 
+			{  //사용자가 입력한 id가 데이터베이스의 user 테이블에 존재하는 경우
+				check = true;
+			}
+			else 
+			{  //사용자가 입력한 id가 데이터베이스의 user 테이블에 존재하지 않을 경우
+				check = false;
+			}
+			
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			close();
+		}
+		return check;
 	}
+
+}

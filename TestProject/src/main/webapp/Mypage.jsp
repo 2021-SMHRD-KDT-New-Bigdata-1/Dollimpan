@@ -81,7 +81,7 @@
 	              <a class="nav-link" href="about.html">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineRl.html">백신예약/조회</a>
+	              <a class="nav-link" href="VaccineRl2.jsp">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
@@ -134,6 +134,8 @@
 if(vo != null){ 
 	
 	out.print("<div class='profileInfo'>이름 :"+vo.getUser_name()+"</div>");
+	out.print("<div class='profileInfo'>get관리자 :"+vo.getAdm()+"</div>");
+	out.print("<div class='profileInfo'>get성별 :"+vo.getGender()+"</div>");
 	out.print("<div class='profileInfo'>생년월일 :"+vo.getBirth_date()+"</div>");
 	out.print("<div class='profileInfo'>아이디 :"+vo.getUser_id()+"</div>");
 }
