@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 	
@@ -372,5 +373,51 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}
 		return check;
 	}
+	
+	
+	
+	public String search_f(String fam)
+	{
+		ArrayList<FamilyVO> fo = new ArrayList<FamilyVO>();
+		try {
+				conn();
+				
+				//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
+				String sql = "select fam1, fam2, fam3, fam4, user_id from family where=?"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, fam);
+				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
+				
+				rs = psmt.executeQuery(); //커서 이용
+				
+				//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+				//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+				
+				while(rs.next()) 
+				{ // sql 문의 fam1 ~ fam4, user_id를 받아온다.
+					String fam1 = rs.getString(1);
+					String fam2 = rs.getString(2);
+					String fam3 = rs.getString(3);
+					String fam4 = rs.getString(4);
+					String user_id = rs.getString(5);
+					
+					
+					FamilyVO vo = new FamilyVO(fam1, fam2, fam3, fam4, user_id);
+					//값 추가해주기
+					fo.add(vo); // 배열 fo에 저장해준다.
+				}
+				
+			}catch(Exception e) { 
+				e.printStackTrace();
+			
+			}finally {
+				close();
+			}
+		
+		return fam;
+		
+	}
+	
+
 
 }
