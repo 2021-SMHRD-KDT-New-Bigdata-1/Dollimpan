@@ -31,7 +31,6 @@
 	<%
 	//String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
-		
 	%>
 	
 	<%
