@@ -203,7 +203,7 @@ try {
 		
 		conn();
 	
-		String sql = "select * from hospitals where hos_name = ?"; 
+		String sql = "select * from hospitals where instr(hos_name, '?')"; 
 		psmt = conn.prepareStatement(sql); 
 		psmt.setString(1, search);
 		

@@ -189,6 +189,7 @@
 										<h2>병원 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
+										
 										<li><span class="date"><h4><strong>결핵</strong></h4></span>
 										<span> / 20~40세</span>
 										<span> / 서구보건소</span>
@@ -321,28 +322,38 @@
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
 
+<%for(int i=10; i<sr.size(); i++){
+	
+	a[i] = sr.get(i).getLongitude(),
+	sr.get(i).getlatitude(),%>
+	'<div style="padding:5px;">'+<%sr.get(i).gethos_name() %>+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+sr.get(i).getlongtitude(), sr.get(i).getlatitude()+'" style="color:blue" target="_blank">길찾기</a></div>' ]},
+ %>
+
+
+
 								<script
 									src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
 								<script>
-									var mapContainer = document
-											.getElementById('map'), // 지도를 표시할 div 
-									mapOption = {
-										center : new kakao.maps.LatLng(
-												35.152493, 126.889869), // 지도의 중심좌표
-										level : 4, // 지도의 확대 레벨
-										mapTypeId : kakao.maps.MapTypeId.ROADMAP
-									// 지도종류
-									};
+								var mapContainer = document
+								.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center : new kakao.maps.LatLng(
+									35.152493, 126.889869), // 지도의 중심좌표
+							level : 4, // 지도의 확대 레벨
+							mapTypeId : kakao.maps.MapTypeId.ROADMAP
+						// 지도종류
+						};
 
-									// 지도를 생성한다 
-									var map = new kakao.maps.Map(mapContainer,
-											mapOption);
-
-									var 데이터 = [
-											[
-													35.152493,
-													126.889869,
-													'<div style="padding:5px;">서구보건소 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.152493, 126.889869" style="color:blue" target="_blank">길찾기</a></div>' ],
+						// 지도를 생성한다 
+						var map = new kakao.maps.Map(mapContainer,
+								mapOption);
+											
+						var 데이터 = [
+							for(var i=10; i<sr.size(); i++){
+							[
+										sr.get(i).getlongtitude(),
+													sr.get(i).getlatitude(),
+													'<div style="padding:5px;">'+sr.get(i).gethos_name()+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+sr.get(i).getlongtitude(), sr.get(i).getlatitude()+'" style="color:blue" target="_blank">길찾기</a></div>' ]},
 											[
 													35.15383683286908,
 													126.8813606855869,
