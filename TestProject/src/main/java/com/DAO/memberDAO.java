@@ -12,6 +12,7 @@ import javax.websocket.Session;
 import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
+import com.smhrd.VaccineVO;
 	
 	public class memberDAO {
 		Connection conn = null;
@@ -204,7 +205,7 @@ try {
 		
 		conn();
 	
-		String sql = "select * from hospitals where hos_name = ?"; 
+		String sql = "select * from hospitals where instr(hos_name, '?')"; 
 		psmt = conn.prepareStatement(sql); 
 		psmt.setString(1, search);
 		
@@ -374,6 +375,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return check;
 	}
 	
+<<<<<<< HEAD
 	
 	
 	public String search_f(String fam)
@@ -419,5 +421,43 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	}
 	
 
+=======
+	public ArrayList<VaccineVO> VaccineList() {
+		ArrayList<VaccineVO> vc = new ArrayList<VaccineVO>();
+	try {
+			
+			conn();
+			
+			//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
+			String sql = "select vac_seq, vac_name, vac_disease, vac_code from vaccines"; 
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery(); //커서 이용
+			
+			//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+			//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+			
+			while(rs.next()) { //커서 이동
+				String vac_seq = rs.getString(1);
+				String vac_name = rs.getString(2);
+				String vac_disease = rs.getString(3);
+				String vac_code = rs.getString(4);
+				
+			
+				//값 묶어주기
+				VaccineVO vo = new VaccineVO(vac_seq,vac_name,vac_disease,vac_code);
+				//값 추가해주기
+				vc.add(vo);
+			}
+			
+		}catch(Exception e) { 
+			e.printStackTrace();
+		
+		}finally {
+			close();
+		}
+		return vc;
+	}
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
 
 }

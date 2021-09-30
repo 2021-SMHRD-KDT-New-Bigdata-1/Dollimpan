@@ -16,31 +16,33 @@
 
 <title>One Health - Medical Center HTML5 Template</title>
 
-<link rel="stylesheet" href="./assets/css/maicons.css">
+<link rel="stylesheet" href="../assets/css/maicons.css">
 
-<link rel="stylesheet" href="./assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
 
-<link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.css">
+<link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
 
-<link rel="stylesheet" href="./assets/vendor/animate/animate.css">
+<link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
-<link rel="stylesheet" href="./assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/theme.css">
 </head>
 <body>
 	
 	<%
-	int date = 0;
+	//String birth ="";
 		UserVO vo = (UserVO)session.getAttribute("vo");
 		if(vo != null){
-		date = vo.getBirth_date();
+		int date =  vo.getBirth_date();
 	}%>
 	
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.print(sr.size());
-		System.out.print(sr.get(1).getHos_addr());
+		System.out.println(sr.size());
 	%>
+
+	
+	
 
 	
 	<!-- Back to top button -->
@@ -54,8 +56,8 @@
 				<!-- .row -->
 			</div>
 			<!-- .container -->
-		
-		<!-- .topbar 자리 -->
+		</div>
+		<!-- .topbar -->
 
 		<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 			<div class="container">
@@ -179,72 +181,46 @@
 				<form class="contact-form mt-5">
 					<div class="container">
 						<div class="row align-items-center">
-							
-								
-								<%if(vo == null){ %>
-								<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+							<div class="col-lg-6 py-3 wow fadeInUp"  style="height: 500px; overflow: auto">
+
 								<section>
+								
+								
+								
 									<header>
-										<h2>병원 리스트!!</h2><br>
+										<h2>접종 가능 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
+									
+									<%//if(vo != null && date<19){%>
+									
 										
+									<%//} %>
+									
+									
+									<!-- 
+										사용자 my page에서 맞아야 할 백신 가져오기
+										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->
+										
+										
+										<!-- 백신 리스트 -->
+										
+										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
+											<!-- 병원 리스트 => '<a href="#">' =>'#'누르면 위도,경도값 가져와서 지도에 출력 -->
+												<!-- '<a href="#">' 지도에 출력된 예약하기 버튼 클릭시 전화번호 출력?? -->
+										
+										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
+							
+									
 										<li><span class="date"><h4><strong>결핵</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-											
-										<li><span class="date"><h4><strong>A형간염</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 보라안과</span>
-										<span> / 15000원</span>
-											<h3>
-												<a href="#">예약하기</a>
-											</h3>
-											<p>접종 현황: 0회</p></li>
-											
-										<li><span class="date"><h4><strong>B형간염</strong></h4></span>
-										<span> / 20세</span>
-										<span> / 새우리병원</span>
-										<span> / 3000원</span>
-											<h3>
-												<a href="#">예약하기</a>
-											</h3>
-											<p>접종 현황: 0회</p></li>
-										
-										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
 										<span> / 20~40세</span>
 										<span> / 서구보건소</span>
 										<span> / 무료</span>
 											<h3>
 												<a href="#menu1">예약하기</a>
 											</h3>
-											<p>접종 현황: 1회</p></li>	
-									</ul>
-								</section>
-							</div>
-							<%}else{ %>
-									<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-									<section>
-										<header>
-									
-										<h2>백신 리스트!!</h2><br>
-									</header>
-									<ul class="dates">
-									
-									
-										<li><span class="date"><h4><strong>결핵</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
-											</h3>
 											<p>접종 현황: 1회</p></li>
+										
 											
 										<li><span class="date"><h4><strong>A형간염</strong></h4></span>
 										<span> / 20~40세</span>
@@ -273,90 +249,87 @@
 											</h3>
 											<p>접종 현황: 1회</p></li>	
 										
+										<li><span class="date"><h4><strong>폴리오</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>
 										
+										<li><span class="date"><h4><strong>B형헤모필루스인플루엔자</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>
+											
+										<li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>
+											
+										<li><span class="date"><h4><strong>홍역</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>
 									</ul>
 									
 																		
 								</section>
-								</div>
-								<%} %>
+								
+								
+								
+							</div>
 							
 							
-							<div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
-
-								<section>
-								<div>
-									<header>
-										<h2>병원 목록!</h2><br>
-									</header>
-									<ul class="links">
-										<li><span class="date"><h4><strong>서구보건소</strong></h4></span>
-										<span> / 주소~             ~</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											
-										<li><span class="date"><h4><strong>강휘병원</strong></h4></span>
-										<span> / 주소주소주소주소주소주소</span>
-										<span> / 보라안과</span>
-										<span> / 15000원</span>
-											<h3>
-												<a href="#">예약하기</a>
-											</h3>
-											<p>접종 현황: 0회</p></li>
-											
-										<li><span class="date"><h4><strong>B형간염</strong></h4></span>
-										<span> / 20세</span>
-										<span> / 새우리병원</span>
-										<span> / 3000원</span>
-											<h3>
-												<a href="#">예약하기</a>
-											</h3>
-											<p>접종 현황: 0회</p></li>
-										</ul>
-										</div>								
-								</section>
+								
 								
 							</div>
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
 								<div id="map" style="width: 600px; height: 500px;"></div>
 
-
-
-
-
 								<script
 									src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
 								<script>
-								var mapContainer = document
-								.getElementById('map'), // 지도를 표시할 div 
-						mapOption = {
-							center : new kakao.maps.LatLng(
-									35.152493, 126.889869), // 지도의 중심좌표
-							level : 4, // 지도의 확대 레벨
-							mapTypeId : kakao.maps.MapTypeId.ROADMAP
-						// 지도종류
-						};
+									var mapContainer = document
+											.getElementById('map'), // 지도를 표시할 div 
+									mapOption = {
+										center : new kakao.maps.LatLng(
+												35.152493, 126.889869), // 지도의 중심좌표
+										level : 4, // 지도의 확대 레벨
+										mapTypeId : kakao.maps.MapTypeId.ROADMAP
+									// 지도종류
+									};
 
-						// 지도를 생성한다 
-						var map = new kakao.maps.Map(mapContainer,
-								mapOption);
-											
-						
-						
-							for(var i=10; i<<%sr.size()%>; i++){
-								var 데이터 []=
-										<%sr.get(i).getlongtitude(),
-													sr.get(i).getlatitude()%>,
-													'<div style="padding:5px;">'+<%sr.get(i).gethos_name()%>+'<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="'+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>+'" style="color:blue" target="_blank">길찾기</a></div>'}
-											 /* [
+									// 지도를 생성한다 
+									var map = new kakao.maps.Map(mapContainer,
+											mapOption);
+
+									var 데이터 = [
+											[
+													35.152493,
+													126.889869,
+													'<div style="padding:5px;">서구보건소 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.152493, 126.889869" style="color:blue" target="_blank">길찾기</a></div>' ],
+											[
 													35.15383683286908,
 													126.8813606855869,
 													'<div style="padding:5px;">새우리병원 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15383683286908, 126.8813606855869" style="color:blue" target="_blank">길찾기</a></div>' ],
 											[
 													35.15246398491651,
 													126.8844556644417,
-													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] */
+													'<div style="padding:5px;">보라안과 <br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="35.15246398491651, 126.8844556644417" style="color:blue" target="_blank">길찾기</a></div>' ] ]
 
 									for (var i = 0; i < 데이터.length; i++) {
 										// 지도에 마커를 생성하고 표시한다
@@ -378,12 +351,11 @@
 										infowindow.open(map, marker);
 									}
 								</script>
-</div>
+
 							</div>
 						</div>
-					</form>
 					</div>
-				
+				</form>
 			</div>
 		</div>
 
@@ -420,6 +392,12 @@
 				<!-- .banner-home -->
 			</div>
 		</div>
+	</div>
+	</div>
+	</div>
+	<!-- .bg-light -->
+	</div>
+	<!-- .bg-light -->
 
 
 
@@ -613,16 +591,6 @@
 
 	<script src="assets/js/theme.js"></script>
 
-	<script>
-    function test() {
-        if ($('#menu').css('display') == 'block') {
-        	$('#menu').css('display' , 'none')
-            $('#menu1').css('display', 'block');
-        } else {
-            $('#(아이디명)').css('display', 'block');
-        }
-    }
-</script>
 
 </body>
 </html>

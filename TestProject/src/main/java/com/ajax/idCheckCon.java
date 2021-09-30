@@ -19,7 +19,7 @@ public class idCheckCon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String data = request.getParameter("id");
-		
+		System.out.println("id");
 		memberDAO dao = new memberDAO();
 		boolean check = dao.idCheck(data);
 		//입력한 값이 존재하면 check -> true
