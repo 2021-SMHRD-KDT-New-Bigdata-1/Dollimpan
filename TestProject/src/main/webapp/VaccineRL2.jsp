@@ -29,16 +29,15 @@
 <body>
 	
 	<%
-	//String birth ="";
+	int date = 0;
 		UserVO vo = (UserVO)session.getAttribute("vo");
 		if(vo != null){
-		int date =  vo.getBirth_date();
+		date = vo.getBirth_date();
 	}%>
 	
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		System.out.println(sr.size());
 	%>
 
 	
@@ -181,49 +180,71 @@
 				<form class="contact-form mt-5">
 					<div class="container">
 						<div class="row align-items-center">
-							<div class="col-lg-6 py-3 wow fadeInUp"  style="height: 500px; overflow: auto">
-
+							
+								
+								<%if(vo == null){ %>
+								<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
 								<section>
-								
-								
-								
 									<header>
 										<h2>병원 리스트!!</h2><br>
 									</header>
 									<ul class="dates">
+										<li><span class="date"><h4><strong>결핵</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+											</h3>
+											<p>접종 현황: 1회</p></li>
+											
+										<li><span class="date"><h4><strong>A형간염</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 보라안과</span>
+										<span> / 15000원</span>
+											<h3>
+												<a href="#">예약하기</a>
+											</h3>
+											<p>접종 현황: 0회</p></li>
+											
+										<li><span class="date"><h4><strong>B형간염</strong></h4></span>
+										<span> / 20세</span>
+										<span> / 새우리병원</span>
+										<span> / 3000원</span>
+											<h3>
+												<a href="#">예약하기</a>
+											</h3>
+											<p>접종 현황: 0회</p></li>
+										
+										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
+										<span> / 20~40세</span>
+										<span> / 서구보건소</span>
+										<span> / 무료</span>
+											<h3>
+												<a href="#menu1">예약하기</a>
+											</h3>
+											<p>접종 현황: 1회</p></li>	
+									</ul>
+								</section>
+							</div>
+							<%}else{ %>
+									<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+									<section>
+										<header>
 									
-									<%//if(vo != null && date<19){%>
+										<h2>백신 리스트!!</h2><br>
+									</header>
+									<ul class="dates">
 									
-										
-									<%//} %>
-									
-									
-									<!-- 
-										사용자 my page에서 맞아야 할 백신 가져오기
-										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->
-										
-										
-										<!-- 백신 리스트 -->
-										
-										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
-											<!-- 병원 리스트 => '<a href="#">' =>'#'누르면 위도,경도값 가져와서 지도에 출력 -->
-												<!-- '<a href="#">' 지도에 출력된 예약하기 버튼 클릭시 전화번호 출력?? -->
-										
-										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
-							
 									
 										<li><span class="date"><h4><strong>결핵</strong></h4></span>
 										<span> / 20~40세</span>
 										<span> / 서구보건소</span>
 										<span> / 무료</span>
 											<h3>
-												<a class="btn btn-primary ml-lg-3" href="./vrl2/bcg.jsp">예약하기</a>
+												<button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
 											</h3>
 											<p>접종 현황: 1회</p></li>
-										<script>
-										
-										
-										</script>
 											
 										<li><span class="date"><h4><strong>A형간염</strong></h4></span>
 										<span> / 20~40세</span>
@@ -252,82 +273,23 @@
 											</h3>
 											<p>접종 현황: 1회</p></li>	
 										
-										<li><span class="date"><h4><strong>폴리오</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
 										
-										<li><span class="date"><h4><strong>B형헤모필루스인플루엔자</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-											
-										<li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-											
-										<li><span class="date"><h4><strong>홍역</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
 									</ul>
 									
 																		
 								</section>
-								
-								<!--  --> 
-								
-								
-							</div>
+								</div>
+								<%} %>
 							
-							<div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:not none;" >
+							
+							<div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
 
 								<section>
-								
 								<div>
-								
 									<header>
 										<h2>병원 목록!</h2><br>
 									</header>
 									<ul class="links">
-									
-									<%//if(vo != null && date<19){%>
-									
-										
-									<%//} %>
-									
-									
-									<!-- 
-										사용자 my page에서 맞아야 할 백신 가져오기
-										백신 리스트(백신 별로 '<a href="#병원id">'입력) -->
-										
-										
-										<!-- 백신 리스트 -->
-										
-										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
-											<!-- 병원 리스트 => '<a href="#">' =>'#'누르면 위도,경도값 가져와서 지도에 출력 -->
-												<!-- '<a href="#">' 지도에 출력된 예약하기 버튼 클릭시 전화번호 출력?? -->
-										
-										<!-- 리스트 클릭 후 병원 목록 id="입력"(백신 리스트와 연동)-->
-							
-									
 										<li><span class="date"><h4><strong>서구보건소</strong></h4></span>
 										<span> / 주소~             ~</span>
 											<h3>
@@ -351,57 +313,9 @@
 												<a href="#">예약하기</a>
 											</h3>
 											<p>접종 현황: 0회</p></li>
-										
-										<li><span class="date"><h4><strong>파상풍</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>	
-										
-										<li><span class="date"><h4><strong>폴리오</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-										
-										<li><span class="date"><h4><strong>B형헤모필루스인플루엔자</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-											
-										<li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-											
-										<li><span class="date"><h4><strong>홍역</strong></h4></span>
-										<span> / 20~40세</span>
-										<span> / 서구보건소</span>
-										<span> / 무료</span>
-											<h3>
-												<a href="#menu1">예약하기</a>
-											</h3>
-											<p>접종 현황: 1회</p></li>
-									</ul>
+										</ul>
 										</div>								
 								</section>
-								
-								<!--  --> 
-								
 								
 							</div>
 							<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
@@ -458,11 +372,12 @@
 										infowindow.open(map, marker);
 									}
 								</script>
-
+</div>
 							</div>
 						</div>
+					</form>
 					</div>
-				</form>
+				
 			</div>
 		</div>
 
@@ -499,12 +414,6 @@
 				<!-- .banner-home -->
 			</div>
 		</div>
-	</div>
-	</div>
-	</div>
-	<!-- .bg-light -->
-	</div>
-	<!-- .bg-light -->
 
 
 
@@ -698,6 +607,16 @@
 
 	<script src="assets/js/theme.js"></script>
 
+	<script>
+    function test() {
+        if ($('#menu').css('display') == 'block') {
+        	$('#menu').css('display' , 'none')
+            $('#menu1').css('display', 'block');
+        } else {
+            $('#(아이디명)').css('display', 'block');
+        }
+    }
+</script>
 
 </body>
 </html>
