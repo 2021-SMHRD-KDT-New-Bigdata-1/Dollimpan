@@ -389,43 +389,6 @@
 						    infowindow.open(map, marker); 
 						}
 						
-						/* 1. ??를 검색해서 나오는 값을 어레이리스트로 생성 
-						   2. 그 생성한 값을 토대로 좌표값을 출력
-						   3. 
-						*/
-						<%-- 
-							var 데이터 [] = null;
-							double a = 0;
-							double b = 0;
-							
-							<%for(int i=0; i<sr.size(); i++){%>
-							list.add(데이터)(sr.get(i).getlongtitude(),
-									sr.get(i).getlatitude()};
-									 
-							}
-													+<div style="padding:5px;">+<%sr.get(i).gethos_name()%>+<br><a href="#" style="color:blue" target="_blank">예약하기</a><br> <a href="+<%sr.get(i).getlongtitude(), sr.get(i).getlatitude()%>" + style="color:blue" target="_blank">길찾기</a></div><%}%>
-
-								
-
-									for (var i = 0; i < 데이터.length; i++) {
-										// 지도에 마커를 생성하고 표시한다
-										var marker = new kakao.maps.Marker({
-											position : new kakao.maps.LatLng(
-													데이터[i][0], 데이터[i][1]), // 마커의 좌표
-											map : map
-										// 마커를 표시할 지도 객체
-										});
-
-										
-										// 인포윈도우를 생성합니다
-										var infowindow = new kakao.maps.InfoWindow(
-												{
-													content : 데이터[i][2]
-												});
-
-										// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-										infowindow.open(map, marker);
-									} --%>
 								</script>
 </div>
 							</div>
