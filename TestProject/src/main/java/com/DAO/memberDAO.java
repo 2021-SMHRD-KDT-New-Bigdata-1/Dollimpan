@@ -230,7 +230,7 @@ try {
 	}finally {
 		close();
 	}
-	return vo;
+	return hr;
 }
 
 
