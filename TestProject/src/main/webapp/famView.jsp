@@ -42,6 +42,13 @@
 //	ArrayList<UserVO> al=dao.search_f(fam);
 	ArrayList<UserVO> vo=dao.search_f(fam);
 	System.out.print(vo.size());
+	
+	ArrayList<UserVO> vo2 = (ArrayList<UserVO>) session.getAttribute("vo");
+	System.out.println("session vo : "+vo2.size());
+	System.out.println("id"+vo2.get(0).getUser_id());
+	System.out.println("name"+vo2.get(0).getUser_name()); 
+	
+	
 %>
 
 
@@ -150,22 +157,20 @@
 						  
 						  <tr>	
 						  <% 
-						  
-						  for(int i=0; i<vo.size(); i++){
-							  
-							  String user_id = vo.get(i).getUser_id();
-							  String user_pw = vo.get(i).getUser_pw();
-							  
+						
 					//	  	out.print("<td>"+ vo.get(0).getUser_id()+ "</td>"); 
-							out.print("<th>"+ user_id+ "</th>");
-							out.print("<th>"+ user_pw+ "</th>");
-					//	  	out.print("<td>"+ vo.get(0).getUser_name()+ "</td>");
-						  	out.print("<th><a href='AddFamilyService?user_id="+user_id+"'> °¡Á·Ãß°¡ </a></th>");					  
-						  }
+							out.print("<td>"+ vo2.get(0).getUser_id()+ "</td>");
+							out.print("<td>"+ vo2.get(0).getUser_name()+ "</td>");
+					//	  	out.print("<th>"+ vo.get(0).getUser_name()+ "</th>");
+						  	out.print("<td><a href='AddFamilyService?user_id="+vo2.get(0).getUser_id()+"'> °¡Á·Ãß°¡ </a></td>");					  
+						 
 						  %>
+<<<<<<< HEAD
 						  <!-- ½ºÅ©¸³Æ²¸´ ¾È¿¡! ³Ö¾îÁà¾ß Á´Á´Á´ ¤¡¤¡ ¾ÆÇ×¿ä°Å ¾È¿¨ ¤¾¤¾ -->
 						   
 						  <th> <%=vo.get(0).getUser_id() %> </th>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
 						  </tr>
 						  
 						   <% 
