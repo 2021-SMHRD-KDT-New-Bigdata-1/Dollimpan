@@ -166,6 +166,12 @@
 						  	out.print("<td><a href='AddFamilyService?family_id="+vo2.get(0).getUser_id()+"'> °¡Á·Ãß°¡ </a></td>");					  
 						 
 						  %>
+<<<<<<< HEAD
+						  <!-- ½ºÅ©¸³Æ²¸´ ¾È¿¡! ³Ö¾îÁà¾ß Á´Á´Á´ ¤¡¤¡ ¾ÆÇ×¿ä°Å ¾È¿¨ ¤¾¤¾ -->
+						   
+						  <th> <%=vo.get(0).getUser_id() %> </th>
+=======
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
 						  </tr>
 						  
 						   <% 

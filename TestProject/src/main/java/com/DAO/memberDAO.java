@@ -171,7 +171,7 @@ try {
 		conn();
 		
 		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
-		String sql = "select hos_name, hos_addr, latitude, longitude from hospitals"; 
+		String sql = "select hos_name, hos_addr, latitude, longitude hos_info from hospitals"; 
 		psmt = conn.prepareStatement(sql);
 		
 		rs = psmt.executeQuery(); //커서 이용
@@ -184,9 +184,9 @@ try {
 			String hos_addr = rs.getString(2);
 			double latitude = rs.getDouble(3);
 			double longitude = rs.getDouble(4);
+			String hos_info = rs.getString(5);
 			
-			
-			HospitalVO vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
+			HospitalVO vo = new HospitalVO(hos_name,hos_addr,latitude,longitude, hos_info);
 			//값 추가해주기
 			sr.add(vo);
 		}
@@ -200,25 +200,27 @@ try {
 	return sr;
 }
 
-public HospitalVO h_search(String search) {
-	HospitalVO vo = null;
+public ArrayList<HospitalVO> h_search(String search) {
+	ArrayList<HospitalVO> hr = new ArrayList<HospitalVO>();
 try {
-		
+		//이거 쓸거에요
 		conn();
 	
-		String sql = "select * from hospitals where instr(hos_name, '?')"; 
+		String sql = "select * from hospitals where instr(hos_info, ?)"; 
 		psmt = conn.prepareStatement(sql); 
 		psmt.setString(1, search);
 		
 		rs = psmt.executeQuery(); //커서 이용
 		
-		if(rs.next()) {
+		while(rs.next()) {
 
 			String hos_name = rs.getString(2);
 			String hos_addr = rs.getString(3);
 			double latitude = rs.getDouble(5);
 			double longitude = rs.getDouble(6);
-			vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
+			HospitalVO vo = new HospitalVO(hos_name,hos_addr,latitude,longitude);
+		
+			hr.add(vo);
 			//새로운 데이터 타입 : VO
 		}
 		
@@ -229,7 +231,7 @@ try {
 	}finally {
 		close();
 	}
-	return vo;
+	return hr;
 }
 
 
