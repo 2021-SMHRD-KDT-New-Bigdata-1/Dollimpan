@@ -413,7 +413,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	}
 	
 	
-	public int addfam(String family_id) // 안되면 join
+	public int addfam(String family_id, String user_id) // 안되면 join
 	{
 		int cnt = 0;
 		try 
@@ -425,16 +425,11 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			psmt = conn.prepareStatement(sql);
 			// 위에 물음표에 채워줘야하는 값
 			psmt.setString(1, family_id);
+			psmt.setString(2, user_id);
 
 		// 2.5 sql문 실행하기
 //			int cnt = psmt.executeUpdate(); -> return에서 써주기위해 아래와 같이 바꿔준다.
 			cnt = psmt.executeUpdate();
-//			if(cnt>0)
-//			{
-//				response.sendRedirect("main.jsp"); // 일반 클래스는 response를 바로 사용할 수 없다. 그러므로 그냥 지워줬다.
-//			} 
-			
-
 		} 
 		catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
 		{
@@ -446,7 +441,6 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			close();
 		}
 		return cnt;
-	
 	}
 
 
