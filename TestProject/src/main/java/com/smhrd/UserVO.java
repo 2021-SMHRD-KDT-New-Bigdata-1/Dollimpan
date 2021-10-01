@@ -49,7 +49,9 @@ public class UserVO {
 		this.phone = phone;
 		this.user_id = user_id;
 	}
-	public UserVO(String user_id, String user_pw) 
+	public UserVO(String user_id, String user_name)  
+	// 여기다가는 user_pw 패스워드를 담으니까 user_name을 불러아닝왔을 때 안불러와지는거에요!아..죄송합니다
+	// 이것만 user_name으로 바꿔주면 나올꺼에요~ 이거 바꾸고나서 안불러와지면 다시 불러주세요 ㅎㅎ네
 	{
 		super();
 		this.user_id = user_id;

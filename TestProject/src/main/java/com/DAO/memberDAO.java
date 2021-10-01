@@ -13,6 +13,7 @@ import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 import com.smhrd.VaccineVO;
+
 	
 	public class memberDAO {
 		Connection conn = null;
@@ -375,7 +376,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return check;
 	}
 
-	public ArrayList<UserVO> search_f(String fam) // addFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
+	public ArrayList<UserVO> search_f(String fam) // searchFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
 	{
 		ArrayList<UserVO> vo = new ArrayList<UserVO>(); // userVO 타입 변수 선언
 		try {
@@ -394,12 +395,13 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 					String user_id = rs.getString(1);
 //					String user_id = rs.getString(1);
 					String user_name = rs.getString(2);
+					System.out.println(user_name);
 					
 					UserVO fo = new UserVO(user_id, user_name);
 					//값 추가해주기
 					vo.add(fo); // 배열 fo에 저장해준다.
-					
 				}
+				
 			}catch(Exception e) { 
 				e.printStackTrace();
 			
