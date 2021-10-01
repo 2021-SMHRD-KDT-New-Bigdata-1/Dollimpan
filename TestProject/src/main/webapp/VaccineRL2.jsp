@@ -1,4 +1,3 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -368,19 +367,22 @@
 									    }
 									]; */
 									
-									
-									
 						    
-						    var positions = new Array();
+						    var positions = new Array(); // 이 부분은 원래 있던 부분이에요? 제가 만든거에요 이렇게 빈 리스트를만들어주고싶어서욥
 						    
-						   <% for(int i=0;i<sr.size();i++){  %>
-						    	positions[i] = {"title: " + sr.get(i).getHos_name() , "latlng: "+new kakao.maps.LatLng(sr.get(i).getLatitude(),sr.get(i).getLongtitude)}; 
-						     
+						    		<% System.out.println("hey : "+sr.size()); %>
+						   <% for(int i=0;i<sr.size();i++){  %> 								// 스크립틀릿을 쓰면 여기에 카카오맵을 불러오는 기능도 사라져버립니다.ㅠ
+						    	positions[<%=i %>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						   
 						   <% } %>
 						   
 						// 마커 이미지의 이미지 주소입니다
 						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-						    
+						   
+						console.log(positions.length);
 						for (var i = 0; i < positions.length; i ++) {
 						    
 						    // 마커 이미지의 이미지 크기 입니다
@@ -388,7 +390,8 @@
 						    
 						    // 마커 이미지를 생성합니다    
 						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-						    
+							console.log("for문시작");
+						    console.log(positions[i].latlng);
 						    // 마커를 생성합니다
 						    var marker = new kakao.maps.Marker({
 						        map: map, // 마커를 표시할 지도
