@@ -346,8 +346,8 @@
 						
 						    var positions = new Array();
 						    
-						    for(int i=0;i<sr.size();i++){
-						    	positions[i] = {"title: " + sr.get(i).getHos_name() , "latlng: "+new kakao.maps.LatLng(sr.get(i).getLatitude(),sr.get(i).getLongtitude)}; 
+						    for(int i=0;i<<%=sr.size()%>;i++){
+						    	positions[i] = {title:  + <%sr.get(i).getHos_name();%> , "latlng: "+new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongtitude)%>}; 
 						     
 						    }
 						   
