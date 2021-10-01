@@ -200,19 +200,20 @@ try {
 	return sr;
 }
 
-public HospitalVO h_search(String search) {
+public ArrayList<HospitalVO> h_search(String search) {
 	HospitalVO vo = null;
+	ArrayList<HospitalVO> hr = new ArrayList<HospitalVO>();
 try {
 		
 		conn();
 	
-		String sql = "select * from hospitals where instr(hos_name, '?')"; 
+		String sql = "select * from hospitals where instr(hos_info, '?')"; 
 		psmt = conn.prepareStatement(sql); 
 		psmt.setString(1, search);
 		
 		rs = psmt.executeQuery(); //커서 이용
 		
-		if(rs.next()) {
+		while(rs.next()) {
 
 			String hos_name = rs.getString(2);
 			String hos_addr = rs.getString(3);
