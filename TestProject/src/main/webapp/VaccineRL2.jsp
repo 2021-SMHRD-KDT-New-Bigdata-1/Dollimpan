@@ -368,9 +368,9 @@
 									]; */
 									
 						    
-					    var positions = new Array(); // 이 부분은 원래 있던 부분이에요? 제가 만든거에요 이렇게 빈 리스트를만들어주고싶어서욥
+					    var positions = new Array();
 						    
-						 <% System.out.println("hey : "+sr.size()); %>
+						 <% System.out.println("병원수 : "+sr.size()); %>
 						 
 						   <% for(int i=0;i<5;i++){  %> 
 						    	positions[<%=i%>] = {
