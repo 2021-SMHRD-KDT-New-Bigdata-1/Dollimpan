@@ -27,24 +27,25 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-   
-   <%
-   int date = 0;
-      UserVO vo = (UserVO)session.getAttribute("vo");
-      if(vo != null){
-      date = vo.getBirth_date();
-   }%>
-   
-   <%
-      memberDAO dao = new memberDAO();
-      ArrayList<HospitalVO> sr = dao.search();
-      
-      //  System.out.print(sr.size());  병원 개수
-      // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-      
-      System.out.print(date);
-   %>
-   
+
+	
+	<%
+	int date = 0;
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		if(vo != null){
+		date = vo.getBirth_date();
+	}%>
+	
+	<%
+		memberDAO dao = new memberDAO();
+		ArrayList<HospitalVO> sr = dao.search();
+		
+		//  System.out.print(sr.size());  병원 개수
+		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
+		
+		System.out.print(date);
+	%>
+	
 
    
    <!-- Back to top button -->
@@ -340,86 +341,87 @@
                   // 지도종류
                   };
 
-                  // 지도를 생성한다 
-                  var map = new kakao.maps.Map(mapContainer,
-                        mapOption);
-                  
-                     /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
-                                 
-                  // var positions[] = new var[sr.size()];
-                  
-                     
-                     
-                     
-                    /*  var positions = [
-                               {
-                                   title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-                               },
-                               
-                               {
-                                   title: '광주 삼성병원', 
-                                   latlng: new kakao.maps.LatLng(35.171491, 126.866726)
-                               },
-                               
-                               {
-                                   title: '시원병원', 
-                                   latlng: new kakao.maps.LatLng(35.152658, 126.848934)
-                               }
-                           ]; */
-                           
-                      
-                      var positions = new Array(); // 이 부분은 원래 있던 부분이에요? 제가 만든거에요 이렇게 빈 리스트를만들어주고싶어서욥
-                      
-                            <% System.out.println("hey : "+sr.size()); %>
-                     <% for(int i=0;i<sr.size();i++){  %>                         // 스크립틀릿을 쓰면 여기에 카카오맵을 불러오는 기능도 사라져버립니다.ㅠ
-                         positions[<%=i %>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                     
-                     <% } %>
-                     
-                  // 마커 이미지의 이미지 주소입니다
-                  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-                     
-                  console.log(positions.length);
-                  for (var i = 0; i < positions.length; i ++) {
-                      
-                      // 마커 이미지의 이미지 크기 입니다
-                      var imageSize = new kakao.maps.Size(24, 35); 
-                      
-                      // 마커 이미지를 생성합니다    
-                      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-                     console.log("for문시작");
-                      console.log(positions[i].latlng);
-                      // 마커를 생성합니다
-                      var marker = new kakao.maps.Marker({
-                          map: map, // 마커를 표시할 지도
-                          position: positions[i].latlng, // 마커를 표시할 위치
-                          title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                          image : markerImage // 마커 이미지 
-                      
-                          //ㅎㅎㅎㅎㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ...ㅇ
-                     
-                          
-                      });
-                      
-                      marker.setMap(map);
+						// 지도를 생성한다 
+						var map = new kakao.maps.Map(mapContainer,
+								mapOption);
+						
+						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
+											
+						// var positions[] = new var[sr.size()];
+						
+						   
+						   
+						   
+						  /*  var positions = [
+									    {
+									        title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
+									    },
+									    
+									    {
+									        title: '광주 삼성병원', 
+									        latlng: new kakao.maps.LatLng(35.171491, 126.866726)
+									    },
+									    
+									    {
+									        title: '시원병원', 
+									        latlng: new kakao.maps.LatLng(35.152658, 126.848934)
+									    }
+									]; */
+									
+						    
+					    var positions = new Array(); // 이 부분은 원래 있던 부분이에요? 제가 만든거에요 이렇게 빈 리스트를만들어주고싶어서욥
+						    
+						 <% System.out.println("hey : "+sr.size()); %>
+						 
+						   <% for(int i=0;i<5;i++){  %> 
+						    	positions[<%=i%>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						   
+						   <% } %> 
+						   
+						// 마커 이미지의 이미지 주소입니다
+						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+						   
+						console.log(positions.length);
+						for (var i = 0; i < positions.length; i ++) {
+						    
+						    // 마커 이미지의 이미지 크기 입니다
+						    var imageSize = new kakao.maps.Size(24, 35); 
+						    
+						    // 마커 이미지를 생성합니다    
+						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+							console.log("for문시작");
+						    console.log(positions[i].latlng);
+						    // 마커를 생성합니다
+						    var marker = new kakao.maps.Marker({
+						        map: map, // 마커를 표시할 지도
+						        position: positions[i].latlng, // 마커를 표시할 위치
+						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						        image : markerImage // 마커 이미지 
+						    
+						        //ㅎㅎㅎㅎㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ...ㅇ
+						   
+						        
+						    });
+						    
+						    marker.setMap(map);
 
-                      var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                          iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
                     
-                      // 인포윈도우를 생성합니다
-                      var infowindow = new kakao.maps.InfoWindow({
-                          position : iwPosition, 
-                          content : iwContent 
-                      });
-                        
-                      // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-                      infowindow.open(map, marker); 
-                  }
-                  
-                        </script>
+						    // 인포윈도우를 생성합니다
+						    var infowindow = new kakao.maps.InfoWindow({
+						        position : iwPosition, 
+						        content : iwContent 
+						    });
+						      
+						    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+						    infowindow.open(map, marker); 
+						}
+						
+								</script>
 </div>
                      </div>
                   </div>
