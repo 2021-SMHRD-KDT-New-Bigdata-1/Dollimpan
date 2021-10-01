@@ -38,11 +38,8 @@
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		
 		//  System.out.print(sr.size());  병원 개수
-		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-		
-		System.out.print(date);
+		System.out.print(sr.get(1).getLatitude());
 	%>
 	
 
@@ -368,6 +365,7 @@
 									]; */
 									
 						    
+
 						    var positions = new Array(); // 이 부분은 원래 있던 부분이에요? 제가 만든거에요 이렇게 빈 리스트를만들어주고싶어서욥
 						    
 						    		<% System.out.println("hey : "+sr.size()); %>
@@ -378,6 +376,7 @@
 								};  
 						   
 						   <% } %>
+
 						   
 						// 마커 이미지의 이미지 주소입니다
 						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
