@@ -383,7 +383,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 				conn();
 				
 				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id값을 가져온다.
-				String sql = "select user_id, user_name from users where user_id=?"; 
+				String sql = "select user_id, user_name, email from users where user_id=?"; 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, fam);
 				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
@@ -393,11 +393,10 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 				while(rs.next()) 
 				{
 					String user_id = rs.getString(1);
-//					String user_id = rs.getString(1);
 					String user_name = rs.getString(2);
-					System.out.println(user_name);
+					String email= rs.getString(3);
 					
-					UserVO fo = new UserVO(user_id, user_name);
+					UserVO fo = new UserVO(user_id, user_name, email);
 					//값 추가해주기
 					vo.add(fo); // 배열 fo에 저장해준다.
 				}
@@ -411,95 +410,41 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return vo;
 	}
 	
-	public UserVO search_fl(String fam) 
-	{
-		UserVO vo=null; // userVO 타입 변수 선언
-		try {
-				conn();
-				
-				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id값을 가져온다.
-				String sql = "select user_id, user_name from users where user_id=?"; 
-				psmt = conn.prepareStatement(sql); 
-				psmt.setString(1, fam);
-				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
-				
-				rs = psmt.executeQuery();
-				if(rs.next()) 
-				{
-					String user_id = rs.getString(1);
-					String user_name = rs.getString(2);
-					
-					vo = new UserVO(user_id, user_name);
-					
-				}
-			}catch(Exception e) { 
-				e.printStackTrace();
-			
-			}finally {
-				close();
-			}
-		System.out.println(vo);
-		return vo;
-	}
 	
-	public ArrayList<FamilyVO> search_ff(String fam) // addFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
+	public int addfam(String family_id) // 안되면 join
 	{
-		ArrayList<FamilyVO> vo = new ArrayList<FamilyVO>(); // FamilyVO 배열 타입 변수 선언
-		try {
-				conn();
-				
-				//  우선  users 테이블에서 검색에서 입력한 id와 일치하는 id행을 가져온다.
-				String sql = "select user_id from users where user_id=?"; 
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, fam);
-				// 검색하려고 입력한 값 fam이 저 위에 ?로 들어간다...  
-				
-				rs = psmt.executeQuery(); 
-				
-				while(rs.next()) 
-				{
-					String user_id = rs.getString(1);
-					
-					FamilyVO fo = new FamilyVO(user_id);
-					//값 추가해주기
-					vo.add(fo); // 위에서 선언한 vo에 fo를 저장해준다.
-				}
-			}catch(Exception e) { 
-				e.printStackTrace();
-			
-			}finally {
-				close();
-			}
-		return vo;
-	}
-
-	public int addfam(String fam1, String fam2, String fam3, String fam4, String user_id) // famView에서 추가를 누르면 family 테이블에 해당 id를 추가시켜주는 함수
-	{
-		int cnt=0;
-		try
+		int cnt = 0;
+		try 
 		{
 			conn();
-			String sql="insert into family values(?, ?, ?, ?, ?)"; //  입력되지 않는 칸은  null로 출력?
+		
+			String sql ="update family set fam1=? where user_id=?"; // "insert into web_member value(id, pw, nick)",,,,,insert, delete, update, select 들 중 하나...셀 인 없 델인데 이거...
 			
-			psmt=conn.prepareStatement(sql);
-			psmt.setString(1, fam1); 
-			psmt.setString(2, fam2); 
-			psmt.setString(3, fam3); 
-			psmt.setString(4, fam4); 
-			psmt.setString(5, user_id); 
+			psmt = conn.prepareStatement(sql);
+			// 위에 물음표에 채워줘야하는 값
+			psmt.setString(1, family_id);
+
+		// 2.5 sql문 실행하기
+//			int cnt = psmt.executeUpdate(); -> return에서 써주기위해 아래와 같이 바꿔준다.
+			cnt = psmt.executeUpdate();
+//			if(cnt>0)
+//			{
+//				response.sendRedirect("main.jsp"); // 일반 클래스는 response를 바로 사용할 수 없다. 그러므로 그냥 지워줬다.
+//			} 
 			
-			cnt=psmt.executeUpdate();
-			
-		}
-		catch(Exception e) 
+
+		} 
+		catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
 		{
 			e.printStackTrace();
+			// 실행 후 오류가 발생했을 때 에러를 출력한다.
 		}
 		finally
 		{
 			close();
 		}
 		return cnt;
+	
 	}
 
 

@@ -16,14 +16,11 @@ public class AddServiceFamily extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String user_id = request.getParameter("user_id");
-		String fam1 = request.getParameter("fam1");
-		String fam2 = request.getParameter("fam2");
-		String fam3 = request.getParameter("fam3");
-		String fam4 = request.getParameter("fam4");
+		
+		String family_id = request.getParameter("family_id");
 	
 		memberDAO dao = new memberDAO();
-		int cnt = dao.addfam(fam1, fam2, fam3, fam4, user_id);
+		int cnt = dao.addfam(family_id);
 		
 		if (cnt>0)
 		{
