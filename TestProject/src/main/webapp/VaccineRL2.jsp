@@ -340,48 +340,21 @@
 						// 지도를 생성한다 
 						var map = new kakao.maps.Map(mapContainer,
 								mapOption);
-						
 						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
 											
 						// var positions[] = new var[sr.size()];
 						
-						   
-						   
-						   
-						  /*  var positions = [
-									    {
-									        title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-									    },
-									    
-									    {
-									        title: '광주 삼성병원', 
-									        latlng: new kakao.maps.LatLng(35.171491, 126.866726)
-									    },
-									    
-									    {
-									        title: '시원병원', 
-									        latlng: new kakao.maps.LatLng(35.152658, 126.848934)
-									    }
-									]; */
-									
+						    var positions = new Array();
 						    
 
-						    var positions = new Array(); // 이 부분은 원래 있던 부분이에요? 제가 만든거에요 이렇게 빈 리스트를만들어주고싶어서욥
-						    
-						    		<% System.out.println("hey : "+sr.size()); %>
-						   <% for(int i=0;i<sr.size();i++){  %> 								// 스크립틀릿을 쓰면 여기에 카카오맵을 불러오는 기능도 사라져버립니다.ㅠ
-						    	positions[<%=i %>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						   
-						   <% } %>
-
+						    for(int i=0;i<<%=sr.size()%>;i++){
+						    	positions[i] = {title:  + <%sr.get(i).getHos_name();%> , "latlng: "+new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongtitude)%>}; 
+				     
+						    }
 						   
 						// 마커 이미지의 이미지 주소입니다
 						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-						   
-						console.log(positions.length);
+						    
 						for (var i = 0; i < positions.length; i ++) {
 						    
 						    // 마커 이미지의 이미지 크기 입니다
