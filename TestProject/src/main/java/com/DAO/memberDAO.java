@@ -171,7 +171,7 @@ try {
 		conn();
 		
 		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
-		String sql = "select hos_name, hos_addr, latitude, longitude hos_info from hospitals"; 
+		String sql = "select hos_name, hos_addr, latitude, longitude, hos_info from hospitals"; 
 		psmt = conn.prepareStatement(sql);
 		
 		rs = psmt.executeQuery(); //커서 이용
