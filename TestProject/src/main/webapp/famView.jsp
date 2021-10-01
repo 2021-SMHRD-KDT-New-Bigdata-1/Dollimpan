@@ -41,9 +41,9 @@
 	String fam=request.getParameter("fam");
 //	ArrayList<UserVO> al=dao.search_f(fam);
 	ArrayList<UserVO> vo=dao.search_f(fam);
-	System.out.print(vo.size());
+//	System.out.print(vo.size());
 	
-	ArrayList<UserVO> vo2 = (ArrayList<UserVO>) session.getAttribute("vo");
+	ArrayList<UserVO> vo2 = (ArrayList<UserVO>) session.getAttribute("vo"); //세션으로 vo받아옴
 	System.out.println("session vo : "+vo2.size());
 	System.out.println("id"+vo2.get(0).getUser_id());
 	System.out.println("name"+vo2.get(0).getUser_name()); 
@@ -133,7 +133,7 @@
             <li class="breadcrumb-item active" aria-current="page">회원목록</li>
           </ol>
         </nav>
-        <h1 class="font-weight-normal">회원관리페이지</h1>
+        <h1 class="font-weight-normal">id조회</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
@@ -150,6 +150,7 @@
 						    <tr>
 						      <th> 가입된 ID</th>
 						      <th> 이름 </th>
+						      <th> 이메일 </th>
 						      <th> 추가여부 </th>
 						    </tr>
 						  </thead>
@@ -161,16 +162,11 @@
 					//	  	out.print("<td>"+ vo.get(0).getUser_id()+ "</td>"); 
 							out.print("<td>"+ vo2.get(0).getUser_id()+ "</td>");
 							out.print("<td>"+ vo2.get(0).getUser_name()+ "</td>");
-					//	  	out.print("<th>"+ vo.get(0).getUser_name()+ "</th>");
-						  	out.print("<td><a href='AddFamilyService?user_id="+vo2.get(0).getUser_id()+"'> 가족추가 </a></td>");					  
+							out.print("<td>"+ vo2.get(0).getEmail()+ "</td>");
+						  	out.print("<td><a href='AddFamilyService?family_id="+vo2.get(0).getUser_id()+"'> 가족추가 </a></td>");					  
 						 
 						  %>
-<<<<<<< HEAD
-						  <!-- 스크립틀릿 안에! 넣어줘야 졍졍졍 ㄱㄱ 아항요거 안엥 ㅎㅎ -->
-						   
-						  <th> <%=vo.get(0).getUser_id() %> </th>
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
+
 						  </tr>
 						  
 						   <% 

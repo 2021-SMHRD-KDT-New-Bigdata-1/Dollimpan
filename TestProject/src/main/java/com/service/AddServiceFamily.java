@@ -6,8 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.DAO.memberDAO;
+import com.smhrd.UserVO;
 
 
 @WebServlet("/AddServiceFamily")
@@ -16,14 +18,15 @@ public class AddServiceFamily extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String user_id = request.getParameter("user_id");
-		String fam1 = request.getParameter("fam1");
-		String fam2 = request.getParameter("fam2");
-		String fam3 = request.getParameter("fam3");
-		String fam4 = request.getParameter("fam4");
+		
+		String family_id = request.getParameter("family_id");
+		
+		HttpSession session = request.getSession(); 
+		UserVO vo = (UserVO)session.getAttribute("vo"); //세션에 
+		String user_id = vo.getUser_id(); // 세션에 id값 저장했으므로 getParameter필요없음
 	
 		memberDAO dao = new memberDAO();
-		int cnt = dao.addfam(fam1, fam2, fam3, fam4, user_id);
+		int cnt = dao.addfam(family_id, user_id);
 		
 		if (cnt>0)
 		{
