@@ -29,24 +29,60 @@
 <body>
 
 	
-	<%
-	int date = 0;
+	<%	
+		System.out.println("시작 ");
+		int date = 0;
 		UserVO vo = (UserVO)session.getAttribute("vo");
+		System.out.println("session 불러옴");
 		if(vo != null){
-		date = vo.getBirth_date();
-	}%>
+			date = vo.getBirth_date();
+			System.out.print(date);
+		}
+	%>
 	
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		
+		//??
 		//  System.out.print(sr.size());  병원 개수
 		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-		
-		System.out.print(date);
-	%>
-	
-
+		ArrayList<VaccineVO> vc = dao.VaccineList();
+		ArrayList<String> list = new ArrayList<String>();
+		%>
+   
+   	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
+   		병원목록 리스트에 추가
+   		
+   	 -->
+   	 
+   	  <% 
+   	  for(int j=0; j<vc.size(); j++){
+   	  for(int i=0; i<sr.size(); i++){
+   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
+   	  		System.out.print(sr.get(i).getHos_name(i));
+   	  		
+   	  }}}
+				
+   	  
+   	  /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
+					
+					vc.get(i).getVac_disease()
+					} */
+							%>
+   	 
+   <%for(int i =0; i<) %>
+   
+   
+    <% for(int i=0;i<5;i++){  %> 
+						    	positions[<%=i%>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						   
+						   <% } %>
+   
+   
+   	<%=//vc.get(j).getVac_disease %>
    
    <!-- Back to top button -->
    <div class="back-to-top"></div>
@@ -199,7 +235,7 @@
                               <span> / 서구보건소</span>
                               <span> / 무료</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()" id="here" value="here">예약하기</button>
                                  </h3>
                                  <p>접종 현황: 1회</p></li>
                                  
@@ -208,7 +244,7 @@
                               <span> / 보라안과</span>
                               <span> / 15000원</span>
                                  <h3>
-                                    <a href="#">예약하기</a>
+                                    <a href="hr_search" name="hr_search">병원보기</a>
                                  </h3>
                                  <p>접종 현황: 0회</p></li>
                                  
@@ -217,7 +253,7 @@
                               <span> / 새우리병원</span>
                               <span> / 3000원</span>
                                  <h3>
-                                    <a href="#">예약하기</a>
+                                    <a href=>예약하기</a>
                                  </h3>
                                  <p>접종 현황: 0회</p></li>
                               
@@ -247,7 +283,7 @@
                               <span> / 서구보건소</span>
                               <span> / 무료</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <a><button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button></a>
                                  </h3>
                                  <p>접종 현황: 1회</p></li>
                                  
@@ -256,7 +292,7 @@
                               <span> / 보라안과</span>
                               <span> / 15000원</span>
                                  <h3>
-                                    <a href="#">예약하기</a>
+                                    <a href="Hr_search" name="hr_search">예약하기</a>
                                  </h3>
                                  <p>접종 현황: 0회</p></li>
                                  
@@ -265,7 +301,7 @@
                               <span> / 새우리병원</span>
                               <span> / 3000원</span>
                                  <h3>
-                                    <a href="#">예약하기</a>
+                                    <a href="Hr_search" name="hr_search">예약하기</a>
                                  </h3>
                                  <p>접종 현황: 0회</p></li>
                               
@@ -371,6 +407,7 @@
 						    
 					    var positions = new Array();
 						    
+
 						 <% System.out.println("병원수 : "+sr.size()); %>
 						 
 						   <% for(int i=0;i<5;i++){  %> 
@@ -658,15 +695,41 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
+    	var here = document.getElementById('here').value;
+    	console.log("here ", here);
+    	
     function test() {
+    	
         if ($('#menu').css('display') == 'block') {
            $('#menu').css('display' , 'none')
             $('#menu1').css('display', 'block');
         } else {
             $('#(아이디명)').css('display', 'block');
         }
+        
+        $.ajax({
+        	type : 'get',
+        	url : 'Hr_search',
+        	data : here,
+        	dataType : 'text',
+        	success : function(data){
+        		alert("보내기 성공");
+        	},
+        	error : function(){
+        		alert("보내기 실패");
+        	}
+        })
     }
 </script>
+
+<% for(int i=0;i<5;i++){  %> 
+						    	positions[<%=i%>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						   
+						   <% } %> 
+
 
 </body>
 </html>
