@@ -37,11 +37,11 @@ public class JoinService extends HttpServlet {
 		memberDAO dao = new memberDAO();
 
 		int cnt = dao.join(user_id, user_pw, user_name, email, addr, phone, adm, gender, birth_date);
-				
-		if(cnt>0) {
-		response.sendRedirect("VaccineRL2.jsp");
+		int cnt_f = dao.myIDtoFAM(user_id);
+		System.out.println(cnt_f);
+		if(cnt>0 && cnt_f>0) {
+		response.sendRedirect("../login.html");
 		}
-
 
 		else {
 			System.out.println("실패했다 다시하라!");

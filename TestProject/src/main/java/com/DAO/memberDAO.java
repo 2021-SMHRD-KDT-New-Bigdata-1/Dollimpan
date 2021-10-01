@@ -413,8 +413,9 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	}
 	
 	
-	public int addfam(String family_id, String user_id) // 안되면 join
+	public int addfam(String family_id1, String user_id) // 데이터 베이스에 가족 id 저장하는 함수, user_id가 저장되어 있지 않으면, 
 	{
+		ArrayList<FamilyVO> vo2 = new ArrayList<FamilyVO>(); // userVO 타입 변수 선언
 		int cnt = 0;
 		try 
 		{
@@ -424,12 +425,22 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			
 			psmt = conn.prepareStatement(sql);
 			// 위에 물음표에 채워줘야하는 값
-			psmt.setString(1, family_id);
+			psmt.setString(1, family_id1);
 			psmt.setString(2, user_id);
 
 		// 2.5 sql문 실행하기
 //			int cnt = psmt.executeUpdate(); -> return에서 써주기위해 아래와 같이 바꿔준다.
-			cnt = psmt.executeUpdate();
+
+			rs = psmt.executeQuery(); //커서 이용	
+			while(rs.next())
+			{
+				sql="select family * faily where user_id='user_id'";
+				String userId = rs.getString(1);
+				String famID = rs.getString(2);
+				
+				FamilyVO vo = new FamilyVO(user_id, famID); // vo라는 이름의 변수에 세션 email, tel, address 묶어준 것
+				vo2.add(vo); // resultset에서 값 가져온뒤 rs.next에서 while문안에서 반복한 뒤 vo에 담아준다.
+			}
 		} 
 		catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
 		{
@@ -481,4 +492,26 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return vc;
 	}
 
-}
+	
+	public int myIDtoFAM(String user_id) 
+	{ 
+		int cnt = 0;
+		try {
+		
+			conn();
+			String sql = "insert into family (user_id) values(?)"; 
+			
+			psmt = conn.prepareStatement(sql); 
+			psmt.setString(1, user_id); 
+
+			cnt = psmt.executeUpdate();
+		
+		}catch(Exception e) { 
+			e.printStackTrace();
+			
+		}finally {
+			close();
+		}
+		return cnt;
+	}
+}	

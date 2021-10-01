@@ -44,7 +44,7 @@
 //	System.out.print(vo.size());
 	
 	ArrayList<UserVO> vo2 = (ArrayList<UserVO>) session.getAttribute("vo"); //세션으로 vo받아옴
-	System.out.println("session vo : "+vo2.size());
+	System.out.println("session vo2 : "+vo2.size());
 	System.out.println("id"+vo2.get(0).getUser_id());
 	System.out.println("name"+vo2.get(0).getUser_name()); 
 	
@@ -103,7 +103,7 @@
 	              <a class="nav-link" href="html/about.html">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineRl.html">백신예약/조회</a>
+	              <a class="nav-link" href="VaccineRl2.html">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
@@ -163,7 +163,7 @@
 							out.print("<td>"+ vo2.get(0).getUser_id()+ "</td>");
 							out.print("<td>"+ vo2.get(0).getUser_name()+ "</td>");
 							out.print("<td>"+ vo2.get(0).getEmail()+ "</td>");
-						  	out.print("<td><a href='AddFamilyService?family_id="+vo2.get(0).getUser_id()+"'> 가족추가 </a></td>");					  
+						  	out.print("<td><a href='AddServiceFamily?family_id="+vo2.get(0).getUser_id()+"'> 가족추가 </a></td>");					  
 						 
 						  %>
 
