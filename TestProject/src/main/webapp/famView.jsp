@@ -163,7 +163,9 @@
 						  	out.print("<th><a href='AddFamilyService?user_id="+user_id+"'> °¡Á·Ãß°¡ </a></th>");					  
 						  }
 						  %>
-						  <th> vo.get(0).getUser_id() </th>
+						  <!-- ½ºÅ©¸³Æ²¸´ ¾È¿¡! ³Ö¾îÁà¾ß Á´Á´Á´ ¤¡¤¡ ¾ÆÇ×¿ä°Å ¾È¿¨ ¤¾¤¾ -->
+						   
+						  <th> <%=vo.get(0).getUser_id() %> </th>
 						  </tr>
 						  
 						   <% 

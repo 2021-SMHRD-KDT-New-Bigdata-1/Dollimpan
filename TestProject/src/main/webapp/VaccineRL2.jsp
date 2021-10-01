@@ -1,3 +1,4 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -38,8 +39,11 @@
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
+		
 		//  System.out.print(sr.size());  병원 개수
-		System.out.print(sr.get(1).getLatitude());
+		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
+		
+		System.out.print(date);
 	%>
 	
 
@@ -340,16 +344,39 @@
 						// 지도를 생성한다 
 						var map = new kakao.maps.Map(mapContainer,
 								mapOption);
+						
 						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
 											
 						// var positions[] = new var[sr.size()];
 						
+						   
+						   
+						   
+						  /*  var positions = [
+									    {
+									        title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
+									    },
+									    
+									    {
+									        title: '광주 삼성병원', 
+									        latlng: new kakao.maps.LatLng(35.171491, 126.866726)
+									    },
+									    
+									    {
+									        title: '시원병원', 
+									        latlng: new kakao.maps.LatLng(35.152658, 126.848934)
+									    }
+									]; */
+									
+									
+									
+						    
 						    var positions = new Array();
 						    
-						    for(int i=0;i<sr.size();i++){
+						   <% for(int i=0;i<sr.size();i++){  %>
 						    	positions[i] = {"title: " + sr.get(i).getHos_name() , "latlng: "+new kakao.maps.LatLng(sr.get(i).getLatitude(),sr.get(i).getLongtitude)}; 
 						     
-						    }
+						   <% } %>
 						   
 						// 마커 이미지의 이미지 주소입니다
 						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -369,7 +396,7 @@
 						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 						        image : markerImage // 마커 이미지 
 						    
-						        
+						        //ㅎㅎㅎㅎㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ...ㅇ
 						   
 						        
 						    });
@@ -378,7 +405,7 @@
 
 						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
-
+                    
 						    // 인포윈도우를 생성합니다
 						    var infowindow = new kakao.maps.InfoWindow({
 						        position : iwPosition, 
