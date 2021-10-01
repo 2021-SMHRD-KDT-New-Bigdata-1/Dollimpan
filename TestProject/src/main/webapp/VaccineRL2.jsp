@@ -324,7 +324,7 @@
                         
                      </div>
                      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-                        <div id="map" style="width: 600px; height: 500px;"></div>
+                        <div id="map" style="width: 1200px; height: 500px;"></div>
 
             <!-- Ä«Ä«¿Àapi -->
             
