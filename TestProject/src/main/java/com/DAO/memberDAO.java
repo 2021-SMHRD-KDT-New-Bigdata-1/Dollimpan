@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+
 import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 import com.smhrd.VaccineVO;
 
-	
 	public class memberDAO {
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -413,7 +413,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 	}
 	
 	
-	public int addfam(String family_id, String user_id) // 데이터 베이스 fam1, fam2, ... 그냥 가족 한명만 family 테이블의 2번째 칼럼ㅇ ㅔ저장
+	public int addfam(String family_id, String user_id) // 이건 사용하지 않는 함수지만 물어보기
 	{
 		ArrayList<FamilyVO> vo2 = new ArrayList<FamilyVO>(); // userVO 타입 변수 선언
 		int cnt = 0;
@@ -454,7 +454,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return cnt;
 	}
 	
-	public int Upfam(String family_name, String user_id)
+	public int Upfam(String family_name, String user_id) // 가족추가버튼을 누르면 fam1칼럼에 가족 추가 가능
 	{
 		int cnt = 0;
 		try 
@@ -480,6 +480,36 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			close();
 		}
 		return cnt;
+	}
+	
+	public ArrayList<FamilyVO> select_famView(String userID)
+	{
+		ArrayList<FamilyVO> fva = new ArrayList<FamilyVO>();
+		try {
+			conn();
+			
+			String sql = "select user_id, fam1 from family where user_id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, userID);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) 
+			{
+				String user_id = rs.getString(1);
+				String fam1 = rs.getString(2);
+				
+				FamilyVO vo = new FamilyVO(user_id, fam1);
+				//새로운 데이터타입 = VO	
+				fva.add(vo);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return fva; // family 테이블의 user_id, fam1이 저장되어야한다
 	}
 
 
