@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.FamilyVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
@@ -29,7 +30,9 @@
 
 
 	<%
+		ArrayList<UserVO> vo1 = (ArrayList<UserVO>) session.getAttribute("vo1");
 		UserVO vo = (UserVO)session.getAttribute("vo");
+		FamilyVO fv = (FamilyVO)session.getAttribute("vo1");
 	%>
 	<%
 		memberDAO dao = new memberDAO();
@@ -154,6 +157,9 @@ if(vo != null){
 		<a class="profileTitle" title="">Family</a>
 		<a href="addFamily.jsp">추가하기</a>
 		<div class="profileInfo">최한글</div>
+		<tr>
+			<td> 본인 1 : <% out.print(vo.getUser_id()); %></td>
+			<td> 가족 1 : <% out.print(fv.getFam1()); %></td>
 
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

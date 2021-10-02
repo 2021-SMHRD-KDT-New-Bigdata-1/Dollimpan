@@ -34,23 +34,18 @@
 
 <script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
 
-<% // UserVO vo = (UserVO)session.getAttribute("vo");%>
-<%// session.getAttribute("vo"); %>
+
 <% // famView에는 스크립트릿으로 입력한 fam값을 가져온다.
 	memberDAO dao = new memberDAO();
-	String fam=request.getParameter("fam");
-//	ArrayList<UserVO> al=dao.search_f(fam);
-	ArrayList<UserVO> vo=dao.search_f(fam);
-//	System.out.print(vo.size());
-	
-	ArrayList<UserVO> vo2 = (ArrayList<UserVO>) session.getAttribute("vo"); //세션으로 vo받아옴
-	System.out.println("session vo2 : "+vo2.size());
-	System.out.println("id"+vo2.get(0).getUser_id());
-	System.out.println("name"+vo2.get(0).getUser_name()); 
-	
-	
+//	ArrayList<UserVO> mine = (ArrayList<UserVO>) session.getAttribute("vo");
+//	System.out.println(mine);
+	ArrayList<UserVO> vo1 = (ArrayList<UserVO>) session.getAttribute("vo1"); //로그인 할 때 생성된 세션 vo받아옴
+	System.out.println("session vo1 : "+vo1.size());
+	System.out.println("id"+vo1.get(0).getUser_id());
+	System.out.println("name"+vo1.get(0).getUser_name()); 
 %>
-
+<%
+%>
 
 </head>
 <body>
@@ -160,23 +155,27 @@
 						  <% 
 						
 					//	  	out.print("<td>"+ vo.get(0).getUser_id()+ "</td>"); 
-							out.print("<td>"+ vo2.get(0).getUser_id()+ "</td>");
-							out.print("<td>"+ vo2.get(0).getUser_name()+ "</td>");
-							out.print("<td>"+ vo2.get(0).getEmail()+ "</td>");
-						  	out.print("<td><a href='AddServiceFamily?family_id="+vo2.get(0).getUser_id()+"'> 가족추가 </a></td>");					  
-						 
+							out.print("<td>"+ vo1.get(0).getUser_id()+ "</td>");
+							out.print("<td>"+ vo1.get(0).getUser_name()+ "</td>");
+							out.print("<td>"+ vo1.get(0).getEmail()+ "</td>");
+						  	out.print("<td><a href='AddFamilyService?family_name="+vo1.get(0).getUser_name()+"'> 가족추가 </a></td>");					  
+						  	
+							/* 쿼리스트링
+							키?값...의 형식으로, 텍스트에 값을 담아서 해당 서블릿에 보낼 때 사용하는 방식이다.
+							이거 전에도 이 사용법이 나오기도 한다.
+							*/
 						  %>
-
 						  </tr>
 						  
-						   <% 
-									//a태그 생성될때마다 
-									//쿼리스트링방식 : 사용자가 접근할 때 경우에 따라서 다른 결과를 보여줌(각 줄마다 email주소 다르게 보여줌)
-								//	out.print("<td><a href = 'AddFamilyService?user_id="+fo.get(i).getUser_id()+"'>가족추가</a></td>");//각 줄마다 삭제버튼 생성
-								
-							%>
+						   <% // 본인 이름 세션 생성을 여기서 해준다
+						   
+						   //session.setAttribute("famName", vo.get(0).getUser_name());		 	
+						   %>
+						   <!-- 세션추가를 위한 함수를 아래 스크립 태그 안에 생성 -->
+						  <script>
 						  
-						    
+						  
+						   </script>
 						  </tbody>
 						</table>
 					</div>
