@@ -44,70 +44,54 @@
 		//  System.out.print(sr.size());  병원 개수
 		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
 		%>
-   
-   	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-   		병원목록 리스트에 추가
-   		
-   	 -->
-   	 
-   	 
-   	 <!-- 독감 = (vc.get(0).getVac_disease())) -->
-   	 
+      	 
    	 
    	 <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
    	 
    	  
    	  <% 
+  	 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
    	  
    		String hos_view = null;
    	    int num = 0;
    	    
    	  System.out.println("=======================================");
    	  
-   	  for(int i=0;i<vc.size();i++){
-   		 for(int j=0;j<sr.size();j++){
-   			 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
-   		
-   			 if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
+   	  
+   	  
+   	 for(int j=0;j<sr.size();j++){
+   			 if(sr.get(j).getHos_info().indexOf("독감")>-1){
    				hos_view = sr.get(j).getHos_name();
-   				System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
-   				num++; 
-   			 		
+   				System.out.println("독감 병원명:"+hos_view);   				
+   				num++;
    			  }
-   			 
-   	 	 }
-   		 }
-   	  
-   	  
-   	  
-   	 /*  for(int j=0; j<vc.size(); j++){
-   	  for(int i=0; i<sr.size(); i++){
-   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-   	  		System.out.print(sr.get(i).getHos_name(i));
-   	  		
-   	  }}} */
-				
-   	  
-   	  /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-					
-					vc.get(i).getVac_disease()
-					} */
-							%>
+   			 }
+   				System.out.println("독감 병원수:"+num);
    	 
-   <%-- <%for(int i =0; i<) %>
-   
-   
-    <% for(int i=0;i<5;i++){  %> 
+   	 
+     /*  System.out.println("=======================================");
+      for(int j=0;j<sr.size();j++){
+			 if(sr.get(j).getHos_info().indexOf(vc.get(1).getVac_disease())>-1){
+				hos_view = sr.get(j).getHos_name();
+				System.out.println("파디백 병원명:"+hos_view);   				
+				num++;
+			  }
+			 }
+				System.out.println("파디백 병원수:"+num); */
+	  
+  			
+			%> <!--  -->
+   	 <%-- 
+  							<%for(int i =0; i<sr.size();i++) %>
+   							 <% for(int i=0;i<5;i++){  %> 
 						    	positions[<%=i%>] = {
 								   title:  '<%=sr.get(i).getHos_name()%>',
 								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
 								};  
 						   
-						   <% } %>  --%>
-   
-   
-   	<!-- vc.get(j).getVac_disease -->
-   
+						   <% } %>  
+    --%>
+      
    <!-- Back to top button -->
    <div class="back-to-top"></div>
    
@@ -467,7 +451,7 @@
 					    var positions = new Array();
 						    
 
-						 <% System.out.println("병원수 : "+sr.size()); %>
+						 <%// System.out.println("병원수 : "+sr.size()); %>
 						 
 						   <% for(int i=0;i<5;i++){  %> 
 						    	positions[<%=i%>] = {
