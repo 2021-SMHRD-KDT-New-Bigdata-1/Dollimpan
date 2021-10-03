@@ -227,7 +227,7 @@
         -->
     </div> <!-- form-group// -->  
         
-    <p class="text-center">계정을 가지고 있나요? <a href="loginForm.html">로그인</a> </p>  
+    <p class="text-center">계정을 가지고 있나요? <a href="html/loginForm.html">로그인</a> </p>  
                                                                
 </form>
 

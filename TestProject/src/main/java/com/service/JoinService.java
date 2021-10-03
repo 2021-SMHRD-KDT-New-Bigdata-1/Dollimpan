@@ -40,7 +40,7 @@ public class JoinService extends HttpServlet {
 		int cnt_f = dao.myIDtoFAM(user_id);
 		System.out.println(cnt_f);
 		if(cnt>0 && cnt_f>0) {
-		response.sendRedirect("../login.html");
+		response.sendRedirect("html/loginForm.html");
 		}
 
 		else {

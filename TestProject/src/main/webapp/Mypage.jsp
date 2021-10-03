@@ -73,7 +73,7 @@
     <!-- .topbar -->
 	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 	      <div class="container">
-	        <a class="navbar-brand" href="#"><span class="text-primary">Yak</span>-Kok</a>
+	        <a class="navbar-brand" href="VaccineRL2.jsp"><span class="text-primary">Yak</span>-Kok</a>
 	
 	        <form action="#">
 	          <div class="input-group input-navbar">
@@ -91,7 +91,7 @@
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="about.html">약콕이란</a>
+	              <a class="nav-link" href="VaccineRL2.jsp">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineRl2.jsp">백신예약/조회</a>
