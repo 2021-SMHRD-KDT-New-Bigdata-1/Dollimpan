@@ -17,7 +17,7 @@ public class FamilyVO {
 		this.fam4 = fam4;
 	}
 	
-	public FamilyVO(String fam1, String user_id)
+	public FamilyVO(String user_id, String fam1)
 	{
 		super();
 		this.user_id = user_id;

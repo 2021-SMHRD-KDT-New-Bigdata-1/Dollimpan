@@ -29,9 +29,8 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-   
-   <%
-      memberDAO dao = new memberDAO();
+
+     <%  memberDAO dao = new memberDAO();
    
       UserVO vo = (UserVO)session.getAttribute("vo");
       
@@ -44,56 +43,54 @@
       //  System.out.print(sr.size());  병원 개수
       // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
       %>
-   
-      <!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-         병원목록 리스트에 추가
-         
-       -->
-       
-       
-       <!-- 독감 = (vc.get(0).getVac_disease())) -->
-       
-       
-       <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
-       
-        
-        <% 
-        
-         String hos_view = null;
-          int num = 0;
-          
-        System.out.println("=======================================");
-        
-        for(int i=0;i<vc.size();i++){
-          for(int j=0;j<sr.size();j++){
-             /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
-         
-             if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
-               hos_view = sr.get(j).getHos_name();
-               System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
-               num++; 
-                   
-              }
-             
-           }
-          }
-        
-        
-        
-       /*  for(int j=0; j<vc.size(); j++){
-        for(int i=0; i<sr.size(); i++){
-         if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-              System.out.print(sr.get(i).getHos_name(i));
-              
-        }}} */
-            
-        
-        /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-               
-               vc.get(i).getVac_disease()
-               } */
-                     %>
-       
+   	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
+   		병원목록 리스트에 추가
+   		
+   	 -->
+   	 
+   	 
+   	 <!-- 독감 = (vc.get(0).getVac_disease())) -->
+   	 
+   	 
+   	 <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
+   	 
+   	  
+   	  
+   	
+   	    
+   	  System.out.println("=======================================");
+   	  
+   	<%   for(int i=0;i<vc.size();i++){
+   		 for(int j=0;j<sr.size();j++){
+   			 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
+   		
+   			 if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
+   				hos_view = sr.get(j).getHos_name();
+   				System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
+   				num++; 
+   			 		
+   			  }
+   			 
+   	 	 }
+   		 }%>
+   	  
+   	  
+   	  
+   <% 	 /*  for(int j=0; j<vc.size(); j++){
+   	  for(int i=0; i<sr.size(); i++){
+   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
+   	  		System.out.print(sr.get(i).getHos_name(i));
+   	  		
+   	  }}} */
+				
+   	  
+   	  /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
+					
+					vc.get(i).getVac_disease()
+					} */
+							%>
+   	 
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
    <%-- <%for(int i =0; i<) %>
    
    
@@ -475,7 +472,7 @@
                            latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
                         };  
                          
-                           <% } %>  괄호 맞춰주실래요?넵
+                           <% } %> 
                      
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -641,7 +638,7 @@
                            much sugar?</a>
                      </h5>
                      <div class="site-info">
-                        <div class="avatar mr-2">
+                        <div class="avatar mr-2">	
                            <div class="avatar-img">
                               <img src="../assets/img/person/person_2.jpg" alt="">
                            </div>
@@ -753,7 +750,7 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
- /*       var here = document.getElementById('here').value;
+   /*     var here = document.getElementById('here').value;
        console.log("here ", here);
        
     function test() {
@@ -766,6 +763,7 @@
         }
         
         $.ajax({
+<<<<<<< HEAD
            type : 'get',
            url : 'Hr_search',
            data : here,
@@ -776,6 +774,16 @@
            error : function(){
               alert("보내기 실패");
            }
+=======
+        	type : 'get',
+        	url : 'Hr_search',
+        	data : here,
+        	dataType : 'text',
+        	success : function(data){
+        	},
+        	error : function(){
+        	}
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-New-Bigdata-1/dol.git
         })
     } */
 </script>

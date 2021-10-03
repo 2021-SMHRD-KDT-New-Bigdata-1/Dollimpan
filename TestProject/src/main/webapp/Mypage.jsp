@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@page import="com.smhrd.FamilyVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DAO.memberDAO"%>
@@ -32,18 +33,22 @@
 	<%
 		ArrayList<UserVO> vo1 = (ArrayList<UserVO>) session.getAttribute("vo1");
 		UserVO vo = (UserVO)session.getAttribute("vo");
+		System.out.println("vo형태 확인 : "+vo.getClass().getName());
 	%>
 	<%
 		memberDAO dao = new memberDAO();
 		//select기능 호출
 		ArrayList<UserVO> al = dao.select();
 		System.out.print(al.size());
+		System.out.println("al형태 확인 : "+al.getClass().getName());
 	%>
 	<% // 가족을 보이기 위한 javascript
 		String userID = vo.getUser_id(); // 아래 select_famView()함수에서 사용하기 위한 userID변수
 		ArrayList<FamilyVO> fva = dao.select_famView(userID); // 로그인한 유저의 id가져오기이므로 로그인 세션에 저장되어 있는 id를 가져와서 대입해야한다
-		System.out.print(fva.size());
-		System.out.print("select_famView(userID) 함수가 잘 실행되고, fva 변수에 잘 담겼는지 확인 : "+fva);
+//		FamilyVO fva= dao.select_famView(userID);
+		System.out.println(fva.size());
+		System.out.println("select_famView(userID) 함수가 잘 실행되고, fva 변수에 잘 담겼는지 확인 : "+fva);
+		System.out.println("select_famView(userID) 함수가 잘 실행되고, fva 타입 확인 : "+fva.getClass().getName());
 	%>
 	<div class="back-to-top"></div>
 
@@ -160,12 +165,12 @@ if(vo != null){
 	
 	<div id="box03" class="ProfileItem">
 		<a class="profileTitle" title="">Family</a>
-		<a href="addFamily.jsp">추가하기</a>
-		<div class="profileInfo">최한글</div>
+		<a href="searchFamily.jsp">추가하기</a>
+		<div class="profileInfo"></div>
 		<tr>
-			<td> 본인의 아이디 : <% out.print(vo.getUser_id()); %></td>
-			<td> 가족 1 : <% //out.print(fva.getFam1()); %></td>
-
+			<td> 본인의 이름 : <% out.print(vo.getUser_name()); %></td> <br>
+			<td> 가족 1의 이름 : <% out.print(fva.get(0).getFam1()); %></td> <br>
+		</tr>
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
