@@ -513,7 +513,6 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return fva; // family 테이블의 user_id, fam1이 저장되어야한다
 	}
 
-
 	public ArrayList<VaccineVO> VaccineList() {
 		ArrayList<VaccineVO> vc = new ArrayList<VaccineVO>();
 	try {
