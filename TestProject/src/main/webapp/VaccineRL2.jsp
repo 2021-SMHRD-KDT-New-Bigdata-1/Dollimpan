@@ -1,8 +1,9 @@
-<%@page import="com.smhrd.VaccineVO"%>
+
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.UserVO"%>
+<%@page import="com.smhrd.VaccineVO"%>
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -28,31 +29,68 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-	<%	
-		System.out.println("시작 ");
-		int date = 0;
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if(vo != null){
-			date = vo.getBirth_date();
-			System.out.print(date);
-		}
-	%>
 	
 	<%
 		memberDAO dao = new memberDAO();
+	
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		
 		ArrayList<HospitalVO> sr = dao.search();
+		
 		ArrayList<VaccineVO> vc = dao.VaccineList();
+		
+		ArrayList<String> list = new ArrayList<String>();
+		
+		//  System.out.print(sr.size());  병원 개수
+		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
+		%>
+      	 
    	 
-							%>
+   	 <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
    	 
-   
-   
-   	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-   		병원목록 리스트에 추가
-   		
-   	 -->
+   	  <% 
+  	 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
+   	  
+   		String hos_view = null;
+   	    int num = 0;
+   	    
+   	  System.out.println("=======================================");
+   	  
+   	  
+   	  
+   	 for(int j=0;j<sr.size();j++){
+   			 if(sr.get(j).getHos_info().indexOf("독감")>-1){
+   				hos_view = sr.get(j).getHos_name();
+   				System.out.println("독감 병원명:"+hos_view);   				
+   				num++;
+   			  }
+   			 }
+   				System.out.println("독감 병원수:"+num);
    	 
-  
+   	 
+     /*  System.out.println("=======================================");
+      for(int j=0;j<sr.size();j++){
+			 if(sr.get(j).getHos_info().indexOf(vc.get(1).getVac_disease())>-1){
+				hos_view = sr.get(j).getHos_name();
+				System.out.println("파디백 병원명:"+hos_view);   				
+				num++;
+			  }
+			 }
+				System.out.println("파디백 병원수:"+num); */
+	  
+  			
+			%> <!--  -->
+   	 <%-- 
+  							<%for(int i =0; i<sr.size();i++) %>
+   							 <% for(int i=0;i<5;i++){  %> 
+						    	positions[<%=i%>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						   
+						   <% } %>  
+    --%>
+      
    <!-- Back to top button -->
    <div class="back-to-top"></div>
    
@@ -197,99 +235,134 @@
                            <header>
                               <h2>병원 리스트!!</h2><br>
                            </header>
-                           <ul class="dates">
-                              
-                              <li><span class="date"><h4><strong>결핵</strong></h4></span>
-                              <span> / 20~40세</span>
-                              <span> / 서구보건소</span>
-                              <span> / 무료</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()" id="here" value="here">예약하기</button>
-                                 </h3>
-                                 <p>접종 현황: 1회</p></li>
-                                 
-                              <li><span class="date"><h4><strong>A형간염</strong></h4></span>
-                              <span> / 20~40세</span>
-                              <span> / 보라안과</span>
-                              <span> / 15000원</span>
-                                 <h3>
-                                    <a href="hr_search" name="hr_search">병원보기</a>
-                                 </h3>
-                                 <p>접종 현황: 0회</p></li>
-                                 
-                              <li><span class="date"><h4><strong>B형간염</strong></h4></span>
-                              <span> / 20세</span>
-                              <span> / 새우리병원</span>
-                              <span> / 3000원</span>
-                                 <h3>
-                                    <a href=>예약하기</a>
-                                 </h3>
-                                 <p>접종 현황: 0회</p></li>
-                              
-                              <li><span class="date"><h4><strong>파상풍</strong></h4></span>
-                              <span> / 20~40세</span>
-                              <span> / 서구보건소</span>
-                              <span> / 무료</span>
-                                 <h3>
-                                    <a href="#menu1">예약하기</a>
-                                 </h3>
-                                 <p>접종 현황: 1회</p></li>   
+                          <ul class="dates">
+                           
+                           		
+                           	
+                           		
+                           		<li><span class='date'><h4><strong><%=sr.get(3).getHos_name() %></strong></h4></span>
+                           		
+
                            </ul>
                         </section>
                      </div>
                      <%}else{ %>
                            <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
                            <section>
+                           <%} %>
                               <header>
-                           
                               <h2>백신 리스트!!</h2><br>
                            </header>
+                              <div class="page-section" ">
+         <div class="container">
+            <h1 class="text-center wow fadeInUp"></h1>
+
+            <form class="contact-form mt-5">
+               <div class="container">
+                  <div class="row align-items-center">
+                     
+                        
+                        
+                        
+                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                        <section>
+                           <header>
+                              <h2>백신 리스트</h2><br>
+                           </header>
                            <ul class="dates">
-                           
-                           
-                              <li><span class="date"><h4><strong>결핵</strong></h4></span>
-                              <span> / 20~40세</span>
-                              <span> / 서구보건소</span>
-                              <span> / 무료</span>
+                              
+                              <li><span class="date"><h4><strong>독감</strong></h4></span>
+                              <span> / 20~65세이상</span>
+                              <span> /매년 1회</span>
                                  <h3>
-                                    <a><button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button></a>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
                                  </h3>
-                                 <p>접종 현황: 1회</p></li>
+                                 
+                                                               
+                              <li><span class="date"><h4><strong>파상풍</strong></h4></span>
+                              <span> / 20~65세이상</span>
+                              <span> / 1회 접종 후 10년마다 1회</span>
+                             
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                                 
                                  
                               <li><span class="date"><h4><strong>A형간염</strong></h4></span>
-                              <span> / 20~40세</span>
-                              <span> / 보라안과</span>
-                              <span> / 15000원</span>
+                              <span> / 20세~40세</span>
+                              <span> / 2회</span>
                                  <h3>
-                                    <a href="Hr_search" name="hr_search">예약하기</a>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
                                  </h3>
-                                 <p>접종 현황: 0회</p></li>
-                                 
+
+                              
                               <li><span class="date"><h4><strong>B형간염</strong></h4></span>
-                              <span> / 20세</span>
-                              <span> / 새우리병원</span>
-                              <span> / 3000원</span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 항체 검사 후 3회 접종</span>
                                  <h3>
-                                    <a href="Hr_search" name="hr_search">예약하기</a>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
                                  </h3>
-                                 <p>접종 현황: 0회</p></li>
+                                 
                               
-                              <li><span class="date"><h4><strong>파상풍</strong></h4></span>
-                              <span> / 20~40세</span>
-                              <span> / 서구보건소</span>
-                              <span> / 무료</span>
+                               
+                              <li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
-                                    <a href="#menu1">예약하기</a>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
                                  </h3>
-                                 <p>접종 현황: 1회</p></li>   
-                              
-                              
+                                 
+                                 
+                              <li><span class="date"><h4><strong>수두</strong></h4></span>
+                              <span> / 20세~50세</span>
+                              <span> / 항체검사 후 2회 접종</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>홍역/유행성이하선염(볼거리)/풍진</strong></h4></span>
+                              <span> / 20세~50세</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                             
+                             
+                              <li><span class="date"><h4><strong>사람유두종바이러스감염증</strong></h4></span>
+                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
+                              <span> / 총 3회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                             
+                             
+                             
+                             <li><span class="date"><h4><strong>대상포진</strong></h4></span>
+                              <span> / 만 60세 이상</span>
+                              <span> / 1회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                                 
+                                 
+                             <li><span class="date"><h4><strong>수막구균</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 위험군에 대해 1회~2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                             
+                             
+                               <li><span class="date"><h4><strong>b형헤모스인플루엔자</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 위험군에 대해 1회~3회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
                            </ul>
-                           
-                                                      
                         </section>
-                        </div>
-                        <%} %>
+                     </div>
                      
                      
                      <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
@@ -377,15 +450,15 @@
 					    var positions = new Array();
 						    
 
-						 <% System.out.println("병원수 : "+sr.size()); %>
+						 <%// System.out.println("병원수 : "+sr.size()); %>
 						 
 						   <% for(int i=0;i<5;i++){  %> 
 						    	positions[<%=i%>] = {
 								   title:  '<%=sr.get(i).getHos_name()%>',
 								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
 								};  
-						   
-						   <% } %> 
+						 	   
+								   <% } %>  괄호 맞춰주실래요?넵
 						   
 						// 마커 이미지의 이미지 주소입니다
 						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -407,7 +480,6 @@
 						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 						        image : markerImage // 마커 이미지 
 						    
-						        //ㅎㅎㅎㅎㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ...ㅇ
 						   
 						        
 						    });
@@ -552,7 +624,7 @@
                            much sugar?</a>
                      </h5>
                      <div class="site-info">
-                        <div class="avatar mr-2">
+                        <div class="avatar mr-2">	
                            <div class="avatar-img">
                               <img src="../assets/img/person/person_2.jpg" alt="">
                            </div>

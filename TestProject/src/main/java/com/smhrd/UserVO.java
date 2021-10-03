@@ -39,7 +39,7 @@ public class UserVO {
 		this.phone = phone;
 
 	}
-	public UserVO( String user_pw, String email, String addr, String phone, String user_id) 
+	public UserVO(String user_pw, String email, String addr, String phone, String user_id) 
 	{
 		super();
 	
@@ -49,9 +49,23 @@ public class UserVO {
 		this.phone = phone;
 		this.user_id = user_id;
 	}
-	public UserVO(String user_id, String user_name)  
+	public UserVO(String user_id, String user_name, String email)  
 	// 여기다가는 user_pw 패스워드를 담으니까 user_name을 불러아닝왔을 때 안불러와지는거에요!아..죄송합니다
 	// 이것만 user_name으로 바꿔주면 나올꺼에요~ 이거 바꾸고나서 안불러와지면 다시 불러주세요 ㅎㅎ네
+	{
+		super();
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.email = email;
+		this.addr = addr;
+		this.phone = phone;
+		this.adm = adm;
+		this.gender = gender;
+		this.birth_date = birth_date;
+	}
+	
+	public UserVO(String user_id, String user_pw)
 	{
 		super();
 		this.user_id = user_id;

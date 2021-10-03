@@ -2,39 +2,49 @@ package com.smhrd;
 
 public class FamilyVO {
 
+	private String user_id;
 	private String fam1;
 	private String fam2;
 	private String fam3;
 	private String fam4;
-	private String user_id;
 	
-	public FamilyVO(String fam1, String fam2, String fam3, String fam4, String user_id) {
+	public FamilyVO(String user_id, String fam1, String fam2, String fam3, String fam4) {
 		super();
+		this.user_id = user_id;
 		this.fam1 = fam1;
 		this.fam2 = fam2;
 		this.fam3 = fam3;
 		this.fam4 = fam4;
-		this.user_id = user_id;
 	}
 	
-	public FamilyVO(String fam1) {
+	public FamilyVO(String fam1, String user_id)
+	{
 		super();
+		this.user_id = user_id;
 		this.fam1 = fam1;
 		this.fam2 = fam2;
 		this.fam3 = fam3;
 		this.fam4 = fam4;
-		this.user_id = user_id;
 	}
 	
-	public FamilyVO() {
+	public FamilyVO(String user_id)
+	{
 		super();
+		this.user_id = user_id;
 		this.fam1 = fam1;
 		this.fam2 = fam2;
 		this.fam3 = fam3;
 		this.fam4 = fam4;
-		this.user_id = user_id;
 	}
 	
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	public String getFam1() {
 		return fam1;
 	}
@@ -67,14 +77,4 @@ public class FamilyVO {
 		this.fam4 = fam4;
 	}
 
-	public String getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	
-	
-	
 }

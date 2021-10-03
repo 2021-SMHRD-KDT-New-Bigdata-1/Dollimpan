@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.FamilyVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
@@ -29,6 +30,7 @@
 
 
 	<%
+		ArrayList<UserVO> vo1 = (ArrayList<UserVO>) session.getAttribute("vo1");
 		UserVO vo = (UserVO)session.getAttribute("vo");
 	%>
 	<%
@@ -36,6 +38,12 @@
 		//select기능 호출
 		ArrayList<UserVO> al = dao.select();
 		System.out.print(al.size());
+	%>
+	<% // 가족을 보이기 위한 javascript
+		String userID = vo.getUser_id(); // 아래 select_famView()함수에서 사용하기 위한 userID변수
+		ArrayList<FamilyVO> fva = dao.select_famView(userID); // 로그인한 유저의 id가져오기이므로 로그인 세션에 저장되어 있는 id를 가져와서 대입해야한다
+		System.out.print(fva.size());
+		System.out.print("select_famView(userID) 함수가 잘 실행되고, fva 변수에 잘 담겼는지 확인 : "+fva);
 	%>
 	<div class="back-to-top"></div>
 
@@ -154,6 +162,9 @@ if(vo != null){
 		<a class="profileTitle" title="">Family</a>
 		<a href="addFamily.jsp">추가하기</a>
 		<div class="profileInfo">최한글</div>
+		<tr>
+			<td> 본인의 아이디 : <% out.print(vo.getUser_id()); %></td>
+			<td> 가족 1 : <% //out.print(fva.getFam1()); %></td>
 
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
