@@ -1,3 +1,4 @@
+
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -28,84 +29,71 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-	
-	<%
-		memberDAO dao = new memberDAO();
-	
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		
-		ArrayList<HospitalVO> sr = dao.search();
-		
-		ArrayList<VaccineVO> vc = dao.VaccineList();
-		
-		ArrayList<String> list = new ArrayList<String>();
-		
-		//  System.out.print(sr.size());  병원 개수
-		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-		%>
    
-   	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-   		병원목록 리스트에 추가
-   		
-   	 -->
-   	 
-   	 
-   	 <!-- 독감 = (vc.get(0).getVac_disease())) -->
-   	 
-   	 
-   	 <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
-   	 
-   	  
-   	  <% 
-   	  
-   		String hos_view = null;
-   	    int num = 0;
-   	    
-   	  System.out.println("=======================================");
-   	  
-   	  for(int i=0;i<vc.size();i++){
-   		 for(int j=0;j<sr.size();j++){
-   			 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
-   		
-   			 if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
-   				hos_view = sr.get(j).getHos_name();
-   				System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
-   				num++; 
-   			 		
-   			  }
-   			 
-   	 	 }
-   		 }
-   	  
-   	  
-   	  
-   	 /*  for(int j=0; j<vc.size(); j++){
-   	  for(int i=0; i<sr.size(); i++){
-   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-   	  		System.out.print(sr.get(i).getHos_name(i));
-   	  		
-   	  }}} */
-				
-   	  
-   	  /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-					
-					vc.get(i).getVac_disease()
-					} */
-							%>
-   	 
+   <%
+      memberDAO dao = new memberDAO();
+   
+      UserVO vo = (UserVO)session.getAttribute("vo");
+      
+      ArrayList<HospitalVO> sr = dao.search();
+      
+      ArrayList<VaccineVO> vc = dao.VaccineList();
+      
+      ArrayList<String> list = new ArrayList<String>();
+      
+      //  System.out.print(sr.size());  병원 개수
+      // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
+      %>
+   
+      <!-- '백신명'이 병원에 속해있는지 확인/(.equals)
+         병원목록 리스트에 추가
+         
+       -->
+       
+       
+       <!-- 독감 = (vc.get(0).getVac_disease())) -->
+       
+       
+       <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
+       
+        
+        <% 
+        
+         String hos_view = null;
+          int num = 0;
+          
+        System.out.println(sr.get(1).getHos_phone());
+        System.out.println("=======================================");
+       
+        
+        
+       /*  for(int j=0; j<vc.size(); j++){
+        for(int i=0; i<sr.size(); i++){
+         if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
+              System.out.print(sr.get(i).getHos_name(i));
+              
+        }}} */
+            
+        
+        /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
+               
+               vc.get(i).getVac_disease()
+               } */
+                     %>
+       
    <%-- <%for(int i =0; i<) %>
    
    
     <% for(int i=0;i<5;i++){  %> 
-						    	positions[<%=i%>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						   
-						   <% } %>  --%>
+                         positions[<%=i%>] = {
+                           title:  '<%=sr.get(i).getHos_name()%>',
+                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                        };  
+                     
+                     <% } %>  --%>
    
    
-   	<!-- vc.get(j).getVac_disease -->
+      <!-- vc.get(j).getVac_disease -->
    
    <!-- Back to top button -->
    <div class="back-to-top"></div>
@@ -245,41 +233,7 @@
                   <div class="row align-items-center">
                      
                         
-                        <%if(vo == null){ %>
-                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                        <section>
-                           <header>
-                              <h2>병원 리스트!!</h2><br>
-                           </header>
-                          <ul class="dates">
-                           
-                           		
-                           	
-                           		
-                           		<li><span class='date'><h4><strong><%=sr.get(3).getHos_name() %></strong></h4></span>
-                           		
-
-                           </ul>
-                        </section>
-                     </div>
-                     <%}else{ %>
-                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                           <section>
-                           <%} %>
-                              <header>
-                              <h2>백신 리스트!!</h2><br>
-                           </header>
-                              <div class="page-section" ">
-         <div class="container">
-            <h1 class="text-center wow fadeInUp"></h1>
-
-            <form class="contact-form mt-5">
-               <div class="container">
-                  <div class="row align-items-center">
-                     
-                        
-                        
-                        
+                        <%if(vo != null){ %>
                         <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
                         <section>
                            <header>
@@ -291,7 +245,7 @@
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                                  
                                                                
@@ -300,7 +254,7 @@
                               <span> / 1회 접종 후 10년마다 1회</span>
                              
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -308,7 +262,7 @@
                               <span> / 20세~40세</span>
                               <span> / 2회</span>
                                  <h3>
-                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
 
                               
@@ -316,7 +270,7 @@
                               <span> / 20세~65세이상</span>
                               <span> / 항체 검사 후 3회 접종</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                                  
                               
@@ -325,7 +279,7 @@
                               <span> / 20세~65세이상</span>
                               <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -333,7 +287,7 @@
                               <span> / 20세~50세</span>
                               <span> / 항체검사 후 2회 접종</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -341,7 +295,7 @@
                               <span> / 20세~50세</span>
                               <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                              
                              
@@ -349,7 +303,7 @@
                               <span> / 25세~26세 여성, 남성의 연령 무관</span>
                               <span> / 총 3회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                              
                              
@@ -358,7 +312,7 @@
                               <span> / 만 60세 이상</span>
                               <span> / 1회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -378,7 +332,49 @@
                                  </h3>
                            </ul>
                         </section>
+                     </div><!-- 백신리스트 -->
+                     
+                     
+                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                        <section>
+                        <div>
+                           <header>
+                              <h2>병원 목록!</h2><br>
+                           </header>
+                           <ul class="links">
+                              <%for(int i=0;i<108;i++){ %>
+                              
+                                 <li><span class="date"><h4><strong><%=sr.get(i).getHos_name() %></strong></h4></span>
+                              <span>주소</span>
+                                 <h3>
+                                    <a href="#menu1">예약하기</a>
+                                 </h3>
+                              
+                              
+                              <%} %>
+                              </ul>
+                              </div>                        
+                        </section>
                      </div>
+                     <%}else{ %>
+                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                           <%} %>
+                           <section>
+                              <header>
+                              <h2>일단 빈칸</h2>
+                              </header>
+                           </section>
+       <div class="page-section">
+         <div class="container">
+            <h1 class="text-center wow fadeInUp"></h1>
+            <form class="contact-form mt-5">
+               <div class="container">
+                  <div class="row align-items-center">
+                     
+                        
+                        
+                        
+                        
                      
                      
                      <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
@@ -417,14 +413,10 @@
                         </section>
                         
                      </div>
-                     </div>
-                     
-                     
-             <!-- 여기부터 카카오 지도 -->  
+            <!-- 카카오api -->
                      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
                         <div id="map" style="width: 1200px; height: 500px;"></div>
 
-            <!-- 카카오api -->
             
                         <script
                            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
@@ -439,94 +431,104 @@
                   // 지도종류
                   };
 
-						// 지도를 생성한다 
-						var map = new kakao.maps.Map(mapContainer,
-								mapOption);
-						
-						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
-											
-						// var positions[] = new var[sr.size()];
-						
-						   
-						   
-						   
-						  /*  var positions = [
-									    {
-									        title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-									    },
-									    
-									    {
-									        title: '광주 삼성병원', 
-									        latlng: new kakao.maps.LatLng(35.171491, 126.866726)
-									    },
-									    
-									    {
-									        title: '시원병원', 
-									        latlng: new kakao.maps.LatLng(35.152658, 126.848934)
-									    }
-									]; */
-									
-						    
-					    var positions = new Array();
-						    
+                  // 지도를 생성한다 
+                  var map = new kakao.maps.Map(mapContainer,
+                        mapOption);
+                  
+                     /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
+                                 
+                  // var positions[] = new var[sr.size()];
+                  
+                     
+                     
+                     
+                    /*  var positions = [
+                               {
+                                   title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
+                               },
+                               
+                               {
+                                   title: '광주 삼성병원', 
+                                   latlng: new kakao.maps.LatLng(35.171491, 126.866726)
+                               },
+                               
+                               {
+                                   title: '시원병원', 
+                                   latlng: new kakao.maps.LatLng(35.152658, 126.848934)
+                               }
+                           ]; */
+                           
+                      
+                   var positions = new Array();
+                  // var H_title = new Array();
+                      
 
-						 <% System.out.println("병원수 : "+sr.size()); %>
-						 
-						   <% for(int i=0;i<5;i++){  %> 
-						    	positions[<%=i%>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						 	   
-								   <% } %> 
-						   
-						// 마커 이미지의 이미지 주소입니다
-						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-						   
-						console.log(positions.length);
-						for (var i = 0; i < positions.length; i ++) {
-						    
-						    // 마커 이미지의 이미지 크기 입니다
-						    var imageSize = new kakao.maps.Size(24, 35); 
-						    
-						    // 마커 이미지를 생성합니다    
-						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-							console.log("for문시작");
-						    console.log(positions[i].latlng);
-						    // 마커를 생성합니다
-						    var marker = new kakao.maps.Marker({
-						        map: map, // 마커를 표시할 지도
-						        position: positions[i].latlng, // 마커를 표시할 위치
-						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-						        image : markerImage // 마커 이미지 
-						    
-						   
-						        
-						    });
-						    
-						    marker.setMap(map);
-
-						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+                   <% System.out.println("총 병원수 : "+sr.size()); %>
+                   
+                     <% for(int i=0;i<108;i++){  %> 
+                         positions[<%=i%>] = {
+                           title:  '<%=sr.get(i).getHos_name()%>',
+                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                        };  
+                         
+                           <% } %>
+                     
+                  // 마커 이미지의 이미지 주소입니다
+                  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+                     
+                  console.log(positions.length);
+                  for (var i = 0; i < positions.length; i ++) {
+                      
+                      // 마커 이미지의 이미지 크기 입니다
+                      var imageSize = new kakao.maps.Size(24, 35); 
+                      
+                      // 마커 이미지를 생성합니다    
+                      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                     console.log(positions[i].latlng); //마커의 위치
+                      // 마커를 생성합니다
+                      var marker = new kakao.maps.Marker({
+                          map: map, // 마커를 표시할 지도
+                          position: positions[i].latlng, // 마커를 표시할 위치
+                          title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                          image : markerImage // 마커 이미지 
                     
-						    // 인포윈도우를 생성합니다
-						    var infowindow = new kakao.maps.InfoWindow({
-						        position : iwPosition, 
-						        content : iwContent 
-						    });
-						      
-						    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-						    infowindow.open(map, marker); 
-						}
-						
-					</script>
-					</div><!-- /카카오지도 -->
+                          //H_title[i] = positions[i].title                         
+                     
+                          
+                      //System.out.println(H_title);
+                      }
+                      );
+                    
+                      
+                      //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
+                      
+                      marker.setMap(map);
+
+                      <%for(int i=0;i<sr.size();i++){%>
+                     var iwContent = '<div style="padding:5px;"><%=sr.get(i).getHos_name()%><br><a style="color:black" target="_blank">TEL : </a> </div>'
+                   
+                      
+                      // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                          iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+                      
+                      // 인포윈도우를 생성합니다
+                      var infowindow = new kakao.maps.InfoWindow({
+                          position : iwPosition, 
+                          content : iwContent 
+                         
+                      });
+                        
+                      <%}%>
+                      // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+                      infowindow.open(map, marker); 
+                  }
+                        </script>
+                  </div>
                      </div>
                   </div>
                </form>
                </div>
             
-	         </div>
          </div>
       </div>
 
@@ -757,11 +759,11 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
-    	var here = document.getElementById('here').value;
-    	console.log("here ", here);
-    	
+ /*        var here = document.getElementById('here').value;
+       console.log("here ", here);
+       
     function test() {
-    	
+       
         if ($('#menu').css('display') == 'block') {
            $('#menu').css('display' , 'none')
             $('#menu1').css('display', 'block');
@@ -770,18 +772,18 @@
         }
         
         $.ajax({
-        	type : 'get',
-        	url : 'Hr_search',
-        	data : here,
-        	dataType : 'text',
-        	success : function(data){
-        		alert("보내기 성공");
-        	},
-        	error : function(){
-        		alert("보내기 실패");
-        	}
+           type : 'get',
+           url : 'Hr_search',
+           data : here,
+           dataType : 'text',
+           success : function(data){
+              alert("보내기 성공");
+           },
+           error : function(){
+              alert("보내기 실패");
+           }
         })
-    }
+    }  */
 </script>
 
 
