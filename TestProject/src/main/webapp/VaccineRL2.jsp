@@ -62,6 +62,7 @@
          String hos_view = null;
           int num = 0;
           
+        System.out.println(sr.get(1).getHos_phone());
         System.out.println("=======================================");
         
         for(int i=0;i<vc.size();i++){
@@ -374,7 +375,7 @@
                            <%} %>
                            <section>
                               <header>
-                              <h2>백신 리스트!!</h2>
+                              <h2>일단 빈칸</h2>
                               </header>
                            </section>
        <div class="page-section">
@@ -475,9 +476,9 @@
                    var positions = new Array();
                       
 
-                   <% System.out.println("병원수 : "+sr.size()); %>
+                   <% System.out.println("총 병원수 : "+sr.size()); %>
                    
-                     <% for(int i=0;i<5;i++){  %> 
+                     <% for(int i=0;i<108;i++){  %> 
                          positions[<%=i%>] = {
                            title:  '<%=sr.get(i).getHos_name()%>',
                            latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
@@ -511,7 +512,7 @@
                       
                       marker.setMap(map);
 
-                      var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                      var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
                     
                       // 인포윈도우를 생성합니다
@@ -761,7 +762,7 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
- /*       var here = document.getElementById('here').value;
+ /*        var here = document.getElementById('here').value;
        console.log("here ", here);
        
     function test() {
@@ -785,7 +786,7 @@
               alert("보내기 실패");
            }
         })
-    } */
+    }  */
 </script>
 
 
