@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+
 import com.smhrd.FamilyVO;
 import com.smhrd.HospitalVO;
 import com.smhrd.UserVO;
 import com.smhrd.VaccineVO;
 
-	
 	public class memberDAO {
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -380,7 +380,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 
 	public ArrayList<UserVO> search_f(String fam) // searchFamily에서 검색하면 users 테이블에서 일치하는 user_id값을 불러오는 함수
 	{
-		ArrayList<UserVO> vo = new ArrayList<UserVO>(); // userVO 타입 변수 선언
+		ArrayList<UserVO> vo0 = new ArrayList<UserVO>(); // userVO 타입 변수 선언
 		try {
 				conn();
 				
@@ -400,7 +400,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 					
 					UserVO fo = new UserVO(user_id, user_name, email);
 					//값 추가해주기
-					vo.add(fo); // 배열 fo에 저장해준다.
+					vo0.add(fo); // 배열 fo에 저장해준다., 이 vo는 아래 return에서 적어져서, search_f()를 쓰면 리턴값으로 출력
 				}
 				
 			}catch(Exception e) { 
@@ -409,11 +409,11 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			}finally {
 				close();
 			}
-		return vo;
+		return vo0;
 	}
 	
 	
-	public int addfam(String family_id1, String user_id) // 데이터 베이스에 가족 id 저장하는 함수, user_id가 저장되어 있지 않으면, 
+	public int addfam(String family_id, String user_id) // 이건 사용하지 않는 함수지만 물어보기
 	{
 		ArrayList<FamilyVO> vo2 = new ArrayList<FamilyVO>(); // userVO 타입 변수 선언
 		int cnt = 0;
@@ -425,20 +425,20 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			
 			psmt = conn.prepareStatement(sql);
 			// 위에 물음표에 채워줘야하는 값
-			psmt.setString(1, family_id1);
+			psmt.setString(1, family_id);
 			psmt.setString(2, user_id);
-
-		// 2.5 sql문 실행하기
-//			int cnt = psmt.executeUpdate(); -> return에서 써주기위해 아래와 같이 바꿔준다.
-
-			rs = psmt.executeQuery(); //커서 이용	
+			
+			cnt=psmt.executeUpdate();	
+			rs=psmt.executeQuery();
 			while(rs.next())
 			{
-				sql="select family * faily where user_id='user_id'";
+				sql="commit";
+				sql="select user_id, fam1 from family where user_id=?";
+				psmt.setString(1, user_id);
 				String userId = rs.getString(1);
-				String famID = rs.getString(2);
+				String famID1 = rs.getString(2);
 				
-				FamilyVO vo = new FamilyVO(user_id, famID); // vo라는 이름의 변수에 세션 email, tel, address 묶어준 것
+				FamilyVO vo = new FamilyVO(userId, famID1);
 				vo2.add(vo); // resultset에서 값 가져온뒤 rs.next에서 while문안에서 반복한 뒤 vo에 담아준다.
 			}
 		} 
@@ -452,6 +452,64 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			close();
 		}
 		return cnt;
+	}
+	
+	public int Upfam(String family_name, String user_id) // 가족추가버튼을 누르면 fam1칼럼에 가족 추가 가능
+	{
+		int cnt = 0;
+		try 
+		{
+			conn();
+		
+			String sql ="update family set fam1=? where user_id=?"; // "insert into web_member value(id, pw, nick)",,,,,insert, delete, update, select 들 중 하나...셀 인 없 델인데 이거...
+			psmt = conn.prepareStatement(sql);
+			// 위에 물음표에 채워줘야하는 값
+			psmt.setString(1, family_name);
+			psmt.setString(2, user_id);
+			
+			cnt=psmt.executeUpdate();	
+
+		} 
+		catch (Exception e) // Exception : 오류들의 최상위 계급에 해당, 오류가 발생하면 catch문 아래를 시행한다. 
+		{
+			e.printStackTrace();
+			// 실행 후 오류가 발생했을 때 에러를 출력한다.
+		}
+		finally
+		{
+			close();
+		}
+		return cnt;
+	}
+	
+	public ArrayList<FamilyVO> select_famView(String userID)
+	{
+		ArrayList<FamilyVO> fva = new ArrayList<FamilyVO>();
+		try {
+			conn();
+			
+			String sql = "select user_id, fam1 from family where user_id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, userID);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) 
+			{
+				String user_id = rs.getString(1);
+				String fam1 = rs.getString(2);
+				
+				FamilyVO vo = new FamilyVO(user_id, fam1);
+				//새로운 데이터타입 = VO	
+				fva.add(vo);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return fva; // family 테이블의 user_id, fam1이 저장되어야한다
 	}
 
 
