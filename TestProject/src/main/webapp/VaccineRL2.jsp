@@ -1,3 +1,4 @@
+
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -28,84 +29,84 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-	
-	<%
-		memberDAO dao = new memberDAO();
-	
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		
-		ArrayList<HospitalVO> sr = dao.search();
-		
-		ArrayList<VaccineVO> vc = dao.VaccineList();
-		
-		ArrayList<String> list = new ArrayList<String>();
-		
-		//  System.out.print(sr.size());  ë³‘ì› ê°œìˆ˜
-		// System.out.print(sr.get(1).getLatitude()); ë‘ë²ˆì§¸ ë³‘ì›ì˜ ìœ„ë„ê°’
-		%>
    
-   	<!-- 'ë°±ì‹ ëª…'ì´ ë³‘ì›ì— ì†í•´ìˆëŠ”ì§€ í™•ì¸/(.equals)
-   		ë³‘ì›ëª©ë¡ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
-   		
-   	 -->
-   	 
-   	 
-   	 <!-- ë…ê° = (vc.get(0).getVac_disease())) -->
-   	 
-   	 
-   	 <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0ë²ˆì§¸ ìˆëŠ”ë³‘ì›ì— ë…ê°ì´ ìˆë‹¤! %>
-   	 
-   	  
-   	  <% 
-   	  
-   		String hos_view = null;
-   	    int num = 0;
-   	    
-   	  System.out.println("=======================================");
-   	  
-   	  for(int i=0;i<vc.size();i++){
-   		 for(int j=0;j<sr.size();j++){
-   			 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
-   		
-   			 if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
-   				hos_view = sr.get(j).getHos_name();
-   				System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
-   				num++; 
-   			 		
-   			  }
-   			 
-   	 	 }
-   		 }
-   	  
-   	  
-   	  
-   	 /*  for(int j=0; j<vc.size(); j++){
-   	  for(int i=0; i<sr.size(); i++){
-   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-   	  		System.out.print(sr.get(i).getHos_name(i));
-   	  		
-   	  }}} */
-				
-   	  
-   	  /* for (int i = 0; i<vc.size(); i++){//íšŒì›ì˜ ìˆ˜ë§Œí¼ ë°˜ë³µ
-					
-					vc.get(i).getVac_disease()
-					} */
-							%>
-   	 
+   <%
+      memberDAO dao = new memberDAO();
+   
+      UserVO vo = (UserVO)session.getAttribute("vo");
+      
+      ArrayList<HospitalVO> sr = dao.search();
+      
+      ArrayList<VaccineVO> vc = dao.VaccineList();
+      
+      ArrayList<String> list = new ArrayList<String>();
+      
+      //  System.out.print(sr.size());  º´¿ø °³¼ö
+      // System.out.print(sr.get(1).getLatitude()); µÎ¹øÂ° º´¿øÀÇ À§µµ°ª
+      %>
+   
+      <!-- '¹é½Å¸í'ÀÌ º´¿ø¿¡ ¼ÓÇØÀÖ´ÂÁö È®ÀÎ/(.equals)
+         º´¿ø¸ñ·Ï ¸®½ºÆ®¿¡ Ãß°¡
+         
+       -->
+       
+       
+       <!-- µ¶°¨ = (vc.get(0).getVac_disease())) -->
+       
+       
+       <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0¹øÂ° ÀÖ´Âº´¿ø¿¡ µ¶°¨ÀÌ ÀÖ´Ù! %>
+       
+        
+        <% 
+        
+         String hos_view = null;
+          int num = 0;
+          
+        System.out.println("=======================================");
+        
+        for(int i=0;i<vc.size();i++){
+          for(int j=0;j<sr.size();j++){
+             /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
+         
+             if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
+               hos_view = sr.get(j).getHos_name();
+               System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
+               num++; 
+                   
+              }
+             
+           }
+          }
+        
+        
+        
+       /*  for(int j=0; j<vc.size(); j++){
+        for(int i=0; i<sr.size(); i++){
+         if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
+              System.out.print(sr.get(i).getHos_name(i));
+              
+        }}} */
+            
+        
+        /* for (int i = 0; i<vc.size(); i++){//È¸¿øÀÇ ¼ö¸¸Å­ ¹İº¹
+               
+               vc.get(i).getVac_disease()
+               } */
+                     %>
+       
    <%-- <%for(int i =0; i<) %>
    
    
     <% for(int i=0;i<5;i++){  %> 
-						    	positions[<%=i%>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						   
-						   <% } %>  --%>
+                         positions[<%=i%>] = {
+                           title:  '<%=sr.get(i).getHos_name()%>',
+                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                        };  
+                     
+                     <% } %>  --%>
    
    
-   	<!-- vc.get(j).getVac_disease -->
+      <!-- vc.get(j).getVac_disease -->
    
    <!-- Back to top button -->
    <div class="back-to-top"></div>
@@ -113,13 +114,13 @@
 
    <header>
             
-               <div class="col-sm-8 text-sm">    <!-- ì´ê²Œ ìˆìœ¼ë©´ ë§ˆì´í˜ì´ì§€ê°€ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ë°€ë¦¼ -->
+               <div class="col-sm-8 text-sm">    <!-- ÀÌ°Ô ÀÖÀ¸¸é ¸¶ÀÌÆäÀÌÁö°¡ ¿À¸¥ÂÊÀ¸·Î ¹Ğ¸² -->
                
             <!-- .row -->
          </div>
          <!-- .container -->
       
-      <!-- .topbar ìë¦¬ -->
+      <!-- .topbar ÀÚ¸® -->
 
       <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
          <div class="container">
@@ -135,33 +136,33 @@
                <ul class="navbar-nav ml-auto">
                
                   <li class="nav-item"><a class="nav-link"
-                     href="html/about.html">ì•½ì½•ì´ë€?</a></li>
+                     href="html/about.html">¾àÄÛÀÌ¶õ?</a></li>
                   
                   <li class="nav-item active"><a class="nav-link"
-                     href="VaccineRL2.jsp">ë°±ì‹ ì˜ˆì•½/ì¡°íšŒ</a></li>
+                     href="VaccineRL2.jsp">¹é½Å¿¹¾à/Á¶È¸</a></li>
                      
                   <li class="nav-item"><a class="nav-link"
-                     href="html/VaccineInfo.html">ë°±ì‹ ì •ë³´</a></li>
+                     href="html/VaccineInfo.html">¹é½ÅÁ¤º¸</a></li>
                   
                   <li class="nav-item"><a class="nav-link"
-                     href="html/AD_FAQ.html">ê´‘ê³ /FAQ</a></li>
+                     href="html/AD_FAQ.html">±¤°í/FAQ</a></li>
                   
                   <li class="nav-item "><a class="nav-link"
-                     href="FindPH.jsp">ì•½êµ­/ë³‘ì›ì°¾ê¸°</a></li>
+                     href="FindPH.jsp">¾à±¹/º´¿øÃ£±â</a></li>
                      
                   <%
-                  if(vo == null){ //ë¡œê·¸ì¸ ì „
-                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='html/loginForm.html'>ë¡œê·¸ì¸/íšŒì›ê°€ì…</a></li>");
+                  if(vo == null){ //·Î±×ÀÎ Àü
+                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='html/loginForm.html'>·Î±×ÀÎ/È¸¿ø°¡ÀÔ</a></li>");
                   }else{
-                     //ê´€ë¦¬ì ê³„ì •ìœ¼ë¡œ ë¡œê·¸ì¸ í–ˆì„ ê²½ìš° ëª¨ë“  íšŒì›ì •ë³´ ë³¼ ìˆ˜ ìˆë„ë¡
-                     //ë¡œê·¸ì¸í•œ íšŒì›ì˜ ì´ë©”ì¼ì´ adminì¸ ê²½ìš°ì—ëŠ” íšŒì›ì „ì²´ëª©ë¡ì´ ë³´ì´ê²Œ 
-                     //ë¡œê·¸ì¸í•œ íšŒì›ì˜ ì´ë©”ì¼ì´ ì¼ë°˜ íšŒì›ì¸ ê²½ìš°ì—ëŠ” íšŒì›ì •ë³´ ìˆ˜ì •ì´ ë³´ì´ê²Œ
+                     //°ü¸®ÀÚ °èÁ¤À¸·Î ·Î±×ÀÎ ÇßÀ» °æ¿ì ¸ğµç È¸¿øÁ¤º¸ º¼ ¼ö ÀÖµµ·Ï
+                     //·Î±×ÀÎÇÑ È¸¿øÀÇ ÀÌ¸ŞÀÏÀÌ adminÀÎ °æ¿ì¿¡´Â È¸¿øÀüÃ¼¸ñ·ÏÀÌ º¸ÀÌ°Ô 
+                     //·Î±×ÀÎÇÑ È¸¿øÀÇ ÀÌ¸ŞÀÏÀÌ ÀÏ¹İ È¸¿øÀÎ °æ¿ì¿¡´Â È¸¿øÁ¤º¸ ¼öÁ¤ÀÌ º¸ÀÌ°Ô
                      if(vo.getUser_id().equals("admin")){
-                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>íšŒì›ì „ì²´ëª©ë¡</a>");
+                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>È¸¿øÀüÃ¼¸ñ·Ï</a>");
                      }else{
-                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='Mypage.jsp'>ë§ˆì´í˜ì´ì§€</a>");
+                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='Mypage.jsp'>¸¶ÀÌÆäÀÌÁö</a>");
                      }
-                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>ë¡œê·¸ì•„ì›ƒ</a>");
+                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='LogoutService'>·Î±×¾Æ¿ô</a>");
                   }
                   
 
@@ -185,9 +186,9 @@
                Welcome to <span class="text-primary">Yak</span>-Kok
                <%
                         if(vo == null){
-                           out.print("<h1>ë¡œê·¸ì¸ í•œ ì„¸ì…˜ì•„ì´ë””ë¥¼ ì¶œë ¥í•´ì£¼ì„¸ìš”</h1>");
+                           out.print("<h1>·Î±×ÀÎ ÇÑ ¼¼¼Ç¾ÆÀÌµğ¸¦ Ãâ·ÂÇØÁÖ¼¼¿ä</h1>");
                         }else{
-                           out.print("<h1>"+vo.getUser_name()+"ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.</h1>");
+                           out.print("<h1>"+vo.getUser_name()+"´Ô È¯¿µÇÕ´Ï´Ù.</h1>");
                         }
                      
                      %>
@@ -207,7 +208,7 @@
                      <div class="circle-shape bg-primary text-white">
                         <span class="mai-shield-checkmark"></span>
                      </div><a class="nav-link"
-                     href="VaccineRL.html"><p>ë°±ì‹  ì˜ˆì•½</p></a>
+                     href="VaccineRL.html"><p>¹é½Å ¿¹¾à</p></a>
                      
                   </div>
                </div>
@@ -217,7 +218,7 @@
                         <span class="mai-basket"></span>
                      </div>
                      <a class="nav-link"
-                     href="FindPH.html"><p>ì•½êµ­,ë³‘ì›ì°¾ê¸°</p></a>
+                     href="FindPH.html"><p>¾à±¹,º´¿øÃ£±â</p></a>
                   </div>
                </div>
                <div class="col-md-4 py-3 py-md-0" >
@@ -234,7 +235,7 @@
       </div>
       <!-- .page-section -->
 
-      <!-- ë‘ë²ˆì§¸ ì„¹ì…˜ -->
+      <!-- µÎ¹øÂ° ¼½¼Ç -->
 
       <div class="page-section" ">
          <div class="container">
@@ -243,116 +244,33 @@
             <form class="contact-form mt-5">
                <div class="container">
                   <div class="row align-items-center">
-                        
                      
-                        <%if(vo != null){ %>
+                        
+                        <%if(vo == null){ %>
                         <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
                         <section>
                            <header>
-                              <h2>ë°±ì‹  ë¦¬ìŠ¤íŠ¸</h2><br>
+                              <h2>º´¿ø ¸®½ºÆ®!!</h2><br>
                            </header>
-                           <ul class="dates">
+                          <ul class="dates">
+                           
+                                 
                               
-                              <li><span class="date"><h4><strong>ë…ê°</strong></h4></span>
-                              <span> / 20~65ì„¸ì´ìƒ</span>
-                              <span> /ë§¤ë…„ 1íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
                                  
-                                                               
-                              <li><span class="date"><h4><strong>íŒŒìƒí’</strong></h4></span>
-                              <span> / 20~65ì„¸ì´ìƒ</span>
-                              <span> / 1íšŒ ì ‘ì¢… í›„ 10ë…„ë§ˆë‹¤ 1íšŒ</span>
-                             
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
+                                 <li><span class='date'><h4><strong><%=sr.get(3).getHos_name() %></strong></h4></span>
                                  
-                                 
-                              <li><span class="date"><h4><strong>Aí˜•ê°„ì—¼</strong></h4></span>
-                              <span> / 20ì„¸~40ì„¸</span>
-                              <span> / 2íšŒ</span>
-                                 <h3>
-                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
 
-                              
-                              <li><span class="date"><h4><strong>Bí˜•ê°„ì—¼</strong></h4></span>
-                              <span> / 20ì„¸~65ì„¸ì´ìƒ</span>
-                              <span> / í•­ì²´ ê²€ì‚¬ í›„ 3íšŒ ì ‘ì¢…</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                                
-                                 
-                              
-                               
-                           <!--    <li><span class="date"><h4><strong>íë ´êµ¬ê· </strong></h4></span>
-                              <span> / 20ì„¸~65ì„¸ì´ìƒ</span>
-                              <span> / ìœ„í—˜êµ°ì— ëŒ€í•´ 1íšŒ ë˜ëŠ” 2íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>ìˆ˜ë‘</strong></h4></span>
-                              <span> / 20ì„¸~50ì„¸</span>
-                              <span> / í•­ì²´ê²€ì‚¬ í›„ 2íšŒ ì ‘ì¢…</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>í™ì—­/ìœ í–‰ì„±ì´í•˜ì„ ì—¼(ë³¼ê±°ë¦¬)/í’ì§„</strong></h4></span>
-                              <span> / 20ì„¸~50ì„¸</span>
-                              <span> / ìœ„í—˜êµ°ì— ëŒ€í•´ 1íšŒ ë˜ëŠ” 2íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                             
-                             
-                              <li><span class="date"><h4><strong>ì‚¬ëŒìœ ë‘ì¢…ë°”ì´ëŸ¬ìŠ¤ê°ì—¼ì¦</strong></h4></span>
-                              <span> / 25ì„¸~26ì„¸ ì—¬ì„±, ë‚¨ì„±ì˜ ì—°ë ¹ ë¬´ê´€</span>
-                              <span> / ì´ 3íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                             
-                             
-                             
-                             <li><span class="date"><h4><strong>ëŒ€ìƒí¬ì§„</strong></h4></span>
-                              <span> / ë§Œ 60ì„¸ ì´ìƒ</span>
-                              <span> / 1íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                                 
-                                 
-                             <li><span class="date"><h4><strong>ìˆ˜ë§‰êµ¬ê· </strong></h4></span>
-                              <span> / 20ì„¸~65ì„¸ì´ìƒ</span>
-                              <span> / ìœ„í—˜êµ°ì— ëŒ€í•´ 1íšŒ~2íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3>
-                             
-                             
-                               <li><span class="date"><h4><strong>bí˜•í—¤ëª¨ìŠ¤ì¸í”Œë£¨ì—”ì</strong></h4></span>
-                              <span> / 20ì„¸~65ì„¸ì´ìƒ</span>
-                              <span> / ìœ„í—˜êµ°ì— ëŒ€í•´ 1íšŒ~3íšŒ</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">ì˜ˆì•½í•˜ê¸°</button>
-                                 </h3> -->
                            </ul>
                         </section>
-                        
                      </div>
-                     
-                     </div>
-                     
-                     </div>
-                     
-                     <%}%>
+                     <%}else{ %>
+                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                           <section>
+                           <%} %>
+                              <header>
+                              <h2>¹é½Å ¸®½ºÆ®!!</h2><br>
+                           </header>
+                              <div class="page-section" ">
          <div class="container">
             <h1 class="text-center wow fadeInUp"></h1>
 
@@ -361,7 +279,107 @@
                   <div class="row align-items-center">
                      
                         
-       
+                        
+                        
+                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                        <section>
+                           <header>
+                              <h2>¹é½Å ¸®½ºÆ®</h2><br>
+                           </header>
+                           <ul class="dates">
+                              
+                              <li><span class="date"><h4><strong>µ¶°¨</strong></h4></span>
+                              <span> / 20~65¼¼ÀÌ»ó</span>
+                              <span> /¸Å³â 1È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                                 
+                                                               
+                              <li><span class="date"><h4><strong>ÆÄ»óÇ³</strong></h4></span>
+                              <span> / 20~65¼¼ÀÌ»ó</span>
+                              <span> / 1È¸ Á¢Á¾ ÈÄ 10³â¸¶´Ù 1È¸</span>
+                             
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>AÇü°£¿°</strong></h4></span>
+                              <span> / 20¼¼~40¼¼</span>
+                              <span> / 2È¸</span>
+                                 <h3>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+
+                              
+                              <li><span class="date"><h4><strong>BÇü°£¿°</strong></h4></span>
+                              <span> / 20¼¼~65¼¼ÀÌ»ó</span>
+                              <span> / Ç×Ã¼ °Ë»ç ÈÄ 3È¸ Á¢Á¾</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                                 
+                              
+                               
+                              <li><span class="date"><h4><strong>Æó·Å±¸±Õ</strong></h4></span>
+                              <span> / 20¼¼~65¼¼ÀÌ»ó</span>
+                              <span> / À§Çè±º¿¡ ´ëÇØ 1È¸ ¶Ç´Â 2È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>¼öµÎ</strong></h4></span>
+                              <span> / 20¼¼~50¼¼</span>
+                              <span> / Ç×Ã¼°Ë»ç ÈÄ 2È¸ Á¢Á¾</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>È«¿ª/À¯Çà¼ºÀÌÇÏ¼±¿°(º¼°Å¸®)/Ç³Áø</strong></h4></span>
+                              <span> / 20¼¼~50¼¼</span>
+                              <span> / À§Çè±º¿¡ ´ëÇØ 1È¸ ¶Ç´Â 2È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                             
+                             
+                              <li><span class="date"><h4><strong>»ç¶÷À¯µÎÁ¾¹ÙÀÌ·¯½º°¨¿°Áõ</strong></h4></span>
+                              <span> / 25¼¼~26¼¼ ¿©¼º, ³²¼ºÀÇ ¿¬·É ¹«°ü</span>
+                              <span> / ÃÑ 3È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                             
+                             
+                             
+                             <li><span class="date"><h4><strong>´ë»óÆ÷Áø</strong></h4></span>
+                              <span> / ¸¸ 60¼¼ ÀÌ»ó</span>
+                              <span> / 1È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                                 
+                                 
+                             <li><span class="date"><h4><strong>¼ö¸·±¸±Õ</strong></h4></span>
+                              <span> / 20¼¼~65¼¼ÀÌ»ó</span>
+                              <span> / À§Çè±º¿¡ ´ëÇØ 1È¸~2È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                             
+                             
+                               <li><span class="date"><h4><strong>bÇüÇì¸ğ½ºÀÎÇÃ·ç¿£ÀÚ</strong></h4></span>
+                              <span> / 20¼¼~65¼¼ÀÌ»ó</span>
+                              <span> / À§Çè±º¿¡ ´ëÇØ 1È¸~3È¸</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">¿¹¾àÇÏ±â</button>
+                                 </h3>
+                           </ul>
+                        </section>
+                     </div>
                      
                      
                      <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
@@ -369,147 +387,142 @@
                         <section>
                         <div>
                            <header>
-                              <h2>ë³‘ì› ëª©ë¡!</h2><br>
+                              <h2>º´¿ø ¸ñ·Ï!</h2><br>
                            </header>
                            <ul class="links">
-                              <li><span class="date"><h4><strong>ì„œêµ¬ë³´ê±´ì†Œ</strong></h4></span>
-                              <span> / ì£¼ì†Œ~             ~</span>
+                              <li><span class="date"><h4><strong>¼­±¸º¸°Ç¼Ò</strong></h4></span>
+                              <span> / ÁÖ¼Ò~             ~</span>
                                  <h3>
-                                    <a href="#menu1">ì˜ˆì•½í•˜ê¸°</a>
+                                    <a href="#menu1">¿¹¾àÇÏ±â</a>
                                  </h3>
                                  
-                              <li><span class="date"><h4><strong>ê°•íœ˜ë³‘ì›</strong></h4></span>
-                              <span> / ì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œì£¼ì†Œ</span>
-                              <span> / ë³´ë¼ì•ˆê³¼</span>
-                              <span> / 15000ì›</span>
+                              <li><span class="date"><h4><strong>°­ÈÖº´¿ø</strong></h4></span>
+                              <span> / ÁÖ¼ÒÁÖ¼ÒÁÖ¼ÒÁÖ¼ÒÁÖ¼ÒÁÖ¼Ò</span>
+                              <span> / º¸¶ó¾È°ú</span>
+                              <span> / 15000¿ø</span>
                                  <h3>
-                                    <a href="#">ì˜ˆì•½í•˜ê¸°</a>
+                                    <a href="#">¿¹¾àÇÏ±â</a>
                                  </h3>
-                                 <p>ì ‘ì¢… í˜„í™©: 0íšŒ</p></li>
+                                 <p>Á¢Á¾ ÇöÈ²: 0È¸</p></li>
                                  
-                              <li><span class="date"><h4><strong>Bí˜•ê°„ì—¼</strong></h4></span>
-                              <span> / 20ì„¸</span>
-                              <span> / ìƒˆìš°ë¦¬ë³‘ì›</span>
-                              <span> / 3000ì›</span>
+                              <li><span class="date"><h4><strong>BÇü°£¿°</strong></h4></span>
+                              <span> / 20¼¼</span>
+                              <span> / »õ¿ì¸®º´¿ø</span>
+                              <span> / 3000¿ø</span>
                                  <h3>
-                                    <a href="#">ì˜ˆì•½í•˜ê¸°</a>
+                                    <a href="#">¿¹¾àÇÏ±â</a>
                                  </h3>
-                                 <p>ì ‘ì¢… í˜„í™©: 0íšŒ</p></li>
+                                 <p>Á¢Á¾ ÇöÈ²: 0È¸</p></li>
                               </ul>
                               </div>                        
                         </section>
                         
                      </div>
-                     </div>
-                     
-                     
-             <!-- ì—¬ê¸°ë¶€í„° ì¹´ì¹´ì˜¤ ì§€ë„ -->  
                      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-                        <div id="map" style="width: 1000px; height: 500px;"></div>
+                        <div id="map" style="width: 1200px; height: 500px;"></div>
 
-            <!-- ì¹´ì¹´ì˜¤api -->
+            <!-- Ä«Ä«¿Àapi -->
             
                         <script
                            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
                         <script>
                         var mapContainer = document
-                        .getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
+                        .getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
                   mapOption = {
                      center : new kakao.maps.LatLng(
-                           35.151980098317935, 126.88980055854985), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-                     level : 4, // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+                           35.151980098317935, 126.88980055854985), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+                     level : 4, // ÁöµµÀÇ È®´ë ·¹º§
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
-                  // ì§€ë„ì¢…ë¥˜
+                  // ÁöµµÁ¾·ù
                   };
 
-						// ì§€ë„ë¥¼ ìƒì„±í•œë‹¤ 
-						var map = new kakao.maps.Map(mapContainer,
-								mapOption);
-						
-						   /* { title: 'ê·¼ë¦°ê³µì›', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
-											
-						// var positions[] = new var[sr.size()];
-						
-						   
-						   
-						   
-						  /*  var positions = [
-									    {
-									        title: 'ë¬¸ì˜ë˜ ì •í˜•ì™¸ê³¼', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-									    },
-									    
-									    {
-									        title: 'ê´‘ì£¼ ì‚¼ì„±ë³‘ì›', 
-									        latlng: new kakao.maps.LatLng(35.171491, 126.866726)
-									    },
-									    
-									    {
-									        title: 'ì‹œì›ë³‘ì›', 
-									        latlng: new kakao.maps.LatLng(35.152658, 126.848934)
-									    }
-									]; */
-									
-						    
-					    var positions = new Array();
-						    
+                  // Áöµµ¸¦ »ı¼ºÇÑ´Ù 
+                  var map = new kakao.maps.Map(mapContainer,
+                        mapOption);
+                  
+                     /* { title: '±Ù¸°°ø¿ø', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
+                                 
+                  // var positions[] = new var[sr.size()];
+                  
+                     
+                     
+                     
+                    /*  var positions = [
+                               {
+                                   title: '¹®¿µ·¡ Á¤Çü¿Ü°ú', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
+                               },
+                               
+                               {
+                                   title: '±¤ÁÖ »ï¼ºº´¿ø', 
+                                   latlng: new kakao.maps.LatLng(35.171491, 126.866726)
+                               },
+                               
+                               {
+                                   title: '½Ã¿øº´¿ø', 
+                                   latlng: new kakao.maps.LatLng(35.152658, 126.848934)
+                               }
+                           ]; */
+                           
+                      
+                   var positions = new Array();
+                      
 
-						 <% System.out.println("ë³‘ì›ìˆ˜ : "+sr.size()); %>
-						 
-						   <% for(int i=0;i<5;i++){  %> 
-						    	positions[<%=i%>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						 	   
-								   <% } %> 
-						   
-						// ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì´ë¯¸ì§€ ì£¼ì†Œì…ë‹ˆë‹¤
-						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-						   
-						console.log(positions.length);
-						for (var i = 0; i < positions.length; i ++) {
-						    
-						    // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì´ë¯¸ì§€ í¬ê¸° ì…ë‹ˆë‹¤
-						    var imageSize = new kakao.maps.Size(24, 35); 
-						    
-						    // ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
-						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-							console.log("forë¬¸ì‹œì‘");
-						    console.log(positions[i].latlng);
-						    // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-						    var marker = new kakao.maps.Marker({
-						        map: map, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ì§€ë„
-						        position: positions[i].latlng, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìœ„ì¹˜
-						        title : positions[i].title, // ë§ˆì»¤ì˜ íƒ€ì´í‹€, ë§ˆì»¤ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ íƒ€ì´í‹€ì´ í‘œì‹œë©ë‹ˆë‹¤
-						        image : markerImage // ë§ˆì»¤ ì´ë¯¸ì§€ 
-						    
-						   
-						        
-						    });
-						    
-						    marker.setMap(map);
+                   <% System.out.println("º´¿ø¼ö : "+sr.size()); %>
+                   
+                     <% for(int i=0;i<5;i++){  %> 
+                         positions[<%=i%>] = {
+                           title:  '<%=sr.get(i).getHos_name()%>',
+                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                        };  
+                         
+                           <% } %>  °ıÈ£ ¸ÂÃçÁÖ½Ç·¡¿ä?³Ü
+                     
+                  // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ ÀÌ¹ÌÁö ÁÖ¼ÒÀÔ´Ï´Ù
+                  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+                     
+                  console.log(positions.length);
+                  for (var i = 0; i < positions.length; i ++) {
+                      
+                      // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ ÀÌ¹ÌÁö Å©±â ÀÔ´Ï´Ù
+                      var imageSize = new kakao.maps.Size(24, 35); 
+                      
+                      // ¸¶Ä¿ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÕ´Ï´Ù    
+                      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                     console.log("for¹®½ÃÀÛ");
+                      console.log(positions[i].latlng);
+                      // ¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
+                      var marker = new kakao.maps.Marker({
+                          map: map, // ¸¶Ä¿¸¦ Ç¥½ÃÇÒ Áöµµ
+                          position: positions[i].latlng, // ¸¶Ä¿¸¦ Ç¥½ÃÇÒ À§Ä¡
+                          title : positions[i].title, // ¸¶Ä¿ÀÇ Å¸ÀÌÆ², ¸¶Ä¿¿¡ ¸¶¿ì½º¸¦ ¿Ã¸®¸é Å¸ÀÌÆ²ÀÌ Ç¥½ÃµË´Ï´Ù
+                          image : markerImage // ¸¶Ä¿ ÀÌ¹ÌÁö 
+                      
+                     
+                          
+                      });
+                      
+                      marker.setMap(map);
 
-						    var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">í°ì§€ë„ë³´ê¸°</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">ê¸¸ì°¾ê¸°</a></div>', // ì¸í¬ìœˆë„ìš°ì— í‘œì¶œë  ë‚´ìš©ìœ¼ë¡œ HTML ë¬¸ìì—´ì´ë‚˜ document elementê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤
-						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //ì¸í¬ìœˆë„ìš° í‘œì‹œ ìœ„ì¹˜ì…ë‹ˆë‹¤
+                      var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">Å«Áöµµº¸±â</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">±æÃ£±â</a></div>', // ÀÎÆ÷À©µµ¿ì¿¡ Ç¥ÃâµÉ ³»¿ëÀ¸·Î HTML ¹®ÀÚ¿­ÀÌ³ª document element°¡ °¡´ÉÇÕ´Ï´Ù
+                          iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //ÀÎÆ÷À©µµ¿ì Ç¥½Ã À§Ä¡ÀÔ´Ï´Ù
                     
-						    // ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-						    var infowindow = new kakao.maps.InfoWindow({
-						        position : iwPosition, 
-						        content : iwContent 
-						    });
-						      
-						    // ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤. ë‘ë²ˆì§¸ íŒŒë¼ë¯¸í„°ì¸ markerë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì§€ë„ ìœ„ì— í‘œì‹œë©ë‹ˆë‹¤
-						    infowindow.open(map, marker); 
-						}
-						
-					</script>
-					</div><!-- /ì¹´ì¹´ì˜¤ì§€ë„ -->
+                      // ÀÎÆ÷À©µµ¿ì¸¦ »ı¼ºÇÕ´Ï´Ù
+                      var infowindow = new kakao.maps.InfoWindow({
+                          position : iwPosition, 
+                          content : iwContent 
+                      });
+                        
+                      // ¸¶Ä¿ À§¿¡ ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÕ´Ï´Ù. µÎ¹øÂ° ÆÄ¶ó¹ÌÅÍÀÎ marker¸¦ ³Ö¾îÁÖÁö ¾ÊÀ¸¸é Áöµµ À§¿¡ Ç¥½ÃµË´Ï´Ù
+                      infowindow.open(map, marker); 
+                  }
+                  
+                        </script>
+</div>
                      </div>
                   </div>
                </form>
                </div>
             
-	         </div>
          </div>
       </div>
 
@@ -549,7 +562,7 @@
 
 
 
-   <!-- ì˜ˆì•½ ìë¦¬ ë„£ì„ê³³. -->
+   <!-- ¿¹¾à ÀÚ¸® ³ÖÀ»°÷. -->
 
 
 
@@ -562,7 +575,7 @@
                <div class="card-blog">
                   <div class="header">
                      <div class="post-category">
-                        <a href="#">ì˜ì–‘ì œ</a>
+                        <a href="#">¿µ¾çÁ¦</a>
                      </div>
                      <a href="blog-details.html" class="post-thumb"> <img
                         src="../assets/img/blog/blog_1.jpg" alt="">
@@ -589,7 +602,7 @@
                <div class="card-blog">
                   <div class="header">
                      <div class="post-category">
-                        <a href="#">í—¬ìŠ¤ë³´ì¡°ê¸°ê¸°</a>
+                        <a href="#">Çï½ºº¸Á¶±â±â</a>
                      </div>
                      <a href="blog-details.html" class="post-thumb"> <img
                         src="../assets/img/blog/blog_2.jpg" alt="">
@@ -616,7 +629,7 @@
                <div class="card-blog">
                   <div class="header">
                      <div class="post-category">
-                        <a href="#">ê±´ê°•ë³´í—˜</a>
+                        <a href="#">°Ç°­º¸Çè</a>
                      </div>
                      <a href="blog-details.html" class="post-thumb"> <img
                         src="../assets/img/blog/blog_3.jpg" alt="">
@@ -662,7 +675,7 @@
                </div>
             </div>
             <div class="col-lg-8 wow fadeInRight">
-               <h1 class="font-weight-normal mb-3">ëª¨ë°”ì¼ ì•½ì½•ì„ ë‹¤ìš´ë°›ìœ¼ì„¸ìš”!</h1>
+               <h1 class="font-weight-normal mb-3">¸ğ¹ÙÀÏ ¾àÄÛÀ» ´Ù¿î¹ŞÀ¸¼¼¿ä!</h1>
                <a href="#"><img src="./assets/img/google_play.svg" alt=""></a>
                <a href="#" class="ml-2"><img src="./assets/img/app_store.svg"
                   alt=""></a>
@@ -740,31 +753,31 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
-    	var here = document.getElementById('here').value;
-    	console.log("here ", here);
-    	
+   /*     var here = document.getElementById('here').value;
+       console.log("here ", here);
+       
     function test() {
-    	
+       
         if ($('#menu').css('display') == 'block') {
            $('#menu').css('display' , 'none')
             $('#menu1').css('display', 'block');
         } else {
-            $('#(ì•„ì´ë””ëª…)').css('display', 'block');
+            $('#(¾ÆÀÌµğ¸í)').css('display', 'block');
         }
         
         $.ajax({
-        	type : 'get',
-        	url : 'Hr_search',
-        	data : here,
-        	dataType : 'text',
-        	success : function(data){
-        		alert("ë³´ë‚´ê¸° ì„±ê³µ");
-        	},
-        	error : function(){
-        		alert("ë³´ë‚´ê¸° ì‹¤íŒ¨");
-        	}
+           type : 'get',
+           url : 'Hr_search',
+           data : here,
+           dataType : 'text',
+           success : function(data){
+              alert("º¸³»±â ¼º°ø");
+           },
+           error : function(){
+              alert("º¸³»±â ½ÇÆĞ");
+           }
         })
-    }
+    } */
 </script>
 
 
