@@ -107,9 +107,6 @@
 	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="FindPH.html">약국/병원찾기</a>
-	            </li>
-	            <li class="nav-item">
 	              <a class="btn btn-primary ml-lg-3" href="html/about.html">로그아웃</a>
 	            </li>
 	          	

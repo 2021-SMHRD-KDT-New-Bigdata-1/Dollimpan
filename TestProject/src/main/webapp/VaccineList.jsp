@@ -147,8 +147,6 @@
                   <li class="nav-item"><a class="nav-link"
                      href="html/AD_FAQ.html">광고/FAQ</a></li>
                   
-                  <li class="nav-item "><a class="nav-link"
-                     href="FindPH.jsp">약국/병원찾기</a></li>
                      
                   <%
                   if(vo == null){ //로그인 전
