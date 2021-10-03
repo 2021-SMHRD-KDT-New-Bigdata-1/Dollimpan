@@ -246,41 +246,7 @@
                   <div class="row align-items-center">
                      
                         
-                        <%if(vo == null){ %>
-                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                        <section>
-                           <header>
-                              <h2>병원 리스트!!</h2><br>
-                           </header>
-                          <ul class="dates">
-                           
-                                 
-                              
-                                 
-                                 <li><span class='date'><h4><strong><%=sr.get(3).getHos_name() %></strong></h4></span>
-                                 
-
-                           </ul>
-                        </section>
-                     </div>
-                     <%}else{ %>
-                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                           <section>
-                           <%} %>
-                              <header>
-                              <h2>백신 리스트!!</h2><br>
-                           </header>
-                              <div class="page-section" ">
-         <div class="container">
-            <h1 class="text-center wow fadeInUp"></h1>
-
-            <form class="contact-form mt-5">
-               <div class="container">
-                  <div class="row align-items-center">
-                     
-                        
-                        
-                        
+                        <%if(vo != null){ %>
                         <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
                         <section>
                            <header>
@@ -379,7 +345,49 @@
                                  </h3>
                            </ul>
                         </section>
+                     </div><!-- 백신리스트 -->
+                     
+                     
+                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                        <section>
+                        <div>
+                           <header>
+                              <h2>병원 목록!</h2><br>
+                           </header>
+                           <ul class="links">
+                              <%for(int i=0;i<108;i++){ %>
+                              
+                              	<li><span class="date"><h4><strong><%=sr.get(i).getHos_name() %></strong></h4></span>
+                              <span> / 주소~             ~</span>
+                                 <h3>
+                                    <a href="#menu1">예약하기</a>
+                                 </h3>
+                              
+                              
+                              <%} %>
+                              </ul>
+                              </div>                        
+                        </section>
                      </div>
+                     <%}else{ %>
+                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                           <%} %>
+                           <section>
+                              <header>
+                              <h2>백신 리스트!!</h2>
+                              </header>
+                           </section>
+       <div class="page-section">
+         <div class="container">
+            <h1 class="text-center wow fadeInUp"></h1>
+            <form class="contact-form mt-5">
+               <div class="container">
+                  <div class="row align-items-center">
+                     
+                        
+                        
+                        
+                        
                      
                      
                      <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
@@ -418,10 +426,10 @@
                         </section>
                         
                      </div>
+            <!-- 카카오api -->
                      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
                         <div id="map" style="width: 1200px; height: 500px;"></div>
 
-            <!-- 카카오api -->
             
                         <script
                            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
@@ -431,7 +439,7 @@
                   mapOption = {
                      center : new kakao.maps.LatLng(
                            35.151980098317935, 126.88980055854985), // 지도의 중심좌표
-                     level : 4, // 지도의 확대 레벨
+                     level : 6, // 지도의 확대 레벨
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
                   // 지도종류
                   };
@@ -475,7 +483,7 @@
                            latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
                         };  
                          
-                           <% } %>  괄호 맞춰주실래요?넵
+                           <% } %>
                      
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
