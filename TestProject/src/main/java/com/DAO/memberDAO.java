@@ -491,6 +491,7 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 			String sql = "select user_id, fam1 from family where user_id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, userID);
+			System.out.println("memberDAO에서 넘어오는 userID : " + userID);
 			
 			rs = psmt.executeQuery();
 			
