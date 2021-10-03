@@ -332,8 +332,8 @@
               <h3 class="sidebar-title">Search</h3>
               <form action="#" class="search-form">
                 <div class="form-group">
-                  <input type="text" onkeyup="filter()" id = "value" class="form-control" placeholder="찾고싶은 상품 검색">
-                  <button type="submit" class="btn"><span class="icon mai-search">검색</span></button>
+                  <input type="text" onkeyup="filter()" id = "search" class="form-control" placeholder="찾고싶은 상품 검색">
+                  <button type="submit" class="btn" ><span class="icon mai-search">검색</span></button>
                   <!-- 자신이 원하는 상품 키워드 검색하게 만들고 싶은데...이건 보류 -->
                 </div>
                 <div class="container">
@@ -356,22 +356,22 @@
             </div>
 		</div>
 <script type="text/javascript">
-      function filter(){
+function filter() {
+	
+	var search, item, city, i;
+	
+    search = document.getElementById("search").value.toUpperCase();
+    item = document.getElementsByClassName("body");
 
-        var value, name, item, i;
-
-        value = document.getElementById("value").value.toUpperCase();
-        item = document.getElementsByClassName("item");
-
-        for(i=0;i<item.length;i++){
-          name = item[i].getElementsByClassName("name");
-          if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-            item[i].style.display = "flex";
-          }else{
-            item[i].style.display = "none";
-          }
-        }
+    for (let i = 0; i < listInner.length; i++) {
+      city = listInner[i].getElementsByClassName("col-sm-6 py-3");
+      if (city[0].innerHTML.toUpperCase().indexOf(search) > -1 ) {
+        item[i].style.display = "flex"
+      } else {
+        item[i].style.display = "none"
       }
+    }
+  }
 </script>
 
 

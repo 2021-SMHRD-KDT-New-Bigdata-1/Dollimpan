@@ -148,7 +148,9 @@
   <!-- 새로 faq 양식 -->
   
   <section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg">
+	
 	<ul class="cd-faq__categories">
+	
 		<li><a class="cd-faq__category cd-faq__category-selected truncate" href="#basics">Basics</a></li>
 		<li><a class="cd-faq__category truncate" href="#mobile">Mobile</a></li>
 		<li><a class="cd-faq__category truncate" href="#account">Account</a></li>
