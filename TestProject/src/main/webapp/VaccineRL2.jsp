@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.VaccineVO"%>
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -27,13 +28,10 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
-
-	
 	<%	
 		System.out.println("시작 ");
 		int date = 0;
 		UserVO vo = (UserVO)session.getAttribute("vo");
-		System.out.println("session 불러옴");
 		if(vo != null){
 			date = vo.getBirth_date();
 			System.out.print(date);
@@ -43,47 +41,18 @@
 	<%
 		memberDAO dao = new memberDAO();
 		ArrayList<HospitalVO> sr = dao.search();
-		//??
-		//  System.out.print(sr.size());  병원 개수
-		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
 		ArrayList<VaccineVO> vc = dao.VaccineList();
-		ArrayList<String> list = new ArrayList<String>();
-		%>
+   	 
+							%>
+   	 
+   
    
    	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
    		병원목록 리스트에 추가
    		
    	 -->
    	 
-   	  <% 
-   	  for(int j=0; j<vc.size(); j++){
-   	  for(int i=0; i<sr.size(); i++){
-   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-   	  		System.out.print(sr.get(i).getHos_name(i));
-   	  		
-   	  }}}
-				
-   	  
-   	  /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-					
-					vc.get(i).getVac_disease()
-					} */
-							%>
-   	 
-   <%for(int i =0; i<) %>
-   
-   
-    <% for(int i=0;i<5;i++){  %> 
-						    	positions[<%=i%>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						   
-						   <% } %>
-   
-   
-   	<%=//vc.get(j).getVac_disease %>
-   
+  
    <!-- Back to top button -->
    <div class="back-to-top"></div>
    
@@ -713,22 +682,13 @@
         	data : here,
         	dataType : 'text',
         	success : function(data){
-        		alert("보내기 성공");
         	},
         	error : function(){
-        		alert("보내기 실패");
         	}
         })
     }
 </script>
 
-<% for(int i=0;i<5;i++){  %> 
-						    	positions[<%=i%>] = {
-								   title:  '<%=sr.get(i).getHos_name()%>',
-								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-								};  
-						   
-						   <% } %> 
 
 
 </body>
