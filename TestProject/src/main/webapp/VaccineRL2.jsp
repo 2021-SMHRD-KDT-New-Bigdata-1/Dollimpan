@@ -185,30 +185,37 @@
 	   <div class="page-section bg-light">
 <section class="ftco-section">
 		<div class="container">
+		
+		<!-- 추가 by 김동휘 -->
+		<form action="Reserve_hos" name="Reserve" method="post">
+		<!-- /추가 -->
+		
+		<!-- 여기서부터 백신~카카오 맵 포함 -->
 			<div class="row justify-content-center">
-				<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+				<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
                         <section>
                            <header>
                               <h2>백신 리스트</h2><br>
                            </header>
                            <ul class="dates">
-                              
-                              <li><h4><span class="date"><strong>독감</strong></span></h4>
+                           
+                           <!-- 추가 by 김동휘 -->
+                             
+                            <h4> <input type="radio" name="reserve" value="flu"> <span class="date"><strong>독감백신</strong></span></h4>
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
-                                 
-                                                               
-                              <li><h4><span class="date"><strong>파상풍</strong></span></h4>
-                              <span> / 20~65세이상</span>
-                              <span> / 1회 접종 후 10년마다 1회</span>
                              
+                             <h4> <input type="radio" name="reserve" value="tetanus"> <span class="date"><strong>파상풍</strong></span></h4>
+                              <span> / 20~65세이상</span>
+                              <span> /매년 1회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
-                                 
+                           <!-- /추가 -->   
+                            
                                  
                               <li><span class="date"><h4><strong>A형간염</strong></h4></span>
                               <span> / 20세~40세</span>
@@ -293,8 +300,7 @@
                         <div id="map" style="width: 800px; height: 500px;"></div>
 
             
-                        <script
-                           src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
+                        <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
                         <script>
                         var mapContainer = document
                         .getElementById('map'), // 지도를 표시할 div 
@@ -325,10 +331,7 @@
                   // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
                   var zoomControl = new kakao.maps.ZoomControl();
                   map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-                  
-                  
-                  
-                      
+                    
                    var positions = new Array();
                    var H_title = new Array();
                    var H_phone = new Array();
@@ -383,31 +386,34 @@
 
                       <%for(int i=0;i<113;i++){%>
                  
-                     var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
-                      
+                     // var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
+                      var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value='inner'>해당병원선택 </div>' 
+                     
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
                       
                       <%}%>
+                      
                       // 인포윈도우를 생성합니다
                       var infowindow = new kakao.maps.InfoWindow({
                           position : iwPosition, 
-                          content : iwContent 
-                         
+                          content : iwContent
                       });
                         
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
-                  
-                  
-
-                 
-                        </script>
+                    </script>
                   </div> <!-- / 카카오맵api -->
-				
-			</div>
+			</div> <!-- 여기까지가 백신~카카오 맵 -->
 			
+			<!-- 추가 by 김동휘 -->
+			<br>
+			<br>
+			<div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div>
+			</form> <!-- 백신+맵 데이터 전송 -->
+			
+			<!-- /추가 -->
 		</div>
 	</section>
 </div>
