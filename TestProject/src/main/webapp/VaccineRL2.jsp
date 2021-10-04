@@ -63,7 +63,7 @@
          String hos_view = null;
           int num = 0;
           
-        System.out.println(sr1.get(0).getHos_phone());
+        System.out.println("첫번째 병원의 번호 : "+sr1.get(0).getHos_phone());
         System.out.println("=======================================");
        
         
@@ -336,87 +336,7 @@
                      </div><!-- 백신리스트 -->
                      
                      
-                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                        <section>
-                        <div>
-                           <header>
-                              <h2>병원 목록!</h2><br>
-                           </header>
-                           <ul class="links">
-                              <%for(int i=0;i<108;i++){ %>
-                              
-                                 <li><span class="date"><h4><strong><%=sr.get(i).getHos_name() %></strong></h4></span>
-                              <span><%=sr.get(i).getHos_addr() %></span>
-                                 <h3>
-                                    <a href="#menu1">예약하기</a>
-                                 </h3>
-                              
-                              
-                              <%} %>
-                              </ul>
-                              </div>                        
-                        </section>
-                     </div>
-                     <%}else{ %>
-                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                           <%} %>
-                           <section>
-                              <header>
-                              <h2>일단 빈칸</h2>
-                              </header>
-                           </section>
-       <div class="page-section">
-         <div class="container">
-            <h1 class="text-center wow fadeInUp"></h1>
-            <form class="contact-form mt-5">
-               <div class="container">
-                  <div class="row align-items-center">
-                     
-                        
-                        
-                        
-                        
-                     
-                     
-<!--원래 병원목록 코드 <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
-
-                        <section>
-                        <div>
-                           <header>
-                              <h2>병원 목록!</h2><br>
-                           </header>
-                           <ul class="links">
-                              <li><span class="date"><h4><strong>서구보건소</strong></h4></span>
-                              <span> / 주소~             ~</span>
-                                 <h3>
-                                    <a href="#menu1">예약하기</a>
-                                 </h3>
-                                 
-                              <li><span class="date"><h4><strong>강휘병원</strong></h4></span>
-                              <span> / 주소주소주소주소주소주소</span>
-                              <span> / 보라안과</span>
-                              <span> / 15000원</span>
-                                 <h3>
-                                    <a href="#">예약하기</a>
-                                 </h3>
-                                 <p>접종 현황: 0회</p></li>
-                                 
-                              <li><span class="date"><h4><strong>B형간염</strong></h4></span>
-                              <span> / 20세</span>
-                              <span> / 새우리병원</span>
-                              <span> / 3000원</span>
-                                 <h3>
-                                    <a href="#">예약하기</a>
-                                 </h3>
-                                 <p>접종 현황: 0회</p></li>
-                              </ul>
-                              </div>                        
-                        </section>
-                        
-                     </div> -->
-           
-            <!-- 카카오api -->
-                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+                                             <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
                         <div id="map" style="width: 1200px; height: 500px;"></div>
 
             
@@ -427,10 +347,13 @@
                         .getElementById('map'), // 지도를 표시할 div 
                   mapOption = {
                      center : new kakao.maps.LatLng(
-                           35.151980098317935, 126.88980055854985), // 지도의 중심좌표
-                     level : 4, // 지도의 확대 레벨
+                    		 35.151595368564735, 126.8711278135539), // 지도의 중심좌표
+                     level : 2, // 지도의 확대 레벨
+                     
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
                   // 지도종류
+                  
+                  
                   };
 
                   // 지도를 생성한다 
@@ -450,7 +373,10 @@
                       
                    var positions = new Array();
                    var H_title = new Array();
+                   
                    var H_phone = new Array();
+                   
+                   
                    var H_Lat = new Array();
                    var H_Lng = new Array();
                    
@@ -462,8 +388,16 @@
                            latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
                         };  
                            <% } %>
+                           
+                           <% for(int i=0;i<108;i++){  %> 
+                           H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
+                          ;  
+                             <% } %>
                      
                <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
+               
+               
+               
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
                      
@@ -489,16 +423,16 @@
                     //배열 값 넣는곳 만드는곳. 
                    
                       H_title[i]=positions[i].title
-                     
-                     
+                      
+                      
                       
                       //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
                       
                       marker.setMap(map);
 
-                      <%for(int i=0;i<108;i++){%>
+                      <%for(int i=0;i<113;i++){%>
                  
-                     var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL : </a> </div>'
+                     var iwContent = '<span><div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><br></span>'
                       
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
@@ -514,15 +448,35 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
-                  document.write(title);
+                  
+                  
+                  
 
                  
                         </script>
                   </div>
+
+                     <%}else{ %>
+                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                           <%} %>
+                           <section>
+                              <header>
+                              <h2>일단 빈칸</h2>
+                              </header>
+                           </section>
+       <div class="page-section">
+         <div class="container">
+            <h1 class="text-center wow fadeInUp"></h1>
+            <form class="contact-form mt-5">
+               <div class="container">
+                  <div class="row align-items-center">
+    
+                     
                      </div>
                   </div>
                </form>
                </div>
+
             
          </div>
       </div>
