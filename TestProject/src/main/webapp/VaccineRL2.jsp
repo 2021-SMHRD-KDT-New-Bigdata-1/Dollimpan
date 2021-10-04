@@ -36,6 +36,7 @@
       UserVO vo = (UserVO)session.getAttribute("vo");
       
       ArrayList<HospitalVO> sr = dao.search();
+      ArrayList<HospitalVO> sr1 = dao.search1();
       
       ArrayList<VaccineVO> vc = dao.VaccineList();
       
@@ -62,7 +63,7 @@
          String hos_view = null;
           int num = 0;
           
-        System.out.println(sr.get(1).getHos_phone());
+        System.out.println(sr1.get(0).getHos_phone());
         System.out.println("=======================================");
        
         
@@ -449,16 +450,20 @@
                       
                    var positions = new Array();
                    var H_title = new Array();
+                   var H_phone = new Array();
+                   var H_Lat = new Array();
+                   var H_Lng = new Array();
+                   
                    <% System.out.println("총 병원수 : "+sr.size()); %>
                    
-                     <% for(int i=0;i<108;i++){  %> 
+                     <% for(int i=0;i<113;i++){  %> 
                          positions[<%=i%>] = {
                            title:  '<%=sr.get(i).getHos_name()%>',
                            latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
                         };  
-                         
                            <% } %>
                      
+               <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
                      
@@ -480,8 +485,11 @@
                           
                       }
                       );
-                          title[i]=positions[i].title
-                          
+                     
+                    //배열 값 넣는곳 만드는곳. 
+                   
+                      H_title[i]=positions[i].title
+                     
                      
                       
                       //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',

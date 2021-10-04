@@ -48,6 +48,18 @@ public class HospitalVO {
 		this.longitude = longitude;
 	
 	}
+	public HospitalVO(String hos_name, String hos_addr,String hos_phone, double latitude, double longitude, String  hos_info) {
+		super();
+		this.hos_name = hos_name;
+		this.hos_addr = hos_addr;
+		this.hos_phone = hos_phone;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.hos_info = hos_info;
+	
+	}
+	
+
 	
 	public int getHos_seq() {
 		return hos_seq;
