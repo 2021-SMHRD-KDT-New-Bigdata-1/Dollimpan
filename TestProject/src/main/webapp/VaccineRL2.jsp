@@ -383,7 +383,7 @@
 
                       <%for(int i=0;i<113;i++){%>
                  
-                     var iwContent = '<span><div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><br></span>'
+                     var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
                       
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
