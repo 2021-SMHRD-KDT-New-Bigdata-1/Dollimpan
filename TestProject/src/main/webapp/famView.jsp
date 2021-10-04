@@ -77,7 +77,7 @@
     <!-- .topbar -->
 	    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
 	      <div class="container">
-	        <a class="navbar-brand" href="VaccineRL.html"><span class="text-primary">Yak</span>-Kock</a>
+	        <a class="navbar-brand" href="../VaccineRL2.jsp"><span class="text-primary">Yak</span>-Kok</a>
 	
 	        <form action="#">
 	          <div class="input-group input-navbar">
