@@ -165,8 +165,8 @@ if(vo != null){
 		<a href="searchFamily.jsp">추가하기</a>
 		<div class="profileInfo"></div>
 		<tr>
-			<td> 본인의 이름 : <% out.print(vo.getUser_name()); %></td> <br>
-			<td> 가족 1의 이름 : <% out.print(fva.get(0).getFam1()); %></td> <br>
+			<td> 내 이름 : <% out.print(vo.getUser_name()); %></td> <br>
+			<td> 가족1 이름 : <% out.print(fva.get(0).getFam1()); %></td> <br>
 		</tr>
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
