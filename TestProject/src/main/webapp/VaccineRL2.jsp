@@ -134,10 +134,7 @@
                   
                   <li class="nav-item"><a class="nav-link"
                      href="html/AD_FAQ.html">광고/FAQ</a></li>
-                  
-                  <li class="nav-item "><a class="nav-link"
-                     href="FindPH.jsp">약국/병원찾기</a></li>
-                     
+                    
                   <%
                   if(vo == null){ //로그인 전
                      out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='html/loginForm.html'>로그인/회원가입</a></li>");
@@ -290,8 +287,10 @@
                      </div><!-- 백신리스트 -->
                      
                      
+                     
+                     <!-- 카카오 map api -->
                      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-                        <div id="map" style="width: 1200px; height: 500px;"></div>
+                        <div id="map" style="width: 800px; height: 500px;"></div>
 
             
                         <script
@@ -301,40 +300,39 @@
                         .getElementById('map'), // 지도를 표시할 div 
                   mapOption = {
                      center : new kakao.maps.LatLng(
-                    		 35.151595368564735, 126.8711278135539), // 지도의 중심좌표
-                     level : 2, // 지도의 확대 레벨
+                    		 35.146258, 126.909297), // 지도의 중심좌표
+                     level : 3, // 지도의 확대 레벨
                      
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
                   // 지도종류
-                  
+                  	
                   
                   };
 
                   // 지도를 생성한다 
                   var map = new kakao.maps.Map(mapContainer,
                         mapOption);
-                                      
-                     
-                    /*  var positions = [
-                               {
-                                   title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-                               },
-                               
-                           ]; */
-                           
-                      
-                  // var H_title = new Array();
+                  
+                 
+                  
+              	  // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+                  var mapTypeControl = new kakao.maps.MapTypeControl();
+
+                  // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+                  // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+                  map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+                  // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+                  var zoomControl = new kakao.maps.ZoomControl();
+                  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+                  
+                  
+                  
                       
                    var positions = new Array();
                    var H_title = new Array();
-                   
                    var H_phone = new Array();
-                   
-                   
-                   var H_Lat = new Array();
-                   var H_Lng = new Array();
-                   
-                   <% System.out.println("총 병원수 : "+sr.size()); %>
+                                      
                    
                      <% for(int i=0;i<113;i++){  %> 
                          positions[<%=i%>] = {
@@ -374,7 +372,6 @@
                       }
                       );
                      
-                    //배열 값 넣는곳 만드는곳. 
                    
                       H_title[i]=positions[i].title
                       
@@ -402,7 +399,6 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
-                  
                   
                   
 
@@ -420,330 +416,11 @@
       <div class="page-section py-3 mt-md-n5 custom-index">
          <div class="container">
             <div class="row justify-content-center">
-               <div class="col-md-4 py-3 py-md-0">
-                  <div class="card-service wow fadeInUp">
-                     <div class="circle-shape bg-primary text-white">
-                        <span class="mai-shield-checkmark"></span>
-                     </div><a class="nav-link"
-                     href="VaccineRL.html"><p>백신 예약</p></a>
-                     
-                  </div>
-               </div>
-               <div class="col-md-4 py-3 py-md-0">
-                  <div class="card-service wow fadeInUp">
-                     <div class="circle-shape bg-accent text-white">
-                        <span class="mai-basket"></span>
-                     </div>
-                     <a class="nav-link"
-                     href="FindPH.html"><p>약국,병원찾기</p></a>
-                  </div>
-               </div>
-               <div class="col-md-4 py-3 py-md-0" >
-                  <div class="card-service wow fadeInUp" >
-                     <div class="circle-shape bg-secondary text-white" >
-                        <span class="mai-chatbubbles-outline" ></span>
-                     </div>
-                     <a class="nav-link"
-                     href="AD_FAQ.html"><p>FAQ</p></a>
-                  </div>
-               </div>
+               <div style="color: orange"><h4>병원마다 백신여부 및 가격이 상이할 수 있으므로 통화 후 예약하시기 바랍니다.</h4></div>
             </div>
          </div>
       </div>
     </div>
-      <!-- .page-section -->
-
-      <!-- 두번째 섹션 -->
-
-      <div class="page-section" ">
-         <div class="container">
-            <h1 class="text-center wow fadeInUp"></h1>
-
-            <form class="contact-form mt-5">
-               <div class="container">
-                  <div class="row align-items-center">
-                     
-                        
-                        <%if(vo != null){ %>
-                        <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                        <section>
-                           <header>
-                              <h2>백신 리스트</h2><br>
-                           </header>
-                           <ul class="dates">
-                              
-                              <li><span class="date"><h4><strong>독감</strong></h4></span>
-                              <span> / 20~65세이상</span>
-                              <span> /매년 1회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                                 
-                                                               
-                              <li><span class="date"><h4><strong>파상풍</strong></h4></span>
-                              <span> / 20~65세이상</span>
-                              <span> / 1회 접종 후 10년마다 1회</span>
-                             
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>A형간염</strong></h4></span>
-                              <span> / 20세~40세</span>
-                              <span> / 2회</span>
-                                 <h3>
-                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-
-                              
-                              <li><span class="date"><h4><strong>B형간염</strong></h4></span>
-                              <span> / 20세~65세이상</span>
-                              <span> / 항체 검사 후 3회 접종</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                                 
-                              
-                               
-                              <li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
-                              <span> / 20세~65세이상</span>
-                              <span> / 위험군에 대해 1회 또는 2회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>수두</strong></h4></span>
-                              <span> / 20세~50세</span>
-                              <span> / 항체검사 후 2회 접종</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>홍역/유행성이하선염(볼거리)/풍진</strong></h4></span>
-                              <span> / 20세~50세</span>
-                              <span> / 위험군에 대해 1회 또는 2회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                             
-                             
-                              <li><span class="date"><h4><strong>사람유두종바이러스감염증</strong></h4></span>
-                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
-                              <span> / 총 3회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                             
-                             
-                             
-                             <li><span class="date"><h4><strong>대상포진</strong></h4></span>
-                              <span> / 만 60세 이상</span>
-                              <span> / 1회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                             <li><span class="date"><h4><strong>수막구균</strong></h4></span>
-                              <span> / 20세~65세이상</span>
-                              <span> / 위험군에 대해 1회~2회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
-                                 </h3>
-                             
-                             
-                               <li><span class="date"><h4><strong>b형헤모스인플루엔자</strong></h4></span>
-                              <span> / 20세~65세이상</span>
-                              <span> / 위험군에 대해 1회~3회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
-                                 </h3>
-                           </ul>
-                        </section>
-                     </div><!-- 백신리스트 -->
-                     
-                     
-                	<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-                        <div id="map" style="width: 1200px; height: 500px;"></div>
-
-            
-                        <script
-                           src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
-                        <script>
-                        var mapContainer = document
-                        .getElementById('map'), // 지도를 표시할 div 
-                  mapOption = {
-                     center : new kakao.maps.LatLng(
-                    		 35.151595368564735, 126.8711278135539), // 지도의 중심좌표
-                     level : 2, // 지도의 확대 레벨
-                     
-                     mapTypeId : kakao.maps.MapTypeId.ROADMAP
-                  // 지도종류
-                  
-                  
-                  };
-
-                  // 지도를 생성한다 
-                  var map = new kakao.maps.Map(mapContainer,
-                        mapOption);
-                                      
-                     
-                    /*  var positions = [
-                               {
-                                   title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-                               },
-                               
-                           ]; */
-                           
-                      
-                  // var H_title = new Array();
-                      
-                   var positions = new Array();
-                   var H_title = new Array();
-                   
-                   var H_phone = new Array();
-                   
-                   
-                   var H_Lat = new Array();
-                   var H_Lng = new Array();
-                   
-                   <% System.out.println("총 병원수 : "+sr.size()); %>
-                   
-                     <% for(int i=0;i<113;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                           <% } %>
-                           
-                           <% for(int i=0;i<108;i++){  %> 
-                           H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
-                          ;  
-                             <% } %>
-                     
-               <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
-               
-               
-               
-                  // 마커 이미지의 이미지 주소입니다
-                  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-                     
-                  console.log(positions.length);
-                  for (var i = 0; i < positions.length; i ++) {
-                      
-                      // 마커 이미지의 이미지 크기 입니다
-                      var imageSize = new kakao.maps.Size(24, 35); 
-                      
-                      // 마커 이미지를 생성합니다    
-                      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-                     console.log(positions[i].latlng); //마커의 위치
-                      // 마커를 생성합니다
-                      var marker = new kakao.maps.Marker({
-                          map: map, // 마커를 표시할 지도
-                          position: positions[i].latlng, // 마커를 표시할 위치
-                          title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                          image : markerImage // 마커 이미지
-                          
-                      }
-                      );
-                     
-                    //배열 값 넣는곳 만드는곳. 
-                   
-                      H_title[i]=positions[i].title
-                      
-                      
-                      
-                      //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
-                      
-                      marker.setMap(map);
-
-                      <%for(int i=0;i<113;i++){%>
-                 
-                     var iwContent = '<span><div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><br></span>'
-                      
-                      // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                          iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
-                      
-                      <%}%>
-                      // 인포윈도우를 생성합니다
-                      var infowindow = new kakao.maps.InfoWindow({
-                          position : iwPosition, 
-                          content : iwContent 
-                         
-                      });
-                        
-                      // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-                      infowindow.open(map, marker); 
-                  }
-                  
-                  
-                  
-
-                 
-                        </script>
-                  </div>
-
-                     <%}else{ %>
-                           <div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
-                           <%} %>
-                           <section>
-                              <header>
-                              <h2>일단 빈칸</h2>
-                              </header>
-                           </section>
-       <div class="page-section">
-         <div class="container">
-            <h1 class="text-center wow fadeInUp"></h1>
-            <form class="contact-form mt-5">
-               <div class="container">
-                  <div class="row align-items-center">
-    
-                     
-                     </div>
-                  </div>
-               </form>
-               </div>
-
-            
-         </div>
-      </div>
-
-
-      <div class="page-section pb-0">
-         <div class="container">
-            <div class="row align-items-center">
-               <div class="col-lg-6 py-3 wow fadeInUp">
-                  <h1>
-                     Welcome to Your Health <br> Center
-                  </h1>
-                  <p class="text-grey mb-4">Lorem ipsum dolor sit amet,
-                     consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                     invidunt ut labore et dolore magna aliquyam erat, sed diam
-                     voluptua. At vero eos et accusam et justo duo dolores et ea
-                     rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore
-                     eaque porro consequatur ex aspernatur. Explicabo, excepturi
-                     accusantium! Placeat voluptates esse ut optio facilis!</p>
-                  <a href="about.html" class="btn btn-primary">Learn More</a>
-               </div>
-
-
-
-            </div>
-
-            <div class="page-section banner-home bg-image"
-               style="background-image: url(../assets/img/banner-pattern.svg);">
-               <div class="container py-5 py-lg-0">
-                  <div class="row align-items-center">
-                     <div class="col-lg-4 wow zoomIn"></div>
-                  </div>
-               </div>
-            </div>
-            <!-- .banner-home -->
-         </div>
-      </div>
 
 
 
@@ -754,92 +431,107 @@
 
    <div class="page-section bg-light">
       <div class="container">
-         <h1 class="text-center wow fadeInUp">SHOP</h1>
+         <h1 class="text-center wow fadeInUp">STORE</h1>
          <div class="row mt-5">
-            <div class="col-lg-4 py-2 wow zoomIn">
-               <div class="card-blog">
-                  <div class="header">
-                     <div class="post-category">
-                        <a href="#">영양제</a>
-                     </div>
-                     <a href="blog-details.html" class="post-thumb"> <img
-                        src="../assets/img/blog/blog_1.jpg" alt="">
-                     </a>
+		<div class="col-sm-6 py-3">
+              <div class="card-blog">
+                <div class="header">
+                  <div class="post-category">
+                    <a href="#" class= "category">영양제</a>
                   </div>
-                  <div class="body">
-                     <h5 class="post-title">
-                        <a href="blog-details.html">List of Countries without
-                           Coronavirus case</a>
-                     </h5>
-                     <div class="site-info">
-                        <div class="avatar mr-2">
-                           <div class="avatar-img">
-                              <img src="../assets/img/person/person_1.jpg" alt="">
-                           </div>
-                           <span>Roger Adams</span>
-                        </div>
-                        <span class="mai-time"></span> 1 week ago
-                     </div>
+                  <a href="https://naturalize.co.kr/product/detail.html?product_no=647&cate_no=91&display_group=1" class="post-thumb">
+                    <img src="./assets/img/blog/3.jpg" alt="">
+                  </a>
+                </div>
+                <div class="body">
+                  <h5 class="post-title"><a href="https://naturalize.co.kr/product/detail.html?product_no=647&cate_no=91&display_group=1">유기농 엽산</a></h5>
+                  <div class="site-info">
+                    <div class="avatar mr-2">
+                      <div class="avatar-img">
+                        <img src="./assets/img/blog/naturalize.png" alt="">
+                      </div>
+                      <span>네추럴라이즈</span>
+                    </div>
+                    <span class="mai-time"></span> 4 weeks ago
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-4 py-2 wow zoomIn">
-               <div class="card-blog">
-                  <div class="header">
-                     <div class="post-category">
-                        <a href="#">헬스보조기기</a>
-                     </div>
-                     <a href="blog-details.html" class="post-thumb"> <img
-                        src="../assets/img/blog/blog_2.jpg" alt="">
-                     </a>
+		<div class="col-sm-6 py-3">
+              <div class="card-blog">
+                <div class="header">
+                  <div class="post-category">
+                    <a href="#" class= "category">의료기기</a>
                   </div>
-                  <div class="body">
-                     <h5 class="post-title">
-                        <a href="blog-details.html">Recovery Room: News beyond the
-                           pandemic</a>
-                     </h5>
-                     <div class="site-info">
-                        <div class="avatar mr-2">
-                           <div class="avatar-img">
-                              <img src="../assets/img/person/person_1.jpg" alt="">
-                           </div>
-                           <span>Roger Adams</span>
-                        </div>
-                        <span class="mai-time"></span> 4 weeks ago
-                     </div>
+                  <a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EB%A7%88%EC%82%AC%EC%A7%80%EA%B1%B4-%EB%A8%B8%EC%8A%AC-%EC%95%88%EB%A7%88%EA%B8%B0/25/category/24/display/1/" class="post-thumb">
+                    <img src="./assets/img/blog/muscle.jpg" alt="">
+                  </a>
+                </div>
+                <div class="body">
+                  <h5 class="post-title"><a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EB%A7%88%EC%82%AC%EC%A7%80%EA%B1%B4-%EB%A8%B8%EC%8A%AC-%EC%95%88%EB%A7%88%EA%B8%B0/25/category/24/display/1/">마사지건 머슬 안마기</a></h5>
+                  <div class="site-info">
+                    <div class="avatar mr-2">
+                      <div class="avatar-img">
+                        <img src="./assets/img/blog/dr4ten.png" alt="">
+                      </div>
+                      <span>닥터포텐</span>
+                    </div>
+                    <span class="mai-time"></span> 4 weeks ago
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-4 py-2 wow zoomIn">
-               <div class="card-blog">
-                  <div class="header">
-                     <div class="post-category">
-                        <a href="#">건강보험</a>
-                     </div>
-                     <a href="blog-details.html" class="post-thumb"> <img
-                        src="../assets/img/blog/blog_3.jpg" alt="">
-                     </a>
+            <div class="col-sm-6 py-3">
+              <div class="card-blog">
+                <div class="header">
+                  <div class="post-category">
+                    <a href="#" class= "category">의료기기</a>
                   </div>
-                  <div class="body">
-                     <h5 class="post-title">
-                        <a href="blog-details.html">What is the impact of eating too
-                           much sugar?</a>
-                     </h5>
-                     <div class="site-info">
-                        <div class="avatar mr-2">
-                           <div class="avatar-img">
-                              <img src="../assets/img/person/person_2.jpg" alt="">
-                           </div>
-                           <span>Diego Simmons</span>
-                        </div>
-                        <span class="mai-time"></span> 2 months ago
-                     </div>
+                  <a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EC%98%A8%EC%97%B4-%EC%86%90%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0-%EB%AC%B4%EC%84%A0-%ED%95%B8%EB%93%9C-%EC%95%88%EB%A7%88%EA%B8%B0/29/category/24/display/1/" class="post-thumb">
+                    <img src="./assets/img/blog/hand.jpg" alt="">
+                  </a>
+                </div>
+                <div class="body">
+                  <h6 class="post-title"><a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EC%98%A8%EC%97%B4-%EC%86%90%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0-%EB%AC%B4%EC%84%A0-%ED%95%B8%EB%93%9C-%EC%95%88%EB%A7%88%EA%B8%B0/29/category/24/display/1/">온열 손 마사지기 무선 핸드 안마기</a></h6>
+                  <div class="site-info">
+                    <div class="avatar mr-2">
+                      <div class="avatar-img">
+                        <img src="./assets/img/blog/dr4ten.png" alt="">
+                      </div>
+                      <span>닥터포텐</span>
+                    </div>
+                    <span class="mai-time"></span> 4 weeks ago
                   </div>
-               </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 py-3">
+              <div class="card-blog">
+                <div class="header">
+                  <div class="post-category">
+                    <a href="#" class= "category">의료기기</a>
+                  </div>
+                  <a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EB%88%88%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0-%EC%95%88%EB%A7%88%EA%B8%B0/26/category/24/display/1/" class="post-thumb">
+                    <img src="./assets/img/blog/eyes.jpg" alt="">
+                  </a>
+                </div>
+                <div class="body">
+                  <h5 class="post-title"><a href="http://dr-4ten.com/product/%EB%8B%A5%ED%84%B0%ED%8F%AC%ED%85%90-%EB%88%88%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0-%EC%95%88%EB%A7%88%EA%B8%B0/26/category/24/display/1/">눈마사지기</a></h5>
+                  <div class="site-info">
+                    <div class="avatar mr-2">
+                      <div class="avatar-img">
+                        <img src="./assets/img/blog/dr4ten.png" alt="">
+                      </div>
+                      <span>닥터포텐</span>
+                    </div>
+                    <span class="mai-time"></span> 1 month ago
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="col-12 text-center mt-4 wow zoomIn">
-               <a href="blog.html" class="btn btn-primary">Read More</a>
+               <a href="html/AD_FAQ.html" class="btn btn-primary">Store 더보기</a>
             </div>
 
          </div>
@@ -860,7 +552,7 @@
                </div>
             </div>
             <div class="col-lg-8 wow fadeInRight">
-               <h1 class="font-weight-normal mb-3">모바일 약콕을 다운받으세요!</h1>
+               <h1 class="font-weight-normal mb-3">모바일에서도 약콕을 만나보세요.</h1>
                <a href="#"><img src="./assets/img/google_play.svg" alt=""></a>
                <a href="#" class="ml-2"><img src="./assets/img/app_store.svg"
                   alt=""></a>
