@@ -29,6 +29,14 @@ public class UserVO {
 		this.birth_date = birth_date;
 	}
 	
+	public UserVO(String user_id) 
+	{
+		super();
+	
+		this.user_id = user_id;
+
+	}
+	
 	public UserVO( String user_pw, String email, String addr, String phone) 
 	{
 		super();

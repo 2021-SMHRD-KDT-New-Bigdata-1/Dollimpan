@@ -1,28 +1,31 @@
+<%@page import="com.DAO.memberDAO"%>
+<%@page import="com.smhrd.UserVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="EUC-KR">
+<title>Update</title>
 
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/maicons.css">
 
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-  <title>One Health - Medical Center HTML5 Template</title>
+  <link rel="stylesheet" href="assets/vendor/owl-carousel/css/owl.carousel.css">
 
-  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="assets/vendor/animate/animate.css">
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/login.css">
 
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
 
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <link rel="stylesheet" href="../assets/css/login.css">
-  
 </head>
 <body>
+	<%
+	UserVO vo = (UserVO)session.getAttribute("vo");
+	%>
   <!-- Back to top button -->
   <div class="back-to-top"></div>
 
@@ -34,12 +37,15 @@
             <div class="site-info">
               <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
               <span class="divider">|</span>
+              
               <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
             </div>
           </div>
           <div class="col-sm-4 text-right text-sm">
             <div class="social-mini-button">
-              
+             
+              <!--  <a href="Mypage.jsp"> 
+              -->
               <a href="#"><span class="mai-logo-facebook-f"></span></a>
               <a href="#"><span class="mai-logo-twitter"></span></a>
               <a href="#"><span class="mai-logo-dribbble"></span></a>
@@ -52,7 +58,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="#"><span class="text-primary">YAK</span>-KoK</a>
+        <a class="navbar-brand" href="VaccineRL2.jsp"><span class="text-primary">YAK</span>-KoK</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -70,19 +76,19 @@
                <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">ÏïΩÏΩïÏù¥ÎûÄ?</a>
+              <a class="nav-link" href="html/about.html">æ‡ƒ€¿Ã∂ı?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineRL.html">Î∞±Ïã†ÏòàÏïΩ/Ï°∞Ìöå</a>
+              <a class="nav-link" href="VaccineRL2.jsp">πÈΩ≈øπæ‡/¡∂»∏</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineInfo.html">Î∞±Ïã†Ï†ïÎ≥¥</a>
+              <a class="nav-link" href="html/VaccineInfo.html">πÈΩ≈¡§∫∏</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Addform.jsp">Í¥ëÍ≥†/FAQ</a>
+              <a class="nav-link" href="Addform.jsp">±§∞Ì/FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">Î°úÍ∑∏Ïù∏ / ÌöåÏõêÍ∞ÄÏûÖ</a>
+              <a class="btn btn-primary ml-lg-3" href="html/about.html">∑Œ±◊æ∆øÙ</a>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
@@ -93,41 +99,74 @@
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
-	<p class="text-center">Get started with your free account</p>
+	<h4 class="card-title mt-3 text-center">æ∆¿Ãµ√£±‚</h4>
 	
 		<p class="divider-text">
         <span class="bg-light">OR</span>
     </p>
-	<form action = "../LoginService" method = "post">
-    <div class="form-group input-group">
-    
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="user_id" class="form-control" placeholder="ÏïÑÏù¥Îîî" type="text">
-    </div> <!-- form-group// -->
+	<form name = "idfindscreen" method = "post">
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" name="user_pw" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏" type="password">
+        <input name="name" class="form-control" placeholder="¿Ã∏ß" type="text">
     </div> <!-- form-group// -->
-
-	<button type="submit" class="btn btn-primary btn-block"> Î°úÍ∑∏Ïù∏  </button>
+    
+    <script type="text/javascript">
+    </script>
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="phone" class="form-control" placeholder="«⁄µÂ∆˘π¯»£" type="text" >
+    </div> <!-- form-group// -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block" onclick="id_search()"> æ∆¿Ãµ √£±‚  </button>
     </div> <!-- form-group// -->  
+                                                               
+</form>
+</article>
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">∫Òπ–π¯»£√£±‚</h4>
+	
+		<p class="divider-text">
+        <span class="bg-light">OR</span>
+    </p>
+	<form name = "pwfindscreen" method = "post">
+    
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="userId" class="form-control" placeholder="æ∆¿Ãµ" type="text">
+    </div> <!-- form-group// -->
+    
+    <script type="text/javascript">
+    </script>
 
-    <p class="text-center"><a href="../Search_IdPw.jsp">ÏïÑÏù¥Îîî/ÎπÑÎ∞ÄÎ≤àÌò∏Ï∞æÍ∏∞</a><br> Í≥ÑÏ†ïÏù¥ ÏóÜÎÇòÏöî? <a href="joinForm.html">ÌöåÏõêÍ∞ÄÏûÖ</a> </p>  
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="name" class="form-control" placeholder="¿Ã∏ß" type="text" >
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-phone"></i> </span>
+		</div>
+    	<input name="phone" class="form-control" placeholder="«⁄µÂ∆˘π¯»£" type="text">
+    </div> <!-- form-group// -->
+<div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block" onclick="pw_search()"> ∫Òπ–π¯»£ √£±‚  </button>
+    </div> <!-- form-group// --> 
 </form>
 </article>
 </div> <!-- card.// -->
 
 </div> 
 <!--container end.//-->
-  
-
-
 
   <footer class="page-footer">
     <div class="container">
@@ -181,18 +220,60 @@
     </div>
   </footer>
 
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
+<script src="assets/js/jquery-3.5.1.min.js"></script>
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+<script src="assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
-<script src="../assets/vendor/wow/wow.min.js"></script>
+<script src="assets/vendor/wow/wow.min.js"></script>
 
-<script src="../assets/js/google-maps.js"></script>
+<script src="assets/js/google-maps.js"></script>
 
-<script src="../assets/js/theme.js"></script>
+<script src="assets/js/theme.js"></script>
 
+<script>
+function id_search() { 
+ 	var frm = document.idfindscreen;
+
+ 	if (frm.name.value.length < 1) {
+	  alert("¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷ººø‰");
+	  return;
+	 }
+
+ 	if (frm.phone.value.length != 11) {
+		  alert("«⁄µÂ∆˘π¯»£∏¶ ¡§»Æ«œ∞‘ ¿‘∑¬«ÿ¡÷ººø‰");
+		  return;
+	 }
+
+ frm.method = "post";
+ frm.action = "idCheck.jsp"; //≥—æÓ∞£»≠∏È
+ frm.submit();  
+ }
+
+function pw_search() { 
+ 	var frm = document.pwfindscreen;
+
+ 	if (frm.name.value.length < 1) {
+	  alert("¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷ººø‰");
+	  return;
+	 }
+
+ 	if (frm.phone.value.length != 11) {
+		  alert("«⁄µÂ∆˘π¯»£∏¶ ¡§»Æ«œ∞‘ ¿‘∑¬«ÿ¡÷ººø‰");
+		  return;
+	 }
+ 	
+ 	if (frm.userId.value.length < 1) {
+		  alert("æ∆¿Ãµ∏¶ ¿‘∑¬«ÿ ¡÷ººø‰");
+		  return;
+	 }
+
+ frm.method = "post";
+ frm.action = "pwCheck.jsp"; //≥—æÓ∞£»≠∏È
+ frm.submit();  
+ }
+</script>
 
 </body>
 </html>

@@ -608,4 +608,70 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}
 		return cnt;
 	}
+	
+public String ids(String name, String phone) {
+		
+		String UserID = null;
+		conn();
+		
+		String sql= "select user_id from users where user_name=? and phone=?";
+		
+		try 
+		{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,name);
+			psmt.setString(2,phone);
+			rs = psmt.executeQuery();
+			
+			if(rs.next())
+			{
+				UserID=rs.getString(1);
+				
+			}
+		
+		}
+		
+		catch(Exception e) { 
+			e.printStackTrace();
+		
+		}finally {
+			close();
+		}
+		return UserID;
+		
+	}
+	
+public String pws(String name, String phone, String userId) {
+	
+	String UserPW = null;
+	conn();
+	
+	String sql= "select user_pw from users where user_name=? and phone=? and user_id=?";
+	
+	try 
+	{
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1,name);
+		psmt.setString(2,phone);
+		psmt.setString(3,userId);
+		rs = psmt.executeQuery();
+		
+		if(rs.next())
+		{
+			UserPW=rs.getString(1);
+			
+		}
+	
+	}
+	
+	catch(Exception e) { 
+		e.printStackTrace();
+	
+	}finally {
+		close();
+	}
+	return UserPW;
+	
+}	
+
 }	
