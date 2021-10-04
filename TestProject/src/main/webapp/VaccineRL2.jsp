@@ -60,14 +60,9 @@
         
         <% 
         
-         String hos_view = null;
-          int num = 0;
-          
-        System.out.println("첫번째 병원의 번호 : "+sr1.get(0).getHos_phone());
+                
         System.out.println("=======================================");
        
-        
-        
        /*  for(int j=0; j<vc.size(); j++){
         for(int i=0; i<sr.size(); i++){
          if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
@@ -165,7 +160,7 @@
    <div class="page-hero bg-image overlay-dark"
       style="background-image: url(./assets/img/bg_image_1.jpg);">
       <div class="hero-section">
-         <div class="container text-center wow zoomIn">
+         <div class="container text-center">
             <span class="subhead">Let's make your life happier</span>
             <h1 class="display-4">
                Welcome to <span class="text-primary">Yak</span>-Kok
@@ -178,8 +173,7 @@
                      
                      %>
             </h1>
-            <a href="#" class="btn btn-primary">Let's Consult</a>
-         </div>
+          </div>
       </div>
    </div>
 	   <div class="page-section bg-light">
@@ -192,7 +186,7 @@
 		
 		<!-- 여기서부터 백신~카카오 맵 포함 -->
 			<div class="row justify-content-center">
-				<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
+				<div class="col-lg-6 py-3" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
                         <section>
                            <header>
                               <h2>백신 리스트</h2><br>
@@ -200,6 +194,8 @@
                            <ul class="dates">
                            
                            <!-- 추가 by 김동휘 -->
+                           
+                           
                              
                             <h4> <input type="radio" name="reserve" value="flu"> <span class="date"><strong>독감백신</strong></span></h4>
                               <span> / 20~65세이상</span>
@@ -212,7 +208,7 @@
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
                                  </h3>
                            <!-- /추가 -->   
                             
@@ -221,7 +217,7 @@
                               <span> / 20세~40세</span>
                               <span> / 2회</span>
                                  <h3>
-                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepA.jsp'">근처병원확인</button>
                                  </h3>
 
                               
@@ -229,7 +225,7 @@
                               <span> / 20세~65세이상</span>
                               <span> / 항체 검사 후 3회 접종</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepB.jsp'">근처병원확인</button>
                                  </h3>
                                  
                               
@@ -238,7 +234,7 @@
                               <span> / 20세~65세이상</span>
                               <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='PPSV23_PCV13.jsp'">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -387,7 +383,7 @@
                       <%for(int i=0;i<113;i++){%>
                  
                      // var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
-                      var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value='inner'>해당병원선택 </div>' 
+                       var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value="document.getElementByID("RH_0").innerText">해당병원선택 </div>' 
                      
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
