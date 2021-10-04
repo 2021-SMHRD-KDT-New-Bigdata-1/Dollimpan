@@ -345,7 +345,7 @@
                               <%for(int i=0;i<108;i++){ %>
                               
                                  <li><span class="date"><h4><strong><%=sr.get(i).getHos_name() %></strong></h4></span>
-                              <span>주소</span>
+                              <span><%=sr.get(i).getHos_addr() %></span>
                                  <h3>
                                     <a href="#menu1">예약하기</a>
                                  </h3>
@@ -377,7 +377,7 @@
                         
                      
                      
-                     <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
+<!--원래 병원목록 코드 <div class="col-lg-6 py-3 wow fadeInUp" id="menu1" style="height: 500px; overflow: auto; display:none" >
 
                         <section>
                         <div>
@@ -412,7 +412,8 @@
                               </div>                        
                         </section>
                         
-                     </div>
+                     </div> -->
+           
             <!-- 카카오api -->
                      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
                         <div id="map" style="width: 1200px; height: 500px;"></div>
@@ -434,35 +435,20 @@
                   // 지도를 생성한다 
                   var map = new kakao.maps.Map(mapContainer,
                         mapOption);
-                  
-                     /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
-                                 
-                  // var positions[] = new var[sr.size()];
-                  
-                     
-                     
+                                      
                      
                     /*  var positions = [
                                {
                                    title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
                                },
                                
-                               {
-                                   title: '광주 삼성병원', 
-                                   latlng: new kakao.maps.LatLng(35.171491, 126.866726)
-                               },
-                               
-                               {
-                                   title: '시원병원', 
-                                   latlng: new kakao.maps.LatLng(35.152658, 126.848934)
-                               }
                            ]; */
                            
                       
-                   var positions = new Array();
                   // var H_title = new Array();
                       
-
+                   var positions = new Array();
+                   var H_title = new Array();
                    <% System.out.println("총 병원수 : "+sr.size()); %>
                    
                      <% for(int i=0;i<108;i++){  %> 
@@ -490,27 +476,26 @@
                           map: map, // 마커를 표시할 지도
                           position: positions[i].latlng, // 마커를 표시할 위치
                           title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                          image : markerImage // 마커 이미지 
-                    
-                          //H_title[i] = positions[i].title                         
-                     
+                          image : markerImage // 마커 이미지
                           
-                      //System.out.println(H_title);
                       }
                       );
-                    
+                          title[i]=positions[i].title
+                          
+                     
                       
                       //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
                       
                       marker.setMap(map);
 
-                      <%for(int i=0;i<sr.size();i++){%>
-                     var iwContent = '<div style="padding:5px;"><%=sr.get(i).getHos_name()%><br><a style="color:black" target="_blank">TEL : </a> </div>'
-                   
+                      <%for(int i=0;i<108;i++){%>
+                 
+                     var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL : </a> </div>'
                       
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                          iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+                          iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
                       
+                      <%}%>
                       // 인포윈도우를 생성합니다
                       var infowindow = new kakao.maps.InfoWindow({
                           position : iwPosition, 
@@ -518,10 +503,12 @@
                          
                       });
                         
-                      <%}%>
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
+                  document.write(title);
+
+                 
                         </script>
                   </div>
                      </div>
