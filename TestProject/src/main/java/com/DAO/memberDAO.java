@@ -200,6 +200,42 @@ try {
 	return sr;
 }
 
+public ArrayList<HospitalVO> search1() {
+	ArrayList<HospitalVO> sr = new ArrayList<HospitalVO>();
+try {
+		conn();
+		
+		//message_member테이블에서 email, pw로 검색하여 전체 정보 불러오기
+		String sql = "select hos_name, hos_addr, hos_phone, latitude, longitude, hos_info from hospitals"; 
+		psmt = conn.prepareStatement(sql);
+		
+		rs = psmt.executeQuery(); //커서 이용
+		
+		//페이지 이동만 시키면 되기 때문에 보여주지 않아도 됨 -> while문 필요 x
+		//검색된 값이 있으면 true, 일치하지 않으면 검색창이 비어있음 -> false
+		
+		while(rs.next()) { //커서 이동
+			String hos_name = rs.getString(1);
+			String hos_addr = rs.getString(2);
+			String hos_phone = rs.getString(3);
+			double latitude = rs.getDouble(4);
+			double longitude = rs.getDouble(5);
+			String hos_info = rs.getString(6);
+			
+			HospitalVO vo = new HospitalVO(hos_name,hos_addr,hos_phone,latitude,longitude, hos_info);
+			//값 추가해주기
+			sr.add(vo);
+		}
+		
+	}catch(Exception e) { 
+		e.printStackTrace();
+	
+	}finally {
+		close();
+	}
+	return sr;
+}
+
 public ArrayList<HospitalVO> h_search(String search) {
 	ArrayList<HospitalVO> hr = new ArrayList<HospitalVO>();
 try {
