@@ -193,7 +193,7 @@
                            </header>
                            <ul class="dates">
                               
-                              <li><span class="date"><h4><strong>독감</strong></h4></span>
+                              <li><h4><span class="date"><strong>독감</strong></span></h4>
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
@@ -201,7 +201,7 @@
                                  </h3>
                                  
                                                                
-                              <li><span class="date"><h4><strong>파상풍</strong></h4></span>
+                              <li><h4><span class="date"><strong>파상풍</strong></span></h4>
                               <span> / 20~65세이상</span>
                               <span> / 1회 접종 후 10년마다 1회</span>
                              
@@ -276,7 +276,7 @@
                                  </h3>
                              
                              
-                               <li><span class="date"><h4><strong>b형헤모스인플루엔자</strong></h4></span>
+                               <li><h4><span class="date"><strong>b형헤모스인플루엔자</strong></span></h4>
                               <span> / 20세~65세이상</span>
                               <span> / 위험군에 대해 1회~3회</span>
                                  <h3>
