@@ -185,7 +185,236 @@
          </div>
       </div>
    </div>
+	   <div class="page-section bg-light">
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" >
+                        <section>
+                           <header>
+                              <h2>백신 리스트</h2><br>
+                           </header>
+                           <ul class="dates">
+                              
+                              <li><span class="date"><h4><strong>독감</strong></h4></span>
+                              <span> / 20~65세이상</span>
+                              <span> /매년 1회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                                 
+                                                               
+                              <li><span class="date"><h4><strong>파상풍</strong></h4></span>
+                              <span> / 20~65세이상</span>
+                              <span> / 1회 접종 후 10년마다 1회</span>
+                             
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>A형간염</strong></h4></span>
+                              <span> / 20세~40세</span>
+                              <span> / 2회</span>
+                                 <h3>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
 
+                              
+                              <li><span class="date"><h4><strong>B형간염</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 항체 검사 후 3회 접종</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                                 
+                              
+                               
+                              <li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>수두</strong></h4></span>
+                              <span> / 20세~50세</span>
+                              <span> / 항체검사 후 2회 접종</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                                 
+                                 
+                              <li><span class="date"><h4><strong>홍역/유행성이하선염(볼거리)/풍진</strong></h4></span>
+                              <span> / 20세~50세</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                             
+                             
+                              <li><span class="date"><h4><strong>사람유두종바이러스감염증</strong></h4></span>
+                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
+                              <span> / 총 3회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                             
+                             
+                             
+                             <li><span class="date"><h4><strong>대상포진</strong></h4></span>
+                              <span> / 만 60세 이상</span>
+                              <span> / 1회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                 </h3>
+                                 
+                                 
+                             <li><span class="date"><h4><strong>수막구균</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 위험군에 대해 1회~2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                             
+                             
+                               <li><span class="date"><h4><strong>b형헤모스인플루엔자</strong></h4></span>
+                              <span> / 20세~65세이상</span>
+                              <span> / 위험군에 대해 1회~3회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                 </h3>
+                           </ul>
+                        </section>
+                     </div><!-- 백신리스트 -->
+                     
+                     
+                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+                        <div id="map" style="width: 1200px; height: 500px;"></div>
+
+            
+                        <script
+                           src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e60e4953eacaad49c868ca0dcc884f1e"></script>
+                        <script>
+                        var mapContainer = document
+                        .getElementById('map'), // 지도를 표시할 div 
+                  mapOption = {
+                     center : new kakao.maps.LatLng(
+                    		 35.151595368564735, 126.8711278135539), // 지도의 중심좌표
+                     level : 2, // 지도의 확대 레벨
+                     
+                     mapTypeId : kakao.maps.MapTypeId.ROADMAP
+                  // 지도종류
+                  
+                  
+                  };
+
+                  // 지도를 생성한다 
+                  var map = new kakao.maps.Map(mapContainer,
+                        mapOption);
+                                      
+                     
+                    /*  var positions = [
+                               {
+                                   title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
+                               },
+                               
+                           ]; */
+                           
+                      
+                  // var H_title = new Array();
+                      
+                   var positions = new Array();
+                   var H_title = new Array();
+                   
+                   var H_phone = new Array();
+                   
+                   
+                   var H_Lat = new Array();
+                   var H_Lng = new Array();
+                   
+                   <% System.out.println("총 병원수 : "+sr.size()); %>
+                   
+                     <% for(int i=0;i<113;i++){  %> 
+                         positions[<%=i%>] = {
+                           title:  '<%=sr.get(i).getHos_name()%>',
+                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                        };  
+                           <% } %>
+                           
+                           <% for(int i=0;i<108;i++){  %> 
+                           H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
+                          ;  
+                             <% } %>
+                     
+               <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
+               
+               
+               
+                  // 마커 이미지의 이미지 주소입니다
+                  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+                     
+                  console.log(positions.length);
+                  for (var i = 0; i < positions.length; i ++) {
+                      
+                      // 마커 이미지의 이미지 크기 입니다
+                      var imageSize = new kakao.maps.Size(24, 35); 
+                      
+                      // 마커 이미지를 생성합니다    
+                      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                     console.log(positions[i].latlng); //마커의 위치
+                      // 마커를 생성합니다
+                      var marker = new kakao.maps.Marker({
+                          map: map, // 마커를 표시할 지도
+                          position: positions[i].latlng, // 마커를 표시할 위치
+                          title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                          image : markerImage // 마커 이미지
+                          
+                      }
+                      );
+                     
+                    //배열 값 넣는곳 만드는곳. 
+                   
+                      H_title[i]=positions[i].title
+                      
+                      
+                      
+                      //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
+                      
+                      marker.setMap(map);
+
+                      <%for(int i=0;i<113;i++){%>
+                 
+                     var iwContent = '<span><div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><br></span>'
+                      
+                      // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                          iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
+                      
+                      <%}%>
+                      // 인포윈도우를 생성합니다
+                      var infowindow = new kakao.maps.InfoWindow({
+                          position : iwPosition, 
+                          content : iwContent 
+                         
+                      });
+                        
+                      // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+                      infowindow.open(map, marker); 
+                  }
+                  
+                  
+                  
+
+                 
+                        </script>
+                  </div> <!-- / 카카오맵api -->
+				
+			</div>
+			
+		</div>
+	</section>
+</div>
 
    <div class="bg-light">
       <div class="page-section py-3 mt-md-n5 custom-index">
@@ -221,6 +450,7 @@
             </div>
          </div>
       </div>
+    </div>
       <!-- .page-section -->
 
       <!-- 두번째 섹션 -->
@@ -336,7 +566,7 @@
                      </div><!-- 백신리스트 -->
                      
                      
-                                             <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+                	<div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
                         <div id="map" style="width: 1200px; height: 500px;"></div>
 
             
