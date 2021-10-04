@@ -60,9 +60,8 @@
         
         <% 
         
-                
         System.out.println("=======================================");
-       
+      
        /*  for(int j=0; j<vc.size(); j++){
         for(int i=0; i<sr.size(); i++){
          if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
@@ -331,23 +330,9 @@
                    var positions = new Array();
                    var H_title = new Array();
                    var H_phone = new Array();
-                                      
                    
-                     <% for(int i=0;i<113;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                           <% } %>
-                           
-                           <% for(int i=0;i<108;i++){  %> 
-                           H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
-                          ;  
-                             <% } %>
-                     
-               <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
-               
-               
+                   var disease = new Array();
+             
                
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -370,7 +355,38 @@
                           
                       }
                       );
+                      <% ArrayList<String> Hos  = new ArrayList<>();
+                      
+                      for(int j=0;j<113;j++){ 
+                      if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
+                   	 Hos.add(sr.get(j).getHos_name());
+                     }  
+                     } %> 
                      
+                     <%  System.out.print(Hos.size());%>
+                                                     
+                    
+                    <% for(int j=0;j<Hos.size();j++){ %>
+                        <%if(sr.get(j).getHos_info().indexOf("파상풍")>-1){%>
+                      	  disease[<%=j%>] = '<%=sr.get(j).getHos_name()%>'
+                       <% } %> 
+                       <% } %> 
+                        
+                      
+                         // H_title[i]=positions[i].title
+                       
+                       <% for(int i=0;i<Hos.size();i++){  %> 
+                           positions[<%=i%>] = {
+                             title:  disease[<%=i%>],
+                             latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                          };  
+                       <% } %>
+                             
+                             
+                             <% for(int i=0;i<Hos.size();i++){  %> 
+                             H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
+                            ;  
+                               <% } %>
                    
                       H_title[i]=positions[i].title
                       
@@ -380,7 +396,7 @@
                       
                       marker.setMap(map);
 
-                      <%for(int i=0;i<113;i++){%>
+                      <%for(int i=0;i<Hos.size();i++){%>
                  
                      // var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
                       var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value="document.getElementByID("RH_0").innerText">해당병원선택 </div>' 
@@ -400,6 +416,7 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
+                  
                     </script>
                   </div> <!-- / 카카오맵api -->
 			</div> <!-- 여기까지가 백신~카카오 맵 -->

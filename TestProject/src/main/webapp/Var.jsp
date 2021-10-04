@@ -60,9 +60,14 @@
         
         <% 
         
-                
+         String hos_view = null;
+          int num = 0;
+          
+        System.out.println("첫번째 병원의 번호 : "+sr1.get(0).getHos_phone());
         System.out.println("=======================================");
        
+        
+        
        /*  for(int j=0; j<vc.size(); j++){
         for(int i=0; i<sr.size(); i++){
          if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
@@ -160,7 +165,7 @@
    <div class="page-hero bg-image overlay-dark"
       style="background-image: url(./assets/img/bg_image_1.jpg);">
       <div class="hero-section">
-         <div class="container text-center">
+         <div class="container text-center wow zoomIn">
             <span class="subhead">Let's make your life happier</span>
             <h1 class="display-4">
                Welcome to <span class="text-primary">Yak</span>-Kok
@@ -173,7 +178,8 @@
                      
                      %>
             </h1>
-          </div>
+            <a href="#" class="btn btn-primary">Let's Consult</a>
+         </div>
       </div>
    </div>
 	   <div class="page-section bg-light">
@@ -186,7 +192,7 @@
 		
 		<!-- 여기서부터 백신~카카오 맵 포함 -->
 			<div class="row justify-content-center">
-				<div class="col-lg-6 py-3" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
+				<div class="col-lg-6 py-3 wow fadeInUp" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
                         <section>
                            <header>
                               <h2>백신 리스트</h2><br>
@@ -197,7 +203,7 @@
                            
                            
                              
-                            <h4> <input type="radio" name="reserve" value="flu"> <span class="date"><strong>독감백신</strong></span></h4>
+                               <h4> <input type="radio" name="reserve" value="flu"> <span class="date"><strong>독감백신</strong></span></h4>
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
@@ -290,9 +296,8 @@
                      </div><!-- 백신리스트 -->
                      
                      
-                     
                      <!-- 카카오 map api -->
-                     <div class="col-lg-6" data-wow-delay="400ms">
+                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
                         <div id="map" style="width: 800px; height: 500px;"></div>
 
             

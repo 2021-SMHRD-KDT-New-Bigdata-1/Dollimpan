@@ -60,9 +60,20 @@
         
         <% 
         
-                
+         String hos_view = null;
+          int num = 0;
+          
+        System.out.println("첫번째 병원의 번호 : "+sr1.get(0).getHos_phone());
         System.out.println("=======================================");
        
+        
+        for(int i=0;i<vc.size();i++){
+            for(int j=0;j<sr.size();j++){
+               /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
+           
+               if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
+                 hos_view = sr.get(j).getHos_name();
+               }}}
        /*  for(int j=0; j<vc.size(); j++){
         for(int i=0; i<sr.size(); i++){
          if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
