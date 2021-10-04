@@ -60,8 +60,9 @@
         
         <% 
         
+                
         System.out.println("=======================================");
-      
+       
        /*  for(int j=0; j<vc.size(); j++){
         for(int i=0; i<sr.size(); i++){
          if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
@@ -175,17 +176,17 @@
           </div>
       </div>
    </div>
-      <div class="page-section bg-light">
+	   <div class="page-section bg-light">
 <section class="ftco-section">
-      <div class="container">
-      
-      <!-- 추가 by 김동휘 -->
-      <form action="Reserve_hos" name="Reserve" method="post">
-      <!-- /추가 -->
-      
-      <!-- 여기서부터 백신~카카오 맵 포함 -->
-         <div class="row justify-content-center">
-            <div class="col-lg-6 py-3" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
+		<div class="container">
+		
+		<!-- 추가 by 김동휘 -->
+		<form action="Reserve_hos" name="Reserve" method="post">
+		<!-- /추가 -->
+		
+		<!-- 여기서부터 백신~카카오 맵 포함 -->
+			<div class="row justify-content-center">
+				<div class="col-lg-6 py-3" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
                         <section>
                            <header>
                               <h2>백신 리스트</h2><br>
@@ -301,12 +302,12 @@
                         .getElementById('map'), // 지도를 표시할 div 
                   mapOption = {
                      center : new kakao.maps.LatLng(
-                           35.146258, 126.909297), // 지도의 중심좌표
+                    		 35.146258, 126.909297), // 지도의 중심좌표
                      level : 3, // 지도의 확대 레벨
                      
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
                   // 지도종류
-                     
+                  	
                   
                   };
 
@@ -316,7 +317,7 @@
                   
                  
                   
-                   // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+              	  // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
                   var mapTypeControl = new kakao.maps.MapTypeControl();
 
                   // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
@@ -330,9 +331,23 @@
                    var positions = new Array();
                    var H_title = new Array();
                    var H_phone = new Array();
+                                      
                    
-                   var disease = new Array();
-             
+                     <% for(int i=0;i<113;i++){  %> 
+                         positions[<%=i%>] = {
+                           title:  '<%=sr.get(i).getHos_name()%>',
+                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                        };  
+                           <% } %>
+                           
+                           <% for(int i=0;i<108;i++){  %> 
+                           H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
+                          ;  
+                             <% } %>
+                     
+               <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
+               
+               
                
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
@@ -355,38 +370,7 @@
                           
                       }
                       );
-                      <% ArrayList<String> Hos  = new ArrayList<>();
-                      
-                      for(int j=0;j<113;j++){ 
-                      if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
-                       Hos.add(sr.get(j).getHos_name());
-                     }  
-                     } %> 
                      
-                     <%  System.out.print(Hos.size());%>
-                                                     
-                    
-                    <% for(int j=0;j<Hos.size();j++){ %>
-                        <%if(sr.get(j).getHos_info().indexOf("파상풍")>-1){%>
-                           disease[<%=j%>] = '<%=sr.get(j).getHos_name()%>'
-                       <% } %> 
-                       <% } %> 
-                        
-                      
-                         // H_title[i]=positions[i].title
-                       
-                       <% for(int i=0;i<Hos.size();i++){  %> 
-                           positions[<%=i%>] = {
-                             title:  disease[<%=i%>],
-                             latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                          };  
-                       <% } %>
-                             
-                             
-                             <% for(int i=0;i<Hos.size();i++){  %> 
-                             H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
-                            ;  
-                               <% } %>
                    
                       H_title[i]=positions[i].title
                       
@@ -396,7 +380,7 @@
                       
                       marker.setMap(map);
 
-                      <%for(int i=0;i<Hos.size();i++){%>
+                      <%for(int i=0;i<113;i++){%>
                  
                      // var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
                       var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value="document.getElementByID("RH_0").innerText">해당병원선택 </div>' 
@@ -416,20 +400,19 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
-                  
                     </script>
                   </div> <!-- / 카카오맵api -->
-         </div> <!-- 여기까지가 백신~카카오 맵 -->
-         
-         <!-- 추가 by 김동휘 -->
-         <br>
-         <br>
-         <div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div>
-         </form> <!-- 백신+맵 데이터 전송 -->
-         
-         <!-- /추가 -->
-      </div>
-   </section>
+			</div> <!-- 여기까지가 백신~카카오 맵 -->
+			
+			<!-- 추가 by 김동휘 -->
+			<br>
+			<br>
+			<div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div>
+			</form> <!-- 백신+맵 데이터 전송 -->
+			
+			<!-- /추가 -->
+		</div>
+	</section>
 </div>
 
    <div class="bg-light">
@@ -453,7 +436,7 @@
       <div class="container">
          <h1 class="text-center wow fadeInUp">STORE</h1>
          <div class="row mt-5">
-      <div class="col-sm-6 py-3">
+		<div class="col-sm-6 py-3">
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
@@ -477,7 +460,7 @@
                 </div>
               </div>
             </div>
-      <div class="col-sm-6 py-3">
+		<div class="col-sm-6 py-3">
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
