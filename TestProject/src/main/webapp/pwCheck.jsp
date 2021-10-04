@@ -16,11 +16,11 @@
      String userId = request.getParameter("userId");
      
 memberDAO dao = new memberDAO();
- String user_pw = dao.pws(name, phone, userId); //아이디를 디비에서 가져옴..실패시 널
+ String user_pw = dao.pws(name, phone, userId); //비밀번호를 디비에서 가져옴..실패시 널
  
 %>
 
-  <form name="idsearch" method="post">
+  <form name="pwsearch" method="post">
       <%
        if (user_pw != null) {
       %>

@@ -56,7 +56,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="VaccineRL.html"><span class="text-primary">YAK</span>-KoK</a>
+        <a class="navbar-brand" href="../VaccineRL2.jsp"><span class="text-primary">YAK</span>-KoK</a>
 
         <form action="#">
           <div class="input-group input-navbar">
@@ -77,7 +77,7 @@
               <a class="nav-link" href="html/about.html">약콕이란?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="VaccineRL.jsp">백신예약/조회</a>
+              <a class="nav-link" href="../VaccineRL2.jsp">백신예약/조회</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="html/VaccineInfo.html">백신정보</a>
