@@ -572,4 +572,32 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		}
 		return cnt;
 	}
+	
+public int idSearch(String user_id, String phone) {
+		
+		int cnt = 0; // 기본값 지정
+		conn();
+		
+		String sql="select user_id, phone from users where user_id=?";
+		
+		try 
+		{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,user_id);
+			cnt = psmt.executeUpdate();
+			
+		
+		}
+		
+		catch(Exception e) { 
+			e.printStackTrace();
+		
+		}finally {
+			close();
+		}
+		return cnt;
+		
+	}
+	
+	
 }	
