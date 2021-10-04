@@ -609,19 +609,25 @@ public int update_0(String user_pw, String email, String addr, String phone, Str
 		return cnt;
 	}
 	
-public int idSearch(String user_id, String phone) {
+public String ids(String name, String phone) {
 		
-		int cnt = 0; // 기본값 지정
+		String UserID = null;
 		conn();
 		
-		String sql="select user_id, phone from users where user_id=?";
+		String sql= "select user_id from users where user_name=? and phone=?";
 		
 		try 
 		{
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,user_id);
-			cnt = psmt.executeUpdate();
+			psmt.setString(1,name);
+			psmt.setString(2,phone);
+			rs = psmt.executeQuery();
 			
+			if(rs.next())
+			{
+				UserID=rs.getString(1);
+				
+			}
 		
 		}
 		
@@ -631,7 +637,7 @@ public int idSearch(String user_id, String phone) {
 		}finally {
 			close();
 		}
-		return cnt;
+		return UserID;
 		
 	}
 	

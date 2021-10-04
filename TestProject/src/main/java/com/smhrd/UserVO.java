@@ -29,7 +29,7 @@ public class UserVO {
 		this.birth_date = birth_date;
 	}
 	
-	public UserVO( String user_id) 
+	public UserVO(String user_id) 
 	{
 		super();
 	

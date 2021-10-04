@@ -1,12 +1,13 @@
 package com.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.DAO.memberDAO;
 import com.smhrd.UserVO;
@@ -18,19 +19,17 @@ public class IdSearchService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String user_name = request.getParameter("user_name");
+		String user_name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		
 		memberDAO dao = new memberDAO();
-		int cnt = dao.idSearch(user_name, phone);
-		if(cnt > 0) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user_name",user_name);
-			response.sendRedirect("idChack.jsp");
-		}else {
-			System.out.print("검색 실패");
-			response.sendRedirect("Search_IdPw.jsp");
+		String user_id = dao.ids(user_name, phone);
+		
+		if(user_id != null) {
+			
 		}
+		
+		
 	
 	}
 

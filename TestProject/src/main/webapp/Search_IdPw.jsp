@@ -1,3 +1,4 @@
+<%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -103,13 +104,13 @@
 		<p class="divider-text">
         <span class="bg-light">OR</span>
     </p>
-	<form action = "IdSearchService" method = "post">
+	<form name = "idfindscreen" method = "post">
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_name" class="form-control" placeholder="이름" type="text">
+        <input name="name" class="form-control" placeholder="이름" type="text">
     </div> <!-- form-group// -->
     
     <script type="text/javascript">
@@ -121,8 +122,22 @@
         <input name="phone" class="form-control" placeholder="핸드폰번호" type="text" >
     </div> <!-- form-group// -->
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> 아이디 찾기  </button>
+        <button type="submit" class="btn btn-primary btn-block" onclick="id_search()"> 아이디 찾기  </button>
     </div> <!-- form-group// -->  
+    <div id="menu1" style="display:none">
+	      <%
+    String name = request.getParameter("name");
+     String phone = request.getParameter("phone");
+     
+memberDAO dao = new memberDAO();
+ String user_id = dao.ids(name, phone); //아이디를 디비에서 가져옴..실패시 널
+ 
+%>
+	      
+	      <h4>  회원님의 아이디는 </h4>  
+	      <div class ="found-id"><%=user_id %></div>
+	      <h4>  입니다 </h4>
+	     </div>
                                                                
 </form>
 </article>
@@ -231,6 +246,25 @@
 
 <script src="assets/js/theme.js"></script>
 
+<script>
+function id_search() { 
+ 	var frm = document.idfindscreen;
+
+ 	if (frm.name.value.length < 1) {
+	  alert("이름을 입력해주세요");
+	  return;
+	 }
+
+ 	if (frm.phone.value.length != 11) {
+		  alert("핸드폰번호를 정확하게 입력해주세요");
+		  return;
+	 }
+
+ frm.method = "post";
+ frm.action = "idCheck.jsp"; //넘어간화면
+ frm.submit();  
+ }
+</script>
 
 </body>
 </html>
