@@ -242,7 +242,7 @@
                               <span> / 20세~50세</span>
                               <span> / 항체검사 후 2회 접종</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='Var.jsp'">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -250,7 +250,7 @@
                               <span> / 20세~50세</span>
                               <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MMR.jsp'">근처병원확인</button>
                                  </h3>
                              
                              
@@ -258,7 +258,7 @@
                               <span> / 25세~26세 여성, 남성의 연령 무관</span>
                               <span> / 총 3회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HPV.jsp'">근처병원확인</button>
                                  </h3>
                              
                              
@@ -267,7 +267,7 @@
                               <span> / 만 60세 이상</span>
                               <span> / 1회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HZV.jsp'">근처병원확인</button>
                                  </h3>
                                  
                                  
@@ -275,7 +275,7 @@
                               <span> / 20세~65세이상</span>
                               <span> / 위험군에 대해 1회~2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MCV4.jsp'">예약하기</button>
                                  </h3>
                              
                              
@@ -283,7 +283,7 @@
                               <span> / 20세~65세이상</span>
                               <span> / 위험군에 대해 1회~3회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">예약하기</button>
                                  </h3>
                            </ul>
                         </section>
@@ -292,7 +292,7 @@
                      
                      
                      <!-- 카카오 map api -->
-                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+                     <div class="col-lg-6" data-wow-delay="400ms">
                         <div id="map" style="width: 800px; height: 500px;"></div>
 
             
@@ -383,8 +383,10 @@
                       <%for(int i=0;i<113;i++){%>
                  
                      // var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
-                       var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value="document.getElementByID("RH_0").innerText">해당병원선택 </div>' 
-                     
+
+                      var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value="document.getElementByID("RH_0").innerText">해당병원선택 </div>' 
+
+                      
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
                       
