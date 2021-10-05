@@ -121,7 +121,7 @@
 if(vo != null){ 
 	
 	out.print("<div class='profileInfo'>이름 :"+vo.getUser_name()+"</div>");
-	out.print("<div class='profileInfo'>생년월일 :"+vo.getBirth_date()+"</div>");
+	out.print("<div class='profileInfo'>나이 :"+vo.getBirth_date()+"세 </div>");
 	out.print("<div class='profileInfo'>아이디 :"+vo.getUser_id()+"</div>");
 }
 %>
