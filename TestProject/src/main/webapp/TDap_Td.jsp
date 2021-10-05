@@ -37,7 +37,6 @@
       
       ArrayList<HospitalVO> sr = dao.search();
       ArrayList<HospitalVO> sr1 = dao.search1();
-      
       ArrayList<VaccineVO> vc = dao.VaccineList();
       
       ArrayList<String> list = new ArrayList<String>();
@@ -45,11 +44,6 @@
       //  System.out.print(sr.size());  병원 개수
       // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
       %>
-   
-      <!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-         병원목록 리스트에 추가
-         
-       -->
        
        
        <!-- 독감 = (vc.get(0).getVac_disease())) -->
@@ -124,7 +118,7 @@
                      href="VaccineRL2.jsp">백신예약/조회</a></li>
                      
                   <li class="nav-item"><a class="nav-link"
-                     href="html/VaccineInfo.html">백신정보</a></li>
+                     href="Precaution.html">백신정보</a></li>
                   
                   <li class="nav-item"><a class="nav-link"
                      href="html/AD_FAQ.html">광고/FAQ</a></li>
@@ -203,16 +197,17 @@
                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
                                  </h3>
                              
-                             <h4> <input type="radio" name="reserve" value="tetanus"> <span class="date"><strong>파상풍</strong></span></h4>
+                              
+                              <li><h4><span class="date"><strong>파상풍</strong></span></h4>
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
-                                 </h3>
+                                 </h3></li>
                            <!-- /추가 -->   
                             
                                  
-                              <li><span class="date"><h4><strong>A형간염</strong></h4></span>
+                              <li><h4><span class="date"><strong>A형간염</strong></span></h4>
                               <span> / 20세~40세</span>
                               <span> / 2회</span>
                                  <h3>
@@ -332,7 +327,10 @@
                    var H_phone = new Array();
                    
                    var disease = new Array();
-             
+                   
+                               
+                       
+               
                
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
