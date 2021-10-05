@@ -37,11 +37,8 @@
       ArrayList<HospitalVO> sr = dao.search();
       ArrayList<HospitalVO> sr1 = dao.search1();/* 병원전화번호 가지고올때 사용 */
       ArrayList<VaccineVO> vc = dao.VaccineList();
-      
       ArrayList<String> list = new ArrayList<String>();
-      
-      
-      
+                 
       //  System.out.print(sr.size());  병원 개수
       // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
       %>
@@ -53,37 +50,10 @@
        <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
        
         
-        <% 
-        
-        System.out.println("=======================================");
-      
-       /*  for(int j=0; j<vc.size(); j++){
-        for(int i=0; i<sr.size(); i++){
-         if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-              System.out.print(sr.get(i).getHos_name(i));
-              
-        }}} */
-            
-        
-        /* for (int i = 0; i<vc.size(); i++){//전체 백신수만큼 반복
-             vc.get(i).getVac_disease()
-               } */
-                     %>
-       
-   <%-- <%for(int i =0; i<) %>
-   
-   
-    <% for(int i=0;i<5;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                     
-                     <% } %>  --%>
-   
-   
-      <!-- vc.get(j).getVac_disease -->
-   
+        <%System.out.println(vo.getBirth_date()); %> 
+        <%System.out.println("======================================="); %> 
+  
+ 
    <!-- Back to top button -->
    <div class="back-to-top"></div>
    
@@ -188,27 +158,31 @@
                            
                            <!-- 추가 by 김동휘 -->
                            
+                           <%if(vo.getBirth_date()>19){ %><!-- 20세 이상 -->
                            
-                             
-                            <li><h4> <input type="radio" name="reserve" value="flu"> <span class="date">
+                           
+                           <%}%>
+                            
+                            <li><h4><span class="date">
                             <strong>독감백신</strong></span></h4>
-                              <span> / 20~65세이상</span>
+                              <span> / 20세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="location.href='VaccineRL2.jsp'">근처병원확인</button>
                                  </h3></li>
                              
                               
-                              <li><h4><span class="date"><strong>파상풍</strong></span></h4>
-                              <span> / 20~65세이상</span>
+                              <li><h4><span class="date">
+                              <strong>파상풍</strong></span></h4>
+                              <span> / 20~65세</span>
                               <span> /매년 1회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
                                  </h3></li>
-                           <!-- /추가 -->   
-                            
+                                              
                                  
-                              <li><h4><span class="date"><strong>A형간염</strong></span></h4>
+                              <li><h4><span class="date">
+                              <strong>A형간염</strong></span></h4>
                               <span> / 20세~40세</span>
                               <span> / 2회</span>
                                  <h3>
@@ -216,24 +190,26 @@
                                  </h3>
 
                               
-                              <li><span class="date"><h4><strong>B형간염</strong></h4></span>
-                              <span> / 20세~65세이상</span>
+                              <li><h4><span class="date">
+                              <strong>B형간염</strong></span></h4>
+                              <span> / 20세~65세</span>
                               <span> / 항체 검사 후 3회 접종</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepB.jsp'">근처병원확인</button>
                                  </h3>
                                  
-                              
                                
-                              <li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
-                              <span> / 20세~65세이상</span>
+                              <li><h4><span class="date">
+                              <strong>폐렴구균</strong></span></h4>
+                              <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='PPSV23_PCV13.jsp'">근처병원확인</button>
                                  </h3>
                                  
                                  
-                              <li><span class="date"><h4><strong>수두</strong></h4></span>
+                              <li><h4><span class="date">
+                              <strong>수두</strong></span></h4>
                               <span> / 20세~50세</span>
                               <span> / 항체검사 후 2회 접종</span>
                                  <h3>
@@ -241,7 +217,8 @@
                                  </h3>
                                  
                                  
-                              <li><span class="date"><h4><strong>홍역/유행성이하선염(볼거리)/풍진</strong></h4></span>
+                              <li><h4><span class="date">
+                              <strong>홍역/유행성이하선염(볼거리)/풍진</strong></span></h4>
                               <span> / 20세~50세</span>
                               <span> / 위험군에 대해 1회 또는 2회</span>
                                  <h3>
@@ -249,16 +226,17 @@
                                  </h3>
                              
                              
-                              <li><span class="date"><h4><strong>사람유두종바이러스감염증</strong></h4></span>
+                              <li><h4><span class="date">
+                              <strong>사람유두종바이러스감염증</strong></span></h4>
                               <span> / 25세~26세 여성, 남성의 연령 무관</span>
                               <span> / 총 3회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HPV.jsp'">근처병원확인</button>
                                  </h3>
                              
-                             
-                             
-                             <li><span class="date"><h4><strong>대상포진</strong></h4></span>
+                                                          
+                             <li><h4><span class="date">
+                             <strong>대상포진</strong></span></h4>
                               <span> / 만 60세 이상</span>
                               <span> / 1회</span>
                                  <h3>
@@ -266,16 +244,18 @@
                                  </h3>
                                  
                                  
-                             <li><span class="date"><h4><strong>수막구균</strong></h4></span>
-                              <span> / 20세~65세이상</span>
+                             <li><h4><span class="date">
+                             <strong>수막구균</strong></span></h4>
+                              <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~2회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MCV4.jsp'">예약하기</button>
                                  </h3>
                              
                              
-                               <li><h4><span class="date"><strong>b형헤모스인플루엔자</strong></span></h4>
-                              <span> / 20세~65세이상</span>
+                               <li><h4><span class="date">
+                               <strong>b형헤모스인플루엔자</strong></span></h4>
+                              <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~3회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">예약하기</button>
@@ -379,12 +359,9 @@
                      <%  System.out.println("첫번째 병원이름 :"+sr.get(0).getHos_name());%>
                      <%  System.out.println(Hos.get(0)+" 의 번호 : "+sr1.get(0).getHos_phone());%>
                                                      
-                
-                             
-                             
-                             <% for(int i=0;i<Hos.size();i++){  %> 
-                             H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"  
-                             <% } %>
+                     <% for(int i=0;i<Hos.size();i++){  %> 
+                        H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"  
+                     <% } %>
                    
                       H_title[i]=positions[i].title
                       
@@ -420,7 +397,7 @@
                   
                     </script>
                   </div> <!-- / 카카오맵api -->
-			</div> <!-- 여기까지가 백신~카카오 맵 -->
+			   </div> <!-- 여기까지가 백신~카카오 맵 -->
 			
 			<!-- 추가 by 김동휘 -->
 			<br>
@@ -598,7 +575,7 @@
             <div class="col-sm-6 col-lg-3 py-3">
                <h5>More</h5>
                <ul class="footer-menu">
-                  <li><a href="#">Terms & Condition</a></li>
+                  <li><a href="#">Terms / Condition</a></li>
                   <li><a href="#">Privacy</a></li>
                   <li><a href="#">Advertise</a></li>
                   <li><a href="#">Join as Doctors</a></li>
