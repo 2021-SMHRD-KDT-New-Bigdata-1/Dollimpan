@@ -37,6 +37,7 @@
       ArrayList<HospitalVO> sr = dao.search();
       ArrayList<HospitalVO> sr1 = dao.search1();/* 병원전화번호 가지고올때 사용 */
       ArrayList<VaccineVO> vc = dao.VaccineList();
+      
       ArrayList<String> list = new ArrayList<String>();
                  
       //  System.out.print(sr.size());  병원 개수
@@ -156,12 +157,13 @@
                            <ul class="dates">
                            
                            <!-- 추가 by 김동휘 -->
+                        
+                       <% if(vo != null){
+                    	  int age = vo.getBirth_date();
                            
-                        <%--    <%if(vo.getBirth_date()>19){ %><!-- 20세 이상 -->
+                    	 	 if(age>=20){ %><!-- 20세 이상 -->
                            
                            
-                           <%}%> --%>
-                            
                             <li><h4><span class="date">
                             <strong>독감백신</strong></span></h4>
                               <span> / 20세이상</span>
@@ -169,27 +171,26 @@
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="location.href='VaccineRL2.jsp'">근처병원확인</button>
                                  </h3></li>
-                             
-                              
-                              <li><h4><span class="date">
-                              <strong>파상풍</strong></span></h4>
-                              <span> / 20~65세</span>
-                              <span> /매년 1회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
-                                 </h3></li>
-                                              
                                  
-                              <li><h4><span class="date">
-                              <strong>A형간염</strong></span></h4>
-                              <span> / 20세~40세</span>
-                              <span> / 2회</span>
+                                <li><h4><span class="date">
+                              <strong>사람유두종바이러스감염증</strong></span></h4>
+                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
+                              <span> / 총 3회</span>
                                  <h3>
-                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepA.jsp'">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HPV.jsp'">근처병원확인</button>
                                  </h3>
-
-                              
-                              <li><h4><span class="date">
+                           <%}else if(age<=60 && age>20 ){ %>
+                        	   
+                        	   <li><h4><span class="date">
+                               <strong>파상풍</strong></span></h4>
+                               <span> / 20~65세</span>
+                               <span> /매년 1회</span>
+                                  <h3>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
+                                  </h3></li> 
+                                  
+                                  
+                                <li><h4><span class="date">
                               <strong>B형간염</strong></span></h4>
                               <span> / 20세~65세</span>
                               <span> / 항체 검사 후 3회 접종</span>
@@ -206,44 +207,7 @@
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='PPSV23_PCV13.jsp'">근처병원확인</button>
                                  </h3>
                                  
-                                 
                               <li><h4><span class="date">
-                              <strong>수두</strong></span></h4>
-                              <span> / 20세~50세</span>
-                              <span> / 항체검사 후 2회 접종</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='Var.jsp'">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                              <li><h4><span class="date">
-                              <strong>홍역/유행성이하선염(볼거리)/풍진</strong></span></h4>
-                              <span> / 20세~50세</span>
-                              <span> / 위험군에 대해 1회 또는 2회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MMR.jsp'">근처병원확인</button>
-                                 </h3>
-                             
-                             
-                              <li><h4><span class="date">
-                              <strong>사람유두종바이러스감염증</strong></span></h4>
-                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
-                              <span> / 총 3회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HPV.jsp'">근처병원확인</button>
-                                 </h3>
-                             
-                                                          
-                             <li><h4><span class="date">
-                             <strong>대상포진</strong></span></h4>
-                              <span> / 만 60세 이상</span>
-                              <span> / 1회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HZV.jsp'">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                             <li><h4><span class="date">
                              <strong>수막구균</strong></span></h4>
                               <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~2회</span>
@@ -259,6 +223,73 @@
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">예약하기</button>
                                  </h3>
+                                  
+                                  
+                               <!-- 50이하  20세이상  -->
+                                  
+                        	 <%}else if(age<=50 & age>20 ){ %>
+                        
+                       		  <li><h4><span class="date">
+                              <strong>수두</strong></span></h4>
+                              <span> / 20세~50세</span>
+                              <span> / 항체검사 후 2회 접종</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='Var.jsp'">근처병원확인</button>
+                                 </h3>
+                                
+                                 
+                              <li><h4><span class="date">
+                              <strong>홍역/유행성이하선염(볼거리)/풍진</strong></span></h4>
+                              <span> / 20세~50세</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MMR.jsp'">근처병원확인</button>
+                                 </h3>
+                       
+                      		<%}else if(age<=40 & age>20 ){ %>
+                      
+                              <li><h4><span class="date">
+                              <strong>A형간염</strong></span></h4>
+                              <span> / 20세~40세</span>
+                              <span> / 2회</span>
+                                 <h3>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepA.jsp'">근처병원확인</button>
+                                 </h3>
+                                 
+                      		<%}else if(age>=60){ %>
+                      			<li><h4><span class="date">
+                             <strong>대상포진</strong></span></h4>
+                              <span> / 만 60세 이상</span>
+                              <span> / 1회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HZV.jsp'">근처병원확인</button>
+                                 </h3>
+                      		
+                      		<%}%>
+                      		
+                      	     
+                      		
+                      		
+                       <%-- <%} %> --%>
+                            
+                             
+                              
+                            
+                                              
+                                 
+
+                              
+                             
+                                 
+                                 
+                              
+                             
+                             
+                              
+                             
+                           
+                                 
+                             <%}%> <!-- 로그인이 됐을 때 -->
                            </ul>
                         </section>
                      </div><!-- 백신리스트 -->

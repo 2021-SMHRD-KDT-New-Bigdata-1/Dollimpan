@@ -148,10 +148,11 @@
     
     <div class="form-group input-group">
     	<div class="input-group-prepend">
-		    <span name = "birth_date" class="input-group-text">생년월일<i class="fa fa-phone"></i> </span>
+		    <span name = "birth_date" class="input-group-text">나이<i class="fa fa-phone"></i> </span>
 		</div>
 		
-    	<input name="birth_date" class="form-control" placeholder="YYYYMMDD" type="text">
+    	<input name="birth_date" class="form-control"  type="text">
+    	
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
