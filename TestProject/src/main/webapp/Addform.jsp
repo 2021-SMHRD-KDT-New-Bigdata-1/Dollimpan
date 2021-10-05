@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.UserVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -16,6 +18,11 @@
 
 <link rel="stylesheet" href="assets/css/theme.css">
 
+<%
+		ArrayList<UserVO> vo1 = (ArrayList<UserVO>) session.getAttribute("vo1");
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		System.out.println("vo형태 확인 : "+vo.getClass().getName());
+	%>
 
 </head>
 <body>

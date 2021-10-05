@@ -122,7 +122,7 @@
           </ol>
        
         </nav>
-        <h1 class="font-weight-normal">My Page</h1>
+        <h1 class="font-weight-normal">My Page </h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
