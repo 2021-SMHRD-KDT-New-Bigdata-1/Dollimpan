@@ -97,7 +97,7 @@
 	              <a class="nav-link" href="VaccineRL2.jsp">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
+	              <a class="nav-link" href="html/VaccineInfo.html">백신정보</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
