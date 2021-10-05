@@ -50,7 +50,6 @@
        <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
        
         
-        <%System.out.println(vo.getBirth_date()); %> 
         <%System.out.println("======================================="); %> 
   
  
@@ -158,10 +157,10 @@
                            
                            <!-- 추가 by 김동휘 -->
                            
-                           <%if(vo.getBirth_date()>19){ %><!-- 20세 이상 -->
+                        <%--    <%if(vo.getBirth_date()>19){ %><!-- 20세 이상 -->
                            
                            
-                           <%}%>
+                           <%}%> --%>
                             
                             <li><h4><span class="date">
                             <strong>독감백신</strong></span></h4>
