@@ -31,29 +31,27 @@
    
    <%
       memberDAO dao = new memberDAO();
-   
       UserVO vo = (UserVO)session.getAttribute("vo");
       
       ArrayList<HospitalVO> sr = dao.search();
       ArrayList<HospitalVO> sr1 = dao.search1();/* 병원전화번호 가지고올때 사용 */
       ArrayList<VaccineVO> vc = dao.VaccineList();
-      
       ArrayList<String> list = new ArrayList<String>();
-                 
-      //  System.out.print(sr.size());  병원 개수
-      // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-      %>
-       
-       
-       <!-- 독감 = (vc.get(0).getVac_disease())) -->
-       
-       
-       <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
-       
-        
-        <%System.out.println("======================================="); %> 
-  
- 
+      ArrayList<String> Hos  = new ArrayList<>();
+   %>
+   
+   <% 
+   	 for(int j=0;j<113;j++){ 
+     	if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
+   	 	Hos.add(sr.get(j).getHos_name());
+     	}  
+     } 
+   %>
+   
+   <%
+     System.out.println("=======================================");
+   %> 
+   
    <!-- Back to top button -->
    <div class="back-to-top"></div>
    
@@ -140,7 +138,7 @@
       </div>
    </div>
 	   <div class="page-section bg-light">
-<section class="ftco-section">
+		<section class="ftco-section">
 		<div class="container">
 		
 		<!-- 추가 by 김동휘 -->
@@ -174,14 +172,25 @@
                                  
                                 <li><h4><span class="date">
                               <strong>사람유두종바이러스감염증</strong></span></h4>
-                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
+                              <span> / 성별,연령 무관</span>
                               <span> / 총 3회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HPV.jsp'">근처병원확인</button>
                                  </h3>
-                           <%}else if(age<=60 && age>20 ){ %>
-                        	   
-                        	   <li><h4><span class="date">
+                                 
+                                 <%if(age>=60){ %>
+                      			<li><h4><span class="date">
+                             <strong>대상포진</strong></span></h4>
+                              <span> / 만 60세 이상</span>
+                              <span> / 1회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HZV.jsp'">근처병원확인</button>
+                                 </h3>
+                      		
+                      			<%}%>
+                                 
+                                 <%if(age<=60){ %>
+                                 <li><h4><span class="date">
                                <strong>파상풍</strong></span></h4>
                                <span> / 20~65세</span>
                                <span> /매년 1회</span>
@@ -226,13 +235,11 @@
                                   
                                   
                                <!-- 50이하  20세이상  -->
-                                  
-                        	 <%}else if(age<=50 & age>20 ){ %>
-                        
-                       		  <li><h4><span class="date">
-                              <strong>수두</strong></span></h4>
-                              <span> / 20세~50세</span>
-                              <span> / 항체검사 후 2회 접종</span>
+                              <%if(age<=50 ){ %>
+                                 <li><h4><span class="date">
+                           	     <strong>수두</strong></span></h4>
+                              	 <span> / 20세~50세</span>
+                             	 <span> / 항체검사 후 2회 접종</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='Var.jsp'">근처병원확인</button>
                                  </h3>
@@ -245,10 +252,11 @@
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MMR.jsp'">근처병원확인</button>
                                  </h3>
-                       
-                      		<%}else if(age<=40 & age>20 ){ %>
-                      
-                              <li><h4><span class="date">
+                                 
+                                 <%} %>
+                                 
+                                 <%if(age<=40 ){ %>
+                                  <li><h4><span class="date">
                               <strong>A형간염</strong></span></h4>
                               <span> / 20세~40세</span>
                               <span> / 2회</span>
@@ -256,40 +264,18 @@
                                      <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepA.jsp'">근처병원확인</button>
                                  </h3>
                                  
-                      		<%}else if(age>=60){ %>
-                      			<li><h4><span class="date">
-                             <strong>대상포진</strong></span></h4>
-                              <span> / 만 60세 이상</span>
-                              <span> / 1회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HZV.jsp'">근처병원확인</button>
-                                 </h3>
-                      		
-                      		<%}%>
-                      		
-                      	     
-                      		
-                      		
+                                 <%} %>
+                              <%} %>
+                            <%} %>
+       		 
+                           <%}%> <!-- 로그인이 됐을 때 -->
+
                        <%-- <%} %> --%>
                             
                              
                               
-                            
-                                              
-                                 
-
-                              
-                             
-                                 
-                                 
-                              
-                             
-                             
-                              
-                             
                            
                                  
-                             <%}%> <!-- 로그인이 됐을 때 -->
                            </ul>
                         </section>
                      </div><!-- 백신리스트 -->
@@ -339,13 +325,7 @@
                    var H_phone = new Array();
                    var disease = new Array();
                    
-                   <% ArrayList<String> Hos  = new ArrayList<>();
                    
-                   for(int j=0;j<113;j++){ 
-                   if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
-                	 Hos.add(sr.get(j).getHos_name());
-                  }  
-                  } %>
                   
                   
                   <% for(int j=0;j<Hos.size();j++){ %>
@@ -385,7 +365,7 @@
                    
                      
                      <%  System.out.println("해당질병이 들어간 병원개수 :"+Hos.size());%>
-                     <%  System.out.println("병원의 첫번째 이름 :"+Hos.get(1));%>
+                     <%  System.out.println("병원의 첫번째 이름 :"+Hos.get(0));%>
                      <%  System.out.println("첫번째 병원이름 :"+sr.get(0).getHos_name());%>
                      <%  System.out.println(Hos.get(0)+" 의 번호 : "+sr1.get(0).getHos_phone());%>
                                                      
@@ -396,9 +376,6 @@
                       H_title[i]=positions[i].title
                       
                       
-                      
-                      //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
-                      
                       marker.setMap(map);
 
                       <%for(int i=0;i<Hos.size();i++){%>
@@ -408,7 +385,7 @@
                      
                       
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                          iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
+                          iwPosition = new kakao.maps.LatLng(<%=sr1.get(i).getLatitude()%>,<%=sr1.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
                          
                           
                       <%}%>
@@ -423,7 +400,7 @@
                       infowindow.open(map, marker); 
                   }
                   
-                 
+                /*  document.write(H_phone.length) */
                   
                     </script>
                   </div> <!-- / 카카오맵api -->
@@ -432,7 +409,7 @@
 			<!-- 추가 by 김동휘 -->
 			<br>
 			<br>
-			<div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div>
+			<!-- <div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div> -->
 			</form> <!-- 백신+맵 데이터 전송 -->
 			
 			<!-- /추가 -->
