@@ -1,14 +1,17 @@
+<%@page import="com.smhrd.UserVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
-  <title>One Health - Medical Center HTML5 Template</title>
+  <title>about</title>
 
   <link rel="stylesheet" href="../assets/css/maicons.css">
 
@@ -19,9 +22,13 @@
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
 
   <link rel="stylesheet" href="../assets/css/theme.css">
+
+<title>Insert title here</title>
 </head>
 <body>
-
+<%
+      UserVO vo = (UserVO)session.getAttribute("vo");
+      %>
   <!-- Back to top button -->
   <div class="back-to-top"></div>
 
@@ -39,20 +46,35 @@
           <ul class="navbar-nav ml-auto">
           
            				<li class="nav-item active"><a class="nav-link"
-							href="about.html active">ì•½ì½•ì´ëž€?</a></li>
+							href="about.jsp">¾àÄÛÀÌ¶õ?</a></li>
 							
 						<li class="nav-item"><a class="nav-link"
-							href="../VaccineRL2.jsp">ë°±ì‹ ì˜ˆì•½/ì¡°íšŒ</a></li>
+							href="../VaccineRL2.jsp">¹é½Å¿¹¾à/Á¶È¸</a></li>
 							
 						<li class="nav-item"><a class="nav-link"
-							href="Precaution.html">ë°±ì‹ ì •ë³´</a></li>
+							href="precaution.jsp">¹é½ÅÁ¤º¸</a></li>
 							
 						<li class="nav-item"><a class="nav-link"
-							href="faqForm.html">ê´‘ê³ /FAQ</a></li>
+							href="faqForm.jsp">±¤°í/FAQ</a></li>
 						
 							
-						<li class="nav-item "><a class="btn btn-primary ml-lg-3"
-							href="loginForm.html">ë¡œê·¸ì¸ / íšŒì›ê°€ìž…</a></li>
+						<%
+                  if(vo == null){ //·Î±×ÀÎ Àü
+                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='loginForm.html'>·Î±×ÀÎ/È¸¿ø°¡ÀÔ</a></li>");
+                  }else{
+                     //°ü¸®ÀÚ °èÁ¤À¸·Î ·Î±×ÀÎ ÇßÀ» °æ¿ì ¸ðµç È¸¿øÁ¤º¸ º¼ ¼ö ÀÖµµ·Ï
+                     //·Î±×ÀÎÇÑ È¸¿øÀÇ ÀÌ¸ÞÀÏÀÌ adminÀÎ °æ¿ì¿¡´Â È¸¿øÀüÃ¼¸ñ·ÏÀÌ º¸ÀÌ°Ô 
+                     //·Î±×ÀÎÇÑ È¸¿øÀÇ ÀÌ¸ÞÀÏÀÌ ÀÏ¹Ý È¸¿øÀÎ °æ¿ì¿¡´Â È¸¿øÁ¤º¸ ¼öÁ¤ÀÌ º¸ÀÌ°Ô
+                     if(vo.getUser_id().equals("admin")){
+                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>È¸¿øÀüÃ¼¸ñ·Ï</a>");
+                     }else{
+                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='../Mypage.jsp'>¸¶ÀÌÆäÀÌÁö</a>");
+                     }
+                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='../LogoutService'>·Î±×¾Æ¿ô</a>");
+                  }
+                  
+
+                  %>
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->
@@ -69,7 +91,7 @@
             <li class="breadcrumb-item active" aria-current="page">About</li>
           </ol>
         </nav>
-        <h1 class="font-weight-normal">ì•½ì½•ì´ëž€?</h1>
+        <h1 class="font-weight-normal">¾àÄÛÀÌ¶õ?</h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
@@ -79,11 +101,11 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>ì•½ì½•ì´ëž€?</h1><br>
-            <p class="text-grey mb-4">ì•½ì½•ì€ ì „ êµ­ë¯¼ ê°œì¸ë³„ ë§žì¶¤ ê±´ê°• ê´€ë¦¬ ì‹œìŠ¤í…œ ë„ìž…ìœ¼ë¡œ ì ‘ì¢…ë¥  ì¦ê°€ ë° ê¸°ëŒ€ìˆ˜ëª… ì—°ìž¥ì„ ëª©í‘œë¡œ ì˜ˆë°©ì ‘ì¢…ì— ê´€í•œ ì •ë³´ë¥¼ ì œê³µí•©ë‹ˆë‹¤.<br> 
-            ì†ì‰½ê²Œ ë³¸ì¸ê³¼ ê°€ì¡±ê¹Œì§€ ì˜ˆë°©ì ‘ì¢… í˜„í™©ì„ í™•ì¸í•˜ì„¸ìš”!
+            <h1>¾àÄÛÀÌ¶õ?</h1><br>
+            <p class="text-grey mb-4">¾àÄÛÀº Àü ±¹¹Î °³ÀÎº° ¸ÂÃã °Ç°­ °ü¸® ½Ã½ºÅÛ µµÀÔÀ¸·Î Á¢Á¾·ü Áõ°¡ ¹× ±â´ë¼ö¸í ¿¬ÀåÀ» ¸ñÇ¥·Î ¿¹¹æÁ¢Á¾¿¡ °üÇÑ Á¤º¸¸¦ Á¦°øÇÕ´Ï´Ù.<br> 
+            ¼Õ½±°Ô º»ÀÎ°ú °¡Á·±îÁö ¿¹¹æÁ¢Á¾ ÇöÈ²À» È®ÀÎÇÏ¼¼¿ä!
 </p>
-            <a href="../VaccineRL2.jsp" class="btn btn-primary">ì˜ˆì•½í•˜ëŸ¬ ê°€ê¸°!</a>
+            <a href="../VaccineRL2.jsp" class="btn btn-primary">¿¹¾àÇÏ·¯ °¡±â!</a>
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
             <div class="img-place custom-img-1">
@@ -107,7 +129,7 @@
                 </div>
                 <div class="body">
                   <p class="text-xl mb-0">Dev.Hangeul</p>
-                  <span class="text-sm text-grey">ìµœ í•œ ê¸€</span>
+                  <span class="text-sm text-grey">ÃÖ ÇÑ ±Û</span>
                 </div>
               </div>
             </div>
@@ -119,7 +141,7 @@
                 </div>
                 <div class="body">
                   <p class="text-xl mb-0">Dev. Claire J</p>
-                  <span class="text-sm text-grey">ê¹€ ì • ë¯¸</span>
+                  <span class="text-sm text-grey">±è Á¤ ¹Ì</span>
                 </div>
               </div>
             </div>
@@ -131,7 +153,7 @@
                 </div>
                 <div class="body">
                   <p class="text-xl mb-0">Dev.Donghui</p>
-                  <span class="text-sm text-grey">ê¹€ ë™ íœ˜</span>
+                  <span class="text-sm text-grey">±è µ¿ ÈÖ</span>
                 </div>
               </div>
              </div>
@@ -143,7 +165,7 @@
                 </div>
                 <div class="body">
                   <p class="text-xl mb-0">Dev.GodHui</p>
-                  <span class="text-sm text-grey">ì´ ê°• íœ˜</span>
+                  <span class="text-sm text-grey">ÀÌ °­ ÈÖ</span>
                 </div>
               </div>
             </div>
@@ -163,7 +185,7 @@
           </div>
         </div>
         <div class="col-lg-8 wow fadeInRight">
-          <h1 class="font-weight-normal mb-3">ëª¨ë°”ì¼ ì•½ì½•ì„ ë‹¤ìš´ë°›ìœ¼ì„¸ìš”!</h1>
+          <h1 class="font-weight-normal mb-3">¸ð¹ÙÀÏ ¾àÄÛÀ» ´Ù¿î¹ÞÀ¸¼¼¿ä!</h1>
           <a href="#"><img src="../assets/img/google_play.svg" alt=""></a>
           <a href="#" class="ml-2"><img src="../assets/img/app_store.svg" alt=""></a>
         </div>
@@ -177,7 +199,7 @@
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>Company</h5>
           <ul class="footer-menu">
-            <li><a href="../VaccineRL2.jsp">ì•½ì½•ì´ëž€?</a></li>
+            <li><a href="../VaccineRL2.jsp">¾àÄÛÀÌ¶õ?</a></li>
             <li><a href="../VaccineRL2.jsp">Our Developers</a></li>
 
           </ul>
@@ -185,22 +207,22 @@
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>Vaccine</h5>
           <ul class="footer-menu">
-            <li><a href="../VaccineRL2.jsp">ë°±ì‹  ì˜ˆì•½/ì¡°íšŒ</a></li>
-         	 <li><a href="Precaution.html">ì ‘ì¢… ì „ ì£¼ì˜ì‚¬í•­</a></li>
-            <li><a href="Precaution.html">ë°±ì‹  ì •ë³´</a></li>
+            <li><a href="../VaccineRL2.jsp">¹é½Å ¿¹¾à/Á¶È¸</a></li>
+         	 <li><a href="Precaution.html">Á¢Á¾ Àü ÁÖÀÇ»çÇ×</a></li>
+            <li><a href="Precaution.html">¹é½Å Á¤º¸</a></li>
           </ul>
         </div>
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>My Page</h5>
           <ul class="footer-menu">
-            <li><a href="../Mypage.jsp">ë‚´ ì •ë³´</a></li>
-            <li><a href="../Mypage.jsp">ê°€ì¡± ê´€ë¦¬</a></li>
-            <li><a href="../Mypage.jsp">ì£¼ì†Œ ê´€ë¦¬</a></li>
+            <li><a href="../Mypage.jsp">³» Á¤º¸</a></li>
+            <li><a href="../Mypage.jsp">°¡Á· °ü¸®</a></li>
+            <li><a href="../Mypage.jsp">ÁÖ¼Ò °ü¸®</a></li>
           </ul>
         </div>
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>Contact</h5>
-          <p class="footer-link mt-2">ê´‘ì£¼ê´‘ì—­ì‹œ ë‚¨êµ¬ ì†¡ì•”ë¡œ60 ê´‘ì£¼CGIì„¼í„° 2ì¸µ</p>
+          <p class="footer-link mt-2">±¤ÁÖ±¤¿ª½Ã ³²±¸ ¼Û¾Ï·Î60 ±¤ÁÖCGI¼¾ÅÍ 2Ãþ</p>
           <a href="#" class="footer-link">062-655-3509</a>
           <a href="#" class="footer-link">Yak-kok@gmail.net</a>
 

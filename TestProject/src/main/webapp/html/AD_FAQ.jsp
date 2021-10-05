@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.UserVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +17,11 @@
 
 <link rel="stylesheet" href="../assets/css/theme.css">
 
-
 </head>
 <body>
-
+<%
+      UserVO vo = (UserVO)session.getAttribute("vo");
+      %>
 	<div class="back-to-top"></div>
 
 	<header>  
@@ -35,19 +39,34 @@
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	               <a class="nav-link" href="about.html">약콕이란?</a>
+	               <a class="nav-link" href="about.jsp">약콕이란?</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../VaccineRL2.jsp">백신예약/조회</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="Precaution.html">백신정보</a>
+              <a class="nav-link" href="precaution.jsp">백신정보</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="faqForm.html">광고/FAQ</a>
+              <a class="nav-link" href="faqForm.jsp">광고/FAQ</a>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="loginForm.html">로그인/회원가입</a>
+            <%
+                  if(vo == null){ //로그인 전
+                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href='html/loginForm.html'>로그인/회원가입</a></li>");
+                  }else{
+                     //관리자 계정으로 로그인 했을 경우 모든 회원정보 볼 수 있도록
+                     //로그인한 회원의 이메일이 admin인 경우에는 회원전체목록이 보이게 
+                     //로그인한 회원의 이메일이 일반 회원인 경우에는 회원정보 수정이 보이게
+                     if(vo.getUser_id().equals("admin")){
+                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' href = 'selectUser.jsp'>회원전체목록</a>");
+                     }else{
+                        out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='../Mypage.jsp'>마이페이지</a>");
+                     }
+                     out.print("<li class='nav-item'><a class='btn btn-primary ml-lg-3' a href='../LogoutService'>로그아웃</a>");
+                  }
+                  
+
+                  %>
 	          </ul>
 	        </div> <!-- .navbar-collapse -->
 	      </div> <!-- .container -->
@@ -60,9 +79,9 @@
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="AD_FAQ.html" name="Goods">Goods</a></li>
+            <li class="breadcrumb-item"><a href="AD_FAQ.jsp" name="Goods">Goods</a></li>
             
-            <li class="breadcrumb-item"><a href="faqForm.html" name="FAQ"> FAQ </a></li>
+            <li class="breadcrumb-item"><a href="faqForm.jsp" name="FAQ"> FAQ </a></li>
           </ol>
        
         </nav>
@@ -409,4 +428,3 @@ function filter() {
   
 </body>
 </html>
-       
