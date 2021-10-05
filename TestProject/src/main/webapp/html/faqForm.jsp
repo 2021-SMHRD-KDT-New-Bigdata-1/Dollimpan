@@ -91,9 +91,9 @@
       <div class="container text-center wow fadeInUp">
         <nav aria-label="Breadcrumb">
           <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-            <li class="breadcrumb-item"><a href="AD_FAQ.html" name="Goods">Goods</a></li>
+            <li class="breadcrumb-item"><a href="AD_FAQ.jsp" name="Goods">Goods</a></li>
             
-            <li class="breadcrumb-item"><a href="faqForm.html" name="FAQ"> FAQ </a></li>
+            <li class="breadcrumb-item"><a href="faqForm.jsp" name="FAQ"> FAQ </a></li>
           </ol>
         </nav>
         <h1 class="font-weight-normal" style="color:white">FAQs</h1>

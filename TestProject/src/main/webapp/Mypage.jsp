@@ -68,16 +68,16 @@
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineRL2.jsp">약콕이란</a>
+	              <a class="nav-link" href="html/about.jsp">약콕이란</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="VaccineRL2.jsp">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="html/VaccineInfo.html">백신정보</a>
+	              <a class="nav-link" href="html/precaution.jsp">백신정보</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
+	              <a class="nav-link" href="html/faqForm.jsp">광고/FAQ</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="btn btn-primary ml-lg-3" href="LogoutService">로그아웃</a>
