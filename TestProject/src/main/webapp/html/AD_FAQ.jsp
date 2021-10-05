@@ -39,16 +39,16 @@
 	        <div class="collapse navbar-collapse" id="navbarSupport">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	               <a class="nav-link" href="about.html">약콕이란?</a>
+	               <a class="nav-link" href="about.jsp">약콕이란?</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../VaccineRL2.jsp">백신예약/조회</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="Precaution.html">백신정보</a>
+              <a class="nav-link" href="precaution.jsp">백신정보</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="faqForm.html">광고/FAQ</a>
+              <a class="nav-link" href="faqForm.jsp">광고/FAQ</a>
             </li>
             <%
                   if(vo == null){ //로그인 전
