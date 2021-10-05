@@ -166,7 +166,7 @@ if(vo != null){
 		<div class="profileInfo"></div>
 		<tr>
 			<td> 내 이름 : <% out.print(vo.getUser_name()); %></td> <br>
-			<td> 가족1 이름 : <% out.print(fva.get(0).getFam1()); %></td> <br>
+			<td> 가족1 이름 : <%if( !fva.isEmpty() ) {%><% out.print(fva.get(0).getFam1()); %><% }%></td> <br>
 		</tr>
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
