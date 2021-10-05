@@ -1,4 +1,3 @@
-
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -36,10 +35,12 @@
       UserVO vo = (UserVO)session.getAttribute("vo");
       
       ArrayList<HospitalVO> sr = dao.search();
-      ArrayList<HospitalVO> sr1 = dao.search1();
+      ArrayList<HospitalVO> sr1 = dao.search1();/* 병원전화번호 가지고올때 사용 */
       ArrayList<VaccineVO> vc = dao.VaccineList();
       
       ArrayList<String> list = new ArrayList<String>();
+      
+      
       
       //  System.out.print(sr.size());  병원 개수
       // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
@@ -64,9 +65,8 @@
         }}} */
             
         
-        /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-               
-               vc.get(i).getVac_disease()
+        /* for (int i = 0; i<vc.size(); i++){//전체 백신수만큼 반복
+             vc.get(i).getVac_disease()
                } */
                      %>
        
@@ -190,12 +190,13 @@
                            
                            
                              
-                            <h4> <input type="radio" name="reserve" value="flu"> <span class="date"><strong>독감백신</strong></span></h4>
+                            <li><h4> <input type="radio" name="reserve" value="flu"> <span class="date">
+                            <strong>독감백신</strong></span></h4>
                               <span> / 20~65세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
+                                 </h3></li>
                              
                               
                               <li><h4><span class="date"><strong>파상풍</strong></span></h4>
@@ -296,9 +297,9 @@
                         .getElementById('map'), // 지도를 표시할 div 
                   mapOption = {
                      center : new kakao.maps.LatLng(
-                    		 35.146258, 126.909297), // 지도의 중심좌표
+                    		 35.15152670450213, 126.86968481346322), // 지도의 중심좌표
                      level : 3, // 지도의 확대 레벨
-                     
+                    // 35.15152670450213, 126.86968481346322  쌍촌역
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
                   // 지도종류
                   	
@@ -322,16 +323,34 @@
                   var zoomControl = new kakao.maps.ZoomControl();
                   map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
                     
+                  
                    var positions = new Array();
                    var H_title = new Array();
                    var H_phone = new Array();
-                   
                    var disease = new Array();
                    
+                   <% ArrayList<String> Hos  = new ArrayList<>();
+                   
+                   for(int j=0;j<113;j++){ 
+                   if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
+                	 Hos.add(sr.get(j).getHos_name());
+                  }  
+                  } %>
+                  
+                  
+                  <% for(int j=0;j<Hos.size();j++){ %>
+                    disease[<%=j%>] = '<%=Hos.get(j)%>'
+                  <% } %> 
+                     
+                   
+                   <% for(int i=0;i<Hos.size();i++){  %> 
+                       positions[<%=i%>] = {
+                         title:  disease[<%=i%>],
+                         latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                      };  
+                   <% } %>
+                   
                                
-                       
-               
-               
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
                      
@@ -353,38 +372,19 @@
                           
                       }
                       );
-                      <% ArrayList<String> Hos  = new ArrayList<>();
-                      
-                      for(int j=0;j<113;j++){ 
-                      if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
-                   	 Hos.add(sr.get(j).getHos_name());
-                     }  
-                     } %> 
+                   
                      
-                     <%  System.out.print(Hos.size());%>
+                     <%  System.out.println("해당질병이 들어간 병원개수 :"+Hos.size());%>
+                     <%  System.out.println("병원의 첫번째 이름 :"+Hos.get(1));%>
+                     <%  System.out.println("첫번째 병원이름 :"+sr.get(0).getHos_name());%>
+                     <%  System.out.println(Hos.get(0)+" 의 번호 : "+sr1.get(0).getHos_phone());%>
                                                      
-                    
-                    <% for(int j=0;j<Hos.size();j++){ %>
-                        <%if(sr.get(j).getHos_info().indexOf("파상풍")>-1){%>
-                      	  disease[<%=j%>] = '<%=sr.get(j).getHos_name()%>'
-                       <% } %> 
-                       <% } %> 
-                        
-                      
-                         // H_title[i]=positions[i].title
-                       
-                       <% for(int i=0;i<Hos.size();i++){  %> 
-                           positions[<%=i%>] = {
-                             title:  disease[<%=i%>],
-                             latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                          };  
-                       <% } %>
+                
                              
                              
                              <% for(int i=0;i<Hos.size();i++){  %> 
-                             H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
-                            ;  
-                               <% } %>
+                             H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"  
+                             <% } %>
                    
                       H_title[i]=positions[i].title
                       
@@ -402,7 +402,8 @@
                       
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                           iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
-                      
+                         
+                          
                       <%}%>
                       
                       // 인포윈도우를 생성합니다
@@ -414,6 +415,8 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
+                  
+                 
                   
                     </script>
                   </div> <!-- / 카카오맵api -->
@@ -648,6 +651,8 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
+  
+   		
  /*        var here = document.getElementById('here').value;
        console.log("here ", here);
        
