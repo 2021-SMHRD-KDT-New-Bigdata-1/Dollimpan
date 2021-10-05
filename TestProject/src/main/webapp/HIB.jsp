@@ -42,7 +42,7 @@
    
    <% 
    	 for(int j=0;j<113;j++){ 
-     	if(sr.get(j).getHos_info().indexOf("독감")>-1){
+     	if(sr.get(j).getHos_info().indexOf("B형 헤모스 인플루엔자")>-1){
    	 	Hos.add(sr.get(j).getHos_name());
      	}  
      } 
