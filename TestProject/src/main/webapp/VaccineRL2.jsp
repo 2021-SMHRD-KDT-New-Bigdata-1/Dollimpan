@@ -1,4 +1,3 @@
-
 <%@page import="com.DAO.memberDAO"%>
 <%@page import="com.smhrd.HospitalVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -32,64 +31,26 @@
    
    <%
       memberDAO dao = new memberDAO();
-   
       UserVO vo = (UserVO)session.getAttribute("vo");
       
       ArrayList<HospitalVO> sr = dao.search();
-      ArrayList<HospitalVO> sr1 = dao.search1();
-      
+      ArrayList<HospitalVO> sr1 = dao.search1();/* 병원전화번호 가지고올때 사용 */
       ArrayList<VaccineVO> vc = dao.VaccineList();
-      
       ArrayList<String> list = new ArrayList<String>();
-      
-      //  System.out.print(sr.size());  병원 개수
-      // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-      %>
+      ArrayList<String> Hos  = new ArrayList<>();
+   %>
    
-      <!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-         병원목록 리스트에 추가
-         
-       -->
-       
-       
-       <!-- 독감 = (vc.get(0).getVac_disease())) -->
-       
-       
-       <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
-       
-        
-        <% 
-        
-                
-        System.out.println("=======================================");
-       
-       /*  for(int j=0; j<vc.size(); j++){
-        for(int i=0; i<sr.size(); i++){
-         if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-              System.out.print(sr.get(i).getHos_name(i));
-              
-        }}} */
-            
-        
-        /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-               
-               vc.get(i).getVac_disease()
-               } */
-                     %>
-       
-   <%-- <%for(int i =0; i<) %>
+   <% 
+       for(int j=0;j<113;j++){ 
+        if(sr.get(j).getHos_info().indexOf("독감")>-1){
+          Hos.add(sr.get(j).getHos_name());
+        }  
+     } 
+   %>
    
-   
-    <% for(int i=0;i<5;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                     
-                     <% } %>  --%>
-   
-   
-      <!-- vc.get(j).getVac_disease -->
+   <%
+     System.out.println("=======================================");
+   %> 
    
    <!-- Back to top button -->
    <div class="back-to-top"></div>
@@ -119,7 +80,7 @@
                <ul class="navbar-nav ml-auto">
                
                   <li class="nav-item"><a class="nav-link"
-                     href="html/about.jsp">약콕이란?</a></li>
+                     href="html/about.html">약콕이란?</a></li>
                   
                   <li class="nav-item active"><a class="nav-link"
                      href="VaccineRL2.jsp">백신예약/조회</a></li>
@@ -128,7 +89,7 @@
                      href="html/precaution.jsp">백신정보</a></li>
                   
                   <li class="nav-item"><a class="nav-link"
-                     href="html/AD_FAQ.jsp">광고/FAQ</a></li>
+                     href="html/AD_FAQ.html">광고/FAQ</a></li>
                     
                   <%
                   if(vo == null){ //로그인 전
@@ -166,7 +127,7 @@
                Welcome to <span class="text-primary">Yak</span>-Kok
                <%
                         if(vo == null){
-                           out.print("<h1>로그인 한 세션아이디를 출력해주세요</h1>");
+                           out.print("<h1>로그인 해주세요.</h1>");
                         }else{
                            out.print("<h1>"+vo.getUser_name()+"님 환영합니다.</h1>");
                         }
@@ -176,17 +137,17 @@
           </div>
       </div>
    </div>
-	   <div class="page-section bg-light">
-<section class="ftco-section">
-		<div class="container">
-		
-		<!-- 추가 by 김동휘 -->
-		<form action="Reserve_hos" name="Reserve" method="post">
-		<!-- /추가 -->
-		
-		<!-- 여기서부터 백신~카카오 맵 포함 -->
-			<div class="row justify-content-center">
-				<div class="col-lg-6 py-3" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
+      <div class="page-section bg-light">
+      <section class="ftco-section">
+      <div class="container">
+      
+      <!-- 추가 by 김동휘 -->
+      <form action="Reserve_hos" name="Reserve" method="post">
+      <!-- /추가 -->
+      
+      <!-- 여기서부터 백신~카카오 맵 포함 -->
+         <div class="row justify-content-center">
+            <div class="col-lg-6 py-3" id="menu"  style="height: 500px; overflow: auto" > <!-- 백신 리스트 -->
                         <section>
                            <header>
                               <h2>백신 리스트</h2><br>
@@ -194,99 +155,130 @@
                            <ul class="dates">
                            
                            <!-- 추가 by 김동휘 -->
+                        
+                       <% if(vo != null){
+                         int age = vo.getBirth_date();
+                           
+                            if(age>=20){ %><!-- 20세 이상 -->
                            
                            
-                             
-                            <h4> <input type="radio" name="reserve" value="flu"> <span class="date"><strong>독감백신</strong></span></h4>
-                              <span> / 20~65세이상</span>
+                            <li><h4><span class="date">
+                            <strong>독감백신</strong></span></h4>
+                              <span> / 20세이상</span>
                               <span> /매년 1회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="test()">근처병원확인</button>
-                                 </h3>
-                             
-                             <h4> <input type="radio" name="reserve" value="tetanus"> <span class="date"><strong>파상풍</strong></span></h4>
-                              <span> / 20~65세이상</span>
-                              <span> /매년 1회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
-                                 </h3>
-                           <!-- /추가 -->   
-                            
+                                    <button class="btn btn-primary ml-lg-3" type="button" onclick="location.href='VaccineRL2.jsp'">근처병원확인</button>
+                                 </h3></li>
                                  
-                              <li><span class="date"><h4><strong>A형간염</strong></h4></span>
-                              <span> / 20세~40세</span>
-                              <span> / 2회</span>
-                                 <h3>
-                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepA.jsp'">근처병원확인</button>
-                                 </h3>
-
-                              
-                              <li><span class="date"><h4><strong>B형간염</strong></h4></span>
-                              <span> / 20세~65세이상</span>
-                              <span> / 항체 검사 후 3회 접종</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepB.jsp'">근처병원확인</button>
-                                 </h3>
-                                 
-                              
-                               
-                              <li><span class="date"><h4><strong>폐렴구균</strong></h4></span>
-                              <span> / 20세~65세이상</span>
-                              <span> / 위험군에 대해 1회 또는 2회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='PPSV23_PCV13.jsp'">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>수두</strong></h4></span>
-                              <span> / 20세~50세</span>
-                              <span> / 항체검사 후 2회 접종</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='Var.jsp'">근처병원확인</button>
-                                 </h3>
-                                 
-                                 
-                              <li><span class="date"><h4><strong>홍역/유행성이하선염(볼거리)/풍진</strong></h4></span>
-                              <span> / 20세~50세</span>
-                              <span> / 위험군에 대해 1회 또는 2회</span>
-                                 <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MMR.jsp'">근처병원확인</button>
-                                 </h3>
-                             
-                             
-                              <li><span class="date"><h4><strong>사람유두종바이러스감염증</strong></h4></span>
-                              <span> / 25세~26세 여성, 남성의 연령 무관</span>
+                                <li><h4><span class="date">
+                              <strong>사람유두종바이러스감염증</strong></span></h4>
+                              <span> / 성별,연령 무관</span>
                               <span> / 총 3회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HPV.jsp'">근처병원확인</button>
                                  </h3>
-                             
-                             
-                             
-                             <li><span class="date"><h4><strong>대상포진</strong></h4></span>
+                                 
+                                 <%if(age>=60){ %>
+                               <li><h4><span class="date">
+                             <strong>대상포진</strong></span></h4>
                               <span> / 만 60세 이상</span>
                               <span> / 1회</span>
                                  <h3>
                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HZV.jsp'">근처병원확인</button>
                                  </h3>
+                            
+                               <%}%>
                                  
+                                 <%if(age<=60){ %>
+                                 <li><h4><span class="date">
+                               <strong>파상풍</strong></span></h4>
+                               <span> / 20~65세</span>
+                               <span> /매년 1회</span>
+                                  <h3>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='TDap_Td.jsp'">근처병원확인</button>
+                                  </h3></li> 
+                                  
+                                  
+                                <li><h4><span class="date">
+                              <strong>B형간염</strong></span></h4>
+                              <span> / 20세~65세</span>
+                              <span> / 항체 검사 후 3회 접종</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepB.jsp'">근처병원확인</button>
+                                 </h3>
                                  
-                             <li><span class="date"><h4><strong>수막구균</strong></h4></span>
-                              <span> / 20세~65세이상</span>
+                               
+                              <li><h4><span class="date">
+                              <strong>폐렴구균</strong></span></h4>
+                              <span> / 20세~65세</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='PPSV23_PCV13.jsp'">근처병원확인</button>
+                                 </h3>
+                                 
+                              <li><h4><span class="date">
+                             <strong>수막구균</strong></span></h4>
+                              <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MCV4.jsp'">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MCV4.jsp'">근처병원확인</button>
                                  </h3>
                              
                              
-                               <li><h4><span class="date"><strong>b형헤모스인플루엔자</strong></span></h4>
-                              <span> / 20세~65세이상</span>
+                               <li><h4><span class="date">
+                               <strong>b형헤모스인플루엔자</strong></span></h4>
+                              <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~3회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">예약하기</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">근처병원확인</button>
                                  </h3>
+                                  
+                                  
+                               <!-- 50이하  20세이상  -->
+                              <%if(age<=50 ){ %>
+                                 <li><h4><span class="date">
+                                   <strong>수두</strong></span></h4>
+                                  <span> / 20세~50세</span>
+                                 <span> / 항체검사 후 2회 접종</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='Var.jsp'">근처병원확인</button>
+                                 </h3>
+                                
+                                 
+                              <li><h4><span class="date">
+                              <strong>홍역/유행성이하선염(볼거리)/풍진</strong></span></h4>
+                              <span> / 20세~50세</span>
+                              <span> / 위험군에 대해 1회 또는 2회</span>
+                                 <h3>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MMR.jsp'">근처병원확인</button>
+                                 </h3>
+                                 
+                                 <%} %>
+                                 
+                                 <%if(age<=40 ){ %>
+                                  <li><h4><span class="date">
+                              <strong>A형간염</strong></span></h4>
+                              <span> / 20세~40세</span>
+                              <span> / 2회</span>
+                                 <h3>
+                                     <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HepA.jsp'">근처병원확인</button>
+                                 </h3>
+                                 
+                                 <%} %>
+                              <%} %>
+                            <%} %>
+              
+                           <%}%> <!-- 로그인이 됐을 때 -->
+
+                       <%-- <%} %> --%>
+                            
+                             
+                              
+                           
+                                 
                            </ul>
                         </section>
+
                      </div><!-- 백신리스트 -->
                      
                      
@@ -302,12 +294,12 @@
                         .getElementById('map'), // 지도를 표시할 div 
                   mapOption = {
                      center : new kakao.maps.LatLng(
-                    		 35.146258, 126.909297), // 지도의 중심좌표
+                           35.15152670450213, 126.86968481346322), // 지도의 중심좌표
                      level : 3, // 지도의 확대 레벨
-                     
+                    // 35.15152670450213, 126.86968481346322  쌍촌역
                      mapTypeId : kakao.maps.MapTypeId.ROADMAP
                   // 지도종류
-                  	
+                     
                   
                   };
 
@@ -317,7 +309,7 @@
                   
                  
                   
-              	  // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+                   // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
                   var mapTypeControl = new kakao.maps.MapTypeControl();
 
                   // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
@@ -328,27 +320,28 @@
                   var zoomControl = new kakao.maps.ZoomControl();
                   map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
                     
+                  
                    var positions = new Array();
                    var H_title = new Array();
                    var H_phone = new Array();
-                                      
+                   var disease = new Array();
                    
-                     <% for(int i=0;i<113;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                           <% } %>
-                           
-                           <% for(int i=0;i<108;i++){  %> 
-                           H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"
-                          ;  
-                             <% } %>
+                   
+                  
+                  
+                  <% for(int j=0;j<Hos.size();j++){ %>
+                    disease[<%=j%>] = '<%=Hos.get(j)%>'
+                  <% } %> 
                      
-               <%--           H_phone[<%=i%>]={<%=sr.get(i).getHos_phone()%>} --%>
-               
-               
-               
+                   
+                   <% for(int i=0;i<Hos.size();i++){  %> 
+                       positions[<%=i%>] = {
+                         title:  disease[<%=i%>],
+                         latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+                      };  
+                   <% } %>
+                   
+                  <%if(vo !=null){%>            
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
                      
@@ -370,26 +363,32 @@
                           
                       }
                       );
-                     
+                   
+                     <% } %>
+                     <%  System.out.println("해당질병이 들어간 병원개수 :"+Hos.size());%>
+                     <%  System.out.println("병원의 첫번째 이름 :"+Hos.get(0));%>
+                     <%  System.out.println("첫번째 병원이름 :"+sr.get(0).getHos_name());%>
+                     <%  System.out.println(Hos.get(0)+" 의 번호 : "+sr1.get(0).getHos_phone());%>
+                                                     
+                     <% for(int i=0;i<Hos.size();i++){  %> 
+                        H_phone[<%=i%>] = "<%=sr1.get(i).getHos_phone()%>"  
+                     <% } %>
                    
                       H_title[i]=positions[i].title
                       
                       
-                      
-                      //원래) var iwContent = '<div style="padding:5px;"><br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">전화 : </a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
-                      
                       marker.setMap(map);
 
-                      <%for(int i=0;i<113;i++){%>
+                      <%for(int i=0;i<Hos.size();i++){%>
                  
                      // var iwContent = '<div style="padding:5px;">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a> </div><a href="#" style="color:blue" target="_blank">예약하기</a>'
-
                       var iwContent = '<div style="padding:5px;" id="RH_0">'+H_title[i]+'<br><a style="color:black" target="_blank">TEL: '+H_phone[i]+' </a>  <br><input type="radio" name="RH" value="document.getElementByID("RH_0").innerText">해당병원선택 </div>' 
-
+                     
                       
                       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                          iwPosition = new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>,<%=sr.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
-                      
+                          iwPosition = new kakao.maps.LatLng(<%=sr1.get(i).getLatitude()%>,<%=sr1.get(i).getLongitude()%>); //인포윈도우 표시 위치입니다
+                         
+                          
                       <%}%>
                       
                       // 인포윈도우를 생성합니다
@@ -401,19 +400,22 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
+                 
+                /*  document.write(H_phone.length) */
+                  
                     </script>
                   </div> <!-- / 카카오맵api -->
-			</div> <!-- 여기까지가 백신~카카오 맵 -->
-			
-			<!-- 추가 by 김동휘 -->
-			<br>
-			<br>
-			<div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div>
-			</form> <!-- 백신+맵 데이터 전송 -->
-			
-			<!-- /추가 -->
-		</div>
-	</section>
+            </div> <!-- 여기까지가 백신~카카오 맵 -->
+         
+         <!-- 추가 by 김동휘 -->
+         <br>
+         <br>
+         <!-- <div align ="center"><input type="submit" class="btn btn-primary ml-lg-3" value="해당병원 예약하기"></div> -->
+         </form> <!-- 백신+맵 데이터 전송 -->
+         
+         <!-- /추가 -->
+      </div>
+   </section>
 </div>
 
    <div class="bg-light">
@@ -437,7 +439,7 @@
       <div class="container">
          <h1 class="text-center wow fadeInUp">STORE</h1>
          <div class="row mt-5">
-		<div class="col-sm-6 py-3">
+      <div class="col-sm-6 py-3">
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
@@ -461,7 +463,7 @@
                 </div>
               </div>
             </div>
-		<div class="col-sm-6 py-3">
+      <div class="col-sm-6 py-3">
               <div class="card-blog">
                 <div class="header">
                   <div class="post-category">
@@ -567,48 +569,61 @@
    <!-- .banner-home -->
 
    <footer class="page-footer">
-    <div class="container">
-      <div class="row px-md-3">
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>Company</h5>
-          <ul class="footer-menu">
-            <li><a href="../VaccineRL2.jsp">약콕이란?</a></li>
-            <li><a href="../VaccineRL2.jsp">Our Developers</a></li>
+      <div class="container">
+         <div class="row px-md-3">
+            <div class="col-sm-6 col-lg-3 py-3">
+               <h5>Company</h5>
+               <ul class="footer-menu">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Career</a></li>
+                  <li><a href="#">Editorial Team</a></li>
+                  <li><a href="#">Protection</a></li>
+               </ul>
+            </div>
+            <div class="col-sm-6 col-lg-3 py-3">
+               <h5>More</h5>
+               <ul class="footer-menu">
+                  <li><a href="#">Terms / Condition</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Advertise</a></li>
+                  <li><a href="#">Join as Doctors</a></li>
+               </ul>
+            </div>
+            <div class="col-sm-6 col-lg-3 py-3">
+               <h5>Our partner</h5>
+               <ul class="footer-menu">
+                  <li><a href="#">One-Fitness</a></li>
+                  <li><a href="#">One-Drugs</a></li>
+                  <li><a href="#">One-Live</a></li>
+               </ul>
+            </div>
+            <div class="col-sm-6 col-lg-3 py-3">
+               <h5>Contact</h5>
+               <p class="footer-link mt-2">351 Willow Street Franklin, MA
+                  02038</p>
+               <a href="#" class="footer-link">701-573-7582</a> <a href="#"
+                  class="footer-link">healthcare@temporary.net</a>
 
-          </ul>
-        </div>
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>Vaccine</h5>
-          <ul class="footer-menu">
-            <li><a href="../VaccineRL2.jsp">백신 예약/조회</a></li>
-         	 <li><a href="Precaution.html">접종 전 주의사항</a></li>
-            <li><a href="Precaution.html">백신 정보</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>My Page</h5>
-          <ul class="footer-menu">
-            <li><a href="../Mypage.jsp">내 정보</a></li>
-            <li><a href="../Mypage.jsp">가족 관리</a></li>
-            <li><a href="../Mypage.jsp">주소 관리</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-6 col-lg-3 py-3">
-          <h5>Contact</h5>
-          <p class="footer-link mt-2">광주광역시 남구 송암로60 광주CGI센터 2층</p>
-          <a href="#" class="footer-link">062-655-3509</a>
-          <a href="#" class="footer-link">Yak-kok@gmail.net</a>
+               <h5 class="mt-3">Social Media</h5>
+               <div class="footer-sosmed mt-3">
+                  <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
+                  <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
+                  <a href="#" target="_blank"><span
+                     class="mai-logo-google-plus-g"></span></a> <a href="#"
+                     target="_blank"><span class="mai-logo-instagram"></span></a> <a
+                     href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
+               </div>
+            </div>
+         </div>
 
-          
-        </div>
+         <hr>
+
+         <p id="copyright">
+            Copyright &copy; 2020 <a href="https://macodeid.com/"
+               target="_blank">MACode ID</a>. All right reserved
+         </p>
       </div>
-
-      <hr>
-
-      <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
-    </div>
-    
-  </footer>
+   </footer>
 
    <script src="assets/js/jquery-3.5.1.min.js"></script>
 
@@ -621,6 +636,8 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
+  
+         
  /*        var here = document.getElementById('here').value;
        console.log("here ", here);
        
