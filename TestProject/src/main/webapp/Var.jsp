@@ -42,7 +42,7 @@
    
    <% 
    	 for(int j=0;j<113;j++){ 
-     	if(sr.get(j).getHos_info().indexOf("ÆÄ»óÇ³")>-1){
+     	if(sr.get(j).getHos_info().indexOf("¼öµÎ")>-1){
    	 	Hos.add(sr.get(j).getHos_name());
      	}  
      } 

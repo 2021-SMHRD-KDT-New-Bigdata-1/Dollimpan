@@ -42,7 +42,7 @@
    
    <% 
    	 for(int j=0;j<113;j++){ 
-     	if(sr.get(j).getHos_info().indexOf("파상풍")>-1){
+     	if(sr.get(j).getHos_info().indexOf("수막구균")>-1){
    	 	Hos.add(sr.get(j).getHos_name());
      	}  
      } 
@@ -86,7 +86,7 @@
                      href="VaccineRL2.jsp">백신예약/조회</a></li>
                      
                   <li class="nav-item"><a class="nav-link"
-                     href="html/precaution.jsp">백신정보</a></li>
+                     href="Precaution.html">백신정보</a></li>
                   
                   <li class="nav-item"><a class="nav-link"
                      href="html/AD_FAQ.html">광고/FAQ</a></li>
@@ -127,7 +127,7 @@
                Welcome to <span class="text-primary">Yak</span>-Kok
                <%
                         if(vo == null){
-                           out.print("<h1>로그인 해주세요.</h1>");
+                           out.print("<h1>로그인 한 세션아이디를 출력해주세요</h1>");
                         }else{
                            out.print("<h1>"+vo.getUser_name()+"님 환영합니다.</h1>");
                         }
@@ -221,7 +221,7 @@
                               <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~2회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MCV4.jsp'">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='MCV4.jsp'">예약하기</button>
                                  </h3>
                              
                              
@@ -230,7 +230,7 @@
                               <span> / 20세~65세</span>
                               <span> / 위험군에 대해 1회~3회</span>
                                  <h3>
-                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">근처병원확인</button>
+                                    <button class="btn btn-primary ml-lg-3" type="button" onClick="location.href='HIB.jsp'">예약하기</button>
                                  </h3>
                                   
                                   
@@ -340,7 +340,7 @@
                       };  
                    <% } %>
                    
-                  <%if(vo !=null){%>            
+                               
                   // 마커 이미지의 이미지 주소입니다
                   var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
                      
@@ -363,7 +363,7 @@
                       }
                       );
                    
-                     <% } %>
+                     
                      <%  System.out.println("해당질병이 들어간 병원개수 :"+Hos.size());%>
                      <%  System.out.println("병원의 첫번째 이름 :"+Hos.get(0));%>
                      <%  System.out.println("첫번째 병원이름 :"+sr.get(0).getHos_name());%>
@@ -399,7 +399,7 @@
                       // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                       infowindow.open(map, marker); 
                   }
-                 
+                  
                 /*  document.write(H_phone.length) */
                   
                     </script>
