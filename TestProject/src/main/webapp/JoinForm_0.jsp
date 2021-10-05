@@ -164,19 +164,22 @@
     
     
     
-    <div class="form-group input-group">
+<!--     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text">주소<i class="fa fa-lock"></i> </span>
 		</div>
         <input name= "addr" class="form-control" type="text">
-    </div> <!-- form-group// -->
+    </div> form-group// -->
     
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text">핸드폰번호<i class="fa fa-lock"></i> </span>
 		</div>
         <input class="form-control" name="phone" type="text">
-    </div> <!-- form-group// -->   
+        </div>
+        
+        
+   <!--  form-group//   
     <div class="form-group input-group">
     <span class="input-group-text">기저질환 <i class="fa fa-lock"></i> </span>
     	<table>
@@ -218,7 +221,7 @@
     	</tr>
     	</table>
     </div>
-                                       
+            -->                            
                                        
     <div class="form-group">
         <button type="button" class="btn btn-primary btn-block" onclick="onclick0()"> 회원가입  </button>
