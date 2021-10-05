@@ -97,7 +97,7 @@
 	              <a class="nav-link" href="VaccineRL2.jsp">백신예약/조회</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="VaccineInfo.html">백신정보</a>
+	              <a class="nav-link" href="html/VaccineInfo.html">백신정보</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="Addform.jsp">광고/FAQ</a>
@@ -122,7 +122,7 @@
           </ol>
        
         </nav>
-        <h1 class="font-weight-normal">My Page</h1>
+        <h1 class="font-weight-normal">My Page </h1>
       </div> <!-- .container -->
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
@@ -166,7 +166,7 @@ if(vo != null){
 		<div class="profileInfo"></div>
 		<tr>
 			<td> 내 이름 : <% out.print(vo.getUser_name()); %></td> <br>
-			<td> 가족1 이름 : <% out.print(fva.get(0).getFam1()); %></td> <br>
+			<td> 가족1 이름 : <%if( !fva.isEmpty() ) {%><% out.print(fva.get(0).getFam1()); %><% }%></td> <br>
 		</tr>
 	</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

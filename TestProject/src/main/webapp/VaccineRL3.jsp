@@ -29,84 +29,87 @@
 <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
+	
+	<%
+		memberDAO dao = new memberDAO();
+	
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		
+		ArrayList<HospitalVO> sr = dao.search();
+		
+		ArrayList<VaccineVO> vc = dao.VaccineList();
+		
+		ArrayList<String> list = new ArrayList<String>();
+		
+		//  System.out.print(sr.size());  병원 개수
+		// System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
+		%>
    
-   <%
-      memberDAO dao = new memberDAO();
-   
-      UserVO vo = (UserVO)session.getAttribute("vo");
-      
-      ArrayList<HospitalVO> sr = dao.search();
-      
-      ArrayList<VaccineVO> vc = dao.VaccineList();
-      
-      ArrayList<String> list = new ArrayList<String>();
-      
-      //  System.out.print(sr.size());  병원 개수
-      // System.out.print(sr.get(1).getLatitude()); 두번째 병원의 위도값
-      %>
-   
-      <!-- '백신명'이 병원에 속해있는지 확인/(.equals)
-         병원목록 리스트에 추가
-         
-       -->
-       
-       
-       <!-- 독감 = (vc.get(0).getVac_disease())) -->
-       
-       
-       <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
-       
-        
-        <% 
-        
-         String hos_view = null;
-          int num = 0;
-          
-        System.out.println("=======================================");
-        
-        for(int i=0;i<vc.size();i++){
-          for(int j=0;j<sr.size();j++){
-             /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
-         
-             if(sr.get(j).getHos_info().indexOf(vc.get(i).getVac_disease())>-1){
-               hos_view = sr.get(j).getHos_name();
-               System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
-               num++; 
-                   
-              }
-             
-           }
-          }
-        
-        
-        
-       /*  for(int j=0; j<vc.size(); j++){
-        for(int i=0; i<sr.size(); i++){
-         if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
-              System.out.print(sr.get(i).getHos_name(i));
-              
-        }}} */
-            
-        
-        /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
-               
-               vc.get(i).getVac_disease()
-               } */
-                     %>
-       
+   	<!-- '백신명'이 병원에 속해있는지 확인/(.equals)
+   		병원목록 리스트에 추가
+   		
+   	 -->
+   	 
+   	 
+   	 <!-- 독감 = (vc.get(0).getVac_disease())) -->
+   	 
+   	 
+   	 <%sr.get(0).getHos_info().contains(vc.get(0).getVac_disease()); // 0번째 있는병원에 독감이 있다! %>
+   	 
+   	  
+   	  <% 
+   	  
+   		String hos_view = null;
+   	    int num = 0;
+   	    
+   	  System.out.println("=======================================");
+   	  
+   	  for(int i=0;i<vc.size();i++){ //11번 반복(백신종류만큼)
+   		 for(int j=0;j<sr.size();j++){ //113번 반복(병원수만큼)
+   			 /* System.out.println(sr.get(j).getHos_name()+":"+sr.get(j).getHos_info().contains(vc.get(i).getVac_disease())); */
+   		
+   			 if(sr.get(j).getHos_info().indexOf("독감")>-1){
+   				hos_view = sr.get(j).getHos_name();
+   				
+   				
+   				
+   				System.out.println(vc.get(i).getVac_disease()+": "+hos_view);
+   				num++; 
+   			 		
+   			  }
+   			 
+   	 	 }
+   		 }
+   	  
+   	  
+   	  
+   	 /*  for(int j=0; j<vc.size(); j++){
+   	  for(int i=0; i<sr.size(); i++){
+   		if(sr.get(i).getHos_name.contains(vc.get(j).getVac_disease())=true){
+   	  		System.out.print(sr.get(i).getHos_name(i));
+   	  		
+   	  }}} */
+				
+   	  
+   	  /* for (int i = 0; i<vc.size(); i++){//회원의 수만큼 반복
+					
+					vc.get(i).getVac_disease()
+					} */
+							%>
+   	 
    <%-- <%for(int i =0; i<) %>
    
    
     <% for(int i=0;i<5;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                     
-                     <% } %>  --%>
+						    	positions[<%=i%>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						   
+						   <% } %>  --%>
    
    
-      <!-- vc.get(j).getVac_disease -->
+   	<!-- vc.get(j).getVac_disease -->
    
    <!-- Back to top button -->
    <div class="back-to-top"></div>
@@ -254,11 +257,11 @@
                            </header>
                           <ul class="dates">
                            
-                                 
-                              
-                                 
-                                 <li><span class='date'><h4><strong><%=sr.get(3).getHos_name() %></strong></h4></span>
-                                 
+                           		
+                           	
+                           		
+                           		<li><span class='date'><h4><strong><%=sr.get(3).getHos_name() %></strong></h4></span>
+                           		
 
                            </ul>
                         </section>
@@ -436,87 +439,87 @@
                   // 지도종류
                   };
 
-                  // 지도를 생성한다 
-                  var map = new kakao.maps.Map(mapContainer,
-                        mapOption);
-                  
-                     /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
-                                 
-                  // var positions[] = new var[sr.size()];
-                  
-                     
-                     
-                     
-                    /*  var positions = [
-                               {
-                                   title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
-                               },
-                               
-                               {
-                                   title: '광주 삼성병원', 
-                                   latlng: new kakao.maps.LatLng(35.171491, 126.866726)
-                               },
-                               
-                               {
-                                   title: '시원병원', 
-                                   latlng: new kakao.maps.LatLng(35.152658, 126.848934)
-                               }
-                           ]; */
-                           
-                      
-                   var positions = new Array();
-                      
+						// 지도를 생성한다 
+						var map = new kakao.maps.Map(mapContainer,
+								mapOption);
+						
+						   /* { title: '근린공원', latlng: new kakao.maps.LatLng(35.118446, 126.866408) }*/
+											
+						// var positions[] = new var[sr.size()];
+						
+						   
+						   
+						   
+						  /*  var positions = [
+									    {
+									        title: '문영래 정형외과', latlng: new kakao.maps.LatLng(35.145855, 126.857507)
+									    },
+									    
+									    {
+									        title: '광주 삼성병원', 
+									        latlng: new kakao.maps.LatLng(35.171491, 126.866726)
+									    },
+									    
+									    {
+									        title: '시원병원', 
+									        latlng: new kakao.maps.LatLng(35.152658, 126.848934)
+									    }
+									]; */
+									
+						    
+					    var positions = new Array();
+						    
 
-                   <% System.out.println("병원수 : "+sr.size()); %>
-                   
-                     <% for(int i=0;i<5;i++){  %> 
-                         positions[<%=i%>] = {
-                           title:  '<%=sr.get(i).getHos_name()%>',
-                           latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
-                        };  
-                         
-                           <% } %>  괄호 맞춰주실래요?넵
-                     
-                  // 마커 이미지의 이미지 주소입니다
-                  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-                     
-                  console.log(positions.length);
-                  for (var i = 0; i < positions.length; i ++) {
-                      
-                      // 마커 이미지의 이미지 크기 입니다
-                      var imageSize = new kakao.maps.Size(24, 35); 
-                      
-                      // 마커 이미지를 생성합니다    
-                      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-                     console.log("for문시작");
-                      console.log(positions[i].latlng);
-                      // 마커를 생성합니다
-                      var marker = new kakao.maps.Marker({
-                          map: map, // 마커를 표시할 지도
-                          position: positions[i].latlng, // 마커를 표시할 위치
-                          title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                          image : markerImage // 마커 이미지 
-                      
-                     
-                          
-                      });
-                      
-                      marker.setMap(map);
-
-                      var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                          iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+						 <% System.out.println("병원수 : "+sr.size()); %>
+						 
+						   <% for(int i=0;i<5;i++){  %> 
+						    	positions[<%=i%>] = {
+								   title:  '<%=sr.get(i).getHos_name()%>',
+								   latlng: new kakao.maps.LatLng(<%=sr.get(i).getLatitude()%>, <%=sr.get(i).getLongitude()%>)
+								};  
+						 	   
+								   <% } %>
+						   
+						// 마커 이미지의 이미지 주소입니다
+						var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+						   
+						console.log(positions.length);
+						for (var i = 0; i < positions.length; i ++) {
+						    
+						    // 마커 이미지의 이미지 크기 입니다
+						    var imageSize = new kakao.maps.Size(24, 35); 
+						    
+						    // 마커 이미지를 생성합니다    
+						    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+							console.log("for문시작");
+						    console.log(positions[i].latlng);
+						    // 마커를 생성합니다
+						    var marker = new kakao.maps.Marker({
+						        map: map, // 마커를 표시할 지도
+						        position: positions[i].latlng, // 마커를 표시할 위치
+						        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+						        image : markerImage // 마커 이미지 
+						    
+						   
+						        
+						    });
+						    
+						    marker.setMap(map);
+							
+						    var iwContent = '<div style="padding:5px;">'+sr.get(i).getHos_name()+'<br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>'
+						        iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
                     
-                      // 인포윈도우를 생성합니다
-                      var infowindow = new kakao.maps.InfoWindow({
-                          position : iwPosition, 
-                          content : iwContent 
-                      });
-                        
-                      // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-                      infowindow.open(map, marker); 
-                  }
-                  
-                        </script>
+						    // 인포윈도우를 생성합니다
+						    var infowindow = new kakao.maps.InfoWindow({
+						        position : iwPosition, 
+						        content : iwContent 
+						    });
+						      
+						    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+						    infowindow.open(map, marker); 
+						}
+						
+								</script>
 </div>
                      </div>
                   </div>
@@ -753,11 +756,11 @@
    <script src="assets/js/theme.js"></script>
 
    <script>
-   /*     var here = document.getElementById('here').value;
-       console.log("here ", here);
-       
+    	var here = document.getElementById('here').value;
+    	console.log("here ", here);
+    	
     function test() {
-       
+    	
         if ($('#menu').css('display') == 'block') {
            $('#menu').css('display' , 'none')
             $('#menu1').css('display', 'block');
@@ -766,18 +769,18 @@
         }
         
         $.ajax({
-           type : 'get',
-           url : 'Hr_search',
-           data : here,
-           dataType : 'text',
-           success : function(data){
-              alert("보내기 성공");
-           },
-           error : function(){
-              alert("보내기 실패");
-           }
+        	type : 'get',
+        	url : 'Hr_search',
+        	data : here,
+        	dataType : 'text',
+        	success : function(data){
+        		alert("보내기 성공");
+        	},
+        	error : function(){
+        		alert("보내기 실패");
+        	}
         })
-    } */
+    }
 </script>
 
 
