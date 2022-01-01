@@ -32,39 +32,14 @@
   <div class="back-to-top"></div>
 
   <header>
-    <div class="topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 text-sm">
-            <div class="site-info">
-              <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
-              <span class="divider">|</span>
-              <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
-            </div>
-          </div>
-          <div class="col-sm-4 text-right text-sm">
-            <div class="social-mini-button">
-              <a href="#"><span class="mai-logo-facebook-f"></span></a>
-              <a href="#"><span class="mai-logo-twitter"></span></a>
-              <a href="#"><span class="mai-logo-dribbble"></span></a>
-              <a href="#"><span class="mai-logo-instagram"></span></a>
-            </div>
-          </div>
-        </div> <!-- .row -->
-      </div> <!-- .container -->
-    </div> <!-- .topbar -->
+
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="../VaccineRL2.jsp"><span class="text-primary">YAK</span>-KoK</a>
 
         <form action="#">
-          <div class="input-group input-navbar">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
-            </div>
-            <input type="text" class="form-control" placeholder="Enter keyword.." aria-label="Username" aria-describedby="icon-addon1">
-          </div>
+ 
         </form>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,11 +72,10 @@
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
-	<p class="text-center">Get started with your free account</p>
+	<h4 class="card-title mt-3 text-center">회원가입</h4>
 	
 		<p class="divider-text">
-        <span class="bg-light">OR</span>
+        <span class="bg-light"></span>
     </p>
 
 	<form action = "JoinService" method = "post" id="join_form">
@@ -111,10 +85,11 @@
     	<div class="input-group-prepend" name="id">
 		    <span class="input-group-text">아이디<i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="user_id" class="form-control" type="text" id="input_id">
+        <input name="user_id" class="form-control" type="text" id="input_id" required>
         
         <input type="button" value="ID중복체크" onclick="idCheck()">
         <!-- input type="submit"을 써주면 이벤트(중복확인)에 따르는 조건을 부여해도 소용없기 때문에  -->
+        <br></br>
         <span id="sp"></span>
     </div> <!-- id-group// -->
     
@@ -122,28 +97,28 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text">비밀번호<i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_pw" class="form-control"  type="password" id="password1">
+        <input name="user_pw" class="form-control"  type="password" id="password1" required>
     </div> <!-- form-group// -->
     
      <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text">비밀번호 확인<i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="user_pw" class="form-control"  type="password" id="password2">
+        <input name="user_pw" class="form-control"  type="password" id="password2" required>
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text">E-Mail <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="email" class="form-control"  type="email" >
+        <input name="email" class="form-control"  type="email" required>
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text">이름 <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="user_name" class="form-control" type="text">
+        <input name="user_name" class="form-control" type="text" required>
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
@@ -151,7 +126,7 @@
 		    <span name = "birth_date" class="input-group-text">나이<i class="fa fa-phone"></i> </span>
 		</div>
 		
-    	<input name="birth_date" class="form-control"  type="text">
+    	<input name="birth_date" class="form-control"  type="text" placeholder = "만 나이로 작성해주세요" required>
     	
     </div> <!-- form-group// -->
     
@@ -159,8 +134,14 @@
     	<div class="input-group-prepend">
 		    <span name = "gender" class="input-group-text">성별<i class="fa fa-lock"></i> </span>
 		</div>
-		<span>남<input type = "radio" name ="gender" value="man"></span><br>
-		<span>여<input type = "radio" name ="gender" value="woman"></span>
+		<select name = "gender" style = "width:84.7%" required>
+			
+			<option value = "M">남자</option>
+			<option value = "F">영자</option>
+			
+		
+		</select>
+	
     </div> <!-- form-group// -->
     
     
@@ -236,7 +217,7 @@
 </form>
 
 
-  
+ 
   
 </article>
 </div> <!-- card.// -->
