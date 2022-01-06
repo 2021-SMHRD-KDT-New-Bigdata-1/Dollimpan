@@ -9,10 +9,10 @@
 > - 질병, 건강에 대한 관심 증가
 > - 질병 2차 확산 방지 및 기대수명 연장 <br>
 
-## 기능 설계
+## Menu
 <img width="978" alt="스크린샷 2022-01-06 오후 2 31 14" src="https://user-images.githubusercontent.com/90124351/148333387-c5a1bc3c-39ea-43f0-8265-4df30b9f5162.png">
 
-## ERD 다이어그램
+## E-R Diagram
 
 <img width="882" alt="스크린샷 2022-01-06 오후 2 31 54" src="https://user-images.githubusercontent.com/90124351/148333446-1ea997b5-e924-4beb-a0b6-ecef33a567b4.png">
 
